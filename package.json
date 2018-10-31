@@ -9,8 +9,10 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
+    "asap": "^2.0.6",
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.4"
+    "react-native": "0.57.4",
+    "react-native-splash-screen": "3.0.6"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
