@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,6 +39,10 @@
 		918DDB15218B1BDA005883F5 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918DDB12218B1AC8005883F5 /* libReactNativeNavigation.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BB7B06F7D97E4BF4A8DA6284 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B9B91697E64287BB4C5E26 /* libSplashScreen.a */; };
+		94642A043FE84EAEB02F579B /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */; };
+		B97EC847A3544135AC86CC3F /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */; };
+		BA00498E126743F790B6E18A /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */; };
+		D6FC3296C5FD4DBB86F16A18 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +372,10 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B0B9B91697E64287BB4C5E26 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		B11EDFA048584A1094455020 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */ = {isa = PBXFileReference; name = "Quicksand-Light.ttf"; path = "../assets/fonts/Quicksand-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +615,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				918DDAE1218A3408005883F5 /* Recovered References */,
+				6B181D43677048AC9D431B4D /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -658,6 +666,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		6B181D43677048AC9D431B4D /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */,
+				E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */,
+				C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */,
+				849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1134,6 +1154,10 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				94642A043FE84EAEB02F579B /* Quicksand-Bold.ttf in Resources */,
+				B97EC847A3544135AC86CC3F /* Quicksand-Light.ttf in Resources */,
+				BA00498E126743F790B6E18A /* Quicksand-Medium.ttf in Resources */,
+				D6FC3296C5FD4DBB86F16A18 /* Quicksand-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
