@@ -1,13 +1,14 @@
 import { Navigation } from 'react-native-navigation';
-import Auth from './Auth';
+import { FAGITO_SIGNUP_SIGNIN_BROWSE_BUTTONS_SCREEN } from './src/common/fagito-constants';
+import { registerScreens } from './src/screens/fagito-register-screens';
 
-Navigation.registerComponent('AuthScreen', () => Auth);
+registerScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setRoot({
         root: {
             component: {
-                name: 'AuthScreen'
+                name: FAGITO_SIGNUP_SIGNIN_BROWSE_BUTTONS_SCREEN
             }
         }
     })
