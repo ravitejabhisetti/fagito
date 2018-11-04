@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import * as style from '../../common/fagito-style-constants';
+
+const window = Dimensions.get('window');
 
 const STYLES = StyleSheet.create({
     fagitoLogo: {
@@ -9,13 +11,13 @@ const STYLES = StyleSheet.create({
     },
     logo: {
         backgroundColor: style.FAGITO_BACKGROUND_COLOR,
-        height: "70%",
+        height: window.height - style.FAGITO_BUTTON_CONTAINERS_HEIGHT,
         alignItems: style.FAGITO_CENTER,
         flexDirection: style.FAGITO_COLUMN,
         justifyContent: style.FAGITO_CENTER
     },
     buttonsContainer: {
-        height: "30%"
+        height: style.FAGITO_BUTTON_CONTAINERS_HEIGHT
     },
     fagitoLogoMessage: {
         fontSize: 18,
@@ -25,7 +27,21 @@ const STYLES = StyleSheet.create({
         marginLeft: style.FAGITO_AUTO,
         marginRight: style.FAGITO_AUTO,
         padding: 10,
-        fontFamily: 'Lato-Regular'
+        fontFamily: 'Lato-Regular',
+        marginTop: "1%"
+    },
+    buttonsSection: {
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: "2%"
+    },
+    signupSigninBtnsSection: {
+        flexDirection: style.FAGITO_ROW,
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        marginTop: 20
+    },
+    button: {
+        width: "48%"
     }
 })
 
