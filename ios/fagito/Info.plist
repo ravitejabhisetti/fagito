@@ -35,6 +35,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
@@ -53,10 +55,6 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Quicksand-Bold.ttf</string>
-		<string>Quicksand-Light.ttf</string>
-		<string>Quicksand-Medium.ttf</string>
-		<string>Quicksand-Regular.ttf</string>
 		<string>Lato-Black.ttf</string>
 		<string>Lato-BlackItalic.ttf</string>
 		<string>Lato-Bold.ttf</string>
@@ -67,6 +65,10 @@
 		<string>Lato-Light.ttf</string>
 		<string>Lato-LightItalic.ttf</string>
 		<string>Lato-Regular.ttf</string>
+		<string>Quicksand-Bold.ttf</string>
+		<string>Quicksand-Light.ttf</string>
+		<string>Quicksand-Medium.ttf</string>
+		<string>Quicksand-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

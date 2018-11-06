@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import { FagitoSignupSigninBrowseButtonsScreen } from './src/screens/fagito-screens';
 
-AppRegistry.registerComponent('fagito', () => App);
+AppRegistry.registerComponent('fagito', () => FagitoSignupSigninBrowseButtonsScreen);

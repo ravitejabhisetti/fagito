@@ -36,23 +36,21 @@
 		2DCD954D1E0B4F2C00145EB5 /* fagitoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* fagitoTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		918DDB15218B1BDA005883F5 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 918DDB12218B1AC8005883F5 /* libReactNativeNavigation.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		BB7B06F7D97E4BF4A8DA6284 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B9B91697E64287BB4C5E26 /* libSplashScreen.a */; };
-		94642A043FE84EAEB02F579B /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */; };
-		B97EC847A3544135AC86CC3F /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */; };
-		BA00498E126743F790B6E18A /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */; };
-		D6FC3296C5FD4DBB86F16A18 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */; };
-		6D95261F8D4D4E4DB5046BC1 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7C8C95E4E0F46FD8BB87A54 /* Lato-Black.ttf */; };
-		B0B35BBAC7FA4780B9C2792D /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CFACEFF44EB492B97AA01C7 /* Lato-BlackItalic.ttf */; };
-		4684D14C29A941A3AC5C78C0 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6E6C686EC954EFA945CDF09 /* Lato-Bold.ttf */; };
-		8AECC0477FCC419FBC7300AA /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C75B4EB96714C1D9A2E9A53 /* Lato-BoldItalic.ttf */; };
-		C251FC0E40CA444F8A21A186 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EE26886159A4DFD88B6398F /* Lato-Hairline.ttf */; };
-		258E82603FB9491C9FD92026 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E69CA5823244BCDAADBF746 /* Lato-HairlineItalic.ttf */; };
-		C73A5CD2D7314824BD2AA73F /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23B88E7B8DF741B3B055A930 /* Lato-Italic.ttf */; };
-		D4E3D86F52134B8AA3B6E218 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A5931BED8584E748D1FEBFC /* Lato-Light.ttf */; };
-		336E16EF6B0C43C99AA17357 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1DFD3BEAF4CBBB18A4399 /* Lato-LightItalic.ttf */; };
-		A2B48E36ACBE4A04B4329828 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A059397591B4C3B96ED5555 /* Lato-Regular.ttf */; };
+		4FDC6645C0BD41BA80E5D39B /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9296769F49B748AA83224BDA /* Lato-Black.ttf */; };
+		FAD88508953B498E9D07F616 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13C58E3CDAA04431BE8D1421 /* Lato-BlackItalic.ttf */; };
+		96C9B16B1E014EF4B533B477 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7F2982FC2194B61A4C1C15A /* Lato-Bold.ttf */; };
+		524C2C71163442B09C321B05 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2EEAFDBC5140BAB1EA49E3 /* Lato-BoldItalic.ttf */; };
+		543E18CA52BD4A278F59ED32 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9D4BAA17C8B46EA8E2E7C1E /* Lato-Hairline.ttf */; };
+		3A99FFDBB0C4466E80F67F8A /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACD20CE30C48BA9ED78FD2 /* Lato-HairlineItalic.ttf */; };
+		1A0B78E8B7CD4BF68546F819 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F860947D17454345A943EA7E /* Lato-Italic.ttf */; };
+		35E77E3464D24D25A0F428C4 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 164E5FAC5345475580FDBFE6 /* Lato-Light.ttf */; };
+		2A335EFA19D1437C9520CFF0 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4766956BA97C479D9E45F22C /* Lato-LightItalic.ttf */; };
+		FA7CEC076D144FC4B737CFC1 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01C58C37026C4F3A9DFB8576 /* Lato-Regular.ttf */; };
+		A36604FF3A9B4A5B85A5F857 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBEEC0F118A44798C1172B4 /* Quicksand-Bold.ttf */; };
+		721212F6DD044AAD8BAA2A15 /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3092460F0CA4C71954652B5 /* Quicksand-Light.ttf */; };
+		D62B4DE52A3A4EEDA3EDD24F /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D90E2E212FE497982BE5BBE /* Quicksand-Medium.ttf */; };
+		289C6E50F61445ECBE3926E1 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22D967A09A0C4B10A739E22C /* Quicksand-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,27 +320,6 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		918DDB0A218A3413005883F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B11EDFA048584A1094455020 /* SplashScreen.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D7682761D8E76B80014119E;
-			remoteInfo = SplashScreen;
-		};
-		918DDB11218B1AC8005883F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 918DDB0C218B1AC7005883F5 /* ReactNativeNavigation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D8AFADBD1BEE6F3F00A4592D;
-			remoteInfo = ReactNativeNavigation;
-		};
-		918DDB13218B1AC8005883F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 918DDB0C218B1AC7005883F5 /* ReactNativeNavigation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7B49FEBB1E95090800DEB3EA;
-			remoteInfo = ReactNativeNavigationTests;
-		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -378,24 +355,21 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		918DDB0C218B1AC7005883F5 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		B0B9B91697E64287BB4C5E26 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
-		B11EDFA048584A1094455020 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
-		594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */ = {isa = PBXFileReference; name = "Quicksand-Light.ttf"; path = "../assets/fonts/Quicksand-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B7C8C95E4E0F46FD8BB87A54 /* Lato-Black.ttf */ = {isa = PBXFileReference; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7CFACEFF44EB492B97AA01C7 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Lato-BlackItalic.ttf"; path = "../assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A6E6C686EC954EFA945CDF09 /* Lato-Bold.ttf */ = {isa = PBXFileReference; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7C75B4EB96714C1D9A2E9A53 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Lato-BoldItalic.ttf"; path = "../assets/fonts/Lato-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9EE26886159A4DFD88B6398F /* Lato-Hairline.ttf */ = {isa = PBXFileReference; name = "Lato-Hairline.ttf"; path = "../assets/fonts/Lato-Hairline.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3E69CA5823244BCDAADBF746 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; name = "Lato-HairlineItalic.ttf"; path = "../assets/fonts/Lato-HairlineItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		23B88E7B8DF741B3B055A930 /* Lato-Italic.ttf */ = {isa = PBXFileReference; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7A5931BED8584E748D1FEBFC /* Lato-Light.ttf */ = {isa = PBXFileReference; name = "Lato-Light.ttf"; path = "../assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0EB1DFD3BEAF4CBBB18A4399 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; name = "Lato-LightItalic.ttf"; path = "../assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1A059397591B4C3B96ED5555 /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9296769F49B748AA83224BDA /* Lato-Black.ttf */ = {isa = PBXFileReference; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		13C58E3CDAA04431BE8D1421 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Lato-BlackItalic.ttf"; path = "../assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A7F2982FC2194B61A4C1C15A /* Lato-Bold.ttf */ = {isa = PBXFileReference; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5A2EEAFDBC5140BAB1EA49E3 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Lato-BoldItalic.ttf"; path = "../assets/fonts/Lato-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9D4BAA17C8B46EA8E2E7C1E /* Lato-Hairline.ttf */ = {isa = PBXFileReference; name = "Lato-Hairline.ttf"; path = "../assets/fonts/Lato-Hairline.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		04ACD20CE30C48BA9ED78FD2 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; name = "Lato-HairlineItalic.ttf"; path = "../assets/fonts/Lato-HairlineItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F860947D17454345A943EA7E /* Lato-Italic.ttf */ = {isa = PBXFileReference; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		164E5FAC5345475580FDBFE6 /* Lato-Light.ttf */ = {isa = PBXFileReference; name = "Lato-Light.ttf"; path = "../assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4766956BA97C479D9E45F22C /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; name = "Lato-LightItalic.ttf"; path = "../assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		01C58C37026C4F3A9DFB8576 /* Lato-Regular.ttf */ = {isa = PBXFileReference; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BBBEEC0F118A44798C1172B4 /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E3092460F0CA4C71954652B5 /* Quicksand-Light.ttf */ = {isa = PBXFileReference; name = "Quicksand-Light.ttf"; path = "../assets/fonts/Quicksand-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7D90E2E212FE497982BE5BBE /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		22D967A09A0C4B10A739E22C /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,7 +385,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				918DDB15218B1BDA005883F5 /* libReactNativeNavigation.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -424,7 +397,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				BB7B06F7D97E4BF4A8DA6284 /* libSplashScreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,7 +571,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				918DDB0C218B1AC7005883F5 /* ReactNativeNavigation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -612,7 +583,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				B11EDFA048584A1094455020 /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -634,8 +604,7 @@
 				00E356EF1AD99517003FC87E /* fagitoTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				918DDAE1218A3408005883F5 /* Recovered References */,
-				6B181D43677048AC9D431B4D /* Resources */,
+				2A8C3F6A575E48628BB08B1C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -653,31 +622,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		918DDAE1218A3408005883F5 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				B0B9B91697E64287BB4C5E26 /* libSplashScreen.a */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		918DDB07218A3410005883F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				918DDB0B218A3413005883F5 /* libSplashScreen.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		918DDB0D218B1AC7005883F5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				918DDB12218B1AC8005883F5 /* libReactNativeNavigation.a */,
-				918DDB14218B1AC8005883F5 /* ReactNativeNavigationTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,23 +631,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B181D43677048AC9D431B4D /* Resources */ = {
+		2A8C3F6A575E48628BB08B1C /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
-				594CC45E2C784F729AAE96C3 /* Quicksand-Bold.ttf */,
-				E6AD577F6E034CEBAC37AE5F /* Quicksand-Light.ttf */,
-				C3369D8F9D1143EDBE5AA046 /* Quicksand-Medium.ttf */,
-				849A1F886819429D8B2BBAE3 /* Quicksand-Regular.ttf */,
-				B7C8C95E4E0F46FD8BB87A54 /* Lato-Black.ttf */,
-				7CFACEFF44EB492B97AA01C7 /* Lato-BlackItalic.ttf */,
-				A6E6C686EC954EFA945CDF09 /* Lato-Bold.ttf */,
-				7C75B4EB96714C1D9A2E9A53 /* Lato-BoldItalic.ttf */,
-				9EE26886159A4DFD88B6398F /* Lato-Hairline.ttf */,
-				3E69CA5823244BCDAADBF746 /* Lato-HairlineItalic.ttf */,
-				23B88E7B8DF741B3B055A930 /* Lato-Italic.ttf */,
-				7A5931BED8584E748D1FEBFC /* Lato-Light.ttf */,
-				0EB1DFD3BEAF4CBBB18A4399 /* Lato-LightItalic.ttf */,
-				1A059397591B4C3B96ED5555 /* Lato-Regular.ttf */,
+				9296769F49B748AA83224BDA /* Lato-Black.ttf */,
+				13C58E3CDAA04431BE8D1421 /* Lato-BlackItalic.ttf */,
+				A7F2982FC2194B61A4C1C15A /* Lato-Bold.ttf */,
+				5A2EEAFDBC5140BAB1EA49E3 /* Lato-BoldItalic.ttf */,
+				A9D4BAA17C8B46EA8E2E7C1E /* Lato-Hairline.ttf */,
+				04ACD20CE30C48BA9ED78FD2 /* Lato-HairlineItalic.ttf */,
+				F860947D17454345A943EA7E /* Lato-Italic.ttf */,
+				164E5FAC5345475580FDBFE6 /* Lato-Light.ttf */,
+				4766956BA97C479D9E45F22C /* Lato-LightItalic.ttf */,
+				01C58C37026C4F3A9DFB8576 /* Lato-Regular.ttf */,
+				BBBEEC0F118A44798C1172B4 /* Quicksand-Bold.ttf */,
+				E3092460F0CA4C71954652B5 /* Quicksand-Light.ttf */,
+				7D90E2E212FE497982BE5BBE /* Quicksand-Medium.ttf */,
+				22D967A09A0C4B10A739E22C /* Quicksand-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -867,14 +811,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = 918DDB0D218B1AC7005883F5 /* Products */;
-					ProjectRef = 918DDB0C218B1AC7005883F5 /* ReactNativeNavigation.xcodeproj */;
-				},
-				{
-					ProductGroup = 918DDB07218A3410005883F5 /* Products */;
-					ProjectRef = B11EDFA048584A1094455020 /* SplashScreen.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1140,27 +1076,6 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		918DDB0B218A3413005883F5 /* libSplashScreen.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSplashScreen.a;
-			remoteRef = 918DDB0A218A3413005883F5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		918DDB12218B1AC8005883F5 /* libReactNativeNavigation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeNavigation.a;
-			remoteRef = 918DDB11218B1AC8005883F5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		918DDB14218B1AC8005883F5 /* ReactNativeNavigationTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ReactNativeNavigationTests.xctest;
-			remoteRef = 918DDB13218B1AC8005883F5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1184,20 +1099,20 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				94642A043FE84EAEB02F579B /* Quicksand-Bold.ttf in Resources */,
-				B97EC847A3544135AC86CC3F /* Quicksand-Light.ttf in Resources */,
-				BA00498E126743F790B6E18A /* Quicksand-Medium.ttf in Resources */,
-				D6FC3296C5FD4DBB86F16A18 /* Quicksand-Regular.ttf in Resources */,
-				6D95261F8D4D4E4DB5046BC1 /* Lato-Black.ttf in Resources */,
-				B0B35BBAC7FA4780B9C2792D /* Lato-BlackItalic.ttf in Resources */,
-				4684D14C29A941A3AC5C78C0 /* Lato-Bold.ttf in Resources */,
-				8AECC0477FCC419FBC7300AA /* Lato-BoldItalic.ttf in Resources */,
-				C251FC0E40CA444F8A21A186 /* Lato-Hairline.ttf in Resources */,
-				258E82603FB9491C9FD92026 /* Lato-HairlineItalic.ttf in Resources */,
-				C73A5CD2D7314824BD2AA73F /* Lato-Italic.ttf in Resources */,
-				D4E3D86F52134B8AA3B6E218 /* Lato-Light.ttf in Resources */,
-				336E16EF6B0C43C99AA17357 /* Lato-LightItalic.ttf in Resources */,
-				A2B48E36ACBE4A04B4329828 /* Lato-Regular.ttf in Resources */,
+				4FDC6645C0BD41BA80E5D39B /* Lato-Black.ttf in Resources */,
+				FAD88508953B498E9D07F616 /* Lato-BlackItalic.ttf in Resources */,
+				96C9B16B1E014EF4B533B477 /* Lato-Bold.ttf in Resources */,
+				524C2C71163442B09C321B05 /* Lato-BoldItalic.ttf in Resources */,
+				543E18CA52BD4A278F59ED32 /* Lato-Hairline.ttf in Resources */,
+				3A99FFDBB0C4466E80F67F8A /* Lato-HairlineItalic.ttf in Resources */,
+				1A0B78E8B7CD4BF68546F819 /* Lato-Italic.ttf in Resources */,
+				35E77E3464D24D25A0F428C4 /* Lato-Light.ttf in Resources */,
+				2A335EFA19D1437C9520CFF0 /* Lato-LightItalic.ttf in Resources */,
+				FA7CEC076D144FC4B737CFC1 /* Lato-Regular.ttf in Resources */,
+				A36604FF3A9B4A5B85A5F857 /* Quicksand-Bold.ttf in Resources */,
+				721212F6DD044AAD8BAA2A15 /* Quicksand-Light.ttf in Resources */,
+				D62B4DE52A3A4EEDA3EDD24F /* Quicksand-Medium.ttf in Resources */,
+				289C6E50F61445ECBE3926E1 /* Quicksand-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1221,7 +1136,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
@@ -1320,17 +1235,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = fagitoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1346,17 +1253,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = fagitoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1373,10 +1272,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = fagito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1395,10 +1290,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = fagito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1424,16 +1315,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = "fagito-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1458,16 +1341,8 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = "fagito-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1491,16 +1366,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = "fagito-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1524,16 +1391,8 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-				);
 				INFOPLIST_FILE = "fagito-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

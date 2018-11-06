@@ -7,14 +7,11 @@ class FagitoButton extends Component {
     constructor(props) {
         super(props);
     }
-    handleButton = () => {
-        return;
-    }
     render() {
         const buttonTitle = this.props.buttonTitle;
         return (
             <View>
-                <TouchableOpacity activeOpacity={style.FAGITO_BUTTON_OPACITY} style={STYLES.button} onPress={this.handleButton}>
+                <TouchableOpacity onPress={this.props.onButtonClick} activeOpacity={style.FAGITO_BUTTON_OPACITY} style={STYLES.button}>
                     <Text style={STYLES.buttonText}>{buttonTitle}</Text>
                 </TouchableOpacity>
             </View>
