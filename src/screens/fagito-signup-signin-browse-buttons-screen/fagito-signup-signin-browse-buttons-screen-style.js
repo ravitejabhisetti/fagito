@@ -17,7 +17,8 @@ const STYLES = StyleSheet.create({
         justifyContent: style.FAGITO_CENTER
     },
     buttonsContainer: {
-        height: style.FAGITO_BUTTON_CONTAINERS_HEIGHT
+        height: style.FAGITO_BUTTON_CONTAINERS_HEIGHT,
+        backgroundColor: style.FAGITO_WHITE_COLOR
     },
     fagitoLogoMessage: {
         fontSize: 18,
