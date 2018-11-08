@@ -1,27 +1,13 @@
-import { FAGITO_SIGNUP_SIGNIN_BROWSE_BUTTONS_SCREEN } from './src/common/fagito-constants';
-import { registerScreens } from './src/screens/fagito-register-screens';
+import React from 'react';
+import { View } from 'react-native';
+import { FagitoSignupSigninBrowseButtonsScreen } from './src/screens/fagito-screens';
 
-registerScreens();
+const Fagito = () => {
+    return (
+        <View>
+            <FagitoSignupSigninBrowseButtonsScreen />
+        </View>
+    )
+}
 
-Navigation.events().registerAppLaunchedListener(() => {
-    Navigation.setRoot({
-        root: {
-            stack: {
-                id: FAGITO_SIGNUP_SIGNIN_BROWSE_BUTTONS_SCREEN,
-                children: [
-                    {
-                        component: {
-                            name: FAGITO_SIGNUP_SIGNIN_BROWSE_BUTTONS_SCREEN,
-                            options: {
-                                topBar: {
-                                    visible: false,
-                                    height: 0
-                                }
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    })
-})
+export default Fagito;
