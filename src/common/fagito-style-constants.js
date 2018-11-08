@@ -12,3 +12,4 @@ export const FAGITO_BUTTON_OPACITY = 0.2;
 export const FAGITO_ROW = 'row';
 export const FAGITO_SPACE_BETWEEN = 'space-between';
 export const FAGITO_BUTTON_CONTAINERS_HEIGHT = 205;
+export const FAGITO_FONT_FAMILY_LATO = 'Lato-Regular';
