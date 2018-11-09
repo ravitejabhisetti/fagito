@@ -6,3 +6,4 @@ export const FAGITO_LOGO_MESSAGE = 'Schedule delicious home-made meals from home
 export const FAGITO_BROWSE = 'BROWSE HOME MADE DISHES';
 export const FAGITO_SIGNUP = 'SIGN UP';
 export const FAGITO_SIGNIN = 'SIGN IN';
+export const FAGITO_FORMITEMS = 'formItems';

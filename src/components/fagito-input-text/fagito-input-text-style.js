@@ -18,7 +18,8 @@ const FAGITO_TEXT_INPUT_COLOR_RANGE = {
 
 const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
     textInputContainer: {
-        paddingTop: 24
+        paddingTop: 24,
+        marginBottom: 10
     },
     textInput: {
         padding: 0,
@@ -26,7 +27,8 @@ const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
         borderBottomWidth: 1,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         height: 30,
-        fontSize: 18
+        fontSize: 16,
+        fontWeight: '400'
     },
     greyColor: {
         borderColor: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR
