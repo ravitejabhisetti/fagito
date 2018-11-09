@@ -44,8 +44,7 @@ class FagitoTextInput extends Component {
                 </Animated.Text>
                 <TextInput
                     {...props}
-                    style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput,
-                    this.state.isFocused ? style.FAGITO_TEXT_INPUT_CONTAINER.redColor : style.FAGITO_TEXT_INPUT_CONTAINER.greyColor]}
+                    style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput, style.FAGITO_TEXT_INPUT_CONTAINER.greyColor]}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     keyboardShouldPersistTaps="never"
