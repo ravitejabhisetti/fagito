@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { FAGITO_SIGNUP_SCREEN, FAGITO_FORMITEMS } from '../../common/fagito-constants';
+import { FAGITO_SIGNUP_SCREEN, FAGITO_FORMITEMS, FAGITO_REGISTER } from '../../common/fagito-constants';
 import { FagitoFormComponent } from '../../components/fagito-components';
 import { CONTAINER_STYLE } from '../../common/fagito-common-style';
 
@@ -18,7 +18,7 @@ class FagitoSignupScreen extends Component {
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
-                <FagitoFormComponent formItems={this.state.signupItems} />
+                <FagitoFormComponent termsText buttonTitle={FAGITO_REGISTER} formItems={this.state.signupItems} />
             </View>
         )
     }

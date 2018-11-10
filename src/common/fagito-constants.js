@@ -7,3 +7,4 @@ export const FAGITO_BROWSE = 'BROWSE HOME MADE DISHES';
 export const FAGITO_SIGNUP = 'SIGN UP';
 export const FAGITO_SIGNIN = 'SIGN IN';
 export const FAGITO_FORMITEMS = 'formItems';
+export const FAGITO_REGISTER = 'REGISTER';
