@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { FAGITO_SIGNUP_SCREEN, FAGITO_FORMITEMS, FAGITO_REGISTER } from '../../common/fagito-constants';
+import { FAGITO_SIGNUP_SCREEN, FAGITO_REGISTER } from '../../common/fagito-constants';
 import { FagitoFormComponent } from '../../components/fagito-components';
 import { CONTAINER_STYLE } from '../../common/fagito-common-style';
-import { FAGITO_SIGNUP_ITEMS } from '../../common/fagito-signup-signin';
 import { connect } from 'react-redux';
-import { resetUserDetails } from '../../store/actions/actions';
+import { resetUserSignupDetails } from '../../store/actions/actions';
 
 class FagitoSignupScreen extends Component {
     static navigationOptions = { title: FAGITO_SIGNUP_SCREEN };
@@ -21,7 +20,7 @@ class FagitoSignupScreen extends Component {
         })
     }
     componentWillUnmount() {
-        this.props.resetUserDetails();
+        this.props.resetUserSignupDetails();
     }
     render() {
         return (
@@ -39,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        resetUserDetails: () => dispatch(resetUserDetails())
+        resetUserSignupDetails: () => dispatch(resetUserSignupDetails())
     }
 }
 

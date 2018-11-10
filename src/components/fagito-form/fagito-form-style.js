@@ -9,6 +9,13 @@ const STYLES = StyleSheet.create({
         color: '#666',
         fontSize: 14,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO
+    },
+    resetPassword: {
+        alignItems: style.FAGITO_CENTER,
+        marginTop: 20
+    },
+    resetPasswordText: {
+        color: style.FAGITO_BUTTON_COLOR
     }
 })
 

@@ -8,7 +8,7 @@ import {
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
 import { FAGITO_SIGNIN_ITEMS, FAGITO_SIGNUP_ITEMS } from '../../common/fagito-signup-signin';
-import { getUserDetails } from '../../store/actions/actions';
+import { getUserSignupDetails, getUserSigninDetails } from '../../store/actions/actions';
 
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
@@ -20,7 +20,8 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
         this.props.navigation.navigate(screenName);
     }
     componentWillMount() {
-        this.props.loadUserDetails();
+        this.props.loadUserSignupDetails();
+        this.props.loadUserSigninDetails();
     }
     render() {
         return (
@@ -49,13 +50,15 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
 
 const mapStateToProps = state => {
     return {
-        formItems: state.userDetails.formItems
+        formItems: state.userDetails.formItems,
+        signinItems: state.userDetails.signinItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadUserDetails: () => dispatch(getUserDetails())
+        loadUserSignupDetails: () => dispatch(getUserSignupDetails()),
+        loadUserSigninDetails: () => dispatch(getUserSigninDetails())
     }
 }
 

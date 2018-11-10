@@ -19,6 +19,7 @@ class FagitoFormComponent extends Component {
     }
     render() {
         let termsText = null;
+        let resetPasswordText = null;
         this.state.formItems = this.props.formItems;
         const scrollViewItems = (this.state.formItems.map((item, key) => (
             <FagitoTextInput key={key} label={item.label} value={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
@@ -28,6 +29,13 @@ class FagitoFormComponent extends Component {
                 <FagitoTermsAndCondition />
             );
         }
+        if (this.props.resetPassword) {
+            resetPasswordText = (
+                <View style={STYLES.resetPassword}>
+                    <Text onPress={this.props.handleReset} style={STYLES.resetPasswordText}>Reset Password</Text>
+                </View>
+            )
+        }
         return (
             <ScrollView style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
                 {scrollViewItems}
@@ -35,6 +43,7 @@ class FagitoFormComponent extends Component {
                 <View style={STYLES.formButton}>
                     <FagitoButton buttonTitle={this.props.buttonTitle} />
                 </View>
+                {resetPasswordText}
             </ScrollView>
         )
     }
