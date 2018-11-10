@@ -11,9 +11,14 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "asap": "^2.0.6",
+    "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-navigation": "^2.18.2"
+    "react-navigation": "^2.18.2",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
