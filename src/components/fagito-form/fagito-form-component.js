@@ -13,10 +13,6 @@ class FagitoFormComponent extends Component {
         formItems: []
     }
     handleTextChange = (newText, key) => {
-        // this.setState(prevState => {
-        //     prevState.formItems[key].value = newText;
-        //     return { prevState };
-        // })
         this.props.formItems[key].value = newText;
     }
     handleFormButtonClick = () => {
@@ -26,7 +22,6 @@ class FagitoFormComponent extends Component {
         let termsText = null;
         let resetPasswordText = null;
         const scrollViewItems = (this.props.formItems.map((item, key) => (
-            // <FagitoTextInput key={key} label={item.label} value={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
             <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} value={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
         )));
         if (this.props.termsText) {
