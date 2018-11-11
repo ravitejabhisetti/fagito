@@ -1,4 +1,4 @@
-export const FAGITO_SIGNUP_ITEMS = [
+export const FAGITO_SIGNUP_FORM = [
     {
         label: 'Your Name',
         value: ''
@@ -17,7 +17,7 @@ export const FAGITO_SIGNUP_ITEMS = [
     }
 ]
 
-export const FAGITO_SIGNIN_ITEMS = [
+export const FAGITO_SIGNIN_FORM = [
     {
         label: 'Email',
         value: ''

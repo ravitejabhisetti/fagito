@@ -7,8 +7,8 @@ import {
     FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
-import { FAGITO_SIGNIN_ITEMS, FAGITO_SIGNUP_ITEMS } from '../../common/fagito-signup-signin';
-import { getUserSignupDetails, getUserSigninDetails } from '../../store/actions/actions';
+// import { FAGITO_SIGNIN_ITEMS, FAGITO_SIGNUP_ITEMS } from '../../common/fagito-signup-signin';
+// import { getUserSignupDetails, getUserSigninDetails } from '../../store/actions/actions';
 
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
@@ -20,8 +20,8 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
         this.props.navigation.navigate(screenName);
     }
     componentWillMount() {
-        this.props.loadUserSignupDetails();
-        this.props.loadUserSigninDetails();
+        // this.props.loadUserSignupDetails();
+        // this.props.loadUserSigninDetails();
     }
     render() {
         return (
@@ -48,18 +48,20 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        formItems: state.userDetails.formItems,
-        signinItems: state.userDetails.signinItems
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         formItems: state.userDetails.formItems,
+//         signinItems: state.userDetails.signinItems
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loadUserSignupDetails: () => dispatch(getUserSignupDetails()),
-        loadUserSigninDetails: () => dispatch(getUserSigninDetails())
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         loadUserSignupDetails: () => dispatch(getUserSignupDetails()),
+//         loadUserSigninDetails: () => dispatch(getUserSigninDetails())
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FagitoSignupSigninBrowseButtonsScreen);
+// export default connect(mapStateToProps, mapDispatchToProps)(FagitoSignupSigninBrowseButtonsScreen);
+
+export default FagitoSignupSigninBrowseButtonsScreen;

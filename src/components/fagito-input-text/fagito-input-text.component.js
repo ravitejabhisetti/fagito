@@ -8,7 +8,7 @@ class FagitoTextInput extends Component {
         super(props);
     }
     componentWillMount() {
-        this._textBoxIsFocused = new Animated.Value(this.props.value === '' ? 0 : 1);
+        this._textBoxIsFocused = new Animated.Value(!this.props.value || this.props.value === '' ? 0 : 1);
         this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.props.value === '' ? 0 : 1);
     }
     componentDidUpdate() {
