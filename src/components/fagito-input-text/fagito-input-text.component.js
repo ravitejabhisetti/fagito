@@ -13,7 +13,7 @@ class FagitoTextInput extends Component {
     }
     componentDidUpdate() {
         Animated.timing(this._textBoxIsFocused, {
-            toValue: (this.state.isFocused || this.props.value !== '') ? 1 : 0,
+            toValue: (this.state.isFocused || (this.props.value && this.props.value !== '')) ? 1 : 0,
             duration: 200
         }).start();
         Animated.timing(this._textBoxLabelColor, {
