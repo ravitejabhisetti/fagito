@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View, Keyboard } from 'react-native';
 import { Field } from 'redux-form';
 import { FAGITO_SIGNIN_SIGNUP_CONTAINERS } from '../../common/fagito-common-style';
 import { FagitoTextInput, FagitoButton, FagitoTermsAndCondition } from '../../components/fagito-components';
@@ -16,19 +16,18 @@ class FagitoFormComponent extends Component {
         this.props.formItems[key].value = newText;
     }
     handleFormButtonClick = () => {
+        Keyboard.dismiss();
         this.props.formButtonClick(this.props.formItems);
-    }
-    componentWillUnmount() {
-        console.log('in unmount---', this.props.formItems);
-        // this.props.formItems = [];
     }
     render() {
         let termsText = null;
         let resetPasswordText = null;
-        console.log('form items are---', this.props.formItems);
-        const scrollViewItems = (this.props.formItems.map((item, key) => (
-            <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} input={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
-        )));
+        const scrollViewItems = (this.props.formItems.map((item, key) => {
+            if (this.props.newForm) {
+                item.value = '';
+            }
+            return <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} input={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
+        }));
         if (this.props.termsText) {
             termsText = (
                 <FagitoTermsAndCondition />

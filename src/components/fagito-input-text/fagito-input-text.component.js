@@ -9,8 +9,7 @@ class FagitoTextInput extends Component {
         // this.state.value = '';
     }
     componentWillMount() {
-        console.log('will mount props are---', this.props.input);
-        // this.state.value = this.props.input;
+        this.state.value = this.props.input;
         this._textBoxIsFocused = new Animated.Value(this.state.value === '' ? 0 : 1);
         this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.state.value === '' ? 0 : 1);
     }
@@ -31,8 +30,6 @@ class FagitoTextInput extends Component {
         this.setState({ isFocused: false });
     }
     handleTextChange = (newText) => {
-        console.log('on handle text change check---', newText);
-        // this.state.value = newText;
         this.setState({
             value: newText
         })
@@ -41,9 +38,7 @@ class FagitoTextInput extends Component {
     componentDidMount() {
     }
     render() {
-        // console.log('props are---', this.props);
         const { label, ...props } = this.props;
-        // this.state.value = this.props.input;
         const labelStyle = {
             position: 'absolute',
             left: 0,

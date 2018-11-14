@@ -13,18 +13,13 @@ class FagitoSignupScreen extends Component {
     handleButtonClick = (formItems) => {
         console.log('in button click check--', this.props.checkItems);
     }
+   
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
-                <FagitoFormComponent formButtonClick={this.handleButtonClick} termsText buttonTitle={FAGITO_REGISTER} formItems={this.props.signupForm} />
+                <FagitoFormComponent formButtonClick={this.handleButtonClick} termsText buttonTitle={FAGITO_REGISTER} newForm formItems={FAGITO_SIGNUP_FORM} />
             </View>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        signupForm: state.userDetails.signupForm
     }
 }
 
@@ -33,4 +28,4 @@ FagitoSignupScreen = reduxForm({
 })(FagitoSignupScreen);
 
 
-export default connect(mapStateToProps, null)(FagitoSignupScreen);
+export default connect(null, null)(FagitoSignupScreen);
