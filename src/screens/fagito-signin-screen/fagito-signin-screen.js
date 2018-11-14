@@ -18,15 +18,9 @@ class FagitoSigninScreen extends Component {
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
-                <FagitoFormComponent formButtonClick={this.handleButtonClick} handleReset={this.handleResetPassword} resetPassword buttonTitle={FAGITO_SIGNIN} formItems={this.props.signinForm} />
+                <FagitoFormComponent formButtonClick={this.handleButtonClick} handleReset={this.handleResetPassword} newForm resetPassword buttonTitle={FAGITO_SIGNIN} formItems={FAGITO_SIGNIN_FORM} />
             </View>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        signinForm: state.userDetails.signinForm
     }
 }
 
@@ -34,4 +28,4 @@ FagitoSigninScreen = reduxForm({
     form: 'signinForm'
 })(FagitoSigninScreen);
 
-export default connect(mapStateToProps, null)(FagitoSigninScreen);
+export default connect(null, null)(FagitoSigninScreen);
