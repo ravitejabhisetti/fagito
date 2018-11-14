@@ -18,11 +18,16 @@ class FagitoFormComponent extends Component {
     handleFormButtonClick = () => {
         this.props.formButtonClick(this.props.formItems);
     }
+    componentWillUnmount() {
+        console.log('in unmount---', this.props.formItems);
+        // this.props.formItems = [];
+    }
     render() {
         let termsText = null;
         let resetPasswordText = null;
+        console.log('form items are---', this.props.formItems);
         const scrollViewItems = (this.props.formItems.map((item, key) => (
-            <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} value={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
+            <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} input={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
         )));
         if (this.props.termsText) {
             termsText = (

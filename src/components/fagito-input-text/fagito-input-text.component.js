@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import { TextInput, View, Animated } from 'react-native';
+import { TextInput, View, Animated, Text } from 'react-native';
 import * as style from './fagito-input-text-style';
 
 class FagitoTextInput extends Component {
-    state = { isFocused: false };
+    state = { isFocused: false, value: '' };
     constructor(props) {
         super(props);
+        // this.state.value = '';
     }
     componentWillMount() {
-        this._textBoxIsFocused = new Animated.Value(!this.props.value || this.props.value === '' ? 0 : 1);
-        this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.props.value === '' ? 0 : 1);
+        console.log('will mount props are---', this.props.input);
+        // this.state.value = this.props.input;
+        this._textBoxIsFocused = new Animated.Value(this.state.value === '' ? 0 : 1);
+        this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.state.value === '' ? 0 : 1);
     }
     componentDidUpdate() {
         Animated.timing(this._textBoxIsFocused, {
-            toValue: (this.state.isFocused || (this.props.value && this.props.value !== '')) ? 1 : 0,
+            toValue: (this.state.isFocused || (this.state.value && this.state.value !== '')) ? 1 : 0,
             duration: 200
         }).start();
         Animated.timing(this._textBoxLabelColor, {
-            toValue: (this.state.isFocused || (this.state.isFocused && this.props.value !== '') ? 1 : 0),
+            toValue: (this.state.isFocused || (this.state.isFocused && this.state.value !== '') ? 1 : 0),
             duration: 200
         }).start();
     }
@@ -27,8 +30,20 @@ class FagitoTextInput extends Component {
     handleBlur = () => {
         this.setState({ isFocused: false });
     }
+    handleTextChange = (newText) => {
+        console.log('on handle text change check---', newText);
+        // this.state.value = newText;
+        this.setState({
+            value: newText
+        })
+        this.props.onChangeText(newText);
+    }
+    componentDidMount() {
+    }
     render() {
+        // console.log('props are---', this.props);
         const { label, ...props } = this.props;
+        // this.state.value = this.props.input;
         const labelStyle = {
             position: 'absolute',
             left: 0,
@@ -44,6 +59,8 @@ class FagitoTextInput extends Component {
                 </Animated.Text>
                 <TextInput
                     {...props}
+                    value={this.state.value}
+                    onChangeText={this.handleTextChange}
                     style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput, style.FAGITO_TEXT_INPUT_CONTAINER.greyColor]}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}

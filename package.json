@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "asap": "^2.0.6",
+    "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
