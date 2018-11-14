@@ -42,7 +42,7 @@ class FagitoFormComponent extends Component {
             )
         }
         return (
-            <ScrollView style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
+            <ScrollView keyboardShouldPersistTaps='handled' style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
                 {scrollViewItems}
                 {termsText}
                 <View style={STYLES.formButton}>
