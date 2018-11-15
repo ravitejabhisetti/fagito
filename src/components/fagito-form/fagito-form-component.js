@@ -26,7 +26,14 @@ class FagitoFormComponent extends Component {
             if (this.props.newForm) {
                 item.value = '';
             }
-            return <Field component={FagitoTextInput} key={key} name={item.label} label={item.label} input={item.value} onChangeText={(newText) => this.handleTextChange(newText, key)} />
+            return <Field
+                secureTextEntry={item.label === 'Password' ? true : false}
+                component={FagitoTextInput}
+                key={key}
+                name={item.label}
+                label={item.label}
+                input={item.value}
+                onChangeText={(newText) => this.handleTextChange(newText, key)} />
         }));
         if (this.props.termsText) {
             termsText = (
