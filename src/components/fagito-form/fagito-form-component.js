@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, View, Keyboard } from 'react-native';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { FAGITO_SIGNIN_SIGNUP_CONTAINERS } from '../../common/fagito-common-style';
 import { FagitoTextInput, FagitoButton, FagitoTermsAndCondition } from '../../components/fagito-components';
 import { STYLES } from './fagito-form-style';
+import validate from '../../utility/fagito-form-validations';
 
 class FagitoFormComponent extends Component {
     constructor(props) {
@@ -13,11 +14,19 @@ class FagitoFormComponent extends Component {
         formItems: []
     }
     handleTextChange = (newText, key) => {
-        this.props.formItems[key].value = newText;
+        this.setState((prevState) => {
+            prevState.formItems[key].value = newText;
+            return prevState;
+        })
     }
     handleFormButtonClick = () => {
         Keyboard.dismiss();
-        this.props.formButtonClick(this.props.formItems);
+        this.props.formButtonClick(this.state.formItems);
+    }
+    componentWillMount() {
+        this.setState({
+            formItems: this.props.formItems
+        })
     }
     render() {
         let termsText = null;
@@ -27,12 +36,12 @@ class FagitoFormComponent extends Component {
                 item.value = '';
             }
             return <Field
-                secureTextEntry={item.label === 'Password' ? true : false}
+                secureTextEntry={item.fieldName === 'password' ? true : false}
                 component={FagitoTextInput}
                 key={key}
-                name={item.label}
+                name={item.fieldName}
                 label={item.label}
-                input={item.value}
+                input={{ value: item.value }}
                 onChangeText={(newText) => this.handleTextChange(newText, key)} />
         }));
         if (this.props.termsText) {
@@ -60,4 +69,7 @@ class FagitoFormComponent extends Component {
     }
 }
 
-export default FagitoFormComponent;
+export default reduxForm({
+    form: 'fagitoForm',
+    validate
+})(FagitoFormComponent);

@@ -10,3 +10,7 @@ export const FAGITO_SIGNIN = 'SIGN IN';
 export const FAGITO_FORMITEMS = 'formItems';
 export const FAGITO_REGISTER = 'REGISTER';
 export const FAGITO_RESET_PASSWORD = 'Reset Password';
+export const FAGITO_VALID_USER_NAME_ERROR = 'Please enter a valid name';
+export const FAGITO_VALID_EMAIL_ERROR = 'Please enter a valid email';
+export const FAGITO_VALID_MOBILE_NUMBER_ERROR = 'Please enter a valid 10 digit number';
+export const FAGITO_VALID_PASSWORD_ERROR = 'Please enter a password';

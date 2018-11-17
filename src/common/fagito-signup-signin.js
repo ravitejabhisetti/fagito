@@ -1,29 +1,35 @@
 export const FAGITO_SIGNUP_FORM = [
     {
         label: 'Your Name',
-        value: ''
+        value: '',
+        fieldName: 'name'
     },
     {
         label: 'Email',
-        value: ''
+        value: '',
+        fieldName: 'email'
     },
     {
         label: 'Mobile',
-        value: ''
+        value: '',
+        fieldName: 'mobileNumber'
     },
     {
         label: 'Password',
-        value: ''
+        value: '',
+        fieldName: 'password'
     }
 ]
 
 export const FAGITO_SIGNIN_FORM = [
     {
         label: 'Email',
-        value: ''
+        value: '',
+        fieldName: 'email'
     },
     {
         label: 'Password',
-        value: ''
+        value: '',
+        fieldName: 'password'
     }
 ]

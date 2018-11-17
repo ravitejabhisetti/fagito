@@ -9,7 +9,7 @@ class FagitoTextInput extends Component {
         // this.state.value = '';
     }
     componentWillMount() {
-        this.state.value = this.props.input;
+        this.state.value = this.props.input.value;
         this._textBoxIsFocused = new Animated.Value(this.state.value === '' ? 0 : 1);
         this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.state.value === '' ? 0 : 1);
     }
@@ -38,7 +38,8 @@ class FagitoTextInput extends Component {
     componentDidMount() {
     }
     render() {
-        const { label, ...props } = this.props;
+        const renderErrorText = null;
+        const { label, meta: { error }, ...props } = this.props;
         const labelStyle = {
             position: 'absolute',
             left: 0,
@@ -62,6 +63,8 @@ class FagitoTextInput extends Component {
                     keyboardShouldPersistTaps="never"
                     blurOnSubmit
                 />
+                {/* {renderErrorText} */}
+                <Text style={style.FAGITO_TEXT_INPUT_CONTAINER.errorText}>{error}</Text>
             </View>
         )
     }

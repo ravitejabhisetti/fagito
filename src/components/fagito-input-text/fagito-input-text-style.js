@@ -35,12 +35,14 @@ const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
     },
     redColor: {
         borderColor: style.FAGITO_BUTTON_COLOR
+    },
+    errorText: {
+        paddingTop: 10,
+        color: style.FAGITO_ERROR_TEXT_COLOR,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO
     }
 })
 
-const FAGITO_TEXT_INPUT_GREY_COLOR = StyleSheet.create({
-
-})
 
 export {
     FAGITO_TEXT_INPUT_COLOR_RANGE,
