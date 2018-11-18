@@ -28,10 +28,13 @@ class FagitoTextInput extends Component {
             duration: 200
         }).start();
     }
-    handleFocus = () => {
+    handleFocus = (event) => {
+        this.props.meta.touched = true;
+        this.props.input.onFocus(event);
         this.setState({ isFocused: true })
     };
-    handleBlur = () => {
+    handleBlur = (event) => {
+        this.props.input.onBlur(event);
         this.setState({ isFocused: false });
     }
     handleTextChange = (newText) => {
