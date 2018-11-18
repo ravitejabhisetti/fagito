@@ -6,67 +6,51 @@ import { FagitoTextInput, FagitoButton, FagitoTermsAndCondition } from '../../co
 import { STYLES } from './fagito-form-style';
 import validate from '../../utility/fagito-form-validations';
 
-class FagitoFormComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {
-        formItems: []
-    }
-    handleTextChange = (newText, key) => {
-        this.setState((prevState) => {
-            prevState.formItems[key].value = newText;
-            return prevState;
-        })
-    }
-    handleFormButtonClick = () => {
+const FagitoFormComponent = (props) => {
+
+    const handleFormButtonClick = (values) => {
         Keyboard.dismiss();
-        this.props.formButtonClick(this.state.formItems);
+        props.formButtonClick(values);
     }
-    componentWillMount() {
-        this.setState({
-            formItems: this.props.formItems
-        })
+    let termsText = null;
+    let resetPasswordText = null;
+    const { handleSubmit } = props;
+    const scrollViewItems = (props.formItems.map((item, key) => {
+        if (props.newForm) {
+            item.value = '';
+        }
+        return <Field
+            component={FagitoTextInput}
+            key={key}
+            name={item.fieldName}
+            label={item.label}
+            props={{ value: item.value, secureTextEntry: item.fieldName === 'password' ? true : false }}
+        // input={{ value: item.value }}
+        // onChangeText={(newText) => this.handleTextChange(newText, key)}
+        />
+    }));
+    if (props.termsText) {
+        termsText = (
+            <FagitoTermsAndCondition />
+        );
     }
-    render() {
-        let termsText = null;
-        let resetPasswordText = null;
-        const scrollViewItems = (this.props.formItems.map((item, key) => {
-            if (this.props.newForm) {
-                item.value = '';
-            }
-            return <Field
-                secureTextEntry={item.fieldName === 'password' ? true : false}
-                component={FagitoTextInput}
-                key={key}
-                name={item.fieldName}
-                label={item.label}
-                input={{ value: item.value }}
-                onChangeText={(newText) => this.handleTextChange(newText, key)} />
-        }));
-        if (this.props.termsText) {
-            termsText = (
-                <FagitoTermsAndCondition />
-            );
-        }
-        if (this.props.resetPassword) {
-            resetPasswordText = (
-                <View style={STYLES.resetPassword}>
-                    <Text onPress={this.props.handleReset} style={STYLES.resetPasswordText}>Reset Password</Text>
-                </View>
-            )
-        }
-        return (
-            <ScrollView keyboardShouldPersistTaps='handled' style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
-                {scrollViewItems}
-                {termsText}
-                <View style={STYLES.formButton}>
-                    <FagitoButton onButtonClick={this.handleFormButtonClick} buttonTitle={this.props.buttonTitle} />
-                </View>
-                {resetPasswordText}
-            </ScrollView>
+    if (props.resetPassword) {
+        resetPasswordText = (
+            <View style={STYLES.resetPassword}>
+                <Text onPress={props.handleReset} style={STYLES.resetPasswordText}>Reset Password</Text>
+            </View>
         )
     }
+    return (
+        <ScrollView keyboardShouldPersistTaps='handled' style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
+            {scrollViewItems}
+            {termsText}
+            <View style={STYLES.formButton}>
+                <FagitoButton onButtonClick={handleSubmit((values) => handleFormButtonClick(values))} buttonTitle={props.buttonTitle} />
+            </View>
+            {resetPasswordText}
+        </ScrollView>
+    )
 }
 
 export default reduxForm({

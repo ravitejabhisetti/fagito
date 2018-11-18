@@ -9,7 +9,12 @@ class FagitoTextInput extends Component {
         // this.state.value = '';
     }
     componentWillMount() {
-        this.state.value = this.props.input.value;
+        if (this.props.value) {
+            this.props.input.value = this.props.value;
+        }
+        this.setState({
+            value: this.props.input.value
+        })
         this._textBoxIsFocused = new Animated.Value(this.state.value === '' ? 0 : 1);
         this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.state.value === '' ? 0 : 1);
     }
@@ -33,13 +38,13 @@ class FagitoTextInput extends Component {
         this.setState({
             value: newText
         })
-        this.props.onChangeText(newText);
+        this.props.input.onChange(newText);
     }
     componentDidMount() {
     }
     render() {
         const renderErrorText = null;
-        const { label, meta: { error }, ...props } = this.props;
+        const { input, label, meta: { touched, error }, secureTextEntry, ...props } = this.props;
         const labelStyle = {
             position: 'absolute',
             left: 0,
@@ -54,17 +59,19 @@ class FagitoTextInput extends Component {
                     {label}
                 </Animated.Text>
                 <TextInput
-                    {...props}
+                    // {...props}
+                    // value={this.state.value}
+                    {...input}
+                    secureTextEntry={secureTextEntry}
                     value={this.state.value}
-                    onChangeText={this.handleTextChange}
+                    onChangeText={(value) => this.handleTextChange(value)}
                     style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput, style.FAGITO_TEXT_INPUT_CONTAINER.greyColor]}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     keyboardShouldPersistTaps="never"
                     blurOnSubmit
                 />
-                {/* {renderErrorText} */}
-                <Text style={style.FAGITO_TEXT_INPUT_CONTAINER.errorText}>{error}</Text>
+                {touched && (error && (<Text style={style.FAGITO_TEXT_INPUT_CONTAINER.errorText}>{error}</Text>))}
             </View>
         )
     }

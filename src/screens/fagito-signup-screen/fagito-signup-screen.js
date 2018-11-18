@@ -11,7 +11,7 @@ class FagitoSignupScreen extends Component {
     static navigationOptions = { title: FAGITO_SIGNUP_SCREEN };
 
     handleButtonClick = (formItems) => {
-        console.log('in button click check--', this.props.checkItems);
+        console.log('in button click check--', formItems);
     }
    
     render() {
