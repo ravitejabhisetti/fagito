@@ -47,7 +47,7 @@ class FagitoTextInput extends Component {
     }
     render() {
         const renderErrorText = null;
-        const { input, label, meta: { touched, error }, secureTextEntry, ...props } = this.props;
+        const { input, label, meta: { touched, error }, secureTextEntry, keyboardType, ...props } = this.props;
         const labelStyle = {
             position: 'absolute',
             left: 0,
@@ -65,6 +65,7 @@ class FagitoTextInput extends Component {
                     // {...props}
                     // value={this.state.value}
                     {...input}
+                    keyboardType={keyboardType}
                     secureTextEntry={secureTextEntry}
                     value={this.state.value}
                     onChangeText={(value) => this.handleTextChange(value)}

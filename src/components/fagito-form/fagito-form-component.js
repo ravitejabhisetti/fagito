@@ -4,6 +4,10 @@ import { Field, reduxForm } from 'redux-form';
 import { FAGITO_SIGNIN_SIGNUP_CONTAINERS } from '../../common/fagito-common-style';
 import { FagitoTextInput, FagitoButton, FagitoTermsAndCondition } from '../../components/fagito-components';
 import { STYLES } from './fagito-form-style';
+import {
+    FAGITO_DEFAULT_KEYBOARD, FAGITO_NUMERIC_KEYBOARD, FAGITO_FIELD_NAME_PASSWORD,
+    FAGITO_FIELD_NAME_MOBILE_NUMBER
+} from '../../common/fagito-constants';
 import validate from '../../utility/fagito-form-validations';
 
 const FagitoFormComponent = (props) => {
@@ -24,7 +28,11 @@ const FagitoFormComponent = (props) => {
             key={key}
             name={item.fieldName}
             label={item.label}
-            props={{ value: item.value, secureTextEntry: item.fieldName === 'password' ? true : false }}
+            props={{
+                value: item.value,
+                secureTextEntry: item.fieldName === FAGITO_FIELD_NAME_PASSWORD ? true : false,
+                keyboardType: item.fieldName === FAGITO_FIELD_NAME_MOBILE_NUMBER ? FAGITO_NUMERIC_KEYBOARD : FAGITO_DEFAULT_KEYBOARD
+            }}
         // input={{ value: item.value }}
         // onChangeText={(newText) => this.handleTextChange(newText, key)}
         />

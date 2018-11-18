@@ -8,6 +8,9 @@ const STYLES = StyleSheet.create({
     },
     termsColor: {
         color: '#666'
+    },
+    termsViewContainer: {
+        marginTop: 15
     }
 })
 
