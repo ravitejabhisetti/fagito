@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { CONTAINER_STYLE } from '../../common/fagito-common-style';
 import { FagitoFormComponent } from '../../components/fagito-components';
 import { FAGITO_SIGNIN_SCREEN, FAGITO_SIGNIN, FAGITO_RESET_PASSWORD_SCREEN } from '../../common/fagito-constants';
-import { FAGITO_SIGNIN_FORM } from '../../common/fagito-signup-signin';
+import { FAGITO_SIGNIN_FORM } from '../../common/fagito-signup-signin-constants';
 
 class FagitoSigninScreen extends Component {
     static navigationOptions = { title: FAGITO_SIGNIN_SCREEN };

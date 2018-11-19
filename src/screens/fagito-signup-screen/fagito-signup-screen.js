@@ -5,15 +5,17 @@ import { connect } from 'react-redux';
 import { CONTAINER_STYLE } from '../../common/fagito-common-style';
 import { FAGITO_SIGNUP_SCREEN, FAGITO_REGISTER } from '../../common/fagito-constants';
 import { FagitoFormComponent } from '../../components/fagito-components';
-import { FAGITO_SIGNUP_FORM } from '../../common/fagito-signup-signin';
+import { FAGITO_SIGNUP_FORM } from '../../common/fagito-signup-signin-constants';
+import { userAuthentication } from '../../store/actions/actions';
 
 class FagitoSignupScreen extends Component {
     static navigationOptions = { title: FAGITO_SIGNUP_SCREEN };
 
     handleButtonClick = (formItems) => {
         console.log('in button click check--', formItems);
+        this.props.userAuthentication(formItems);
     }
-   
+
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
@@ -23,9 +25,15 @@ class FagitoSignupScreen extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userAuthentication: (userData) => dispatch(userAuthentication(userData))
+    }
+}
+
 FagitoSignupScreen = reduxForm({
     form: 'signupForm'
 })(FagitoSignupScreen);
 
 
-export default connect(null, null)(FagitoSignupScreen);
+export default connect(null, mapDispatchToProps)(FagitoSignupScreen);

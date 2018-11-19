@@ -1,1 +1,1 @@
-export { getUserSignupDetails, getUserSigninDetails } from './fagito-signin-signup-action';
+export { userAuthentication } from './fagito-signin-signup-action';
