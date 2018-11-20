@@ -4,6 +4,9 @@ import * as style from '../../common/fagito-style-constants';
 const window = Dimensions.get('window');
 
 const STYLES = StyleSheet.create({
+    home: {
+        flex: 1
+    },
     fagitoLogo: {
         color: style.FAGITO_WHITE_COLOR,
         fontSize: 40,

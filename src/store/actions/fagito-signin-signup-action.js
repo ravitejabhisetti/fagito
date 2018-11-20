@@ -1,10 +1,12 @@
 import * as types from './fagito-action-types';
-import { FAGITO_FIREBASE_SIGNUP_URL, FAGITO_FIREBASE_API_KEY } from '../../common/fagito-signup-signin-constants';
-import { FAGITO_API_CALL_HEADERS } from '../../common/fagito-constants';
+import { FAGITO_FIREBASE_SIGNUP_URL } from '../../common/fagito-signup-signin-constants';
+import { FAGITO_API_CALL_HEADERS, FAGITO_FIREBASE_API_KEY } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
+import { fagitoStartLoader, fagitoStopLoader } from './actions';
 
 export const userAuthentication = (userData, authMode) => {
     return dispatch => {
+        dispatch(fagitoStartLoader());
         let url = FAGITO_FIREBASE_SIGNUP_URL + FAGITO_FIREBASE_API_KEY;
         fetch(url, {
             method: 'POST',
@@ -15,6 +17,7 @@ export const userAuthentication = (userData, authMode) => {
             }),
             headers: FAGITO_API_CALL_HEADERS,
         }).then(res => res.json()).then(parsedResponse => {
+            dispatch(fagitoStopLoader());
             if (!parsedResponse.idToken) {
                 alert('Authentication failed, please try again!!');
             } else {

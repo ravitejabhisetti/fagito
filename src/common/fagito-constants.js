@@ -20,3 +20,4 @@ export const FAGITO_NUMERIC_KEYBOARD = 'number-pad';
 export const FAGITO_FIELD_NAME_MOBILE_NUMBER = 'mobileNumber';
 export const FAGITO_FIELD_NAME_PASSWORD = 'password';
 export const FAGITO_API_CALL_HEADERS = { "Content-Type": "application/json" };
+export const FAGITO_FIREBASE_API_KEY = 'AIzaSyCVNpBVuCkNk3WqzKQUAIZntaJKOZb8bac';

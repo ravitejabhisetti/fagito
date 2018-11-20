@@ -18,7 +18,7 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
     }
     render() {
         return (
-            <View>
+            <View style={STYLES.home}>
                 <View style={STYLES.logo}>
                     <Text style={STYLES.fagitoLogo}>{FAGITO}</Text>
                 </View>
