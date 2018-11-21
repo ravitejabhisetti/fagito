@@ -11,7 +11,7 @@ const STYLES = StyleSheet.create({
         alignItems: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_CENTER,
         backgroundColor: 'rgba(0,0,0,0.25)',
-        zIndex: 100
+        zIndex: 1000
     },
     fagitoLoaderContainer: {
         padding: 20,

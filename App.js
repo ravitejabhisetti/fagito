@@ -38,7 +38,7 @@ export class Fagito extends Component {
             );
         }
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, zIndex: 100 }}>
                 {loader}
                 <RootStack />
             </View>
