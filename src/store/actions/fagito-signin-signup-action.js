@@ -6,7 +6,7 @@ import { fagitoStartLoader, fagitoStopLoader } from './actions';
 
 export const userAuthentication = (userData, authMode) => {
     return dispatch => {
-        dispatch(fagitoStartLoader());
+        dispatch(fagitoStartLoader('Authenticating user...'));
         let url = FAGITO_FIREBASE_SIGNUP_URL + FAGITO_FIREBASE_API_KEY;
         fetch(url, {
             method: 'POST',

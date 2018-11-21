@@ -11,6 +11,7 @@ export const FAGITO_SOLID_BORDER_STYLE = 'solid';
 export const FAGITO_BUTTON_OPACITY = 0.2;
 export const FAGITO_ROW = 'row';
 export const FAGITO_SPACE_BETWEEN = 'space-between';
+export const FAGITO_SPACE_AROUND = 'space-around';
 export const FAGITO_BUTTON_CONTAINERS_HEIGHT = 205;
 export const FAGITO_FONT_FAMILY_LATO = 'Lato-Regular';
 export const FAGITO_TEXT_INPUT_GREY_BORDER_COLOR = '#999';

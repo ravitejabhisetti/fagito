@@ -34,7 +34,7 @@ export class Fagito extends Component {
         let loader = null;
         if (this.props.showLoader) {
             loader = (
-                <FagitoLoader />
+                <FagitoLoader loaderText={this.props.loaderText} />
             );
         }
         return (
@@ -48,7 +48,8 @@ export class Fagito extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        showLoader: state.fagitoLoader.showLoader
+        showLoader: state.fagitoLoader.showLoader,
+        loaderText: state.fagitoLoader.loaderText
     }
 }
 

@@ -10,16 +10,22 @@ const STYLES = StyleSheet.create({
         bottom: 0,
         alignItems: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_CENTER,
-        backgroundColor: 'rgba(0,0,0,0.25)',
+        backgroundColor: 'rgba(0,0,0,0.4)',
         zIndex: 1000
     },
     fagitoLoaderContainer: {
-        padding: 20,
+        flexDirection: style.FAGITO_ROW,
+        padding: 25,
         backgroundColor: style.FAGITO_WHITE_COLOR,
-        color: 'black'
+        justifyContent: style.FAGITO_SPACE_AROUND,
+        alignItems: style.FAGITO_CENTER,
+        borderRadius: 3
     },
-    loaderColor: {
-        color: 'black'
+    loaderText: {
+        paddingLeft: 10,
+        color: style.FAGITO_ERROR_TEXT_COLOR,
+        fontSize: 14,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO
     }
 });
 

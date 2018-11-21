@@ -1,8 +1,9 @@
 import { FAGITO_START_LOADER, FAGITO_STOP_LOADER } from './fagito-action-types';
 
-export const fagitoStartLoader = () => {
+export const fagitoStartLoader = (loaderText) => {
     return {
-        type: FAGITO_START_LOADER
+        type: FAGITO_START_LOADER,
+        loaderText: loaderText
     }
 }
 
