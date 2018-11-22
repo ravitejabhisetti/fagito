@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import {
     FagitoSignupSigninBrowseButtonsScreen, FagitoSignupScreen, FagitoSigninScreen,
-    FagitoResetPasswordScreen
+    FagitoResetPasswordScreen, FagitoHomeScreen
 } from './src/screens/fagito-screens';
 import { FAGITO_HOME } from './src/common/fagito-constants';
 import { FAGITO_COMMON_STYLE } from './src/common/fagito-common-style';
@@ -17,7 +17,8 @@ const RootStack = createStackNavigator({
     Fagito: FagitoSignupSigninBrowseButtonsScreen,
     Signup: FagitoSignupScreen,
     Signin: FagitoSigninScreen,
-    ResetPassword: FagitoResetPasswordScreen
+    ResetPassword: FagitoResetPasswordScreen,
+    home: FagitoHomeScreen
 },
     {
         initialRouteName: FAGITO_HOME,
@@ -25,10 +26,15 @@ const RootStack = createStackNavigator({
     }
 )
 
+export let navigatorRef;
+
 // const Fagito = () => {
 export class Fagito extends Component {
     constructor(props) {
         super(props);
+    }
+    componentDidMount() {
+        navigatorRef = this.navigator;
     }
     render() {
         let loader = null;
@@ -40,7 +46,7 @@ export class Fagito extends Component {
         return (
             <View style={{ flex: 1, zIndex: 100 }}>
                 {loader}
-                <RootStack />
+                <RootStack ref={nav => { this.navigator = nav; }} />
             </View>
         )
     }

@@ -35,3 +35,4 @@ export const FAGITO_SIGNIN_FORM = [
 ]
 
 export const FAGITO_FIREBASE_SIGNUP_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=';
+export const FAGITO_FIREBASE_SIGNIN_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=';

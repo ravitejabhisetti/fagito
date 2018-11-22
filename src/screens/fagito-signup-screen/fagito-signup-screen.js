@@ -27,7 +27,7 @@ class FagitoSignupScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        userAuthentication: (userData) => dispatch(userAuthentication(userData))
+        userAuthentication: (userData, authMode) => dispatch(userAuthentication(userData, authMode))
     }
 }
 

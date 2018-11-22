@@ -21,3 +21,7 @@ export const FAGITO_FIELD_NAME_MOBILE_NUMBER = 'mobileNumber';
 export const FAGITO_FIELD_NAME_PASSWORD = 'password';
 export const FAGITO_API_CALL_HEADERS = { "Content-Type": "application/json" };
 export const FAGITO_FIREBASE_API_KEY = 'AIzaSyCVNpBVuCkNk3WqzKQUAIZntaJKOZb8bac';
+export const FAGITO_LOGIN_AUTHENTICATING_USER = 'Authenticating user...';
+export const FAGITO_HOME_SCREEN = 'home';
+export const FAGITO_SIGNUP_AUTH_MODE = 'signup_auth_mode';
+export const FAGITO_SIGNIN_AUTH_MODE = 'signin_auth_mode';
