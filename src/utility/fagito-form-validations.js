@@ -23,7 +23,7 @@ const validate = values => {
 }
 
 const nameValidator = (value) => {
-    return /^[A-Za-z]+$/.test(value);
+    return /^([a-zA-Z]+\s)*[a-zA-Z]+$/.test(value);
 }
 
 const emailValidator = (value) => {

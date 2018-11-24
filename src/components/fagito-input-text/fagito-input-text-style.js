@@ -8,7 +8,7 @@ const FAGITO_TEXT_INPUT_TOP_RANGE = {
 
 const FAGITO_TEXT_INPUT_FONT_RANGE = {
     inputRange: [0, 1],
-    outputRange: [16, 12]
+    outputRange: [14, 10]
 }
 
 const FAGITO_TEXT_INPUT_COLOR_RANGE = {
@@ -40,6 +40,9 @@ const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
         paddingTop: 10,
         color: style.FAGITO_ERROR_TEXT_COLOR,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO
+    },
+    borderOnError: {
+        borderColor: style.FAGITO_BUTTON_COLOR
     }
 })
 

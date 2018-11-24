@@ -25,6 +25,7 @@ export const userAuthentication = (userData, authMode) => {
             }),
             headers: FAGITO_API_CALL_HEADERS,
         }).then(res => res.json()).then(parsedResponse => {
+            console.log('parsed response is---', parsedResponse);
             dispatch(fagitoStopLoader());
             if (!parsedResponse.idToken) {
                 alert('Authentication failed, please try again!!');

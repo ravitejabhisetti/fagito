@@ -69,7 +69,10 @@ class FagitoTextInput extends Component {
                     secureTextEntry={secureTextEntry}
                     value={this.state.value}
                     onChangeText={(value) => this.handleTextChange(value)}
-                    style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput, style.FAGITO_TEXT_INPUT_CONTAINER.greyColor]}
+                    style={[style.FAGITO_TEXT_INPUT_CONTAINER.textInput,
+                    style.FAGITO_TEXT_INPUT_CONTAINER.greyColor,
+                    (touched && error) ? style.FAGITO_TEXT_INPUT_CONTAINER.borderOnError : style.FAGITO_TEXT_INPUT_CONTAINER.greyColor
+                    ]}
                     onFocus={this.handleFocus}
                     onBlur={this.handleBlur}
                     keyboardShouldPersistTaps="never"
