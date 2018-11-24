@@ -29,7 +29,7 @@ export const userAuthentication = (userData, authMode) => {
             if (!parsedResponse.idToken) {
                 alert('Authentication failed, please try again!!');
             } else {
-                console.log('user created successfully----', navigatorRef);
+                // console.log('user created successfully----', navigatorRef);
                 navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
                 // alert('Success!!User is successfully created');
             }
