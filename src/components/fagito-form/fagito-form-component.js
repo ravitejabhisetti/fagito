@@ -13,12 +13,14 @@ import validate from '../../utility/fagito-form-validations';
 const FagitoFormComponent = (props) => {
 
     const handleFormButtonClick = (values) => {
+        console.log('value in form are---', values);
         Keyboard.dismiss();
         props.formButtonClick(values);
     }
     let termsText = null;
     let resetPasswordText = null;
     const { handleSubmit } = props;
+    console.log('props are---', props);
     const scrollViewItems = (props.formItems.map((item, key) => {
         if (props.newForm) {
             item.value = '';
@@ -62,6 +64,5 @@ const FagitoFormComponent = (props) => {
 }
 
 export default reduxForm({
-    form: 'fagitoForm',
     validate
 })(FagitoFormComponent);

@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { CONTAINER_STYLE } from '../../common/fagito-common-style';
-import { FAGITO_SIGNUP_SCREEN, FAGITO_REGISTER } from '../../common/fagito-constants';
+import { FAGITO_SIGNUP_SCREEN, FAGITO_REGISTER, FAGITO_SIGNUP_FORM_NAME } from '../../common/fagito-constants';
 import { FagitoFormComponent } from '../../components/fagito-components';
 import { FAGITO_SIGNUP_FORM } from '../../common/fagito-signup-signin-constants';
 import { userAuthentication } from '../../store/actions/actions';
@@ -19,7 +19,7 @@ class FagitoSignupScreen extends Component {
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
-                <FagitoFormComponent formButtonClick={this.handleButtonClick} termsText buttonTitle={FAGITO_REGISTER} newForm formItems={FAGITO_SIGNUP_FORM} />
+                <FagitoFormComponent form={FAGITO_SIGNUP_FORM_NAME} formButtonClick={this.handleButtonClick} termsText buttonTitle={FAGITO_REGISTER} newForm formItems={FAGITO_SIGNUP_FORM} />
             </View>
         )
     }
@@ -31,9 +31,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-FagitoSignupScreen = reduxForm({
-    form: 'signupForm'
-})(FagitoSignupScreen);
+// FagitoSignupScreen = reduxForm({
+//     form: 'signupForm'
+// })(FagitoSignupScreen);
 
 
 export default connect(null, mapDispatchToProps)(FagitoSignupScreen);
