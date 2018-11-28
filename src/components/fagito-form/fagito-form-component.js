@@ -20,7 +20,6 @@ const FagitoFormComponent = (props) => {
     let termsText = null;
     let resetPasswordText = null;
     const { handleSubmit } = props;
-    console.log('props are---', props);
     const scrollViewItems = (props.formItems.map((item, key) => {
         if (props.newForm) {
             item.value = '';

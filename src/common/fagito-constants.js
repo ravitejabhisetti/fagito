@@ -29,3 +29,8 @@ export const FAGITO_SIGNIN_AUTH_MODE = 'signin_auth_mode';
 export const FAGITO_SIGNIN_FORM_NAME = 'signinForm';
 export const FAGITO_SIGNUP_FORM_NAME = 'signupForm';
 export const FAGITO_RESET_PASSWORD_FORM_NAME = 'resetPasswordForm';
+export const FAGITO_TOKEN = 'fagitoToken';
+export const FAGITO_EXPIRY_TIME = 'fagitoExpiryTime';
+export const FAGITO_REFRESH_TOKEN = 'fagitoRefreshToken';
+export const FAGITO_ENCODED_HEADERS = { "Content-Type": "application/x-www-form-urlencoded" };
+export const FAGITO_REFRESH_TOKEN_REQUEST_BODY = 'grant_type=refresh_token&refresh_token=';

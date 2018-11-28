@@ -44,3 +44,4 @@ export const FAGITO_RESET_PASSWORD_FORM = [
 
 export const FAGITO_FIREBASE_SIGNUP_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=';
 export const FAGITO_FIREBASE_SIGNIN_URL = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=';
+export const FAGITO_FIREBASE_REFRESH_TOKEN_URL = 'https://securetoken.googleapis.com/v1/token?key=';

@@ -7,6 +7,7 @@ import {
     FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
+import { autoSignIn } from '../../store/actions/actions';
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
     static navigationOptions = { header: null };
@@ -15,6 +16,9 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
     }
     buttonClickHandler = (screenName) => {
         this.props.navigation.navigate(screenName);
+    }
+    componentDidMount() {
+        this.props.auth();
     }
     render() {
         return (
@@ -41,4 +45,10 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
     }
 }
 
-export default connect(null, null)(FagitoSignupSigninBrowseButtonsScreen);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        auth: () => dispatch(autoSignIn())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FagitoSignupSigninBrowseButtonsScreen);
