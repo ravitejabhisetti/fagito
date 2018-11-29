@@ -9,6 +9,7 @@ import { AsyncStorage } from 'react-native';
 import { fagitoStartLoader, fagitoStopLoader } from './actions';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
+import fagitoErrorAlert from '../../components/fagito-error-alert/fagito-error-alert-component';
 
 export const userAuthentication = (userData, authMode) => {
     return dispatch => {
@@ -28,14 +29,14 @@ export const userAuthentication = (userData, authMode) => {
         }).then(res => res.json()).then(parsedResponse => {
             dispatch(fagitoStopLoader());
             if (!parsedResponse.idToken) {
-                alert('Authentication failed, please try again!!');
+                fagitoErrorAlert('alert working check');
             } else {
                 dispatch(storeToken(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken));
                 navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
             }
         }).catch((error) => {
-            dispatch(fagitoStopLoader());
-            alert('Authentication failed, please try again!!!');
+            dispatch(fagitoStopLoader('alert working check'));
+            fagitoErrorAlert();
         })
     }
 }
@@ -130,9 +131,9 @@ export const clearStorage = () => {
 export const autoSignIn = () => {
     return dispatch => {
         dispatch(getToken()).then(token => {
-             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+            navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
         })
-            .catch(err => { console.log('in error check---') });
-        
+            .catch(err => { console.log(err) });
+
     }
 }
