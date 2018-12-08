@@ -34,3 +34,5 @@ export const FAGITO_EXPIRY_TIME = 'fagitoExpiryTime';
 export const FAGITO_REFRESH_TOKEN = 'fagitoRefreshToken';
 export const FAGITO_ENCODED_HEADERS = { "Content-Type": "application/x-www-form-urlencoded" };
 export const FAGITO_REFRESH_TOKEN_REQUEST_BODY = 'grant_type=refresh_token&refresh_token=';
+export const FAGITO_INVALID_PASSWORD_USERNAME_ERROR_MESSAGE = 'Invalid username/password.';
+export const FAGITO_SOMETHING_WENT_WRONG_ERROR_MESSAGE = 'Something went wrong!!Try again.';

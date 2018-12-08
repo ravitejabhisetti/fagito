@@ -26,3 +26,17 @@ export const CONTAINER_STYLE = StyleSheet.create({
         backgroundColor: style.FAGITO_WHITE_COLOR
     }
 })
+
+export const OVERLAY_STYLE = StyleSheet.create({
+    overlay: {
+        position: style.FAGITO_POSITION_ABSOLUTE,
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        alignItems: style.FAGITO_CENTER,
+        justifyContent: style.FAGITO_CENTER,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        zIndex: 1000
+    }
+})

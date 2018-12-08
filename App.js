@@ -7,7 +7,7 @@ import {
 } from './src/screens/fagito-screens';
 import { FAGITO_HOME } from './src/common/fagito-constants';
 import { FAGITO_COMMON_STYLE } from './src/common/fagito-common-style';
-import { FagitoLoader } from './src/components/fagito-components';
+import { FagitoLoader, FagitoAlert } from './src/components/fagito-components';
 // import configureStore from './src/store/configureStore';
 import { connect } from 'react-redux';
 
@@ -38,14 +38,21 @@ export class Fagito extends Component {
     }
     render() {
         let loader = null;
+        let alert = null;
         if (this.props.showLoader) {
             loader = (
                 <FagitoLoader loaderText={this.props.loaderText} />
             );
         }
+        if (this.props.showAlert) {
+            alert = (
+                <FagitoAlert alertItems={this.props.alertItems} />
+            )
+        }
         return (
             <View style={{ flex: 1, zIndex: 100 }}>
                 {loader}
+                {alert}
                 <RootStack ref={nav => { this.navigator = nav; }} />
             </View>
         )
@@ -55,7 +62,9 @@ export class Fagito extends Component {
 const mapStateToProps = (state) => {
     return {
         showLoader: state.fagitoLoader.showLoader,
-        loaderText: state.fagitoLoader.loaderText
+        loaderText: state.fagitoLoader.loaderText,
+        showAlert: state.fagitoAlert.showAlert,
+        alertItems: state.fagitoAlert.alertItems
     }
 }
 

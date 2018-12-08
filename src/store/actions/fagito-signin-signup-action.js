@@ -6,10 +6,9 @@ import {
     FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
-import { fagitoStartLoader, fagitoStopLoader } from './actions';
+import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert } from './actions';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
-import fagitoErrorAlert from '../../components/fagito-error-alert/fagito-error-alert-component';
 
 export const userAuthentication = (userData, authMode) => {
     return dispatch => {
@@ -28,15 +27,16 @@ export const userAuthentication = (userData, authMode) => {
             headers: FAGITO_API_CALL_HEADERS,
         }).then(res => res.json()).then(parsedResponse => {
             dispatch(fagitoStopLoader());
+            console.log('parsed response is---', parsedResponse);
             if (!parsedResponse.idToken) {
-                fagitoErrorAlert('alert working check');
+                dispatch(fagitoShowAlert(parsedResponse));
             } else {
                 dispatch(storeToken(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken));
                 navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
             }
         }).catch((error) => {
-            dispatch(fagitoStopLoader('alert working check'));
-            fagitoErrorAlert();
+            dispatch(fagitoStopLoader());
+            dispatch(fagitoShowAlert(error));
         })
     }
 }
