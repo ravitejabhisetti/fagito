@@ -7,10 +7,7 @@ import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import { fagitoHideAlert } from '../../store/actions/actions';
 
-// const FagitoAlert = (props) => {
 class FagitoAlert extends Component {
-    // let error = null;
-    // console.log('props are---', props);
     state = {
         showAlert: true
     }
@@ -18,6 +15,7 @@ class FagitoAlert extends Component {
         this.props.hideAlert();
     }
     handleSubmit = () => {
+        this.props.hideAlert();
     }
     render() {
         let error = null;
