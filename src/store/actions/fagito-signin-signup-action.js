@@ -3,7 +3,8 @@ import { FAGITO_FIREBASE_SIGNUP_URL, FAGITO_FIREBASE_SIGNIN_URL, FAGITO_FIREBASE
 import {
     FAGITO_API_CALL_HEADERS, FAGITO_FIREBASE_API_KEY, FAGITO_LOGIN_AUTHENTICATING_USER,
     FAGITO_HOME_SCREEN, FAGITO_SIGNIN_AUTH_MODE, FAGITO_TOKEN, FAGITO_REFRESH_TOKEN, FAGITO_EXPIRY_TIME,
-    FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS, FAGITO_USERS_URL, METHOD_POST, FAGITO_USER_DETAILS
+    FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS, FAGITO_USERS_URL, METHOD_POST, FAGITO_USER_DETAILS,
+    FAGITO_DRAWER_NAVIGATOR
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert } from './actions';
@@ -42,7 +43,7 @@ export const userAuthentication = (userData, authMode) => {
                 }).then(res => res.json()).then(response => {
                     dispatch(fagitoStopLoader());
                     dispatch(storeTokenAndUserDetails(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken, userData));
-                    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+                    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
                 })
             }
         }).catch((error) => {
@@ -144,7 +145,7 @@ export const clearStorage = () => {
 export const autoSignIn = () => {
     return dispatch => {
         dispatch(getToken()).then(token => {
-            navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+            navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
         })
             .catch(err => { });
 

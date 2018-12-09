@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import {
     FagitoSignupSigninBrowseButtonsScreen, FagitoSignupScreen, FagitoSigninScreen,
     FagitoResetPasswordScreen, FagitoHomeScreen
@@ -10,6 +10,7 @@ import { FAGITO_COMMON_STYLE } from './src/common/fagito-common-style';
 import { FagitoLoader, FagitoAlert } from './src/components/fagito-components';
 // import configureStore from './src/store/configureStore';
 import { connect } from 'react-redux';
+import { DrawerNavigator } from './src/screens/fagito-drawer-navigator/fagito-drawer-navigator';
 
 // const store = configureStore();
 
@@ -18,7 +19,13 @@ const RootStack = createStackNavigator({
     Signup: FagitoSignupScreen,
     Signin: FagitoSigninScreen,
     ResetPassword: FagitoResetPasswordScreen,
-    home: FagitoHomeScreen
+    DrawerNavigator: {
+        screen: DrawerNavigator,
+        navigationOptions: {
+            header: null,
+            gesturesEnabled: false
+        }
+    }
 },
     {
         initialRouteName: FAGITO_HOME,
