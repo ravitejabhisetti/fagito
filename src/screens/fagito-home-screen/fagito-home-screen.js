@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, BackHandler } from 'react-native';
 import { Header, Left, right, Icon } from 'native-base';
 import { ANDROID_HARDWARE_BACK_PRESS } from '../../common/fagito-constants';
+import { STYLES } from './fagito-home-screen-style';
 
 class FagitoHomeScreen extends Component {
     componentDidMount() {
@@ -16,12 +17,12 @@ class FagitoHomeScreen extends Component {
     render() {
         return (
             <View>
-                <Header>
-                    <Left>
-                        <Icon name="menu" onPress={() => this.props.navigation.openDrawer()} />
-                    </Left>
+                <Header style={STYLES.header}>
+                    <View style={STYLES.headerView}>
+                        <Icon style={STYLES.headerIcon} name="menu" onPress={() => this.props.navigation.openDrawer()} />
+                    </View>
                 </Header>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ backgroundColor: 'white' }}>
                     <Text>Fagito Home Screen in drawer navigator</Text>
                 </View>
             </View>

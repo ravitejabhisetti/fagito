@@ -18,6 +18,7 @@ const DrawerNavigator = createDrawerNavigator({
 },
     {
         contentComponent: CustomDrawerComponent,
+        drawerPosition: 'left',
         initialRouteName: 'Home'
     }
 );
