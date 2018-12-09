@@ -40,3 +40,4 @@ export const FAGITO_INVALID_PASSWORD_USERNAME_ERROR_MESSAGE = 'Invalid username/
 export const FAGITO_SOMETHING_WENT_WRONG_ERROR_MESSAGE = 'Something went wrong!!Try again.';
 export const FAGITO_USERS_URL = 'https://o-c22e9.firebaseio.com/users.json?auth=';
 export const METHOD_POST = 'POST';
+export const ANDROID_HARDWARE_BACK_PRESS = 'hardwareBackPress';

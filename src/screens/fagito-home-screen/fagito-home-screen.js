@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, BackHandler } from 'react-native';
 import { Header, Left, right, Icon } from 'native-base';
+import { ANDROID_HARDWARE_BACK_PRESS } from '../../common/fagito-constants';
 
 class FagitoHomeScreen extends Component {
+    componentDidMount() {
+        BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
+    }
+    componentWillUnmount() {
+        BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
+    }
+    handleBackPress = () => {
+        BackHandler.exitApp();
+    }
     render() {
         return (
             <View>
