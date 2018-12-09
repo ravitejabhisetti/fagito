@@ -41,7 +41,7 @@ export const userAuthentication = (userData, authMode) => {
                     dispatch(fagitoShowAlert(error));
                 }).then(res => res.json()).then(response => {
                     dispatch(fagitoStopLoader());
-                    dispatch(storeTokenAndUserDetails(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken, userDetails));
+                    dispatch(storeTokenAndUserDetails(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken, userData));
                     navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
                 })
             }
