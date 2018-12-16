@@ -4,7 +4,8 @@ import {
     FAGITO_API_CALL_HEADERS, FAGITO_FIREBASE_API_KEY, FAGITO_LOGIN_AUTHENTICATING_USER,
     FAGITO_HOME_SCREEN, FAGITO_SIGNIN_AUTH_MODE, FAGITO_TOKEN, FAGITO_REFRESH_TOKEN, FAGITO_EXPIRY_TIME,
     FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS, FAGITO_USERS_URL, METHOD_POST, FAGITO_USER_DETAILS,
-    FAGITO_DRAWER_NAVIGATOR
+    FAGITO_DRAWER_NAVIGATOR, METHOD_GET,
+    FAGITO_SIGNUP_AUTH_MODE
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert } from './actions';
@@ -28,27 +29,39 @@ export const userAuthentication = (userData, authMode) => {
             headers: FAGITO_API_CALL_HEADERS,
         }).then(res => res.json()).then(parsedResponse => {
             if (!parsedResponse.idToken) {
-                dispatch(fagitoStopLoader());
-                dispatch(fagitoShowAlert(parsedResponse));
+                handleError(parsedResponse, dispatch);
             } else {
-                let usersDataUrl = FAGITO_USERS_URL + parsedResponse.idToken;
-                userData.returnSecureToken = true;
-                fetch(usersDataUrl, {
-                    method: METHOD_POST,
-                    body: JSON.stringify(userData),
-                    headers: FAGITO_API_CALL_HEADERS
-                }).catch((error) => {
-                    dispatch(fagitoStopLoader());
-                    dispatch(fagitoShowAlert(error));
-                }).then(res => res.json()).then(response => {
-                    dispatch(fagitoStopLoader());
-                    dispatch(storeTokenAndUserDetails(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken, userData));
-                    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
-                })
+                if (authMode === FAGITO_SIGNUP_AUTH_MODE) {
+                    let usersDataUrl = FAGITO_USERS_URL + parsedResponse.idToken;
+                    userData.returnSecureToken = true;
+                    fetch(usersDataUrl, {
+                        method: METHOD_POST,
+                        body: JSON.stringify(userData),
+                        headers: FAGITO_API_CALL_HEADERS
+                    }).catch((error) => {
+                        handleError(error, dispatch);
+                    }).then(res => res.json()).then(response => {
+                        navigateToHome(parsedResponse, userData, dispatch);
+                    })
+                } else if (authMode === FAGITO_SIGNIN_AUTH_MODE) {
+                    let usersUrl = FAGITO_USERS_URL + parsedResponse.idToken;
+                    fetch(usersUrl, {
+                        method: METHOD_GET
+                    }).catch((error) => {
+                        handleError(error, dispatch);
+                    }).then(res => res.json()).then(usersResponse => {
+                        let user = null;
+                        for (let key in usersResponse) {
+                            if (usersResponse[key].email === userData.email) {
+                                user = usersResponse[key];
+                            }
+                        }
+                        navigateToHome(parsedResponse, user, dispatch);
+                    })
+                }
             }
         }).catch((error) => {
-            dispatch(fagitoStopLoader());
-            dispatch(fagitoShowAlert(error));
+            handleError(error, dispatch);
         })
     }
 }
@@ -56,7 +69,7 @@ export const userAuthentication = (userData, authMode) => {
 export const storeTokenAndUserDetails = (token, expiresIn, refreshToken, userDetails) => {
     return dispatch => {
         let date = new Date();
-        let expiryTime = date.getTime() + expiresIn * 1000;
+        let expiryTime = date.getTime() + 20 * 1000;
         dispatch(setTokenAndExpiryTime(token, expiryTime));
         AsyncStorage.setItem(FAGITO_TOKEN, token);
         AsyncStorage.setItem(FAGITO_EXPIRY_TIME, expiryTime.toString());
@@ -109,16 +122,19 @@ export const getToken = () => {
             return AsyncStorage.getItem(FAGITO_REFRESH_TOKEN)
                 .then(refreshToken => {
                     return fetch(FAGITO_FIREBASE_REFRESH_TOKEN_URL + FAGITO_FIREBASE_API_KEY, {
-                        method: 'POST',
+                        method: METHOD_POST,
                         headers: FAGITO_ENCODED_HEADERS,
                         body: FAGITO_REFRESH_TOKEN_REQUEST_BODY + refreshToken
                     })
                 })
                 .then(res => res.json())
                 .then(parsedRes => {
-                    if (parsedRes.idToken) {
-                        dispatch(storeToken(parsedResponse.idToken, parsedResponse.expiresIn, parsedResponse.refreshToken));
-                        return parsedRes.idToken;
+                    if (parsedRes.id_token) {
+                        return AsyncStorage.getItem(FAGITO_USER_DETAILS)
+                            .then(userInfo => {
+                                dispatch(storeTokenAndUserDetails(parsedRes.id_token, parsedRes.expires_in, parsedRes.refresh_token, JSON.parse(userInfo)));
+                                return parsedRes.id_token;
+                            })
                     } else {
                         dispatch(clearStorage());
                     }
@@ -150,4 +166,15 @@ export const autoSignIn = () => {
             .catch(err => { });
 
     }
+}
+
+const navigateToHome = (response, user, dispatch) => {
+        dispatch(fagitoStopLoader());
+        dispatch(storeTokenAndUserDetails(response.idToken, response.expiresIn, response.refreshToken, user));
+        navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
+}
+
+const handleError = (error, dispatch) => {
+        dispatch(fagitoStopLoader());
+        dispatch(fagitoShowAlert(error));
 }
