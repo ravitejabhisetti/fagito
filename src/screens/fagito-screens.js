@@ -4,6 +4,13 @@ import FagitoSigninScreen from './fagito-signin-screen/fagito-signin-screen';
 import FagitoResetPasswordScreen from './fagito-reset-password-screen/fagito-reset-password-screen';
 import FagitoHomeScreen from './fagito-home-screen/fagito-home-screen';
 import FagitoWalletScreen from './fagito-wallet-screen/fagito-wallet-screen';
+import FagitoFeedbackScreen from './fagito-feedback-screen/fagito-feedback-screen';
+import FagitoHistoryScreen from './fagito-history-screen/fagito-history-screen';
+import FagitoMealPassScreen from './fagito-meal-pass-screen/fagito-meal-pass-screen';
+import FagitoOffersScreen from './fagito-offers-screen/fagito-offers-screen';
+import FagitoSettingsScreen from './fagito-settings-screen/fagito-settings-screen';
+import FagitoSupportScreen from './fagito-support-screen/fagito-support-screen';
+import FagitoFreeFoodScreen from './fagito-free-food-screen/fagito-free-food-screen';
 
 export {
     FagitoSignupSigninBrowseButtonsScreen,
@@ -11,5 +18,12 @@ export {
     FagitoSigninScreen,
     FagitoResetPasswordScreen,
     FagitoHomeScreen,
-    FagitoWalletScreen
+    FagitoWalletScreen,
+    FagitoFeedbackScreen,
+    FagitoHistoryScreen,
+    FagitoMealPassScreen,
+    FagitoOffersScreen,
+    FagitoSettingsScreen,
+    FagitoSupportScreen,
+    FagitoFreeFoodScreen
 };

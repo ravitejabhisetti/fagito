@@ -42,3 +42,4 @@ export const FAGITO_USERS_URL = 'https://o-c22e9.firebaseio.com/users.json?auth=
 export const METHOD_POST = 'POST';
 export const METHOD_GET  = 'GET';
 export const ANDROID_HARDWARE_BACK_PRESS = 'hardwareBackPress';
+export const DRAWER_POSITION_LEFT = 'left';

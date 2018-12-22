@@ -1,7 +1,12 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, Dimensions } from 'react-native';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation';
-import { FagitoHomeScreen, FagitoWalletScreen } from '../fagito-screens';
+import {
+    FagitoHomeScreen, FagitoWalletScreen, FagitoMealPassScreen,
+    FagitoFeedbackScreen, FagitoHistoryScreen, FagitoOffersScreen,
+    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeFoodScreen
+} from '../fagito-screens';
+import { FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT } from '../../common/fagito-constants';
 
 const CustomDrawerComponent = (props) => (
     <SafeAreaView style={{ flex: 1 }}>
@@ -14,12 +19,19 @@ const CustomDrawerComponent = (props) => (
 
 const DrawerNavigator = createDrawerNavigator({
     Home: FagitoHomeScreen,
-    Wallet: FagitoWalletScreen
+    Wallet: FagitoWalletScreen,
+    Mealpass: FagitoMealPassScreen,
+    Feedback: FagitoFeedbackScreen,
+    History: FagitoHistoryScreen,
+    Offers: FagitoOffersScreen,
+    'Free Food': FagitoFreeFoodScreen,
+    Support: FagitoSupportScreen,
+    Settings: FagitoSettingsScreen
 },
     {
         contentComponent: CustomDrawerComponent,
-        drawerPosition: 'left',
-        initialRouteName: 'Home'
+        drawerPosition: DRAWER_POSITION_LEFT,
+        initialRouteName: FAGITO_HOME_SCREEN
     }
 );
 

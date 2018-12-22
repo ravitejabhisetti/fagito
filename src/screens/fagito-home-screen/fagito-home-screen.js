@@ -16,13 +16,13 @@ class FagitoHomeScreen extends Component {
     }
     render() {
         return (
-            <View>
+            <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
                     <View style={STYLES.headerView}>
                         <Icon style={STYLES.headerIcon} name="menu" onPress={() => this.props.navigation.openDrawer()} />
                     </View>
                 </Header>
-                <View style={{ backgroundColor: 'white' }}>
+                <View style={STYLES.homeViewContent}>
                     <Text>Fagito Home Screen in drawer navigator</Text>
                 </View>
             </View>

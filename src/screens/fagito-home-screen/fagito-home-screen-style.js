@@ -12,6 +12,13 @@ const STYLES = StyleSheet.create({
         alignItems: style.FAGITO_FLEX_START,
         justifyContent: style.FAGITO_CENTER,
         padding: 8
+    },
+    homeView: {
+        flex: 1
+    },
+    homeViewContent: {
+        backgroundColor: style.FAGITO_WHITE_COLOR,
+        flex: 1
     }
 });
 
