@@ -17,7 +17,7 @@ class CustomDrawerComponent extends Component {
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{ height: 60, backgroundColor: style.FAGITO_BLACK_COLOR, justifyContent: style.FAGITO_CENTER, padding: 15 }}>
                     <View style={{ flex: 1, flexDirection: style.FAGITO_ROW, justifyContent: style.FAGITO_FLEX_START }}>
-                        <Icon name="md-person" color="white" size={25} />
+                        <Icon name='md-person' color='white' size={25} />
                         <Text style={{ color: style.FAGITO_WHITE_COLOR, fontSize: 18, paddingLeft: 10, paddingBottom: 2, paddingTop: 6 }}>Ravi Teja Bhisetti</Text>
                     </View>
                 </View>

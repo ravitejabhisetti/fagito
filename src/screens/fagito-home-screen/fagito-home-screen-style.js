@@ -6,7 +6,10 @@ const STYLES = StyleSheet.create({
         backgroundColor: style.FAGITO_WHITE_COLOR
     },
     headerView: {
-        flex: 1
+        flex: 1,
+        flexDirection: style.FAGITO_ROW,
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        alignItems: style.FAGITO_CENTER
     },
     headerIcon: {
         alignItems: style.FAGITO_FLEX_START,

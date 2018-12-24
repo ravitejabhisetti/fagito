@@ -5,6 +5,7 @@ import FagitoTermsAndCondition from './fagito-terms-condition/fagito-terms-condi
 import FagitoLoader from './fagito-loader/fagito-loader.component';
 import FagitoAlert from './fagito-alert/fagito-alert.component';
 import BackIcon from './fagito-back-arrow-header/fagito-back-arrow-header-component';
+import FagitoLunchDinnerButtons from './fagito-lunch-dinner-buttons/fagito-lunch-dinner-buttons.component';
 
 export {
     FagitoButton,
@@ -13,5 +14,6 @@ export {
     FagitoTermsAndCondition,
     FagitoLoader,
     FagitoAlert,
-    BackIcon
+    BackIcon,
+    FagitoLunchDinnerButtons
 }

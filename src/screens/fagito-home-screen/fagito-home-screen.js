@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, BackHandler } from 'react-native';
-import { Header, Left, right, Icon } from 'native-base';
+import { Header, Left, right } from 'native-base';
 import { ANDROID_HARDWARE_BACK_PRESS } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
+import { FagitoLunchDinnerButtons } from '../../components/fagito-components';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class FagitoHomeScreen extends Component {
     componentDidMount() {
@@ -19,7 +21,15 @@ class FagitoHomeScreen extends Component {
             <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
                     <View style={STYLES.headerView}>
-                        <Icon style={STYLES.headerIcon} name="menu" onPress={() => this.props.navigation.openDrawer()} />
+                        <View>
+                            <Icon style={STYLES.headerIcon} name="md-menu" size={23} onPress={() => this.props.navigation.openDrawer()} />
+                        </View>
+                        <View>
+                            <FagitoLunchDinnerButtons></FagitoLunchDinnerButtons>
+                        </View>
+                        <View>
+                            <Icon name='md-notifications' color='black' size={23}></Icon>
+                        </View>
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>
