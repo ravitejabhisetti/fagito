@@ -7,7 +7,7 @@ const STYLES = StyleSheet.create({
         borderStyle: style.FAGITO_SOLID_BORDER_STYLE,
         backgroundColor: 'white',
         borderWidth: 1,
-        padding: 5,
+        padding: 3,
         width: '30%',
         alignItems: style.FAGITO_CENTER,
         color: 'yellow'

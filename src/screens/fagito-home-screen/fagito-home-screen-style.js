@@ -3,13 +3,18 @@ import * as style from '../../common/fagito-style-constants';
 
 const STYLES = StyleSheet.create({
     header: {
-        backgroundColor: style.FAGITO_WHITE_COLOR
+        backgroundColor: style.FAGITO_WHITE_COLOR,
+        borderBottomWidth: 0,
+        shadowOffset: { height: 0, width: 0 },
+        shadowOpacity: 0,
+         elevation: 0
     },
     headerView: {
         flex: 1,
         flexDirection: style.FAGITO_ROW,
         justifyContent: style.FAGITO_SPACE_BETWEEN,
-        alignItems: style.FAGITO_CENTER
+        alignItems: style.FAGITO_CENTER,
+        borderBottomWidth: 0
     },
     headerIcon: {
         alignItems: style.FAGITO_FLEX_START,
