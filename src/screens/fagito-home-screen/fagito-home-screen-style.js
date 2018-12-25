@@ -22,6 +22,12 @@ const STYLES = StyleSheet.create({
     homeViewContent: {
         backgroundColor: style.FAGITO_WHITE_COLOR,
         flex: 1
+    },
+    buttonsSegment: {
+        flex: 1,
+        flexDirection: style.FAGITO_ROW,
+        alignItems: style.FAGITO_CENTER,
+        justifyContent: style.FAGITO_CENTER,
     }
 });
 

@@ -49,3 +49,5 @@ export const SETTINGS_TITLE = 'Settings';
 export const OFFERS_TITLE = 'Offers';
 export const HISTORY_TITLE = 'Transactions';
 export const MEALPASS_TITLE = 'Fagito Mealpass';
+export const LUNCH_BUTTON = 'Lunch';
+export const DINNER_BUTTON = 'Dinner';

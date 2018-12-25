@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, BackHandler } from 'react-native';
+import { View, Text, BackHandler, Button, TouchableOpacity } from 'react-native';
 import { Header, Left, right } from 'native-base';
-import { ANDROID_HARDWARE_BACK_PRESS } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
-import { FagitoLunchDinnerButtons } from '../../components/fagito-components';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { FagitoLunchDinnerButtons } from '../../components/fagito-components';
 
 class FagitoHomeScreen extends Component {
+    state = { lunchTiming: true, dinnerTiming: false };
+    constructor(props) {
+        super(props);
+    }
     componentDidMount() {
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
     }
@@ -16,6 +20,21 @@ class FagitoHomeScreen extends Component {
     handleBackPress = () => {
         BackHandler.exitApp();
     }
+    handleFoodtimings = (lunchTiming) => {
+        this.setState(prevState => {
+            if (lunchTiming) {
+                return {
+                    lunchTiming: true,
+                    dinnerTiming: false
+                }
+            } else {
+                return {
+                    lunchTiming: false,
+                    dinnerTiming: true
+                }
+            }
+        })
+    }
     render() {
         return (
             <View style={STYLES.homeView}>
@@ -24,8 +43,9 @@ class FagitoHomeScreen extends Component {
                         <View>
                             <Icon style={STYLES.headerIcon} name="md-menu" size={23} onPress={() => this.props.navigation.openDrawer()} />
                         </View>
-                        <View>
-                            <FagitoLunchDinnerButtons></FagitoLunchDinnerButtons>
+                        <View style={STYLES.buttonsSegment}>
+                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(true)} lunchButtonSelected={this.state.lunchTiming} lunchButton={true} title={LUNCH_BUTTON}></FagitoLunchDinnerButtons>
+                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.state.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
                         <View>
                             <Icon name='md-notifications' color='black' size={23}></Icon>
