@@ -4,7 +4,7 @@ import { Header, Left, right } from 'native-base';
 import { ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { FagitoLunchDinnerButtons } from '../../components/fagito-components';
+import { FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoDateComponent } from '../../components/fagito-components';
 
 class FagitoHomeScreen extends Component {
     state = { lunchTiming: true, dinnerTiming: false };
@@ -53,6 +53,8 @@ class FagitoHomeScreen extends Component {
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>
+                <FagitoDatesWrapperComponent></FagitoDatesWrapperComponent>
+                <FagitoDateComponent></FagitoDateComponent>
                     <Text>Fagito Home Screen in drawer navigator</Text>
                 </View>
             </View>

@@ -7,7 +7,7 @@ const STYLES = StyleSheet.create({
         borderBottomWidth: 0,
         shadowOffset: { height: 0, width: 0 },
         shadowOpacity: 0,
-         elevation: 0
+        elevation: 0
     },
     headerView: {
         flex: 1,
