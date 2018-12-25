@@ -4,7 +4,7 @@ import {
     FAGITO_API_CALL_HEADERS, FAGITO_FIREBASE_API_KEY, FAGITO_LOGIN_AUTHENTICATING_USER,
     FAGITO_HOME_SCREEN, FAGITO_SIGNIN_AUTH_MODE, FAGITO_TOKEN, FAGITO_REFRESH_TOKEN, FAGITO_EXPIRY_TIME,
     FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS, FAGITO_USERS_URL, METHOD_POST, FAGITO_USER_DETAILS,
-    FAGITO_DRAWER_NAVIGATOR, METHOD_GET,
+    FAGITO_DRAWER_NAVIGATOR, METHOD_GET, DAYS, TOMORROW,
     FAGITO_SIGNUP_AUTH_MODE
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
@@ -161,20 +161,33 @@ export const clearStorage = () => {
 export const autoSignIn = () => {
     return dispatch => {
         dispatch(getToken()).then(token => {
+            formDatestoDeliver();
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
         })
             .catch(err => { });
-
     }
 }
 
+const formDatestoDeliver = () => {
+    let currentDate = new Date().getTime();
+    let datesToDeliverList = [];
+    for (let dateEntity = 0; dateEntity < 7; dateEntity++) {
+        let dateObject = { date: '', day: '', dateActive: false };
+        let nextDay = new Date(currentDate + ((dateEntity + 1) * 86400000));
+        dateObject.date = nextDay.getDate();
+        dateObject.day = DAYS[nextDay.getDay()];
+        datesToDeliverList.push(dateObject);
+    }
+    datesToDeliverList[0].day = TOMORROW;
+}
+
 const navigateToHome = (response, user, dispatch) => {
-        dispatch(fagitoStopLoader());
-        dispatch(storeTokenAndUserDetails(response.idToken, response.expiresIn, response.refreshToken, user));
-        navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
+    dispatch(fagitoStopLoader());
+    dispatch(storeTokenAndUserDetails(response.idToken, response.expiresIn, response.refreshToken, user));
+    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
 }
 
 const handleError = (error, dispatch) => {
-        dispatch(fagitoStopLoader());
-        dispatch(fagitoShowAlert(error));
+    dispatch(fagitoStopLoader());
+    dispatch(fagitoShowAlert(error));
 }

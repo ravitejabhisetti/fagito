@@ -11,6 +11,9 @@ class FagitoHomeScreen extends Component {
     constructor(props) {
         super(props);
     }
+    componentWillMount() {
+        console.log('in mount check---');
+    }
     componentDidMount() {
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
     }
@@ -53,8 +56,7 @@ class FagitoHomeScreen extends Component {
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>
-                <FagitoDatesWrapperComponent></FagitoDatesWrapperComponent>
-                <FagitoDateComponent></FagitoDateComponent>
+                    <FagitoDatesWrapperComponent></FagitoDatesWrapperComponent>
                     <Text>Fagito Home Screen in drawer navigator</Text>
                 </View>
             </View>

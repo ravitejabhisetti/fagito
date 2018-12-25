@@ -40,7 +40,7 @@ export const FAGITO_INVALID_PASSWORD_USERNAME_ERROR_MESSAGE = 'Invalid username/
 export const FAGITO_SOMETHING_WENT_WRONG_ERROR_MESSAGE = 'Something went wrong!!Try again.';
 export const FAGITO_USERS_URL = 'https://o-c22e9.firebaseio.com/users.json?auth=';
 export const METHOD_POST = 'POST';
-export const METHOD_GET  = 'GET';
+export const METHOD_GET = 'GET';
 export const ANDROID_HARDWARE_BACK_PRESS = 'hardwareBackPress';
 export const DRAWER_POSITION_LEFT = 'left';
 export const WALLET_TITLE = 'Fagito Wallet';
@@ -51,3 +51,13 @@ export const HISTORY_TITLE = 'Transactions';
 export const MEALPASS_TITLE = 'Fagito Mealpass';
 export const LUNCH_BUTTON = 'Lunch';
 export const DINNER_BUTTON = 'Dinner';
+export const TOMORROW = 'TOMORROW';
+export const DAYS = {
+    0: 'SUN',
+    1: 'MON',
+    2: 'TUE',
+    3: 'WED',
+    4: 'THU',
+    5: 'FRI',
+    6: 'SAT'
+}
