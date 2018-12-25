@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, BackHandler, Button, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import { Header, Left, right } from 'native-base';
 import { ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
@@ -56,7 +57,7 @@ class FagitoHomeScreen extends Component {
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>
-                    <FagitoDatesWrapperComponent></FagitoDatesWrapperComponent>
+                    <FagitoDatesWrapperComponent deliveryDatesList={this.props.deliveryDatesList}></FagitoDatesWrapperComponent>
                     <Text>Fagito Home Screen in drawer navigator</Text>
                 </View>
             </View>
@@ -64,4 +65,10 @@ class FagitoHomeScreen extends Component {
     }
 }
 
-export default FagitoHomeScreen;
+const mapStateToProps = (state) => {
+    return {
+        deliveryDatesList: state.deliveryDates.deliveryDatesList
+    }
+}
+
+export default connect(mapStateToProps, null)(FagitoHomeScreen);

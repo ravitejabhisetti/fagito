@@ -161,7 +161,7 @@ export const clearStorage = () => {
 export const autoSignIn = () => {
     return dispatch => {
         dispatch(getToken()).then(token => {
-            formDatestoDeliver();
+            dispatch(formDatestoDeliver());
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
         })
             .catch(err => { });
@@ -170,20 +170,30 @@ export const autoSignIn = () => {
 
 const formDatestoDeliver = () => {
     let currentDate = new Date().getTime();
+    let currentDay = new Date(currentDate).getDay();
     let datesToDeliverList = [];
     for (let dateEntity = 0; dateEntity < 7; dateEntity++) {
         let dateObject = { date: '', day: '', dateActive: false };
         let nextDay = new Date(currentDate + ((dateEntity + 1) * 86400000));
         dateObject.date = nextDay.getDate();
         dateObject.day = DAYS[nextDay.getDay()];
-        datesToDeliverList.push(dateObject);
+        if (nextDay.getDay()) {
+            datesToDeliverList.push(dateObject);
+        }
     }
-    datesToDeliverList[0].day = TOMORROW;
+    if (currentDay !== 6) {
+        datesToDeliverList[0].day = TOMORROW;
+    }
+    return {
+        type: types.FAGITO_LOAD_DELIVERY_DATES,
+        deliveryDates: datesToDeliverList
+    }
 }
 
 const navigateToHome = (response, user, dispatch) => {
     dispatch(fagitoStopLoader());
     dispatch(storeTokenAndUserDetails(response.idToken, response.expiresIn, response.refreshToken, user));
+    dispatch(formDatestoDeliver());
     navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
 }
 
