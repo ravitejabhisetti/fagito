@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { STYLES } from './fagito-date.style';
 
 class FagitoDateComponent extends Component {
+    handleSelectedDate = (selectedDate) => {
+         this.props.handleDate(selectedDate);
+    }
     render() {
         const { ...props } = this.props;
         return (
-            <View style={STYLES.dateSegment}>
+            <TouchableOpacity onPress={() => this.handleSelectedDate(props.dateObject)} activeOpacity={1} style={STYLES.dateSegment}>
                 <View style={STYLES.dateContainer}>
                     <Text style={[STYLES.textCenter,
                     props.dateObject.dateActive ? STYLES.daySelected : STYLES.dayUnselected,
@@ -16,7 +19,7 @@ class FagitoDateComponent extends Component {
                 <View style={STYLES.dateContainer}>
                     <Text style={[STYLES.textCenter, STYLES.dateFont, props.dateObject.dateActive ? STYLES.dateSelected : STYLES.dateUnselected]}>{props.dateObject.date}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
