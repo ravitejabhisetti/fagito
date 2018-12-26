@@ -19,3 +19,5 @@ export const FAGITO_TEXT_INPUT_GREY_BORDER_COLOR = '#999';
 export const FAGITO_ERROR_TEXT_COLOR = '#666';
 export const FAGITO_POSITION_ABSOLUTE = 'absolute';
 export const FAGITO_FLEX_START = 'flex-start';
+export const FAGITO_SELECTED_DATE_GREEN_COLOR = '#4EBD60';
+export const GREY_COLOR = 'grey';

@@ -6,12 +6,15 @@ class FagitoDateComponent extends Component {
     render() {
         const { ...props } = this.props;
         return (
-            <View>
+            <View style={STYLES.dateSegment}>
                 <View style={STYLES.dateContainer}>
-                    <Text style={STYLES.textCenter}>{props.dateObject.day}</Text>
+                    <Text style={[STYLES.textCenter,
+                    props.dateObject.dateActive ? STYLES.daySelected : STYLES.dayUnselected,
+                    props.dateObject.day === 'TOMORROW' ? STYLES.tomorrowFont : STYLES.dayFont
+                    ]}>{props.dateObject.day}</Text>
                 </View>
                 <View style={STYLES.dateContainer}>
-                    <Text style={STYLES.textCenter}>{props.dateObject.date}</Text>
+                    <Text style={[STYLES.textCenter, STYLES.dateFont, props.dateObject.dateActive ? STYLES.dateSelected : STYLES.dateUnselected]}>{props.dateObject.date}</Text>
                 </View>
             </View>
         )
