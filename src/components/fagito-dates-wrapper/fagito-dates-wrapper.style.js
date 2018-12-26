@@ -5,7 +5,10 @@ const STYLES = StyleSheet.create({
     datesWrapperContainer: {
         flex: 1,
         flexDirection: style.FAGITO_ROW,
-        justifyContent: style.FAGITO_SPACE_BETWEEN
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        paddingLeft: 10,
+        paddingRight: 10
+
     }
 })
 

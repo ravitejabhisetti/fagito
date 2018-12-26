@@ -13,7 +13,7 @@ const STYLES = StyleSheet.create({
     },
     dateSegment: {
         height: 51,
-        width: 65
+        minWidth: 50
     },
     dayFont: {
         fontSize: 10
