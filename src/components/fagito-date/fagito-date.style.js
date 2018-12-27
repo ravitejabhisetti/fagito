@@ -5,15 +5,21 @@ const STYLES = StyleSheet.create({
     dateContainer: {
         flexDirection: style.FAGITO_ROW,
         justifyContent: style.FAGITO_CENTER,
-        display: 'flex'
     },
     textCenter: {
         alignItems: style.FAGITO_CENTER,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO
     },
     dateSegment: {
-        height: 51,
-        minWidth: 50
+        height: 40,
+        minWidth: 50,
+    },
+    dateSegmentGreenBorder: {
+        borderBottomWidth: 2,
+        borderBottomColor: style.FAGITO_SELECTED_DATE_GREEN_COLOR,
+    },
+    dateSegmentNoneBorder: {
+        borderBottomWidth: 0
     },
     dayFont: {
         fontSize: 10

@@ -4,12 +4,14 @@ import { STYLES } from './fagito-date.style';
 
 class FagitoDateComponent extends Component {
     handleSelectedDate = (selectedDate) => {
-         this.props.handleDate(selectedDate);
+        this.props.handleDate(selectedDate);
     }
     render() {
         const { ...props } = this.props;
         return (
-            <TouchableOpacity onPress={() => this.handleSelectedDate(props.dateObject)} activeOpacity={1} style={STYLES.dateSegment}>
+            <TouchableOpacity onPress={() => this.handleSelectedDate(props.dateObject)} activeOpacity={1} style={[
+                STYLES.dateSegment,
+                props.dateObject.dateActive ? STYLES.dateSegmentGreenBorder : STYLES.dateSegmentNoneBorder]}>
                 <View style={STYLES.dateContainer}>
                     <Text style={[STYLES.textCenter,
                     props.dateObject.dateActive ? STYLES.daySelected : STYLES.dayUnselected,
