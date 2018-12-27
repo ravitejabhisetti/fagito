@@ -6,9 +6,9 @@ import { ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON } from '../../
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoDateComponent } from '../../components/fagito-components';
+import { updateDeliveryTiming } from '../../store/actions/actions';
 
 class FagitoHomeScreen extends Component {
-    state = { lunchTiming: true, dinnerTiming: false };
     constructor(props) {
         super(props);
     }
@@ -24,19 +24,7 @@ class FagitoHomeScreen extends Component {
         BackHandler.exitApp();
     }
     handleFoodtimings = (lunchTiming) => {
-        this.setState(prevState => {
-            if (lunchTiming) {
-                return {
-                    lunchTiming: true,
-                    dinnerTiming: false
-                }
-            } else {
-                return {
-                    lunchTiming: false,
-                    dinnerTiming: true
-                }
-            }
-        })
+        this.props.updateDeliveryTiming(lunchTiming);
     }
     render() {
         return (
@@ -47,8 +35,8 @@ class FagitoHomeScreen extends Component {
                             <Icon style={STYLES.headerIcon} name="md-menu" size={23} onPress={() => this.props.navigation.openDrawer()} />
                         </View>
                         <View style={STYLES.buttonsSegment}>
-                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(true)} lunchButtonSelected={this.state.lunchTiming} lunchButton={true} title={LUNCH_BUTTON}></FagitoLunchDinnerButtons>
-                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.state.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
+                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(true)} lunchButtonSelected={this.props.deliveryTiming.lunchTiming} lunchButton={true} title={LUNCH_BUTTON}></FagitoLunchDinnerButtons>
+                            <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.props.deliveryTiming.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
                         <View>
                             <Icon name='md-notifications' color='black' size={23}></Icon>
@@ -64,10 +52,18 @@ class FagitoHomeScreen extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        deliveryDatesList: state.deliveryDates.deliveryDatesList
+        updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming))
     }
 }
 
-export default connect(mapStateToProps, null)(FagitoHomeScreen);
+const mapStateToProps = (state) => {
+    return {
+        deliveryTiming: state.deliveryTimingAndDates.timing
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoHomeScreen);

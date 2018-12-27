@@ -27,7 +27,7 @@ class FagitoDatesWrapperComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        deliveryDatesList: state.deliveryDates.deliveryDatesList
+        deliveryDatesList: state.deliveryTimingAndDates.deliveryDatesList
     }
 }
 
