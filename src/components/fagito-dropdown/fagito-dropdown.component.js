@@ -3,6 +3,9 @@ import { View, Text, Animated, Button, TouchableOpacity } from 'react-native';
 import * as style from '../../common/fagito-style-constants';
 import { STYLES } from './fagito-dropdown.style';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Ripple from 'react-native-material-ripple';
+import { fagitoShowAlert } from '../../store/actions/actions';
+import { connect } from 'react-redux';
 
 class FagitoDropdown extends Component {
     constructor(props) {
@@ -22,11 +25,9 @@ class FagitoDropdown extends Component {
         }).start();
     }
 
-    handleLabel = () => {
-        this.setState({
-            value: 'check'
-        })
-        console.log('state is---', this.state);
+    handleDropdown = (dispatch) => {
+        this.props.showDropdownContent(this.props.dropdownContent);
+        console.log('in handle dropdown check---');
     }
 
     render() {
@@ -38,23 +39,31 @@ class FagitoDropdown extends Component {
             fontSize: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_FONT_RANGE)
         }
         return (
-            <View style={[STYLES.dropdownSegment, props.dropdownBorder ? STYLES.dropdownGreyBorder : null]}>
-                <TouchableOpacity activeOpacity={1}>
-                    <View style={STYLES.dropdownLabelPadding}>
-                        <Animated.Text style={labelStyle}>{props.dropdownLabel}</Animated.Text>
-                    </View>
-                    <View style={STYLES.dropdownIcon}>
-                        <View style={STYLES.dropdownValue}>
-                            <Text>Madhapur</Text>
+            <Ripple onPress={this.handleDropdown} rippleColor={style.FAGITO_BLACK_COLOR} rippleDuration={200} rippleOpacity={0.4}>
+                <View style={[STYLES.dropdownSegment, props.dropdownBorder ? STYLES.dropdownGreyBorder : null]}>
+                    <TouchableOpacity activeOpacity={1}>
+                        <View style={STYLES.dropdownLabelPadding}>
+                            <Animated.Text style={labelStyle}>{props.dropdownLabel}</Animated.Text>
                         </View>
-                        <View>
-                            <Icon name='md-arrow-dropdown' color={style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR} size={20}></Icon>
+                        <View style={STYLES.dropdownIcon}>
+                            <View style={STYLES.dropdownValue}>
+                                <Text>Madhapur</Text>
+                            </View>
+                            <View>
+                                <Icon name='md-arrow-dropdown' color={style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR} size={20}></Icon>
+                            </View>
                         </View>
-                    </View>
-                </TouchableOpacity>
-            </View>
+                    </TouchableOpacity>
+                </View>
+            </Ripple>
         )
     }
 }
 
-export default FagitoDropdown;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showDropdownContent: (dropdownContent) => dispatch(fagitoShowAlert(dropdownContent))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FagitoDropdown);

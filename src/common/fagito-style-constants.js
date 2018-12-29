@@ -31,3 +31,4 @@ export const DROPDOWN_LABEL_FONT_RANGE = {
     inputRange: [0, 1],
     outputRange: [16, 12]
 }
+export const RADIO_OPTION_COLOR = '#787878';

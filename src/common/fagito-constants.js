@@ -64,3 +64,28 @@ export const DAYS = {
 export const AREA_LABEL = 'Choose your area';
 export const DIET_FILTER_LABEL = 'Diet Filter';
 export const CUISINE_FILTER_LABEL = 'Cuisine Filter';
+export const DIET_FILTER_CONTENT = {header: 'Diet Filter', headerDescription: '', options: [
+    {
+        label: 'All (Veg + Non Veg)',
+        color: '#C14543',
+        selected: false,
+        size: 14,
+        value: 0
+    },
+    {
+        label: 'Veg Only',
+        color: '#C14543',
+        selected: false,
+        size: 14,
+        value: 1
+    },
+    {
+        label: 'Non Veg Only',
+        color: '#C14543',
+        selected: false,
+        size: 14,
+        value: 2
+    }
+]};
+export const CUISINE_FILTER_CONTENT = {header: 'Cuisine Filter', headerDescription: '', options: []};;
+export const CHOOSE_AREA_CONTENT = {header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: []};;
