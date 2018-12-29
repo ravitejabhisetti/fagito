@@ -1,13 +1,19 @@
 import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
-    FAGITO_UPDATE_DELIVERY_TIMING
+    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE
 } from '../actions/fagito-action-types';
+import { FILTERS_CONTENT } from '../../common/fagito-constants';
 
 const initialState = {
     deliveryDatesList: [],
     timing: {
         lunchTiming: true,
-        dinnerTiming: false
+        dinnerTiming: false,
+    },
+    filters: {
+        dietFilter: FILTERS_CONTENT.dietFilter.options[1].label,
+        cuisineFilter: FILTERS_CONTENT.cuisineFilter.options[0].label,
+        locationFilter: null
     }
 }
 
@@ -39,6 +45,17 @@ const reducer = (state = initialState, action) => {
                 }
 
             }
+        case FAGITO_UPDATE_FILTER_VALUE:
+            let filterName = action.filterName;
+            state.filters[filterName] = FILTERS_CONTENT[filterName].options[action.index].label;
+            console.log('state to check is---', state);
+            return state;
+                
+                // filters: state.filters.map((filter) => {
+                //     if (filter === action.filterName) {
+                //         state.filters[action.filterName] = FILTERS_CONTENT[action.filterName].options[action.index].label
+                //     }
+                // })
         default:
             return state;
     }

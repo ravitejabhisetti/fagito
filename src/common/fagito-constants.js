@@ -64,47 +64,53 @@ export const DAYS = {
 export const AREA_LABEL = 'Choose your area';
 export const DIET_FILTER_LABEL = 'Diet Filter';
 export const CUISINE_FILTER_LABEL = 'Cuisine Filter';
-export const DIET_FILTER_CONTENT = {
-    header: 'Diet Filter', headerDescription: '', options: [
-        { label: 'All (Veg + Non Veg)' },
-        { label: 'Veg Only' },
-        { label: 'Non Veg Only' }
-    ]
-};
-export const CUISINE_FILTER_CONTENT = {
-    header: 'Cuisine Filter', headerDescription: '', options: [
-        { label: 'All' },
-        { label: 'South' },
-        { label: 'North' },
-        { label: 'Andhra' },
-        { label: 'Tamil' },
-        { label: 'Punjabi' },
-        { label: 'Rajasthani' },
-        { label: 'Marathi' },
-        { label: 'Hyderabadi' },
-        { label: 'Bengali' },
-        { label: 'Salads' },
-        { label: 'Continental' },
-    ]
-};;
-export const CHOOSE_AREA_CONTENT = {
-    header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: [
-        { label: 'Madhapur' },
-        { label: 'Hitech City' },
-        { label: 'Jubilee Hills' },
-        { label: 'Kondapur' },
-        { label: 'Kothaguda' },
-        { label: 'Gachibowli' },
-        { label: 'Financial District' },
-        { label: 'Nanakramguda' },
-        { label: 'Raidurgam' },
-        { label: 'Manikonda' },
-        { label: 'KPHB' },
-        { label: 'Banjara Hills' },
-        { label: 'Srinagar Colony' },
-        { label: 'Begumpet' },
-        { label: 'Punjagutta' },
-        { label: 'JNTU' },
-        { label: 'Rest of Hyderabad - Coming Soon' },
-    ]
+export const FILTERS_CONTENT = {
+    dietFilter: {
+        filterName: 'dietFilter',
+        initial: 0,
+        header: 'Diet Filter', headerDescription: '', options: [
+            { label: 'All (Veg + Non Veg)' },
+            { label: 'Veg Only' },
+            { label: 'Non Veg Only' }
+        ]
+    },
+    cuisineFilter: {
+        initial: 0, filterName: 'cuisineFilter',
+        header: 'Cuisine Filter', headerDescription: '', options: [
+            { label: 'All' },
+            { label: 'South' },
+            { label: 'North' },
+            { label: 'Andhra' },
+            { label: 'Tamil' },
+            { label: 'Punjabi' },
+            { label: 'Rajasthani' },
+            { label: 'Marathi' },
+            { label: 'Hyderabadi' },
+            { label: 'Bengali' },
+            { label: 'Salads' },
+            { label: 'Continental' },
+        ]
+    },
+    locationFilter: {
+        initial: 0, filterName: 'locationFilter',
+        header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: [
+            { label: 'Madhapur' },
+            { label: 'Hitech City' },
+            { label: 'Jubilee Hills' },
+            { label: 'Kondapur' },
+            { label: 'Kothaguda' },
+            { label: 'Gachibowli' },
+            { label: 'Financial District' },
+            { label: 'Nanakramguda' },
+            { label: 'Raidurgam' },
+            { label: 'Manikonda' },
+            { label: 'KPHB' },
+            { label: 'Banjara Hills' },
+            { label: 'Srinagar Colony' },
+            { label: 'Begumpet' },
+            { label: 'Punjagutta' },
+            { label: 'JNTU' },
+            { label: 'Rest of Hyderabad - Coming Soon' },
+        ]
+    }
 };

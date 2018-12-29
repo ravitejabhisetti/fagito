@@ -15,7 +15,7 @@ class FagitoDropdown extends Component {
         value: ''
     }
     componentWillMount() {
-        this.dropdownValueSelected = new Animated.Value(this.state.value !== this.props.dropdownLabel ? 1 : 0);
+        this.dropdownValueSelected = new Animated.Value(this.props.selectedValue ? 1 : 0);
     }
 
     componentDidUpdate() {
@@ -31,11 +31,19 @@ class FagitoDropdown extends Component {
 
     render() {
         const { ...props } = this.props;
+        console.log('props check aree---', this.props);
+        let selectedValue = null;
         const labelStyle = {
             color: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR,
             fontFamily: style.FAGITO_FONT_FAMILY_LATO,
             top: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_TOP_RANGE),
             fontSize: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_FONT_RANGE)
+        }
+        if (props.selectedValue) {
+            console.log('in if check--', props.selectedValue);
+            selectedValue = (
+                <Text>{props.selectedValue}</Text>
+            )
         }
         return (
             <Ripple onPress={this.handleDropdown} rippleColor={style.FAGITO_BLACK_COLOR} rippleDuration={200} rippleOpacity={0.4}>
@@ -46,7 +54,7 @@ class FagitoDropdown extends Component {
                         </View>
                         <View style={STYLES.dropdownIcon}>
                             <View style={STYLES.dropdownValue}>
-                                <Text>Madhapur</Text>
+                                {selectedValue}
                             </View>
                             <View>
                                 <Icon name='md-arrow-dropdown' color={style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR} size={20}></Icon>

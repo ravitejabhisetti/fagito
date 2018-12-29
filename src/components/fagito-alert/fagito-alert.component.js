@@ -5,21 +5,33 @@ import { OVERLAY_STYLE } from '../../common/fagito-common-style';
 import validate from '../../utility/fagito-error-messages';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
-import { fagitoHideAlert } from '../../store/actions/actions';
+import { fagitoHideAlert, updateFilter } from '../../store/actions/actions';
 import RadioForm, { RadioButton, RadioButtonLabel, RadioButtonInput } from 'react-native-simple-radio-button';
 
 class FagitoAlert extends Component {
     state = {
-        showAlert: true
+        showAlert: true,
+        index: 0
     }
     handleAlert = (event) => {
         event.stopPropagation();
         this.props.hideAlert();
     }
-    handleSubmit = () => {
+    handleSubmit = (updateEntity) => {
+        if (updateEntity) {
+            console.log('selected radio is---', this.state);
+            this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
+        }
         this.props.hideAlert();
     }
-    handleRadioButtonSelection = () => {
+
+    handleRadioButtonSelection = (value, indexSelected) => {
+        this.setState((state) => {
+            return {
+                ...state,
+                index: indexSelected
+            }
+        })
     }
     render() {
         let error = null;
@@ -53,19 +65,27 @@ class FagitoAlert extends Component {
                         {dropdownHeaderDescription}
                     </View>
                     <ScrollView style={STYLES.dropdownOptionsSection}>
-                        <RadioForm radioStyle={STYLES.radioButton} onPress={this.handleRadioButtonSelection} buttonOuterSize={16} buttonSize={6} selectedButtonColor={style.FAGITO_BUTTON_COLOR}
-                            buttonColor={style.RADIO_OPTION_COLOR} selectedLabelColor={style.FAGITO_BUTTON_COLOR} labelStyle={STYLES.radioOptionLabel} radio_props={this.props.alertItems.options}>
-                            <RadioButtonInput buttonInnerColor={style.FAGITO_BUTTON_COLOR}></RadioButtonInput>
+                        <RadioForm
+                            initial={this.props.alertItems.initial}
+                            radioStyle={STYLES.radioButton}
+                            onPress={(value, index) => this.handleRadioButtonSelection(value, index)}
+                            buttonOuterSize={16}
+                            buttonSize={6}
+                            selectedButtonColor={style.FAGITO_BUTTON_COLOR}
+                            buttonColor={style.RADIO_OPTION_COLOR}
+                            selectedLabelColor={style.FAGITO_BUTTON_COLOR}
+                            labelStyle={STYLES.radioOptionLabel}
+                            radio_props={this.props.alertItems.options}>
                         </RadioForm>
                     </ScrollView>
                     <View style={STYLES.buttonsSegment}>
                         <View>
-                            <TouchableOpacity onPress={this.handleSubmit} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+                            <TouchableOpacity onPress={(update) => this.handleSubmit(false)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
                                 <Text style={STYLES.buttonText}>CANCEL</Text>
                             </TouchableOpacity>
                         </View>
                         <View>
-                            <TouchableOpacity onPress={this.handleSubmit} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+                            <TouchableOpacity onPress={(update) => this.handleSubmit(true)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
                                 <Text style={STYLES.buttonText}>OK</Text>
                             </TouchableOpacity>
                         </View>
@@ -81,7 +101,7 @@ class FagitoAlert extends Component {
                     visible={this.state.showAlert}
                     onRequestClose={this.handleAlert}
                 >
-                    <TouchableWithoutFeedback onPress={(event, source) => this.handleAlert(event)}>
+                    <TouchableWithoutFeedback onPress={(event) => this.handleAlert(event)}>
                         <View style={STYLES.alertContainer}>
                             <View style={STYLES.alertContent}>
                                 {error}
@@ -97,7 +117,8 @@ class FagitoAlert extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        hideAlert: () => dispatch(fagitoHideAlert())
+        hideAlert: () => dispatch(fagitoHideAlert()),
+        updateFilter: (filterName, index) => dispatch(updateFilter(filterName, index))
     }
 }
 
