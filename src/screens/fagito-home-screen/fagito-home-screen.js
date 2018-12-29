@@ -14,6 +14,8 @@ import {
 } from '../../components/fagito-components';
 import { updateDeliveryTiming } from '../../store/actions/actions';
 
+let dietValue = '';
+
 class FagitoHomeScreen extends Component {
     constructor(props) {
         super(props);
@@ -31,8 +33,9 @@ class FagitoHomeScreen extends Component {
     handleFoodtimings = (lunchTiming) => {
         this.props.updateDeliveryTiming(lunchTiming);
     }
-    componentWillReceiveProps(nextProps) {
+    shouldComponentUpdate(nextProps) {
         console.log('next props are---', nextProps);
+        return true;
     }
     render() {
         return (
@@ -57,14 +60,14 @@ class FagitoHomeScreen extends Component {
                         <View style={STYLES.homeSegment}>
                             <View style={STYLES.dietCuisineFiltersSegment}>
                                 <View style={[STYLES.filterSegment, STYLES.dietFilterSegment]}>
-                                    <FagitoDropdown selectedValue={this.props.filters.dietFilter} dropdownContent={FILTERS_CONTENT.dietFilter} dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown selectedValue={this.props.dietFilter} dropdownContent={FILTERS_CONTENT.dietFilter} dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
                                 </View>
                                 <View style={STYLES.filterSegment}>
-                                    <FagitoDropdown selectedValue={this.props.filters.cuisineFilter} dropdownContent={FILTERS_CONTENT.cuisineFilter} dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown selectedValue={this.props.cuisineFilter} dropdownContent={FILTERS_CONTENT.cuisineFilter} dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
                                 </View>
                             </View>
                             <View style={STYLES.deliveryLocationFilter}>
-                                <FagitoDropdown selectedValue={this.props.filters.locationFilter} dropdownContent={FILTERS_CONTENT.locationFilter} dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
+                                <FagitoDropdown selectedValue={this.props.locationFilter} dropdownContent={FILTERS_CONTENT.locationFilter} dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
                             </View>
                             {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
                         </View>
@@ -84,7 +87,9 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         deliveryTiming: state.deliveryTimingAndDates.timing,
-        filters: state.deliveryTimingAndDates.filters
+        dietFilter: state.deliveryTimingAndDates.filters.dietFilter,
+        cuisineFilter: state.deliveryTimingAndDates.filters.cuisineFilter,
+        locationFilter: state.deliveryTimingAndDates.filters.locationFilter
     }
 }
 

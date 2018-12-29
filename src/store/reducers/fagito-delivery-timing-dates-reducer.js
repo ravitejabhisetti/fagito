@@ -48,7 +48,6 @@ const reducer = (state = initialState, action) => {
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;
             state.filters[filterName] = FILTERS_CONTENT[filterName].options[action.index].label;
-            console.log('state to check is---', state);
             return state;
                 
                 // filters: state.filters.map((filter) => {

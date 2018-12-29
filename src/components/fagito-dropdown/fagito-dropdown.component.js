@@ -31,7 +31,6 @@ class FagitoDropdown extends Component {
 
     render() {
         const { ...props } = this.props;
-        console.log('props check aree---', this.props);
         let selectedValue = null;
         const labelStyle = {
             color: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR,
