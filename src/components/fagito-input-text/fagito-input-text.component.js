@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, View, Animated, Text } from 'react-native';
 import * as style from './fagito-input-text-style';
+import * as commonStyle from '../../common/fagito-style-constants';
 
 class FagitoTextInput extends Component {
     state = { isFocused: false, value: '' };
@@ -51,7 +52,7 @@ class FagitoTextInput extends Component {
         const labelStyle = {
             position: 'absolute',
             left: 0,
-            fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+            fontFamily: commonStyle.FAGITO_FONT_FAMILY_LATO,
             top: this._textBoxIsFocused.interpolate(style.FAGITO_TEXT_INPUT_TOP_RANGE),
             color: this._textBoxLabelColor.interpolate(style.FAGITO_TEXT_INPUT_COLOR_RANGE),
             fontSize: this._textBoxIsFocused.interpolate(style.FAGITO_TEXT_INPUT_FONT_RANGE)

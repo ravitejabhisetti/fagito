@@ -61,3 +61,6 @@ export const DAYS = {
     5: 'FRI',
     6: 'SAT'
 }
+export const AREA_LABEL = 'Choose your area';
+export const DIET_FILTER_LABEL = 'Diet Filter';
+export const CUISINE_FILTER_LABEL = 'Cuisine Filter';

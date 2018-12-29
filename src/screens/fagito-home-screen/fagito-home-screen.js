@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { View, Text, BackHandler, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Header, Left, right } from 'native-base';
-import { ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON } from '../../common/fagito-constants';
+import {
+    ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
+    AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL
+} from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoDateComponent, FagitoDropdown } from '../../components/fagito-components';
+import {
+    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent,
+    FagitoDateComponent, FagitoDropdown
+} from '../../components/fagito-components';
 import { updateDeliveryTiming } from '../../store/actions/actions';
 
 class FagitoHomeScreen extends Component {
@@ -45,8 +51,20 @@ class FagitoHomeScreen extends Component {
                 </Header>
                 <View style={STYLES.homeViewContent}>
                     <FagitoDatesWrapperComponent></FagitoDatesWrapperComponent>
-                    <FagitoDropdown></FagitoDropdown>
-                    <Text>Fagito Home Screen in drawer navigator</Text>
+                    <View style={STYLES.homeSegment}>
+                        <View style={STYLES.dietCuisineFiltersSegment}>
+                            <View style={[STYLES.filterSegment, STYLES.dietFilterSegment]}>
+                                <FagitoDropdown dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                            </View>
+                            <View style={STYLES.filterSegment}>
+                                <FagitoDropdown dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                            </View>
+                        </View>
+                        <View style={STYLES.deliveryLocationFilter}>
+                            <FagitoDropdown dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
+                        </View>
+                        {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
+                    </View>
                 </View>
             </View>
         )

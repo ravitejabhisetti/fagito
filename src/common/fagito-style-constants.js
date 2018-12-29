@@ -19,5 +19,15 @@ export const FAGITO_TEXT_INPUT_GREY_BORDER_COLOR = '#999';
 export const FAGITO_ERROR_TEXT_COLOR = '#666';
 export const FAGITO_POSITION_ABSOLUTE = 'absolute';
 export const FAGITO_FLEX_START = 'flex-start';
+export const FAGITO_FLEX_END = 'flex-end';
 export const FAGITO_SELECTED_DATE_GREEN_COLOR = '#4EBD60';
 export const GREY_COLOR = 'grey';
+export const DROPDOWN_BORDER_BOTTOM_COLOR = '#dedede';
+export const DROPDOWN_LABEL_TOP_RANGE = {
+    inputRange: [0, 1],
+    outputRange: [30, 0]
+}
+export const DROPDOWN_LABEL_FONT_RANGE = {
+    inputRange: [0, 1],
+    outputRange: [16, 12]
+}

@@ -33,6 +33,25 @@ const STYLES = StyleSheet.create({
         flexDirection: style.FAGITO_ROW,
         alignItems: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_CENTER,
+    },
+    homeSegment: {
+        marginLeft: 8,
+        marginRight: 8
+    },
+    deliveryLocationFilter: {
+        width: '100%',
+    },
+    dietCuisineFiltersSegment: {
+        marginTop: 18,
+        marginBottom: 16,
+        flexDirection: style.FAGITO_ROW,
+        justifyContent: style.FAGITO_SPACE_AROUND,
+    },
+    dietFilterSegment: {
+        paddingRight: 16
+    },
+    filterSegment: {
+        width: "50%"
     }
 });
 
