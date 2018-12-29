@@ -19,7 +19,6 @@ class FagitoAlert extends Component {
     }
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
-            console.log('selected radio is---', this.state);
             this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
         }
         this.props.hideAlert();
