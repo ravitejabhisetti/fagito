@@ -12,14 +12,14 @@ class FagitoAlert extends Component {
     state = {
         showAlert: true
     }
-    handleAlert = () => {
+    handleAlert = (event) => {
+        event.stopPropagation();
         this.props.hideAlert();
     }
     handleSubmit = () => {
         this.props.hideAlert();
     }
     handleRadioButtonSelection = () => {
-        console.log('in check---');
     }
     render() {
         let error = null;
@@ -81,7 +81,7 @@ class FagitoAlert extends Component {
                     visible={this.state.showAlert}
                     onRequestClose={this.handleAlert}
                 >
-                    <TouchableWithoutFeedback onPress={() => this.handleAlert()}>
+                    <TouchableWithoutFeedback onPress={(event, source) => this.handleAlert(event)}>
                         <View style={STYLES.alertContainer}>
                             <View style={STYLES.alertContent}>
                                 {error}

@@ -27,7 +27,6 @@ class FagitoDropdown extends Component {
 
     handleDropdown = (dispatch) => {
         this.props.showDropdownContent(this.props.dropdownContent);
-        console.log('in handle dropdown check---');
     }
 
     render() {
