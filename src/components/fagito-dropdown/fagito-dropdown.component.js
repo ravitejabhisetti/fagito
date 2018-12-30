@@ -26,7 +26,7 @@ class FagitoDropdown extends Component {
     }
 
     handleDropdown = (dispatch) => {
-        this.props.showDropdownContent(this.props.dropdownContent);
+        this.props.showDropdownContent(this.props.dropdownContent, this.props.radioOptionIndex);
     }
 
     render() {
@@ -39,7 +39,6 @@ class FagitoDropdown extends Component {
             fontSize: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_FONT_RANGE)
         }
         if (props.selectedValue) {
-            console.log('in if check--', props.selectedValue);
             selectedValue = (
                 <Text>{props.selectedValue}</Text>
             )
@@ -68,7 +67,7 @@ class FagitoDropdown extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        showDropdownContent: (dropdownContent) => dispatch(fagitoShowAlert(dropdownContent))
+        showDropdownContent: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected))
     }
 }
 

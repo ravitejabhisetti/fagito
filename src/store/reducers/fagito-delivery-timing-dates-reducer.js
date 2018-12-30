@@ -13,7 +13,10 @@ const initialState = {
     filters: {
         dietFilter: FILTERS_CONTENT.dietFilter.options[1].label,
         cuisineFilter: FILTERS_CONTENT.cuisineFilter.options[0].label,
-        locationFilter: null
+        locationFilter: null,
+        dietFilterIndex: 0,
+        cuisineFilterIndex: 0,
+        locationFilterIndex: 0
     }
 }
 
@@ -47,14 +50,10 @@ const reducer = (state = initialState, action) => {
             }
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;
+            let index = action.filterName + 'Index';
             state.filters[filterName] = FILTERS_CONTENT[filterName].options[action.index].label;
+            state.filters[index] = action.index;
             return state;
-                
-                // filters: state.filters.map((filter) => {
-                //     if (filter === action.filterName) {
-                //         state.filters[action.filterName] = FILTERS_CONTENT[action.filterName].options[action.index].label
-                //     }
-                // })
         default:
             return state;
     }

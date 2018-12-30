@@ -65,7 +65,7 @@ class FagitoAlert extends Component {
                     </View>
                     <ScrollView style={STYLES.dropdownOptionsSection}>
                         <RadioForm
-                            initial={this.props.alertItems.initial}
+                            initial={this.props.alertItems.radioOptionIndex}
                             radioStyle={STYLES.radioButton}
                             onPress={(value, index) => this.handleRadioButtonSelection(value, index)}
                             buttonOuterSize={16}

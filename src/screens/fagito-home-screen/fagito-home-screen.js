@@ -34,7 +34,6 @@ class FagitoHomeScreen extends Component {
         this.props.updateDeliveryTiming(lunchTiming);
     }
     shouldComponentUpdate(nextProps) {
-        console.log('next props are---', nextProps);
         return true;
     }
     render() {
@@ -60,14 +59,14 @@ class FagitoHomeScreen extends Component {
                         <View style={STYLES.homeSegment}>
                             <View style={STYLES.dietCuisineFiltersSegment}>
                                 <View style={[STYLES.filterSegment, STYLES.dietFilterSegment]}>
-                                    <FagitoDropdown selectedValue={this.props.dietFilter} dropdownContent={FILTERS_CONTENT.dietFilter} dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown selectedValue={this.props.dietFilter} radioOptionIndex={this.props.filters.dietFilterIndex} dropdownContent={FILTERS_CONTENT.dietFilter} dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
                                 </View>
                                 <View style={STYLES.filterSegment}>
-                                    <FagitoDropdown selectedValue={this.props.cuisineFilter} dropdownContent={FILTERS_CONTENT.cuisineFilter} dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown selectedValue={this.props.cuisineFilter} radioOptionIndex={this.props.filters.cuisineFilterIndex} dropdownContent={FILTERS_CONTENT.cuisineFilter} dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
                                 </View>
                             </View>
                             <View style={STYLES.deliveryLocationFilter}>
-                                <FagitoDropdown selectedValue={this.props.locationFilter} dropdownContent={FILTERS_CONTENT.locationFilter} dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
+                                <FagitoDropdown selectedValue={this.props.locationFilter} radioOptionIndex={this.props.filters.locationFilterIndex} dropdownContent={FILTERS_CONTENT.locationFilter} dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
                             </View>
                             {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
                         </View>
@@ -89,7 +88,8 @@ const mapStateToProps = (state) => {
         deliveryTiming: state.deliveryTimingAndDates.timing,
         dietFilter: state.deliveryTimingAndDates.filters.dietFilter,
         cuisineFilter: state.deliveryTimingAndDates.filters.cuisineFilter,
-        locationFilter: state.deliveryTimingAndDates.filters.locationFilter
+        locationFilter: state.deliveryTimingAndDates.filters.locationFilter,
+        filters: state.deliveryTimingAndDates.filters
     }
 }
 
