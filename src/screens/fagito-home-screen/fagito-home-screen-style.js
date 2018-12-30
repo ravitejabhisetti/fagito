@@ -52,6 +52,17 @@ const STYLES = StyleSheet.create({
     },
     filterSegment: {
         width: "50%"
+    },
+    noLocationMessageText: {
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
+        fontSize: 20,
+        padding: 20,
+        color: style.FAGITO_BLACK_COLOR,
+        maxWidth: '90%'
+    },
+    noLocationMessageSegment: {
+        marginTop: 20,
+        width: "100%"
     }
 });
 

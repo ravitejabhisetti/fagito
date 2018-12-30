@@ -15,6 +15,7 @@ export const FAGITO_SPACE_BETWEEN = 'space-between';
 export const FAGITO_SPACE_AROUND = 'space-around';
 export const FAGITO_BUTTON_CONTAINERS_HEIGHT = 205;
 export const FAGITO_FONT_FAMILY_LATO = 'Lato';
+export const FAGITO_FONT_FAMILY_LATO_LIGHT = 'Lato-Light';
 export const FAGITO_TEXT_INPUT_GREY_BORDER_COLOR = '#999';
 export const FAGITO_ERROR_TEXT_COLOR = '#666';
 export const FAGITO_POSITION_ABSOLUTE = 'absolute';

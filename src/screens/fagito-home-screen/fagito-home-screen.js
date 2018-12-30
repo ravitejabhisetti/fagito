@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
-    AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL
+    AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
+    CHOOSE_LOCATION_MESSAGE
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -51,6 +52,11 @@ class FagitoHomeScreen extends Component {
                 </FagitoModalComponent>
             );
         }
+        noLocationMessage = (
+            <View style={STYLES.noLocationMessageSegment}>
+                <Text style={STYLES.noLocationMessageText}>{CHOOSE_LOCATION_MESSAGE}</Text>
+            </View>
+        )
         return (
             <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
@@ -77,7 +83,8 @@ class FagitoHomeScreen extends Component {
                                         selectedValue={this.props.dietFilter}
                                         radioOptionIndex={this.props.filters.dietFilterIndex}
                                         dropdownContent={FILTERS_CONTENT.dietFilter}
-                                        dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}>
+                                        dropdownLabel={DIET_FILTER_LABEL}
+                                        dropdownBorder={false}>
                                     </FagitoDropdown>
                                 </View>
                                 <View style={STYLES.filterSegment}>
@@ -100,6 +107,7 @@ class FagitoHomeScreen extends Component {
                                 </FagitoDropdown>
                             </View>
                             {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
+                            {noLocationMessage}
                         </View>
                     </ScrollView>
                     {ordersModal}

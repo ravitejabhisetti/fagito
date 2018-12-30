@@ -20,7 +20,7 @@ class FagitoDropdown extends Component {
 
     componentDidUpdate() {
         Animated.timing(this.dropdownValueSelected, {
-            toValue: this.state.value !== this.props.dropdownLabel ? 1 : 0,
+            toValue: this.props.selectedValue ? 1 : 0,
             duration: 200
         }).start();
     }

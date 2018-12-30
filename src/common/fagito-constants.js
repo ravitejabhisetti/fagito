@@ -115,3 +115,4 @@ export const FILTERS_CONTENT = {
     }
 };
 export const ORDERS_MODAL = { modalHeader: "Today's orders", modalMessage: 'There are no orders for Today.' };
+export const CHOOSE_LOCATION_MESSAGE = 'Please choose an area so that we can show you homemade lunch options available in your location.';
