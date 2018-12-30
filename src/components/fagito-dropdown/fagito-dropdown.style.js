@@ -20,6 +20,9 @@ const STYLES = StyleSheet.create({
         left:0,
         position: style.FAGITO_POSITION_ABSOLUTE,
         justifyContent: style.FAGITO_FLEX_START
+    },
+    selectedValueText: {
+        maxWidth: "100%"
     }
 });
 

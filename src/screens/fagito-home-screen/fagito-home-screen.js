@@ -12,7 +12,7 @@ import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent
 } from '../../components/fagito-components';
-import { updateDeliveryTiming } from '../../store/actions/actions';
+import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
 
 class FagitoHomeScreen extends Component {
     constructor(props) {
@@ -23,6 +23,7 @@ class FagitoHomeScreen extends Component {
     }
 
     componentDidMount() {
+        // this.props.showLocationDropdown(FILTERS_CONTENT.locationFilter, this.props.filters.locationFilterIndex);
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
     }
     componentWillUnmount() {
@@ -42,6 +43,7 @@ class FagitoHomeScreen extends Component {
     }
     render() {
         let ordersModal = null;
+        let noLocationMessage = null;
         if (this.state.showOrdersModal) {
             ordersModal = (
                 <FagitoModalComponent modalContent={ORDERS_MODAL} hideModal={() => this.handleOrdersModal(false)}
@@ -71,14 +73,31 @@ class FagitoHomeScreen extends Component {
                         <View style={STYLES.homeSegment}>
                             <View style={STYLES.dietCuisineFiltersSegment}>
                                 <View style={[STYLES.filterSegment, STYLES.dietFilterSegment]}>
-                                    <FagitoDropdown selectedValue={this.props.dietFilter} radioOptionIndex={this.props.filters.dietFilterIndex} dropdownContent={FILTERS_CONTENT.dietFilter} dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown
+                                        selectedValue={this.props.dietFilter}
+                                        radioOptionIndex={this.props.filters.dietFilterIndex}
+                                        dropdownContent={FILTERS_CONTENT.dietFilter}
+                                        dropdownLabel={DIET_FILTER_LABEL} dropdownBorder={false}>
+                                    </FagitoDropdown>
                                 </View>
                                 <View style={STYLES.filterSegment}>
-                                    <FagitoDropdown selectedValue={this.props.cuisineFilter} radioOptionIndex={this.props.filters.cuisineFilterIndex} dropdownContent={FILTERS_CONTENT.cuisineFilter} dropdownLabel={CUISINE_FILTER_LABEL} dropdownBorder={false}></FagitoDropdown>
+                                    <FagitoDropdown
+                                        selectedValue={this.props.cuisineFilter}
+                                        radioOptionIndex={this.props.filters.cuisineFilterIndex}
+                                        dropdownContent={FILTERS_CONTENT.cuisineFilter}
+                                        dropdownLabel={CUISINE_FILTER_LABEL}
+                                        dropdownBorder={false}>
+                                    </FagitoDropdown>
                                 </View>
                             </View>
                             <View style={STYLES.deliveryLocationFilter}>
-                                <FagitoDropdown selectedValue={this.props.locationFilter} radioOptionIndex={this.props.filters.locationFilterIndex} dropdownContent={FILTERS_CONTENT.locationFilter} dropdownLabel={AREA_LABEL} dropdownBorder={true}></FagitoDropdown>
+                                <FagitoDropdown
+                                    selectedValue={this.props.locationFilter}
+                                    radioOptionIndex={this.props.filters.locationFilterIndex}
+                                    dropdownContent={FILTERS_CONTENT.locationFilter}
+                                    dropdownLabel={AREA_LABEL}
+                                    dropdownBorder={true}>
+                                </FagitoDropdown>
                             </View>
                             {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
                         </View>
@@ -92,7 +111,8 @@ class FagitoHomeScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming))
+        updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming)),
+        showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected))
     }
 }
 

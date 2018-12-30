@@ -40,7 +40,7 @@ class FagitoDropdown extends Component {
         }
         if (props.selectedValue) {
             selectedValue = (
-                <Text>{props.selectedValue}</Text>
+                <Text style={STYLES.selectedValueText} numberOfLines={1}>{props.selectedValue}</Text>
             )
         }
         return (
