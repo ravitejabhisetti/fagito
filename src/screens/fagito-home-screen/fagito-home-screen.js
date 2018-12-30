@@ -4,21 +4,22 @@ import { connect } from 'react-redux';
 import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
-    AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT
+    AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent,
-    FagitoDateComponent, FagitoDropdown
+    FagitoDateComponent, FagitoDropdown, FagitoModalComponent
 } from '../../components/fagito-components';
 import { updateDeliveryTiming } from '../../store/actions/actions';
-
-let dietValue = '';
 
 class FagitoHomeScreen extends Component {
     constructor(props) {
         super(props);
+    }
+    state = {
+        showOrdersModal: false
     }
 
     componentDidMount() {
@@ -36,7 +37,18 @@ class FagitoHomeScreen extends Component {
     shouldComponentUpdate(nextProps) {
         return true;
     }
+    handleOrdersModal = (showModal) => {
+        this.setState({ showOrdersModal: showModal });
+    }
     render() {
+        let ordersModal = null;
+        if (this.state.showOrdersModal) {
+            ordersModal = (
+                <FagitoModalComponent modalContent={ORDERS_MODAL} hideModal={() => this.handleOrdersModal(false)}
+                    showModal={this.state.showOrdersModal}>
+                </FagitoModalComponent>
+            );
+        }
         return (
             <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
@@ -49,7 +61,7 @@ class FagitoHomeScreen extends Component {
                             <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.props.deliveryTiming.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
                         <View>
-                            <Icon name='md-notifications' color='black' size={23}></Icon>
+                            <Icon onPress={() => this.handleOrdersModal(true)} name='md-notifications' color='black' size={23}></Icon>
                         </View>
                     </View>
                 </Header>
@@ -71,6 +83,7 @@ class FagitoHomeScreen extends Component {
                             {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
                         </View>
                     </ScrollView>
+                    {ordersModal}
                 </View>
             </View>
         )

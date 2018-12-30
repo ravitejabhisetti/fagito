@@ -114,3 +114,4 @@ export const FILTERS_CONTENT = {
         ]
     }
 };
+export const ORDERS_MODAL = { modalHeader: "Today's orders", modalMessage: 'There are no orders for Today.' };
