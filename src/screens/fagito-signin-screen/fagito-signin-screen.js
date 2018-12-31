@@ -14,7 +14,6 @@ import { userAuthentication } from '../../store/actions/actions';
 class FagitoSigninScreen extends Component {
     static navigationOptions = { title: FAGITO_SIGNIN_SCREEN };
     handleButtonClick = (formItems) => {
-        console.log('in button click check--', formItems);
         this.props.userAuthentication(formItems, FAGITO_SIGNIN_AUTH_MODE);
     }
     handleResetPassword = () => {

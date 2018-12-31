@@ -42,7 +42,7 @@ class FagitoAlert extends Component {
                     <Text style={[STYLES.alertErrorText, STYLES.alertErrorMessage]}>{validate(this.props.alertItems.error.message)}</Text>
                     <View style={STYLES.alertButtonsContainer}>
                         <View style={STYLES.alertSubmitButton}>
-                            <TouchableOpacity onPress={this.handleSubmit} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+                            <TouchableOpacity onPress={() => this.handleSubmit(false)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
                                 <Text style={STYLES.buttonText}>Ok</Text>
                             </TouchableOpacity>
                         </View>
