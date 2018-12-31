@@ -10,6 +10,7 @@ import FagitoDateComponent from './fagito-date/fagito-date.component';
 import FagitoDatesWrapperComponent from './fagito-dates-wrapper/fagito-dates-wrapper.component';
 import FagitoDropdown from './fagito-dropdown/fagito-dropdown.component';
 import FagitoModalComponent from './fagito-modal/fagito-modal.component';
+import FagitoFooterComponent from './fagito-footer/fagito-footer.component';
 
 export {
     FagitoButton,
@@ -23,5 +24,6 @@ export {
     FagitoDateComponent,
     FagitoDatesWrapperComponent,
     FagitoDropdown,
-    FagitoModalComponent
+    FagitoModalComponent,
+    FagitoFooterComponent
 }

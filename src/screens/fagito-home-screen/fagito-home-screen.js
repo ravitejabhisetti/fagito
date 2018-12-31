@@ -5,13 +5,13 @@ import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent,
-    FagitoDateComponent, FagitoDropdown, FagitoModalComponent
+    FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
 
@@ -106,11 +106,11 @@ class FagitoHomeScreen extends Component {
                                     dropdownBorder={true}>
                                 </FagitoDropdown>
                             </View>
-                            {/* <Text>Fagito Home Screen in drawer navigator</Text> */}
                             {noLocationMessage}
                         </View>
                     </ScrollView>
                     {ordersModal}
+                    <FagitoFooterComponent footerText={FOOTER_MESSAGE}></FagitoFooterComponent>
                 </View>
             </View>
         )
