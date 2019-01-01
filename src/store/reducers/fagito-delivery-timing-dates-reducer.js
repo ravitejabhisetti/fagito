@@ -2,12 +2,13 @@ import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
     FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE
 } from '../actions/fagito-action-types';
-import { FILTERS_CONTENT } from '../../common/fagito-constants';
+import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION } from '../../common/fagito-constants';
 
 const initialState = {
     deliveryDatesList: [],
     selectedDateIndex: 0,
     timing: {
+        timingSelected: LUNCH_OPTION,
         lunchTiming: true,
         dinnerTiming: false,
     },
@@ -47,6 +48,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 timing: {
+                    timingSelected: action.timing ? LUNCH_OPTION : DINNER_OPTION,
                     lunchTiming: action.timing,
                     dinnerTiming: !action.timing
                 }

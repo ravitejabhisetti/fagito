@@ -39,6 +39,7 @@ export const FAGITO_REFRESH_TOKEN_REQUEST_BODY = 'grant_type=refresh_token&refre
 export const FAGITO_INVALID_PASSWORD_USERNAME_ERROR_MESSAGE = 'Invalid username/password.';
 export const FAGITO_SOMETHING_WENT_WRONG_ERROR_MESSAGE = 'Something went wrong!!Try again.';
 export const FAGITO_USERS_URL = 'https://o-c22e9.firebaseio.com/users.json?auth=';
+export const AUTH_URL = '.json?auth=';
 export const METHOD_POST = 'POST';
 export const METHOD_GET = 'GET';
 export const ANDROID_HARDWARE_BACK_PRESS = 'hardwareBackPress';
@@ -118,3 +119,8 @@ export const ORDERS_MODAL = { modalHeader: "Today's orders", modalMessage: 'Ther
 export const CHOOSE_LOCATION_MESSAGE = 'Please choose an area so that we can show you homemade lunch options available in your location.';
 export const FOOTER_MESSAGE = 'Schedule meals to start using Tinmen';
 export const LOCATION_FILTER = 'locationFilter';
+export const FIREBASE_URL = 'https://o-c22e9.firebaseio.com/';
+export const FETCH_MESSAGE_1 = 'Fetching available ';
+export const FETCH_MESSAGE_2 = ' options in ';
+export const LUNCH_OPTION = 'lunch';
+export const DINNER_OPTION = 'dinner';
