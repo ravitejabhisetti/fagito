@@ -198,7 +198,7 @@ const navigateToHome = (response, user, dispatch) => {
     navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
 }
 
-const handleError = (error, dispatch) => {
+export const handleError = (error, dispatch) => {
     dispatch(fagitoStopLoader());
     dispatch(fagitoShowAlert(error));
 }

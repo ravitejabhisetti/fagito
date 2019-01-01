@@ -4,9 +4,18 @@ import { STYLES } from './fagito-chef.style';
 
 class FagitoChef extends Component {
     render() {
+        let products = null;
+        const { ...props } = this.props;
+        products = props.productsList.map((productEntity, index) => {
+            return (
+                <View key={index}>
+                    <Text>chef name is: {productEntity.base.kitchen.name}</Text>
+                </View>
+            )
+        })
         return (
             <View>
-                <Text>fagito chef component</Text>
+                {products}
             </View>
         )
     }
