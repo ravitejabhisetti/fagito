@@ -10,7 +10,7 @@ import {
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
-    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent,
+    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChef,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
@@ -52,11 +52,13 @@ class FagitoHomeScreen extends Component {
                 </FagitoModalComponent>
             );
         }
-        noLocationMessage = (
-            <View style={STYLES.noLocationMessageSegment}>
-                <Text style={STYLES.noLocationMessageText}>{CHOOSE_LOCATION_MESSAGE}</Text>
-            </View>
-        )
+        if (!this.props.locationFilter) {
+            noLocationMessage = (
+                <View style={STYLES.noLocationMessageSegment}>
+                    <Text style={STYLES.noLocationMessageText}>{CHOOSE_LOCATION_MESSAGE}</Text>
+                </View>
+            )
+        }
         return (
             <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
@@ -107,6 +109,7 @@ class FagitoHomeScreen extends Component {
                                 </FagitoDropdown>
                             </View>
                             {noLocationMessage}
+                            <FagitoChef></FagitoChef>
                         </View>
                     </ScrollView>
                     {ordersModal}
@@ -130,7 +133,8 @@ const mapStateToProps = (state) => {
         dietFilter: state.deliveryTimingAndDates.filters.dietFilter,
         cuisineFilter: state.deliveryTimingAndDates.filters.cuisineFilter,
         locationFilter: state.deliveryTimingAndDates.filters.locationFilter,
-        filters: state.deliveryTimingAndDates.filters
+        filters: state.deliveryTimingAndDates.filters,
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex
     }
 }
 

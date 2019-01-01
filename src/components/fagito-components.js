@@ -11,6 +11,7 @@ import FagitoDatesWrapperComponent from './fagito-dates-wrapper/fagito-dates-wra
 import FagitoDropdown from './fagito-dropdown/fagito-dropdown.component';
 import FagitoModalComponent from './fagito-modal/fagito-modal.component';
 import FagitoFooterComponent from './fagito-footer/fagito-footer.component';
+import FagitoChef from './fagito-chef/fagito-chef.component';
 
 export {
     FagitoButton,
@@ -25,5 +26,6 @@ export {
     FagitoDatesWrapperComponent,
     FagitoDropdown,
     FagitoModalComponent,
-    FagitoFooterComponent
+    FagitoFooterComponent,
+    FagitoChef
 }

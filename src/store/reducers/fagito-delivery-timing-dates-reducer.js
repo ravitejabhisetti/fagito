@@ -6,6 +6,7 @@ import { FILTERS_CONTENT } from '../../common/fagito-constants';
 
 const initialState = {
     deliveryDatesList: [],
+    selectedDateIndex: 0,
     timing: {
         lunchTiming: true,
         dinnerTiming: false,
@@ -28,16 +29,19 @@ const reducer = (state = initialState, action) => {
                 deliveryDatesList: action.deliveryDates
             }
         case FAGITO_UPDATE_SELECTED_DELIVERY_DATE:
+            let indexSelected = 0;
             return {
                 ...state,
-                deliveryDatesList: state.deliveryDatesList.map((date) => {
+                deliveryDatesList: state.deliveryDatesList.map((date, dateIndex) => {
                     if (date.day === action.selectedDate.day) {
+                        indexSelected = dateIndex;
                         date.dateActive = true;
                     } else {
                         date.dateActive = false;
                     }
                     return date;
-                })
+                }),
+                selectedDateIndex: indexSelected
             }
         case FAGITO_UPDATE_DELIVERY_TIMING:
             return {

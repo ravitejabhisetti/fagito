@@ -5,8 +5,9 @@ import { OVERLAY_STYLE } from '../../common/fagito-common-style';
 import validate from '../../utility/fagito-error-messages';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
-import { fagitoHideAlert, updateFilter } from '../../store/actions/actions';
+import { fagitoHideAlert, updateFilter, getProductsOfDate } from '../../store/actions/actions';
 import RadioForm, { RadioButton, RadioButtonLabel, RadioButtonInput } from 'react-native-simple-radio-button';
+import { LOCATION_FILTER } from '../../common/fagito-constants';
 
 class FagitoAlert extends Component {
     state = {
@@ -20,6 +21,9 @@ class FagitoAlert extends Component {
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
             this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
+            if (this.props.alertItems.filterName === LOCATION_FILTER) {
+                this.props.getProductsOfDate(this.props.timing, this.props.filters, this.props.selectedDateIndex);
+            }
         }
         this.props.hideAlert();
     }
@@ -114,11 +118,20 @@ class FagitoAlert extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        hideAlert: () => dispatch(fagitoHideAlert()),
-        updateFilter: (filterName, index) => dispatch(updateFilter(filterName, index))
+        timing: state.deliveryTimingAndDates.timing,
+        filters: state.deliveryTimingAndDates.filters,
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex
     }
 }
 
-export default connect(null, mapDispatchToProps)(FagitoAlert);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        hideAlert: () => dispatch(fagitoHideAlert()),
+        updateFilter: (filterName, index) => dispatch(updateFilter(filterName, index)),
+        getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoAlert);

@@ -13,7 +13,11 @@ class FagitoDatesWrapperComponent extends Component {
         let datesList = this.props.deliveryDatesList.map((dateEntity, index) => {
             if (dateEntity.day !== 'SUN') {
                 return (
-                    <FagitoDateComponent handleDate={(dateSelected) => this.handleSelectedDeliveryDate(dateSelected)} key={index} dateObject={dateEntity}></FagitoDateComponent>
+                    <FagitoDateComponent
+                        handleDate={(dateSelected) => this.handleSelectedDeliveryDate(dateSelected)}
+                        key={index}
+                        dateObject={dateEntity}>
+                    </FagitoDateComponent>
                 );
             }
         });
