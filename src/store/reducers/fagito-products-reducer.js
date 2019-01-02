@@ -17,6 +17,7 @@ const reducer = (state = initialState, action) => {
                     updatedProductsList[chefName].push(product);
                 }
             })
+            console.log('updated products list--', updatedProductsList);
             return {
                 ...state,
                 productsList: updatedProductsList

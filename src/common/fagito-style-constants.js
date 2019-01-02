@@ -24,6 +24,7 @@ export const FAGITO_FLEX_END = 'flex-end';
 export const FAGITO_SELECTED_DATE_GREEN_COLOR = '#4EBD60';
 export const GREY_COLOR = 'grey';
 export const DROPDOWN_BORDER_BOTTOM_COLOR = '#dedede';
+export const FAGITO_WRAP = 'wrap';
 export const DROPDOWN_LABEL_TOP_RANGE = {
     inputRange: [0, 1],
     outputRange: [30, 0]

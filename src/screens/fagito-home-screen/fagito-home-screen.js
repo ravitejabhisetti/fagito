@@ -10,7 +10,7 @@ import {
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
-    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChef,
+    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
@@ -109,8 +109,9 @@ class FagitoHomeScreen extends Component {
                                 </FagitoDropdown>
                             </View>
                             {noLocationMessage}
-                            <FagitoChef productsList={this.props.productsList}></FagitoChef>
-                            {/* <Text>no. of food items are: {this.props.productsList.length}</Text> */}
+                            <View style={STYLES.chefsList}>
+                                <FagitoChefList productsList={this.props.productsList}></FagitoChefList>
+                            </View>
                         </View>
                     </ScrollView>
                     {ordersModal}

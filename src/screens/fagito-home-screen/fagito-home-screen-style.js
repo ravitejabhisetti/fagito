@@ -63,6 +63,9 @@ const STYLES = StyleSheet.create({
     noLocationMessageSegment: {
         marginTop: 20,
         width: "100%"
+    },
+    chefsList: {
+        marginTop: 30
     }
 });
 

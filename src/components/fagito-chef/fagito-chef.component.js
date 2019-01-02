@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-chef.style';
+import { FagitoProduct, FagitoProductsSegment } from '../fagito-components';
 
-class FagitoChef extends Component {
+class FagitoChefList extends Component {
     render() {
         let products = null;
         const { ...props } = this.props;
         products = Object.keys(props.productsList).map((productEntity, index) => {
-            console.log('product entity--', productEntity);
             return (
-                <Text key={index}>check index: {index}</Text>
-                // <View key={index}>
-                //     <Text>chef name is: {productEntity.base.kitchen.name}</Text>
-                // </View>
+                <View key={index}>
+                    <Text>chef name: {productEntity}</Text>
+                    <Text>Tags are: {props.productsList[productEntity][0].base.kitchen.tags}</Text>
+                    <FagitoProductsSegment products={props.productsList[productEntity]}></FagitoProductsSegment>
+                </View>
             )
         })
         return (
@@ -23,4 +24,4 @@ class FagitoChef extends Component {
     }
 }
 
-export default FagitoChef;
+export default FagitoChefList;

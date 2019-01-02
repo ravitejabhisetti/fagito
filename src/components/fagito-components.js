@@ -11,7 +11,9 @@ import FagitoDatesWrapperComponent from './fagito-dates-wrapper/fagito-dates-wra
 import FagitoDropdown from './fagito-dropdown/fagito-dropdown.component';
 import FagitoModalComponent from './fagito-modal/fagito-modal.component';
 import FagitoFooterComponent from './fagito-footer/fagito-footer.component';
-import FagitoChef from './fagito-chef/fagito-chef.component';
+import FagitoChefList from './fagito-chef/fagito-chef.component';
+import FagitoProduct from './fagito-product/fagito-product.component';
+import FagitoProductsSegment from './fagito-products-segment/fagito-products-segment.component';
 
 export {
     FagitoButton,
@@ -27,5 +29,7 @@ export {
     FagitoDropdown,
     FagitoModalComponent,
     FagitoFooterComponent,
-    FagitoChef
+    FagitoChefList,
+    FagitoProduct,
+    FagitoProductsSegment
 }
