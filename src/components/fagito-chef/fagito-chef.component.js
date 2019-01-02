@@ -6,11 +6,13 @@ class FagitoChef extends Component {
     render() {
         let products = null;
         const { ...props } = this.props;
-        products = props.productsList.map((productEntity, index) => {
+        products = Object.keys(props.productsList).map((productEntity, index) => {
+            console.log('product entity--', productEntity);
             return (
-                <View key={index}>
-                    <Text>chef name is: {productEntity.base.kitchen.name}</Text>
-                </View>
+                <Text key={index}>check index: {index}</Text>
+                // <View key={index}>
+                //     <Text>chef name is: {productEntity.base.kitchen.name}</Text>
+                // </View>
             )
         })
         return (
