@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-chef.style';
-import { FagitoProduct, FagitoProductsSegment } from '../fagito-components';
+import { FagitoProduct, FagitoProductsSegment, ChefTags } from '../fagito-components';
+import _ from 'lodash';
 
 class FagitoChefList extends Component {
     render() {
@@ -9,9 +10,9 @@ class FagitoChefList extends Component {
         const { ...props } = this.props;
         products = Object.keys(props.productsList).map((productEntity, index) => {
             return (
-                <View key={index}>
-                    <Text>chef name: {productEntity}</Text>
-                    <Text>Tags are: {props.productsList[productEntity][0].base.kitchen.tags}</Text>
+                <View style={STYLES.chefSection} key={index}>
+                    <Text style={STYLES.chefName}>{productEntity}</Text>
+                    <ChefTags tags={props.productsList[productEntity][0].base.kitchen.tags}></ChefTags>
                     <FagitoProductsSegment products={props.productsList[productEntity]}></FagitoProductsSegment>
                 </View>
             )

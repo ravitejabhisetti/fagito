@@ -65,7 +65,7 @@ const STYLES = StyleSheet.create({
         width: "100%"
     },
     chefsList: {
-        marginTop: 30
+        marginTop: 20
     }
 });
 

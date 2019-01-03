@@ -25,6 +25,8 @@ export const FAGITO_SELECTED_DATE_GREEN_COLOR = '#4EBD60';
 export const GREY_COLOR = 'grey';
 export const DROPDOWN_BORDER_BOTTOM_COLOR = '#dedede';
 export const FAGITO_WRAP = 'wrap';
+export const CHEF_BORDER_COLOR = '#D5D5DB';
+export const CHEF_TAG_COLOR = '#9b9b9b';
 export const DROPDOWN_LABEL_TOP_RANGE = {
     inputRange: [0, 1],
     outputRange: [30, 0]
