@@ -5,6 +5,11 @@ const STYLES = StyleSheet.create({
     productSegment: {
         backgroundColor: 'red',
         flexBasis: '33%'
+    },
+    image: {
+        width: '100%',
+        minHeight: 100,
+        resizeMode: 'cover'
     }
 });
 

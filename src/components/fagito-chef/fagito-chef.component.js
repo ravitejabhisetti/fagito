@@ -13,7 +13,7 @@ class FagitoChefList extends Component {
                 <View style={STYLES.chefSection} key={index}>
                     <Text style={STYLES.chefName}>{productEntity}</Text>
                     <ChefTags tags={props.productsList[productEntity][0].base.kitchen.tags}></ChefTags>
-                    <FagitoProductsSegment products={props.productsList[productEntity]}></FagitoProductsSegment>
+                    <FagitoProductsSegment imageIndex={index} products={props.productsList[productEntity]}></FagitoProductsSegment>
                 </View>
             )
         })
