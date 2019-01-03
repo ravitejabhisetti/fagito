@@ -30,7 +30,6 @@ const STYLES = StyleSheet.create({
     icon: {
         height: 10,
         width: 10,
-        fontSize: 12
     }
 });
 

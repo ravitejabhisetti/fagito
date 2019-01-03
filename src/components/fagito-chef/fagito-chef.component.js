@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-chef.style';
 import { FagitoProduct, FagitoProductsSegment, ChefTags } from '../fagito-components';
-import _ from 'lodash';
 
 class FagitoChefList extends Component {
     render() {

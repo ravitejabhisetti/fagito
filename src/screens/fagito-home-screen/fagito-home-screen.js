@@ -110,7 +110,10 @@ class FagitoHomeScreen extends Component {
                             </View>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
-                                <FagitoChefList productsList={this.props.productsList}></FagitoChefList>
+                                <FagitoChefList
+                                    dietFilter={this.props.dietFilter}
+                                    cuisineFilter={this.props.cuisineFilter}
+                                    productsList={this.props.productsList}></FagitoChefList>
                             </View>
                         </View>
                     </ScrollView>
