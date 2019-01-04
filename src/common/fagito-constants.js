@@ -57,6 +57,7 @@ export const VEG_ONLY = 'Veg Only';
 export const NON_VEG_ONLY = 'Non Veg Only';
 export const ALL_CUISINE = 'All';
 export const ADD_BUTTON_TITLE = 'ADD +';
+export const SUNDAY = 'SUN';
 export const DAYS = {
     0: 'SUN',
     1: 'MON',
@@ -128,3 +129,6 @@ export const FETCH_MESSAGE_1 = 'Fetching available ';
 export const FETCH_MESSAGE_2 = ' options in ';
 export const LUNCH_OPTION = 'lunch';
 export const DINNER_OPTION = 'dinner';
+export const NO_PRODUCTS_MESSAGE_ONE = 'We donot have any ';
+export const NO_PRODUCTS_MESSAGE_TWO = ' options available for this day. We are constantly working to add more options for you.';
+export const TOMORROW = 'TOMORROW';

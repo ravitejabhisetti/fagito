@@ -5,7 +5,7 @@ import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,6 +14,7 @@ import {
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
+import _ from 'lodash';
 
 class FagitoHomeScreen extends Component {
     constructor(props) {
@@ -52,10 +53,17 @@ class FagitoHomeScreen extends Component {
                 </FagitoModalComponent>
             );
         }
-        if (!this.props.locationFilter) {
+        if (!this.props.locationFilter || _.isEmpty(this.props.productsList)) {
+            let textMessage = null;
+            if (_.isEmpty(this.props.productsList) && !this.props.loader) {
+                textMessage = NO_PRODUCTS_MESSAGE_ONE + this.props.deliveryTiming.timingSelected + NO_PRODUCTS_MESSAGE_TWO;
+            }
+            if (!this.props.locationFilter) {
+                textMessage = CHOOSE_LOCATION_MESSAGE;
+            }
             noLocationMessage = (
                 <View style={STYLES.noLocationMessageSegment}>
-                    <Text style={STYLES.noLocationMessageText}>{CHOOSE_LOCATION_MESSAGE}</Text>
+                    <Text style={STYLES.noLocationMessageText}>{textMessage}</Text>
                 </View>
             )
         }
@@ -140,7 +148,8 @@ const mapStateToProps = (state) => {
         locationFilter: state.deliveryTimingAndDates.filters.locationFilter,
         filters: state.deliveryTimingAndDates.filters,
         selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
-        productsList: state.products.productsList
+        productsList: state.products.productsList,
+        loader: state.fagitoLoader.showLoader
     }
 }
 
