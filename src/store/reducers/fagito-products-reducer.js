@@ -11,10 +11,11 @@ const reducer = (state = initialState, action) => {
             action.productsList.map((product, index) => {
                 let chefName = product.base.kitchen.name;
                 if (!updatedProductsList[chefName]) {
-                    updatedProductsList[chefName] = [];
-                    updatedProductsList[chefName].push(product);
+                    updatedProductsList[chefName] = { isVeg: [], isNonVeg: [], tags: '' };
+                    updatedProductsList[chefName].tags = product.base.kitchen.tags;
+                    isVegProduct(updatedProductsList[chefName], product.base.isVeg, product);
                 } else {
-                    updatedProductsList[chefName].push(product);
+                    isVegProduct(updatedProductsList[chefName], product.base.isVeg, product);
                 }
             })
             console.log('updated products list--', updatedProductsList);
@@ -24,6 +25,14 @@ const reducer = (state = initialState, action) => {
             }
         default:
             return state;
+    }
+}
+
+const isVegProduct = (chef, isVeg, product) => {
+    if (isVeg) {
+        chef.isVeg.push(product);
+    } else {
+        chef.isNonVeg.push(product);
     }
 }
 

@@ -53,6 +53,9 @@ export const MEALPASS_TITLE = 'Fagito Mealpass';
 export const LUNCH_BUTTON = 'Lunch';
 export const DINNER_BUTTON = 'Dinner';
 export const TOMORROW = 'TOMORROW';
+export const VEG_ONLY = 'Veg Only';
+export const NON_VEG_ONLY = 'Non Veg Only';
+export const ALL_CUISINE = 'All';
 export const DAYS = {
     0: 'SUN',
     1: 'MON',

@@ -13,7 +13,7 @@ const initialState = {
         dinnerTiming: false,
     },
     filters: {
-        dietFilter: FILTERS_CONTENT.dietFilter.options[1].label,
+        dietFilter: FILTERS_CONTENT.dietFilter.options[0].label,
         cuisineFilter: FILTERS_CONTENT.cuisineFilter.options[0].label,
         locationFilter: null,
         dietFilterIndex: 0,
