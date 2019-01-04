@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { STYLES } from './fagito-product.style';
+import { FagitoButton } from '../fagito-components';
+import { ADD_BUTTON_TITLE } from '../../common/fagito-constants';
 
 class FagitoProduct extends Component {
     constructor(props) {
@@ -19,6 +21,10 @@ class FagitoProduct extends Component {
                     source={image}>
                 </Image>
                 <Text style={STYLES.productName}><Image style={STYLES.icon} source={isProductVeg}></Image> {this.props.product.base.name}</Text>
+                <Text style={STYLES.productPrice}>Rs {this.props.product.base.price}</Text>
+                <View style={STYLES.addButton}>
+                    <FagitoButton buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
+                </View>
             </View>
         )
     }

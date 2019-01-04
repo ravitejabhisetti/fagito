@@ -30,6 +30,16 @@ const STYLES = StyleSheet.create({
     icon: {
         height: 10,
         width: 10,
+    },
+    productPrice: {
+        color: style.FAGITO_BLACK_COLOR,
+        fontSize: 12,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        paddingTop: 8
+    },
+    addButton: {
+        marginTop: 6,
+        marginBottom: 20
     }
 });
 

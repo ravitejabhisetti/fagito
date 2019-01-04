@@ -18,7 +18,7 @@ const initialState = {
         locationFilter: null,
         dietFilterIndex: 0,
         cuisineFilterIndex: 0,
-        locationFilterIndex: 0
+        locationFilterIndex: null
     }
 }
 

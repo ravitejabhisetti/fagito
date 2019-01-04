@@ -7,7 +7,7 @@ const STYLES = StyleSheet.create({
         borderColor: style.FAGITO_BUTTON_COLOR,
         backgroundColor: 'white',
         borderStyle: style.FAGITO_SOLID_BORDER_STYLE,
-        padding: 8,
+        padding: 4,
         alignItems: style.FAGITO_CENTER
     },
     buttonText: {

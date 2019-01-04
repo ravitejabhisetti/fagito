@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-chef.style';
-import { FagitoProduct, FagitoProductsSegment, ChefTags } from '../fagito-components';
+import { FagitoProductsSegment, ChefTags } from '../fagito-components';
 import { VEG_ONLY, NON_VEG_ONLY, ALL_CUISINE } from '../../common/fagito-constants';
 import _ from 'lodash';
 

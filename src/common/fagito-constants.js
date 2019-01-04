@@ -56,6 +56,7 @@ export const TOMORROW = 'TOMORROW';
 export const VEG_ONLY = 'Veg Only';
 export const NON_VEG_ONLY = 'Non Veg Only';
 export const ALL_CUISINE = 'All';
+export const ADD_BUTTON_TITLE = 'ADD +';
 export const DAYS = {
     0: 'SUN',
     1: 'MON',
