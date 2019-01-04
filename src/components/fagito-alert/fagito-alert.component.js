@@ -14,9 +14,10 @@ class FagitoAlert extends Component {
         showAlert: true,
         index: 0
     }
-    handleAlert = (event) => {
-        event.stopPropagation();
-        this.props.hideAlert();
+    handleAlert = (event, close) => {
+        if (close) {
+            this.props.hideAlert();
+        }
     }
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
@@ -62,38 +63,40 @@ class FagitoAlert extends Component {
                 )
             }
             dropdownContent = (
-                <View>
-                    <View style={STYLES.headerSegment}>
-                        <Text style={STYLES.headerTitle}>{this.props.alertItems.header}</Text>
-                        {dropdownHeaderDescription}
-                    </View>
-                    <ScrollView style={STYLES.dropdownOptionsSection}>
-                        <RadioForm
-                            initial={this.props.alertItems.radioOptionIndex}
-                            radioStyle={STYLES.radioButton}
-                            onPress={(value, index) => this.handleRadioButtonSelection(value, index)}
-                            buttonOuterSize={16}
-                            buttonSize={6}
-                            selectedButtonColor={style.FAGITO_BUTTON_COLOR}
-                            buttonColor={style.RADIO_OPTION_COLOR}
-                            selectedLabelColor={style.FAGITO_BUTTON_COLOR}
-                            labelStyle={STYLES.radioOptionLabel}
-                            radio_props={this.props.alertItems.options}>
-                        </RadioForm>
-                    </ScrollView>
-                    <View style={STYLES.buttonsSegment}>
-                        <View>
-                            <TouchableOpacity onPress={(update) => this.handleSubmit(false)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
-                                <Text style={STYLES.buttonText}>CANCEL</Text>
-                            </TouchableOpacity>
+                <TouchableWithoutFeedback onPress={(event) => this.handleAlert(event, false)}>
+                    <View>
+                        <View style={STYLES.headerSegment}>
+                            <Text style={STYLES.headerTitle}>{this.props.alertItems.header}</Text>
+                            {dropdownHeaderDescription}
                         </View>
-                        <View>
-                            <TouchableOpacity onPress={(update) => this.handleSubmit(true)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
-                                <Text style={STYLES.buttonText}>OK</Text>
-                            </TouchableOpacity>
+                        <ScrollView style={STYLES.dropdownOptionsSection}>
+                            <RadioForm
+                                initial={this.props.alertItems.radioOptionIndex}
+                                radioStyle={STYLES.radioButton}
+                                onPress={(value, index) => this.handleRadioButtonSelection(value, index)}
+                                buttonOuterSize={16}
+                                buttonSize={6}
+                                selectedButtonColor={style.FAGITO_BUTTON_COLOR}
+                                buttonColor={style.RADIO_OPTION_COLOR}
+                                selectedLabelColor={style.FAGITO_BUTTON_COLOR}
+                                labelStyle={STYLES.radioOptionLabel}
+                                radio_props={this.props.alertItems.options}>
+                            </RadioForm>
+                        </ScrollView>
+                        <View style={STYLES.buttonsSegment}>
+                            <View>
+                                <TouchableOpacity onPress={(update) => this.handleSubmit(false)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+                                    <Text style={STYLES.buttonText}>CANCEL</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View>
+                                <TouchableOpacity onPress={(update) => this.handleSubmit(true)} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+                                    <Text style={STYLES.buttonText}>OK</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
-                </View>
+                </TouchableWithoutFeedback>
             )
         }
         return (
@@ -104,7 +107,7 @@ class FagitoAlert extends Component {
                     visible={this.state.showAlert}
                     onRequestClose={this.handleAlert}
                 >
-                    <TouchableWithoutFeedback onPress={(event) => this.handleAlert(event)}>
+                    <TouchableWithoutFeedback onPress={(event) => this.handleAlert(event, true)}>
                         <View style={STYLES.alertContainer}>
                             <View style={STYLES.alertContent}>
                                 {error}

@@ -75,8 +75,8 @@ const STYLES = StyleSheet.create({
         fontFamily: style.FAGITO_FONT_FAMILY_LATO
     },
     radioButton: {
-        paddingBottom: 8,
-        paddingTop: 8
+        paddingBottom: 4,
+        paddingTop: 4
     }
 })
 
