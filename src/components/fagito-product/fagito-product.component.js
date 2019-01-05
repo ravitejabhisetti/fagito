@@ -12,7 +12,8 @@ class FagitoProduct extends Component {
         this.state = { showDefault: true, error: false };
     }
     handleProduct = (product, timingSelected) => {
-        this.props.addProduct(product, timingSelected);
+        console.log('in handlke---', this.props.selectedDate);
+        this.props.addProduct(product, timingSelected, this.props.selectedDate);
     }
     render() {
         let isProductVeg = (this.props.product.base.isVeg ? require('../../assets/veg.jpg') : require('../../assets/nonveg.jpg'));
@@ -47,13 +48,14 @@ class FagitoProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addProduct: (product, timingSelected) => dispatch(addSelectedProduct(product, timingSelected))
+        addProduct: (product, timingSelected, dateSelected) => dispatch(addSelectedProduct(product, timingSelected, dateSelected))
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        timing: state.deliveryTimingAndDates.timing
+        timing: state.deliveryTimingAndDates.timing,
+        selectedDate: state.deliveryTimingAndDates.selectedDate
     }
 }
 

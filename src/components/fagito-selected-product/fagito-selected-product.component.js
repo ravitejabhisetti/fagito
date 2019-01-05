@@ -8,7 +8,8 @@ import { INSUFFICIENT_BALANCE } from '../../common/fagito-constants';
 class FagitoSelectedProduct extends Component {
     render() {
         return (
-            <View style={[STYLES.selectedProductSegment, this.props.product.timingSelected === 'lunch' ? STYLES.lunchProductSelectedBackground : STYLES.dinnerProductSelectedBackground]}>
+            <View style={[STYLES.selectedProductSegment,
+            this.props.product.timingSelected === 'lunch' ? STYLES.lunchProductSelectedBackground : STYLES.dinnerProductSelectedBackground]}>
                 <View style={STYLES.timingRow}>
                     <Icon color={style.TIMING_SELECTED_COLOR} name="md-home" size={15} />
                     <Text style={STYLES.timingSelected}>{this.props.product.timingSelected}</Text>
@@ -19,7 +20,7 @@ class FagitoSelectedProduct extends Component {
                 <Text style={STYLES.selectedProductChef}>{this.props.product.base.kitchen.name}</Text>
                 <Text style={STYLES.selectedProductName}>{this.props.product.base.name}</Text>
                 <Text style={STYLES.selectedProductPrice}>Rs {this.props.product.base.price} + Rs 5 GST</Text>
-                    <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text>
+                <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text>
             </View>
         )
     }

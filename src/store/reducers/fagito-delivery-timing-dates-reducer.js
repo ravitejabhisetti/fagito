@@ -7,6 +7,7 @@ import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION } from '../../common/fagit
 const initialState = {
     deliveryDatesList: [],
     selectedDateIndex: 0,
+    selectedDate: null,
     timing: {
         timingSelected: LUNCH_OPTION,
         lunchTiming: true,
@@ -27,21 +28,25 @@ const reducer = (state = initialState, action) => {
         case FAGITO_LOAD_DELIVERY_DATES:
             return {
                 ...state,
-                deliveryDatesList: action.deliveryDates
+                deliveryDatesList: action.deliveryDates,
+                selectedDate: action.deliveryDates[0].date
             }
         case FAGITO_UPDATE_SELECTED_DELIVERY_DATE:
             let indexSelected = 0;
+            let selectedDate = null;
             return {
                 ...state,
                 deliveryDatesList: state.deliveryDatesList.map((date, dateIndex) => {
                     if (date.day === action.selectedDate.day) {
                         indexSelected = dateIndex;
+                        selectedDate = action.selectedDate.date;
                         date.dateActive = true;
                     } else {
                         date.dateActive = false;
                     }
                     return date;
                 }),
+                selectedDate: selectedDate,
                 selectedDateIndex: indexSelected
             }
         case FAGITO_UPDATE_DELIVERY_TIMING:

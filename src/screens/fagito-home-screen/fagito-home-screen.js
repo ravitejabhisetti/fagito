@@ -119,6 +119,7 @@ class FagitoHomeScreen extends Component {
                             </View>
                             <FagitoSelectedProducts
                                 selectedProducts={this.props.selectedProducts}
+                                selectedDate={this.props.selectedDate}
                             ></FagitoSelectedProducts>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
@@ -155,6 +156,7 @@ const mapStateToProps = (state) => {
         productsList: state.products.productsList,
         selectedProducts: state.products.selectedProductsList,
         productsLength: state.products.productsLength,
+        selectedDate: state.deliveryTimingAndDates.selectedDate,
         loader: state.fagitoLoader.showLoader
     }
 }

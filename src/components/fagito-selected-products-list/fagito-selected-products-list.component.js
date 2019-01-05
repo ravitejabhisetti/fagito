@@ -10,9 +10,11 @@ class FagitoSelectedProducts extends Component {
         const { ...props } = this.props;
         if (props.selectedProducts.length) {
             selectedProducts = props.selectedProducts.map((selectedProduct, index) => {
-                return (
-                    <FagitoSelectedProduct key={index} product={selectedProduct}></FagitoSelectedProduct>
-                )
+                if (props.selectedDate === selectedProduct.selectedDate) {
+                    return (
+                        <FagitoSelectedProduct key={index} product={selectedProduct}></FagitoSelectedProduct>
+                    )
+                }
             })
         } else {
             selectedProducts = null;
