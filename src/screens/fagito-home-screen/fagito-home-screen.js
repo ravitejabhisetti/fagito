@@ -117,7 +117,9 @@ class FagitoHomeScreen extends Component {
                                     dropdownBorder={true}>
                                 </FagitoDropdown>
                             </View>
-                            <FagitoSelectedProducts selectedProducts={this.props.selectedProducts}></FagitoSelectedProducts>
+                            <FagitoSelectedProducts
+                                selectedProducts={this.props.selectedProducts}
+                            ></FagitoSelectedProducts>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList

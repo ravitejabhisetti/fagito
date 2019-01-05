@@ -35,7 +35,8 @@ export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
     }
 }
 
-export const addSelectedProduct = (product) => {
+export const addSelectedProduct = (product, timingSelected) => {
+    product.timingSelected = timingSelected;
     return {
         type: FAGITO_ADD_SELECTED_PRODUCT,
         product: product

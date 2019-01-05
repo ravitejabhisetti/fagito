@@ -18,7 +18,7 @@ class FagitoSelectedProducts extends Component {
             selectedProducts = null;
         }
         return (
-            <View>
+            <View style={STYLES.selectedProductsSegment}>
                 {selectedProducts}
             </View>
         )

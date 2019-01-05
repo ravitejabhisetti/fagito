@@ -28,6 +28,9 @@ export const FAGITO_WRAP = 'wrap';
 export const CHEF_BORDER_COLOR = '#D5D5DB';
 export const CHEF_TAG_COLOR = '#9b9b9b';
 export const HIDDEN = 'hidden';
+export const SELECTED_PRODUCT_BACKGROUND_COLOR = '#f5a623';
+export const SELECTED_PRODUCT_PRICE_COLOR = '#333';
+export const TIMING_SELECTED_COLOR = '#555';
 export const DROPDOWN_LABEL_TOP_RANGE = {
     inputRange: [0, 1],
     outputRange: [30, 0]

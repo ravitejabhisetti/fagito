@@ -11,8 +11,8 @@ class FagitoProduct extends Component {
         super(props);
         this.state = { showDefault: true, error: false };
     }
-    handleProduct = (product) => {
-        this.props.addProduct(product);
+    handleProduct = (product, timingSelected) => {
+        this.props.addProduct(product, timingSelected);
     }
     render() {
         let isProductVeg = (this.props.product.base.isVeg ? require('../../assets/veg.jpg') : require('../../assets/nonveg.jpg'));
@@ -25,7 +25,7 @@ class FagitoProduct extends Component {
             )
         } else {
             addButton = (
-                <FagitoButton onButtonClick={() => this.handleProduct(this.props.product)} buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
+                <FagitoButton onButtonClick={() => this.handleProduct(this.props.product, this.props.timing.timingSelected)} buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
             )
         }
         return (
@@ -47,8 +47,14 @@ class FagitoProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addProduct: (product) => dispatch(addSelectedProduct(product))
+        addProduct: (product, timingSelected) => dispatch(addSelectedProduct(product, timingSelected))
     }
 }
 
-export default connect(null, mapDispatchToProps)(FagitoProduct);
+const mapStateToProps = (state) => {
+    return {
+        timing: state.deliveryTimingAndDates.timing
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoProduct);

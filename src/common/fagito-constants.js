@@ -132,3 +132,4 @@ export const DINNER_OPTION = 'dinner';
 export const NO_PRODUCTS_MESSAGE_ONE = 'We donot have any ';
 export const NO_PRODUCTS_MESSAGE_TWO = ' options available for this day. We are constantly working to add more options for you.';
 export const SOLD_OUT = 'SOLD OUT';
+export const INSUFFICIENT_BALANCE = '#insufficientBalance'
