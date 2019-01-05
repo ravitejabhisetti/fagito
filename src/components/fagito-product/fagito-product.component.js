@@ -3,11 +3,16 @@ import { View, Text, Image } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
 import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
+import { addSelectedProduct } from '../../store/actions/actions';
+import { connect } from 'react-redux';
 
 class FagitoProduct extends Component {
     constructor(props) {
         super(props);
         this.state = { showDefault: true, error: false };
+    }
+    handleProduct = (product) => {
+        this.props.addProduct(product);
     }
     render() {
         let isProductVeg = (this.props.product.base.isVeg ? require('../../assets/veg.jpg') : require('../../assets/nonveg.jpg'));
@@ -20,7 +25,7 @@ class FagitoProduct extends Component {
             )
         } else {
             addButton = (
-                <FagitoButton buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
+                <FagitoButton onButtonClick={() => this.handleProduct(this.props.product)} buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
             )
         }
         return (
@@ -40,4 +45,10 @@ class FagitoProduct extends Component {
     }
 }
 
-export default FagitoProduct;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addProduct: (product) => dispatch(addSelectedProduct(product))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FagitoProduct);

@@ -16,6 +16,7 @@ import FagitoProduct from './fagito-product/fagito-product.component';
 import FagitoProductsSegment from './fagito-products-segment/fagito-products-segment.component';
 import ChefTags from './fagito-chef-tags/fagito-chef-tags.component';
 import FagitoSelectedProducts from './fagito-selected-products-list/fagito-selected-products-list.component';
+import FagitoSelectedProduct from './fagito-selected-product/fagito-selected-product.component';
 
 export {
     FagitoButton,
@@ -35,5 +36,6 @@ export {
     FagitoProduct,
     FagitoProductsSegment,
     ChefTags,
-    FagitoSelectedProducts
+    FagitoSelectedProducts,
+    FagitoSelectedProduct
 }

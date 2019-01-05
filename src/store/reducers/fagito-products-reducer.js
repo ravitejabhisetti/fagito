@@ -1,7 +1,9 @@
-import { FAGITO_GET_PRODUCTS } from '../actions/fagito-action-types';
+import { FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT, FAGITO_DELETE_SELECTED_PRODUCT } from '../actions/fagito-action-types';
 
 const initialState = {
-    productsList: {}
+    productsList: {},
+    selectedProductsList: [],
+    productsLength: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +24,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 productsList: updatedProductsList
+            }
+        case FAGITO_ADD_SELECTED_PRODUCT:
+            state.selectedProductsList.push(action.product);
+            return {
+                ...state,
+                productsLength: state.selectedProductsList.length,
+                selectedProductsList: state.selectedProductsList
+            }
+        case FAGITO_DELETE_SELECTED_PRODUCT:
+            return {
+                ...state
             }
         default:
             return state;

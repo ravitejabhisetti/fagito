@@ -117,7 +117,7 @@ class FagitoHomeScreen extends Component {
                                     dropdownBorder={true}>
                                 </FagitoDropdown>
                             </View>
-                            <FagitoSelectedProducts></FagitoSelectedProducts>
+                            <FagitoSelectedProducts selectedProducts={this.props.selectedProducts}></FagitoSelectedProducts>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList
@@ -151,6 +151,8 @@ const mapStateToProps = (state) => {
         filters: state.deliveryTimingAndDates.filters,
         selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
         productsList: state.products.productsList,
+        selectedProducts: state.products.selectedProductsList,
+        productsLength: state.products.productsLength,
         loader: state.fagitoLoader.showLoader
     }
 }

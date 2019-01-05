@@ -6,7 +6,7 @@ class FagitoSelectedProduct extends Component {
     render() {
         return (
             <View>
-                <Text>fagito selected product</Text>
+                <Text>name: {this.props.product.base.kitchen.name}</Text>
             </View>
         )
     }
