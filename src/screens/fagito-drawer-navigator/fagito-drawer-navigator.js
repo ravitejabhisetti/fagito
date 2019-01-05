@@ -9,16 +9,17 @@ import {
 import { FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { STYLES } from './fagito-drawer-navigator.style';
 
 // const CustomDrawerComponent = (props) => (
 class CustomDrawerComponent extends Component {
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
-                <View style={{ height: 60, backgroundColor: style.FAGITO_BLACK_COLOR, justifyContent: style.FAGITO_CENTER, padding: 15 }}>
-                    <View style={{ flex: 1, flexDirection: style.FAGITO_ROW, justifyContent: style.FAGITO_FLEX_START }}>
+            <SafeAreaView style={STYLES.safeArea}>
+                <View style={STYLES.headerSegment}>
+                    <View style={STYLES.headerTitle}>
                         <Icon name='md-person' color='white' size={25} />
-                        <Text style={{ color: style.FAGITO_WHITE_COLOR, fontSize: 18, paddingLeft: 10, paddingBottom: 2, paddingTop: 6 }}>Ravi Teja Bhisetti</Text>
+                        <Text style={STYLES.headerText}>Ravi Teja Bhisetti</Text>
                     </View>
                 </View>
                 <ScrollView>
