@@ -18,10 +18,10 @@ const STYLES = StyleSheet.create({
     },
     headerText: {
         color: style.FAGITO_WHITE_COLOR,
-         fontSize: 18,
-          paddingLeft: 10,
-           paddingBottom: 2,
-            paddingTop: 6
+        fontSize: 18,
+        paddingLeft: 10,
+        paddingBottom: 2,
+        paddingTop: 6
     }
 });
 
