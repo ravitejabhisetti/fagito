@@ -40,6 +40,12 @@ const STYLES = StyleSheet.create({
     addButton: {
         marginTop: 6,
         marginBottom: 20
+    },
+    soldOutText: {
+        color: style.FAGITO_BUTTON_COLOR,
+        fontSize: 14,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
+        fontWeight: '700'
     }
 });
 
