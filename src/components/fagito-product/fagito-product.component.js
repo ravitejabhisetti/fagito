@@ -3,7 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
 import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
-import { addSelectedProduct } from '../../store/actions/actions';
+import { addSelectedProduct, updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 
 class FagitoProduct extends Component {
@@ -12,8 +12,8 @@ class FagitoProduct extends Component {
         this.state = { showDefault: true, error: false };
     }
     handleProduct = (product, timingSelected) => {
-        console.log('in handlke---', this.props.selectedDate);
         this.props.addProduct(product, timingSelected, this.props.selectedDate);
+        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate);
     }
     render() {
         let isProductVeg = (this.props.product.base.isVeg ? require('../../assets/veg.jpg') : require('../../assets/nonveg.jpg'));
@@ -48,7 +48,8 @@ class FagitoProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addProduct: (product, timingSelected, dateSelected) => dispatch(addSelectedProduct(product, timingSelected, dateSelected))
+        addProduct: (product, timingSelected, dateSelected) => dispatch(addSelectedProduct(product, timingSelected, dateSelected)),
+        updatedProductsOfUser: (product, timingSelected, dateSelected) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected))
     }
 }
 

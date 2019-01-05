@@ -54,6 +54,7 @@ export const userAuthentication = (userData, authMode) => {
                         for (let key in usersResponse) {
                             if (usersResponse[key].email === userData.email) {
                                 user = usersResponse[key];
+                                user.userId = key;
                             }
                         }
                         navigateToHome(parsedResponse, user, dispatch);
