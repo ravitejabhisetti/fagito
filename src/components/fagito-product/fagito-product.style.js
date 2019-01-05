@@ -1,10 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import * as style from '../../common/fagito-style-constants';
+
+const window = Dimensions.get('window');
 
 const STYLES = StyleSheet.create({
     productSegment: {
         backgroundColor: style.FAGITO_WHITE_COLOR,
-        flexBasis: '33%',
+        flexBasis: window.width < 660 ? '33%' : '25%',
         paddingTop: 5,
         paddingRight: 5,
         paddingLeft: 5,

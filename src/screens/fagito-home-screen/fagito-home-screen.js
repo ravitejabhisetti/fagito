@@ -11,7 +11,7 @@ import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList,
-    FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent
+    FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent, FagitoSelectedProducts
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
 import _ from 'lodash';
@@ -117,6 +117,7 @@ class FagitoHomeScreen extends Component {
                                     dropdownBorder={true}>
                                 </FagitoDropdown>
                             </View>
+                            <FagitoSelectedProducts></FagitoSelectedProducts>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList
