@@ -29,22 +29,25 @@ export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
             if (productsResponse.result.length > 1) {
                 productsList = productsResponse.result;
             }
-            console.log('products response is---', productsResponse);
             dispatch(updateProductsList(productsList));
         });
     }
 }
 
-export const updatedProductsOfUser = (product, timingSelected, dateSelected) => {
+export const updatedProductsOfUser = (product, timingSelected, dateSelected, update, index) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
-            updateProductTimingAndDate(product, timingSelected, dateSelected);
-            if (!parsedUserDetails.productsSelected) {
-                parsedUserDetails.productsSelected = [];
-                parsedUserDetails.productsSelected.push(product);
+            if (update) {
+                updateProductTimingAndDate(product, timingSelected, dateSelected);
+                if (!parsedUserDetails.productsSelected) {
+                    parsedUserDetails.productsSelected = [];
+                    parsedUserDetails.productsSelected.push(product);
+                } else {
+                    parsedUserDetails.productsSelected.push(product);
+                }
             } else {
-                parsedUserDetails.productsSelected.push(product);
+                parsedUserDetails.productsSelected.splice(index, 1);
             }
             dispatch(getToken()).then(apiToken => {
                 let url = FIREBASE_URL + 'users/' + parsedUserDetails.userId + '.json?auth=' + apiToken;
@@ -54,6 +57,11 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected) => 
                     headers: FAGITO_API_CALL_HEADERS
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
+                    if (update) {
+                        dispatch(addSelectedProduct(product, timingSelected, dateSelected));
+                    } else {
+                        dispatch(deleteSelectedProduct(index));
+                    }
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })
             })
@@ -81,10 +89,10 @@ const updateProductTimingAndDate = (product, timing, date) => {
     product.selectedDate = date;
 }
 
-export const deleteSelectedProduct = (product) => {
+export const deleteSelectedProduct = (productIndex) => {
     return {
         type: FAGITO_DELETE_SELECTED_PRODUCT,
-        product: product
+        productIndex: productIndex
     }
 }
 

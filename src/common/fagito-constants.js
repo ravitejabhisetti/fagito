@@ -67,6 +67,15 @@ export const DAYS = {
     5: 'FRI',
     6: 'SAT'
 }
+export const DAYS_LABEL = {
+    0: 'Sunday',
+    1: 'Monday',
+    2: 'Tuesday',
+    3: 'Wednesday',
+    4: 'Thursday',
+    5: 'Friday',
+    6: 'Saturday'
+}
 export const AREA_LABEL = 'Choose your area';
 export const DIET_FILTER_LABEL = 'Diet Filter';
 export const CUISINE_FILTER_LABEL = 'Cuisine Filter';
@@ -132,4 +141,8 @@ export const DINNER_OPTION = 'dinner';
 export const NO_PRODUCTS_MESSAGE_ONE = 'We donot have any ';
 export const NO_PRODUCTS_MESSAGE_TWO = ' options available for this day. We are constantly working to add more options for you.';
 export const SOLD_OUT = 'SOLD OUT';
-export const INSUFFICIENT_BALANCE = '#insufficientBalance'
+export const INSUFFICIENT_BALANCE = '#insufficientBalance';
+export const BOTTOM_MODAL_HEADER_SECTION_ONE = 'Modify your ';
+export const BOTTOM_MODAL_HEADER_SECTION_TWO = ' selection for ';
+export const REMOVE_SELECTION = 'Remove Selection';
+export const ADDONS = 'Add addons to meal';

@@ -13,7 +13,7 @@ import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList, FagitoBottomModal,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent, FagitoSelectedProducts
 } from '../../components/fagito-components';
-import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
+import { updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, deleteSelectedProduct } from '../../store/actions/actions';
 import _ from 'lodash';
 
 class FagitoHomeScreen extends Component {
@@ -22,7 +22,9 @@ class FagitoHomeScreen extends Component {
     }
     state = {
         showOrdersModal: false,
-        showBottomModal: false
+        showBottomModal: false,
+        selectedProduct: null,
+        productIndex: null
     }
 
     componentDidMount() {
@@ -45,14 +47,26 @@ class FagitoHomeScreen extends Component {
     handleOrdersModal = (showModal) => {
         this.setState({ showOrdersModal: showModal });
     }
-    handleSelectedProduct = (modalVisible) => {
-        console.log('in handle selected product---');
+    handleSelectedProduct = (product, modalVisible, index) => {
+        console.log('in handle selected product---', product);
         this.setState((state) => {
             return {
                 ...state,
-                showBottomModal: modalVisible
+                showBottomModal: modalVisible,
+                selectedProduct: product,
+                productIndex: index
             }
         })
+    }
+    removeSelectedProduct = () => {
+        this.setState((state) => {
+            return {
+                ...state,
+                showBottomModal: false
+            }
+        })
+        // this.props.deleteSelectedProduct(this.state.productIndex);
+        this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected, this.props.selectedDate, false, this.state.productIndex);
     }
     render() {
         let ordersModal = null;
@@ -128,12 +142,18 @@ class FagitoHomeScreen extends Component {
                                 </FagitoDropdown>
                             </View>
                             <FagitoSelectedProducts
-                                handleSelectedProduct={() => this.handleSelectedProduct(true)}
+                                handleSelectedProduct={(product, index) => this.handleSelectedProduct(product, true, index)}
                                 selectedProducts={this.props.selectedProducts}
                                 selectedDate={this.props.selectedDate}
+                                productsLength={this.props.productsLength}
                             ></FagitoSelectedProducts>
-                            <FagitoBottomModal hideBottomModal={(modalVisible) => this.handleSelectedProduct(modalVisible)}
-                                showModal={this.state.showBottomModal}></FagitoBottomModal>
+                            <FagitoBottomModal
+                                removeProduct={this.removeSelectedProduct}
+                                selectedProduct={this.state.selectedProduct}
+                                selectedDay={this.props.selectedDay}
+                                hideBottomModal={(modalVisible) => this.handleSelectedProduct(null, modalVisible, null)}
+                                showModal={this.state.showBottomModal}>
+                            </FagitoBottomModal>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList
@@ -154,7 +174,9 @@ class FagitoHomeScreen extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming)),
-        showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected))
+        showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected)),
+        updatedProductsOfUser: (product, timingSelected, dateSelected, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, update, index)),
+        deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex))
     }
 }
 
@@ -165,7 +187,7 @@ const mapStateToProps = (state) => {
         cuisineFilter: state.deliveryTimingAndDates.filters.cuisineFilter,
         locationFilter: state.deliveryTimingAndDates.filters.locationFilter,
         filters: state.deliveryTimingAndDates.filters,
-        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
+        selectedDay: state.deliveryTimingAndDates.selectedDay,
         productsList: state.products.productsList,
         selectedProducts: state.products.selectedProductsList,
         productsLength: state.products.productsLength,

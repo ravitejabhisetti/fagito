@@ -8,11 +8,11 @@ class FagitoSelectedProducts extends Component {
     render() {
         let selectedProducts = null;
         const { ...props } = this.props;
-        if (props.selectedProducts.length) {
+        if (props.selectedProducts && props.selectedProducts.length) {
             selectedProducts = props.selectedProducts.map((selectedProduct, index) => {
                 if (props.selectedDate === selectedProduct.selectedDate) {
                     return (
-                        <FagitoSelectedProduct handleSelectedProduct={props.handleSelectedProduct}
+                        <FagitoSelectedProduct handleSelectedProduct={() => props.handleSelectedProduct(selectedProduct, index)}
                             key={index} product={selectedProduct}></FagitoSelectedProduct>
                     )
                 }

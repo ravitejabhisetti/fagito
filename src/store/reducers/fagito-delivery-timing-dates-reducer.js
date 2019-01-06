@@ -8,6 +8,7 @@ const initialState = {
     deliveryDatesList: [],
     selectedDateIndex: 0,
     selectedDate: null,
+    selectedDay: null,
     timing: {
         timingSelected: LUNCH_OPTION,
         lunchTiming: true,
@@ -29,23 +30,27 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 deliveryDatesList: action.deliveryDates,
-                selectedDate: action.deliveryDates[0].date
+                selectedDate: action.deliveryDates[0].date,
+                selectedDay: action.deliveryDates[0].dayLabel
             }
         case FAGITO_UPDATE_SELECTED_DELIVERY_DATE:
             let indexSelected = 0;
             let selectedDate = null;
+            let selectedDay = null;
             return {
                 ...state,
                 deliveryDatesList: state.deliveryDatesList.map((date, dateIndex) => {
                     if (date.day === action.selectedDate.day) {
                         indexSelected = dateIndex;
                         selectedDate = action.selectedDate.date;
+                        selectedDay = action.selectedDate.dayLabel;
                         date.dateActive = true;
                     } else {
                         date.dateActive = false;
                     }
                     return date;
                 }),
+                selectedDay: selectedDay,
                 selectedDate: selectedDate,
                 selectedDateIndex: indexSelected
             }

@@ -26,15 +26,26 @@ const reducer = (state = initialState, action) => {
                 productsList: updatedProductsList
             }
         case FAGITO_ADD_SELECTED_PRODUCT:
+            if (!state.selectedProductsList) {
+                state.selectedProductsList = [];
+            }
             state.selectedProductsList.push(action.product);
             return {
                 ...state,
-                productsLength: state.selectedProductsList.length,
+                productsLength: JSON.stringify(state.selectedProductsList.length),
                 selectedProductsList: state.selectedProductsList
             }
         case FAGITO_DELETE_SELECTED_PRODUCT:
+            state.selectedProductsList.splice(action.productIndex, 1);
+            console.log('check state end---', {
+                ...state,
+                productsLength: JSON.stringify(state.selectedProductsList.length),
+                selectedProductsList: state.selectedProductsList
+            });
             return {
-                ...state
+                ...state,
+                productsLength: JSON.stringify(state.selectedProductsList.length),
+                selectedProductsList: state.selectedProductsList
             }
         case FAGITO_UPDATE_USER_SELECTED_PRODUCTS:
             return {
