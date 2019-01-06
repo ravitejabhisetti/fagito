@@ -6,15 +6,12 @@ const window = Dimensions.get('window');
 const STYLES = StyleSheet.create({
     selectedProductSegment: {
         flexBasis: window.width < 660 ? '48%' : '32%',
-        marginLeft: 2,
-        marginRight: 2,
         marginBottom: 8,
         borderRadius: 8,
         paddingRight: 6,
         paddingTop: 10,
         paddingLeft: 10,
-        paddingBottom: 8,
-        height: 'auto'
+        paddingBottom: 8
     },
     lunchProductSelectedBackground: {
         backgroundColor: 'rgba(245,166,35,.25)'

@@ -7,6 +7,7 @@ const STYLES = StyleSheet.create({
         flexWrap: style.FAGITO_WRAP,
         flexDirection: style.FAGITO_ROW,
         marginTop: 12,
+        justifyContent: style.FAGITO_SPACE_BETWEEN
     }
 });
 
