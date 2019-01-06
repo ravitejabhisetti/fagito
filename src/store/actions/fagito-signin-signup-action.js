@@ -8,7 +8,7 @@ import {
     FAGITO_SIGNUP_AUTH_MODE
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
-import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert } from './actions';
+import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert, updateUserSelectedProducts } from './actions';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
 
@@ -33,7 +33,7 @@ export const userAuthentication = (userData, authMode) => {
             } else {
                 if (authMode === FAGITO_SIGNUP_AUTH_MODE) {
                     let usersDataUrl = FAGITO_USERS_URL + parsedResponse.idToken;
-                    userData.returnSecureToken = true;
+                    userData.usersSelected = [];
                     fetch(usersDataUrl, {
                         method: METHOD_POST,
                         body: JSON.stringify(userData),
@@ -41,6 +41,7 @@ export const userAuthentication = (userData, authMode) => {
                     }).catch((error) => {
                         handleError(error, dispatch);
                     }).then(res => res.json()).then(response => {
+                        userData.userId = response.name;
                         navigateToHome(parsedResponse, userData, dispatch);
                     })
                 } else if (authMode === FAGITO_SIGNIN_AUTH_MODE) {
@@ -53,6 +54,7 @@ export const userAuthentication = (userData, authMode) => {
                         let user = null;
                         for (let key in usersResponse) {
                             if (usersResponse[key].email === userData.email) {
+                                console.log('users response is ---', usersResponse);
                                 user = usersResponse[key];
                                 user.userId = key;
                             }
@@ -76,6 +78,7 @@ export const storeTokenAndUserDetails = (token, expiresIn, refreshToken, userDet
         AsyncStorage.setItem(FAGITO_EXPIRY_TIME, expiryTime.toString());
         AsyncStorage.setItem(FAGITO_REFRESH_TOKEN, refreshToken);
         AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(userDetails));
+        dispatch(updateUserSelectedProducts(userDetails));
     }
 }
 
