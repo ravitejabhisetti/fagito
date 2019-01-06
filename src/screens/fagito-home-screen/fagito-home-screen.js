@@ -10,7 +10,7 @@ import {
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
-    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList,
+    FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList, FagitoBottomModal,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent, FagitoSelectedProducts
 } from '../../components/fagito-components';
 import { updateDeliveryTiming, fagitoShowAlert } from '../../store/actions/actions';
@@ -21,7 +21,8 @@ class FagitoHomeScreen extends Component {
         super(props);
     }
     state = {
-        showOrdersModal: false
+        showOrdersModal: false,
+        showBottomModal: false
     }
 
     componentDidMount() {
@@ -43,6 +44,15 @@ class FagitoHomeScreen extends Component {
     }
     handleOrdersModal = (showModal) => {
         this.setState({ showOrdersModal: showModal });
+    }
+    handleSelectedProduct = (modalVisible) => {
+        console.log('in handle selected product---');
+        this.setState((state) => {
+            return {
+                ...state,
+                showBottomModal: modalVisible
+            }
+        })
     }
     render() {
         let ordersModal = null;
@@ -118,9 +128,12 @@ class FagitoHomeScreen extends Component {
                                 </FagitoDropdown>
                             </View>
                             <FagitoSelectedProducts
+                                handleSelectedProduct={() => this.handleSelectedProduct(true)}
                                 selectedProducts={this.props.selectedProducts}
                                 selectedDate={this.props.selectedDate}
                             ></FagitoSelectedProducts>
+                            <FagitoBottomModal hideBottomModal={(modalVisible) => this.handleSelectedProduct(modalVisible)}
+                                showModal={this.state.showBottomModal}></FagitoBottomModal>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList

@@ -31,6 +31,8 @@ export const HIDDEN = 'hidden';
 export const SELECTED_PRODUCT_BACKGROUND_COLOR = '#f5a623';
 export const SELECTED_PRODUCT_PRICE_COLOR = '#333';
 export const TIMING_SELECTED_COLOR = '#555';
+export const LUNCH_PRODUCT = 'rgba(245,166,35,.25)';
+export const DINNER_PRODUCT = 'rgba(76,104,163,.25)';
 export const DROPDOWN_LABEL_TOP_RANGE = {
     inputRange: [0, 1],
     outputRange: [30, 0]

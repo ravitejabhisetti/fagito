@@ -165,6 +165,10 @@ export const clearStorage = () => {
 export const autoSignIn = () => {
     return dispatch => {
         dispatch(getToken()).then(token => {
+            AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+                userDetails = JSON.parse(userDetails);
+                dispatch(updateUserSelectedProducts(userDetails));
+            })
             dispatch(formDatestoDeliver());
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
         })
