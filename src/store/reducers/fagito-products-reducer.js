@@ -37,11 +37,6 @@ const reducer = (state = initialState, action) => {
             }
         case FAGITO_DELETE_SELECTED_PRODUCT:
             state.selectedProductsList.splice(action.productIndex, 1);
-            console.log('check state end---', {
-                ...state,
-                productsLength: JSON.stringify(state.selectedProductsList.length),
-                selectedProductsList: state.selectedProductsList
-            });
             return {
                 ...state,
                 productsLength: JSON.stringify(state.selectedProductsList.length),

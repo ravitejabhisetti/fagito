@@ -48,7 +48,6 @@ class FagitoHomeScreen extends Component {
         this.setState({ showOrdersModal: showModal });
     }
     handleSelectedProduct = (product, modalVisible, index) => {
-        console.log('in handle selected product---', product);
         this.setState((state) => {
             return {
                 ...state,
@@ -65,8 +64,8 @@ class FagitoHomeScreen extends Component {
                 showBottomModal: false
             }
         })
-        // this.props.deleteSelectedProduct(this.state.productIndex);
-        this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected, this.props.selectedDate, false, this.state.productIndex);
+        this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected,
+            this.props.selectedDate, false, this.state.productIndex);
     }
     render() {
         let ordersModal = null;

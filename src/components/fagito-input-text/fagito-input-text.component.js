@@ -57,7 +57,6 @@ class FagitoTextInput extends Component {
             color: this._textBoxLabelColor.interpolate(style.FAGITO_TEXT_INPUT_COLOR_RANGE),
             fontSize: this._textBoxIsFocused.interpolate(style.FAGITO_TEXT_INPUT_FONT_RANGE)
         }
-        // console.log('props in input are---', this.props);
         return (
             <View style={style.FAGITO_TEXT_INPUT_CONTAINER.textInputContainer}>
                 <Animated.Text style={labelStyle}>

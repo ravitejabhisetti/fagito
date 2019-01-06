@@ -13,7 +13,6 @@ import validate from '../../utility/fagito-form-validations';
 const FagitoFormComponent = (props) => {
 
     const handleFormButtonClick = (values) => {
-        console.log('value in form are---', values);
         Keyboard.dismiss();
         props.formButtonClick(values);
     }

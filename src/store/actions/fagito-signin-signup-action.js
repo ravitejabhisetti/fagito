@@ -194,7 +194,6 @@ const formDatestoDeliver = () => {
         datesToDeliverList[0].day = TOMORROW;
     }
     datesToDeliverList[0].dateActive = true;
-    console.log('delivery dates list---', datesToDeliverList);
     return {
         type: types.FAGITO_LOAD_DELIVERY_DATES,
         deliveryDates: datesToDeliverList
