@@ -10,7 +10,7 @@ const STYLES = StyleSheet.create({
         paddingTop: 5,
         paddingRight: 5,
         paddingLeft: 5,
-        paddingBottom: 0
+        paddingBottom: 5
     },
     image: {
         width: '100%',
@@ -41,13 +41,22 @@ const STYLES = StyleSheet.create({
     },
     addButton: {
         marginTop: 6,
-        marginBottom: 20
+        marginBottom: 6
     },
     soldOutText: {
         color: style.FAGITO_BUTTON_COLOR,
         fontSize: 14,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
         fontWeight: '700'
+    },
+    productVariants: {
+        alignItems: style.FAGITO_CENTER
+    },
+    variant: {
+        color: 'rgb(85, 85, 85)',
+        fontSize: 13,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        alignItems: style.FAGITO_CENTER
     }
 });
 

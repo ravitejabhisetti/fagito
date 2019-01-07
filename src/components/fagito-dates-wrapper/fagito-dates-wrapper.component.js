@@ -20,6 +20,7 @@ class FagitoDatesWrapperComponent extends Component {
                     <FagitoDateComponent
                         handleDate={(dateSelected) => this.handleSelectedDeliveryDate(dateSelected, index)}
                         key={index}
+                        selectedProducts={this.props.selectedProducts}
                         dateObject={dateEntity}>
                     </FagitoDateComponent>
                 );

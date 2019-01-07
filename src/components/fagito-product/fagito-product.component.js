@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
 import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
@@ -15,6 +15,7 @@ class FagitoProduct extends Component {
         this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, true, null);
     }
     render() {
+        let productVariants = null;
         let isProductVeg = (this.props.product.base.isVeg ? require('../../assets/veg.jpg') : require('../../assets/nonveg.jpg'));
         let image = (this.state.showDefault || !this.props.product.image) ? require('../../assets/dummyFoodImage.jpg') :
             ((this.state.error || !this.props.product.image) ? require('../../assets/dummyFoodImage.jpg') : { uri: this.props.product.image });
@@ -25,7 +26,16 @@ class FagitoProduct extends Component {
             )
         } else {
             addButton = (
-                <FagitoButton onButtonClick={() => this.handleProduct(this.props.product, this.props.timing.timingSelected)} buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
+                <FagitoButton
+                    onButtonClick={() => this.handleProduct(this.props.product, this.props.timing.timingSelected)}
+                    buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
+            )
+        }
+        if (this.props.product.variants) {
+            productVariants = (
+                <TouchableHighlight style={STYLES.productVariants} activeOpacity={1}>
+                    <Text style={STYLES.variant}>{this.props.product.variants.length} more option{this.props.product.variants.length > 1 && 's'}</Text>
+                </TouchableHighlight>
             )
         }
         return (
@@ -40,6 +50,7 @@ class FagitoProduct extends Component {
                 <View style={STYLES.addButton}>
                     {addButton}
                 </View>
+                {productVariants}
             </View>
         )
     }
