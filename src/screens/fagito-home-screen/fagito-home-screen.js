@@ -5,7 +5,7 @@ import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS, ORDERS
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,10 +21,11 @@ class FagitoHomeScreen extends Component {
         super(props);
     }
     state = {
-        showOrdersModal: false,
+        showFullModal: false,
         showBottomModal: false,
         selectedProduct: null,
-        productIndex: null
+        productIndex: null,
+        modalContent: null
     }
 
     componentDidMount() {
@@ -44,8 +45,15 @@ class FagitoHomeScreen extends Component {
     shouldComponentUpdate(nextProps) {
         return true;
     }
-    handleOrdersModal = (showModal) => {
-        this.setState({ showOrdersModal: showModal });
+    handlefullModal = (showModal, modalContent) => {
+        console.log('modal product is---', modalContent);
+        this.setState((state) => {
+            return {
+                ...state,
+                showFullModal: showModal,
+                modalContent: modalContent
+            }
+        })
     }
     handleSelectedProduct = (product, modalVisible, index) => {
         this.setState((state) => {
@@ -68,12 +76,18 @@ class FagitoHomeScreen extends Component {
             this.props.selectedDate, false, this.state.productIndex);
     }
     render() {
-        let ordersModal = null;
+        let fullModal = null;
         let noLocationMessage = null;
-        if (this.state.showOrdersModal) {
-            ordersModal = (
-                <FagitoModalComponent modalContent={ORDERS_MODAL} hideModal={() => this.handleOrdersModal(false)}
-                    showModal={this.state.showOrdersModal}>
+        let fullModalContent = null;
+        if (this.state.showFullModal) {
+            if (this.state.modalContent === ORDERS) {
+                fullModalContent = ORDERS_MODAL;
+            } else {
+                fullModalContent = this.state.modalContent;
+            }
+            fullModal = (
+                <FagitoModalComponent modalContent={fullModalContent} hideModal={() => this.handlefullModal(false)}
+                    showModal={this.state.showFullModal}>
                 </FagitoModalComponent>
             );
         }
@@ -103,7 +117,7 @@ class FagitoHomeScreen extends Component {
                             <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.props.deliveryTiming.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
                         <View>
-                            <Icon onPress={() => this.handleOrdersModal(true)} name='md-notifications' color='black' size={23}></Icon>
+                            <Icon onPress={() => this.handlefullModal(true, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
                         </View>
                     </View>
                 </Header>
@@ -156,13 +170,14 @@ class FagitoHomeScreen extends Component {
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList
+                                    updateModalProduct={(product) => this.handlefullModal(true, product)}
                                     dietFilter={this.props.dietFilter}
                                     cuisineFilter={this.props.cuisineFilter}
                                     productsList={this.props.productsList}></FagitoChefList>
                             </View>
                         </View>
                     </ScrollView>
-                    {ordersModal}
+                    {fullModal}
                     <FagitoFooterComponent footerText={FOOTER_MESSAGE}></FagitoFooterComponent>
                 </View>
             </View>

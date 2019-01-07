@@ -29,7 +29,7 @@ class FagitoChefList extends Component {
                     <View style={STYLES.chefSection} key={index}>
                         <Text style={STYLES.chefName}>{productEntity}</Text>
                         <ChefTags tags={props.productsList[productEntity].tags}></ChefTags>
-                        <FagitoProductsSegment imageIndex={index} products={productsToBeDisplayed}></FagitoProductsSegment>
+                        <FagitoProductsSegment updateModalProduct={(product) => this.props.updateModalProduct(product)} imageIndex={index} products={productsToBeDisplayed}></FagitoProductsSegment>
                     </View>
                 )
             } else {

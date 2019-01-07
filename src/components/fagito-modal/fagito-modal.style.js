@@ -8,10 +8,12 @@ const STYLES = StyleSheet.create({
     modalHeader: {
         minHeight: 56,
         padding: 8,
-        backgroundColor: style.FAGITO_BUTTON_COLOR,
         flexDirection: style.FAGITO_ROW,
         alignItems: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_SPACE_BETWEEN
+    },
+    modalHeaderOrdersBackground: {
+        backgroundColor: style.FAGITO_BUTTON_COLOR
     },
     modalContent: {
         backgroundColor: style.FAGITO_WHITE_COLOR
@@ -23,7 +25,12 @@ const STYLES = StyleSheet.create({
     },
     modalText: {
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+    },
+    modalTextHeaderWhiteColor: {
         color: style.FAGITO_WHITE_COLOR
+    },
+    modalTextHeaderGreyColor: {
+        color: '#222'
     },
     modalHeading: {
         fontSize: 20

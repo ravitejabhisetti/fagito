@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
 import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
@@ -33,9 +33,9 @@ class FagitoProduct extends Component {
         }
         if (this.props.product.variants) {
             productVariants = (
-                <TouchableHighlight style={STYLES.productVariants} activeOpacity={1}>
+                <TouchableOpacity onPress={() => this.props.updateModalProduct()} style={STYLES.productVariants} activeOpacity={0.5}>
                     <Text style={STYLES.variant}>{this.props.product.variants.length} more option{this.props.product.variants.length > 1 && 's'}</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
             )
         }
         return (

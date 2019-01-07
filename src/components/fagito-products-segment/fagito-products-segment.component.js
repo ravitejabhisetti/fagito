@@ -10,7 +10,7 @@ class FagitoProductsSegment extends Component {
         if (props.products.length) {
             productsSegment = props.products.map((product, index) => {
                 return (
-                    <FagitoProduct key={index} product={product}></FagitoProduct>
+                    <FagitoProduct updateModalProduct={() => this.props.updateModalProduct(product)} key={index} product={product}></FagitoProduct>
                 )
             })
         }
