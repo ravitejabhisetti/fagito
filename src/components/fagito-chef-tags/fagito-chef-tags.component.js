@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-chef-tags.style';
+import Icon from 'react-native-vector-icons/Entypo';
+import { CHEF_TAG_COLOR } from '../../common/fagito-style-constants';
 
 class ChefTags extends Component {
     render() {
@@ -15,9 +17,8 @@ class ChefTags extends Component {
                 )
             } else {
                 return (
-                    <View key={index} style={STYLES.chefDotSection}>
-                        <View><Text style={STYLES.chefDot}>.</Text></View>
-                        <View><Text style={[STYLES.chefTag, STYLES.tagColor]}>{trimmedTag}</Text></View>
+                    <View key={index}>
+                        <View style={STYLES.chefDotSection}><Icon style={STYLES.chefDotIcon} name="dot-single" size={24} color={CHEF_TAG_COLOR}></Icon><Text style={[STYLES.chefTag, STYLES.tagColor]}>{trimmedTag}</Text></View>
                     </View>
                 )
             }

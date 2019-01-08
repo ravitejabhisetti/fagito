@@ -22,7 +22,7 @@ export const userAuthentication = (userData, authMode) => {
         fetch(url, {
             method: METHOD_POST,
             body: JSON.stringify({
-                email: userData.email,
+                email: userData.email.toLowerCase(),
                 password: userData.password,
                 returnSecureToken: true
             }),

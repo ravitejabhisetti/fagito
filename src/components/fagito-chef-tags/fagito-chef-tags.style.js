@@ -10,11 +10,15 @@ const STYLES = StyleSheet.create({
         color: style.CHEF_TAG_COLOR,
     },
     chefDotSection: {
-        marginTop: -44
+        flexDirection: style.FAGITO_ROW,
+        justifyContent: style.FAGITO_CENTER
     },
     chefTag: {
-        marginTop: -28,
-        paddingLeft: 15
+        paddingLeft: 1,
+        marginLeft: -5
+    },
+    chefDotIcon: {
+        marginLeft: -5
     },
     tagColor: {
         color: style.CHEF_TAG_COLOR,
