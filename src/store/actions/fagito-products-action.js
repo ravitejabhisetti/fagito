@@ -78,6 +78,9 @@ export const addSelectedProduct = (product, timingSelected, selectedDate) => {
 }
 
 export const updateUserSelectedProducts = (userDetails) => {
+    if (!userDetails.productsSelected) {
+        userDetails.productsSelected = [];
+    }
     return {
         type: FAGITO_UPDATE_USER_SELECTED_PRODUCTS,
         productsSelected: userDetails.productsSelected

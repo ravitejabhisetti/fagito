@@ -147,3 +147,4 @@ export const BOTTOM_MODAL_HEADER_SECTION_TWO = ' selection for ';
 export const REMOVE_SELECTION = 'Remove Selection';
 export const ADDONS = 'Add addons to meal';
 export const ORDERS = 'orders';
+export const SIMILAR_MEAL = 'Choose a similar meal';

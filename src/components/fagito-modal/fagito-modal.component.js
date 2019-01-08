@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL } from '../../common/fagito-constants';
 
 class FagitoModalComponent extends Component {
     constructor(props) {
@@ -26,10 +26,14 @@ class FagitoModalComponent extends Component {
                 </View>
             )
         } else {
-            modalHeading = 'Choose a similar meal';
-            modalContentSegment = (
-                <Text>{this.props.modalContent.base.name}</Text>
-            )
+            modalHeading = SIMILAR_MEAL;
+            if (this.props.modalContent.variants.length) {
+                modalContentSegment = this.props.modalContent.variants.map((variant, index) => {
+                    return (
+                        <Text key={index}>{variant.name}</Text>
+                    )
+                })
+            }
         }
         return (
             <View>

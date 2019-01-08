@@ -54,12 +54,13 @@ export const userAuthentication = (userData, authMode) => {
                         let user = null;
                         for (let key in usersResponse) {
                             if (usersResponse[key].email === userData.email) {
-                                console.log('users response is ---', usersResponse);
                                 user = usersResponse[key];
                                 user.userId = key;
+                                navigateToHome(parsedResponse, user, dispatch);
+                                break;
                             }
                         }
-                        navigateToHome(parsedResponse, user, dispatch);
+                        
                     })
                 }
             }
