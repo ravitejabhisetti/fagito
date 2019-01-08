@@ -7,10 +7,17 @@ const STYLES = StyleSheet.create({
     },
     modalHeader: {
         minHeight: 56,
-        padding: 8,
+        padding: 10,
         flexDirection: style.FAGITO_ROW,
         alignItems: style.FAGITO_CENTER,
-        justifyContent: style.FAGITO_SPACE_BETWEEN
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        borderColor: '#b2b2b2',
+        borderBottomWidth: 1,
+        shadowOffset: { width: 1, height: 1 },
+        shadowColor: 'black',
+        shadowOpacity: 0.4,
+        elevation: 3,
+        zIndex: 999,
     },
     modalHeaderOrdersBackground: {
         backgroundColor: style.FAGITO_BUTTON_COLOR
@@ -30,10 +37,11 @@ const STYLES = StyleSheet.create({
         color: style.FAGITO_WHITE_COLOR
     },
     modalTextHeaderGreyColor: {
-        color: '#222'
+        color: '#424242'
     },
     modalHeading: {
-        fontSize: 20
+        fontSize: 18,
+        paddingTop: 6
     },
     modalCloseText: {
         paddingTop: 6,
