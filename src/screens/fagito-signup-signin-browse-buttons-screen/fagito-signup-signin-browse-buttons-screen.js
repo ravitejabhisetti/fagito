@@ -8,6 +8,7 @@ import {
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
 import { autoSignIn } from '../../store/actions/actions';
+import * as style from '../../common/fagito-style-constants';
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
     static navigationOptions = { header: null };
@@ -29,13 +30,13 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
                 <View style={STYLES.buttonsContainer}>
                     <Text style={STYLES.fagitoLogoMessage}>{FAGITO_LOGO_MESSAGE}</Text>
                     <View style={STYLES.buttonsSection}>
-                        <FagitoButton buttonTitle={FAGITO_BROWSE} />
+                        <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} buttonTitle={FAGITO_BROWSE} />
                         <View style={STYLES.signupSigninBtnsSection}>
                             <View style={STYLES.button}>
-                                <FagitoButton onButtonClick={() => this.buttonClickHandler(FAGITO_SIGNUP_SCREEN)} buttonTitle={FAGITO_SIGNUP} />
+                                <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={() => this.buttonClickHandler(FAGITO_SIGNUP_SCREEN)} buttonTitle={FAGITO_SIGNUP} />
                             </View>
                             <View style={STYLES.button}>
-                                <FagitoButton onButtonClick={() => this.buttonClickHandler(FAGITO_SIGNIN_SCREEN)} buttonTitle={FAGITO_SIGNIN} />
+                                <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={() => this.buttonClickHandler(FAGITO_SIGNIN_SCREEN)} buttonTitle={FAGITO_SIGNIN} />
                             </View>
                         </View>
                     </View>

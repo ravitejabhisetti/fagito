@@ -9,6 +9,7 @@ import {
     FAGITO_FIELD_NAME_MOBILE_NUMBER
 } from '../../common/fagito-constants';
 import validate from '../../utility/fagito-form-validations';
+import * as style from '../../common/fagito-style-constants';
 
 const FagitoFormComponent = (props) => {
 
@@ -54,7 +55,7 @@ const FagitoFormComponent = (props) => {
             {scrollViewItems}
             {termsText}
             <View style={STYLES.formButton}>
-                <FagitoButton onButtonClick={handleSubmit((values) => handleFormButtonClick(values))} buttonTitle={props.buttonTitle} />
+                <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={handleSubmit((values) => handleFormButtonClick(values))} buttonTitle={props.buttonTitle} />
             </View>
             {resetPasswordText}
         </ScrollView>

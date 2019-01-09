@@ -12,7 +12,7 @@ class FagitoSelectedProducts extends Component {
             let currentDate = new Date().getTime();
             let currentMonth = new Date(currentDate).getMonth();
             selectedProducts = props.selectedProducts.map((selectedProduct, index) => {
-                if (props.selectedDate === selectedProduct.selectedDate && currentMonth === selectedProduct.monthOfSelectedDate) {
+                if (props.selectedDate === selectedProduct.selectedDate && selectedProduct.monthOfSelectedDate >= currentMonth) {
                     return (
                         <FagitoSelectedProduct handleSelectedProduct={() => props.handleSelectedProduct(selectedProduct, index)}
                             key={index} product={selectedProduct}></FagitoSelectedProduct>

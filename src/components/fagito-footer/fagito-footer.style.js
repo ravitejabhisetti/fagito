@@ -3,7 +3,7 @@ import * as style from '../../common/fagito-style-constants';
 
 const STYLES = StyleSheet.create({
     footerSegment: {
-        height: 45,
+        minHeight: 45,
         backgroundColor: style.FAGITO_BUTTON_COLOR,
         paddingLeft: 16,
         justifyContent: style.FAGITO_FLEX_START,
@@ -13,7 +13,19 @@ const STYLES = StyleSheet.create({
     footerText: {
         color: style.FAGITO_WHITE_COLOR,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
-        fontSize: 14
+        fontSize: 14,
+        flexWrap: style.FAGITO_WRAP,
+    },
+    costsSegment: {
+        flex: 1,
+        flexDirection: style.FAGITO_ROW,
+        alignItems: style.FAGITO_CENTER,
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        marginRight: 5
+    },
+    paymentText: {
+        flex:1,
+        paddingRight: 3
     }
 })
 

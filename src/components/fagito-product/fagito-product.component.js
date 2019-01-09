@@ -5,6 +5,7 @@ import { FagitoButton } from '../fagito-components';
 import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
 import { addSelectedProduct, updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
+import * as style from '../../common/fagito-style-constants';
 
 class FagitoProduct extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class FagitoProduct extends Component {
         } else {
             addButton = (
                 <FagitoButton
+                    borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR}
                     onButtonClick={() => this.handleProduct(this.props.product, this.props.timing.timingSelected)}
                     buttonTitle={ADD_BUTTON_TITLE}></FagitoButton>
             )

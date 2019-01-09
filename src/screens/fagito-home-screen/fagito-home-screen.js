@@ -73,7 +73,7 @@ class FagitoHomeScreen extends Component {
             }
         })
         this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected,
-            this.props.selectedDate, false, this.state.productIndex);
+            this.props.selectedDate, null, false, this.state.productIndex);
     }
     render() {
         let fullModal = null;
@@ -178,7 +178,7 @@ class FagitoHomeScreen extends Component {
                         </View>
                     </ScrollView>
                     {fullModal}
-                    <FagitoFooterComponent footerText={FOOTER_MESSAGE}></FagitoFooterComponent>
+                    <FagitoFooterComponent productsLength={this.props.productsLength} footerText={FOOTER_MESSAGE}></FagitoFooterComponent>
                 </View>
             </View>
         )
