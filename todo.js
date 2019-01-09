@@ -15,4 +15,5 @@
  *  in reset password on click of reset password show the necessary message in the alert
  *  add ripple effect for the buttons
  *  ask about the state in the component and store(take example of selected products of home component)
+ *  check how to style the variants and radio in full modal (important concept)
  */

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight } from 'react-native';
 import { STYLES } from './fagito-modal.style';
 import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL } from '../../common/fagito-constants';
+import * as style from '../../common/fagito-style-constants';
+import RadioForm from 'react-native-simple-radio-button';
 
 class FagitoModalComponent extends Component {
     constructor(props) {
@@ -12,6 +14,16 @@ class FagitoModalComponent extends Component {
     }
     toggleModal = () => {
         this.props.hideModal();
+    }
+    componentWillMount() {
+        if (!this.props.modalContent.type) {
+            this.props.modalContent.variants.map((variant, variantIndex) => {
+                variant.label = variant.name + ' - Rs. ' + variant.price;
+            });
+        }
+    }
+    handleVariant = (value, index) => {
+
     }
     render() {
         let modalContentSegment = null;
@@ -28,11 +40,20 @@ class FagitoModalComponent extends Component {
         } else {
             modalHeading = SIMILAR_MEAL;
             if (this.props.modalContent.variants.length) {
-                modalContentSegment = this.props.modalContent.variants.map((variant, index) => {
-                    return (
-                        <Text key={index}>{variant.name}</Text>
-                    )
-                })
+                modalContentSegment = (
+                    <RadioForm
+                        initial={null}
+                        radioStyle={STYLES.radioButton}
+                        onPress={(value, index) => this.handleVariant(value, index)}
+                        buttonOuterSize={16}
+                        buttonSize={6}
+                        selectedButtonColor={style.FAGITO_BUTTON_COLOR}
+                        buttonColor={style.RADIO_OPTION_COLOR}
+                        selectedLabelColor={style.FAGITO_BUTTON_COLOR}
+                        labelStyle={STYLES.radioOptionLabel}
+                        radio_props={this.props.modalContent.variants}>
+                    </RadioForm>
+                )
             }
         }
         return (

@@ -56,7 +56,24 @@ const STYLES = StyleSheet.create({
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         fontSize: 22,
         color: style.FAGITO_BUTTON_COLOR
-    }
+    },
+    radioOptionLabel: {
+        fontSize: 16,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        paddingRight: 4,
+        marginRight: 4
+    },
+    radioButton: {
+        paddingBottom: 15,
+        paddingTop: 15,
+        alignItems: style.FAGITO_CENTER,
+        paddingRight: 6,
+        paddingLeft: 6,
+        borderBottomWidth: 1,
+        borderBottomColor: style.DROPDOWN_BORDER_BOTTOM_COLOR,
+        marginLeft: 2,
+        marginRight: 2
+    },
 });
 
 export { STYLES };

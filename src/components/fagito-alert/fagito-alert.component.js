@@ -6,7 +6,7 @@ import validate from '../../utility/fagito-error-messages';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import { fagitoHideAlert, updateFilter, getProductsOfDate } from '../../store/actions/actions';
-import RadioForm, { RadioButton, RadioButtonLabel, RadioButtonInput } from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 import { LOCATION_FILTER } from '../../common/fagito-constants';
 
 class FagitoAlert extends Component {
