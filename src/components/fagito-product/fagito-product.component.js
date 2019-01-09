@@ -12,7 +12,7 @@ class FagitoProduct extends Component {
         this.state = { showDefault: true, error: false };
     }
     handleProduct = (product, timingSelected) => {
-        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, true, null);
+        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, true, null);
     }
     render() {
         let productVariants = null;
@@ -58,15 +58,15 @@ class FagitoProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addProduct: (product, timingSelected, dateSelected) => dispatch(addSelectedProduct(product, timingSelected, dateSelected)),
-        updatedProductsOfUser: (product, timingSelected, dateSelected, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, update, index))
+        updatedProductsOfUser: (product, timingSelected, dateSelected, month, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, update, index))
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         timing: state.deliveryTimingAndDates.timing,
-        selectedDate: state.deliveryTimingAndDates.selectedDate
+        selectedDate: state.deliveryTimingAndDates.selectedDate,
+        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth
     }
 }
 

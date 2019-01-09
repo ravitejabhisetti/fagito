@@ -182,8 +182,9 @@ const formDatestoDeliver = () => {
     let currentDay = new Date(currentDate).getDay();
     let datesToDeliverList = [];
     for (let dateEntity = 0; dateEntity < 7; dateEntity++) {
-        let dateObject = { date: '', day: '', dayLabel: '', dateActive: false };
+        let dateObject = { date: '', day: '', dayLabel: '', month: '', dateActive: false };
         let nextDay = new Date(currentDate + ((dateEntity + 1) * 86400000));
+        dateObject.month = nextDay.getMonth();
         dateObject.date = nextDay.getDate();
         dateObject.day = DAYS[nextDay.getDay()];
         dateObject.dayLabel = DAYS_LABEL[nextDay.getDay()];
@@ -195,6 +196,7 @@ const formDatestoDeliver = () => {
         datesToDeliverList[0].day = TOMORROW;
     }
     datesToDeliverList[0].dateActive = true;
+    console.log('dates to---', datesToDeliverList);
     return {
         type: types.FAGITO_LOAD_DELIVERY_DATES,
         deliveryDates: datesToDeliverList
