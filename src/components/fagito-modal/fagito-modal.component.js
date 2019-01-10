@@ -39,6 +39,7 @@ class FagitoModalComponent extends Component {
         })
     }
     handleMeal = () => {
+        this.toggleModal();
         this.props.updatedProductsOfUser(this.props.modalContent,
             this.props.timing.timingSelected, this.props.selectedDate,
             this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
@@ -64,7 +65,7 @@ class FagitoModalComponent extends Component {
                         initial={null}
                         radioStyle={STYLES.radioButton}
                         onPress={(value, index) => this.handleVariant(value, index)}
-                        buttonOuterSize={14}
+                        buttonOuterSize={16}
                         buttonSize={6}
                         selectedButtonColor={style.FAGITO_BUTTON_COLOR}
                         buttonColor={style.RADIO_OPTION_COLOR}
