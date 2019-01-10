@@ -11,7 +11,7 @@ class FagitoSelectedProduct extends Component {
         let chefName = null;
         let productName = null;
         let basePrice = null;
-        if (!this.props.product.variantIndex) {
+        if (this.props.product.variantIndex === null) {
             chefName = this.props.product.base.kitchen.name;
             productName = this.props.product.base.name;
             basePrice = this.props.product.base.price;

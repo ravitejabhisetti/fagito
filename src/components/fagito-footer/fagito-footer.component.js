@@ -60,14 +60,12 @@ class FagitoFooterComponent extends Component {
                         buttonTitle={ADD_MEAL}></FagitoButton>
                 )
             } else {
-                console.log('in else chec---', this.props);
                 addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleMeal}
                     borderColor={style.PAYMENT_BUTTON_BORDER}
                     backgroundColor={style.FAGITO_BUTTON_COLOR}
                     buttonTitle={ADD_MEAL}></FagitoButton>
                 )
             }
-            console.log('active check---', this.props.buttonInActive);
             footerContent = (
                 <View style={STYLES.costsSegment}>
                     <View style={STYLES.paymentText}>

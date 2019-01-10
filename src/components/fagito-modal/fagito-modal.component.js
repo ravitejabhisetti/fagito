@@ -39,9 +39,9 @@ class FagitoModalComponent extends Component {
         })
     }
     handleMeal = () => {
-        // this.props.updatedProductsOfUser(this.props.modalContent,
-        //     this.props.timing.timingSelected, this.props.selectedDate,
-        //     this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
+        this.props.updatedProductsOfUser(this.props.modalContent,
+            this.props.timing.timingSelected, this.props.selectedDate,
+            this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
     }
     render() {
         let modalContentSegment = null;
