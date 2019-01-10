@@ -34,12 +34,12 @@ export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
     }
 }
 
-export const updatedProductsOfUser = (product, timingSelected, dateSelected, month, update, index) => {
+export const updatedProductsOfUser = (product, timingSelected, dateSelected, month, variantIndex, update, index) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
             if (update) {
-                updateProductTimingAndDate(product, timingSelected, dateSelected, month);
+                updateProductTimingAndDate(product, timingSelected, dateSelected, month, variantIndex);
                 if (!parsedUserDetails.productsSelected) {
                     parsedUserDetails.productsSelected = [];
                     parsedUserDetails.productsSelected.push(product);
@@ -58,7 +58,7 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
                     if (update) {
-                        dispatch(addSelectedProduct(product, timingSelected, dateSelected, month));
+                        dispatch(addSelectedProduct(product, timingSelected, dateSelected, month, variantIndex));
                     } else {
                         dispatch(deleteSelectedProduct(index));
                     }
@@ -69,8 +69,8 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
     }
 }
 
-export const addSelectedProduct = (product, timingSelected, selectedDate, month) => {
-    updateProductTimingAndDate(product, timingSelected, selectedDate, month);
+export const addSelectedProduct = (product, timingSelected, selectedDate, month, variantIndex) => {
+    updateProductTimingAndDate(product, timingSelected, selectedDate, month, variantIndex);
     return {
         type: FAGITO_ADD_SELECTED_PRODUCT,
         product: product
@@ -87,10 +87,11 @@ export const updateUserSelectedProducts = (userDetails) => {
     }
 }
 
-const updateProductTimingAndDate = (product, timing, date, month) => {
+const updateProductTimingAndDate = (product, timing, date, month, variantIndex) => {
     product.timingSelected = timing;
     product.selectedDate = date;
     product.monthOfSelectedDate = month;
+    product.variantIndex = variantIndex;
 }
 
 export const deleteSelectedProduct = (productIndex) => {

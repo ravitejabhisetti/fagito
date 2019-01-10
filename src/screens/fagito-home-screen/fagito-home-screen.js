@@ -73,7 +73,7 @@ class FagitoHomeScreen extends Component {
             }
         })
         this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected,
-            this.props.selectedDate, null, false, this.state.productIndex);
+            this.props.selectedDate, null, null, false, this.state.productIndex);
     }
     render() {
         let fullModal = null;
@@ -189,7 +189,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming)),
         showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected)),
-        updatedProductsOfUser: (product, timingSelected, dateSelected, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, update, index)),
+        updatedProductsOfUser: (product, timingSelected, dateSelected,month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
         deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex))
     }
 }

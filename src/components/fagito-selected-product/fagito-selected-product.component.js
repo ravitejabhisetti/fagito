@@ -8,6 +8,18 @@ import { INSUFFICIENT_BALANCE } from '../../common/fagito-constants';
 class FagitoSelectedProduct extends Component {
     render() {
         let productColor = this.props.product.timingSelected === 'lunch' ? STYLES.lunchProductSelectedBackground : STYLES.dinnerProductSelectedBackground;
+        let chefName = null;
+        let productName = null;
+        let basePrice = null;
+        if (!this.props.product.variantIndex) {
+            chefName = this.props.product.base.kitchen.name;
+            productName = this.props.product.base.name;
+            basePrice = this.props.product.base.price;
+        } else {
+            chefName = this.props.product.variants[this.props.product.variantIndex].kitchen.name;
+            productName = this.props.product.variants[this.props.product.variantIndex].name;
+            basePrice = this.props.product.variants[this.props.product.variantIndex].price;
+        }
         return (
             <TouchableHighlight underlayColor={this.props.product.timingSelected === 'lunch' ? style.LUNCH_PRODUCT : style.DINNER_PRODUCT}
                 onPress={this.props.handleSelectedProduct}
@@ -21,9 +33,9 @@ class FagitoSelectedProduct extends Component {
                             <Icon color={style.TIMING_SELECTED_COLOR} name="md-more" size={15} />
                         </View>
                     </View>
-                    <Text style={STYLES.selectedProductChef}>{this.props.product.base.kitchen.name}</Text>
-                    <Text style={STYLES.selectedProductName}>{this.props.product.base.name}</Text>
-                    <Text style={STYLES.selectedProductPrice}>Rs {this.props.product.base.price} + Rs 5 GST</Text>
+                    <Text style={STYLES.selectedProductChef}>{chefName}</Text>
+                    <Text style={STYLES.selectedProductName}>{productName}</Text>
+                    <Text style={STYLES.selectedProductPrice}>Rs {basePrice} + Rs 5 GST</Text>
                     <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text>
                 </View>
             </TouchableHighlight>

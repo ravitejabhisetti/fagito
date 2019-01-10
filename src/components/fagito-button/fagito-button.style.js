@@ -6,7 +6,8 @@ const STYLES = StyleSheet.create({
         borderWidth: 1,
         borderStyle: style.FAGITO_SOLID_BORDER_STYLE,
         padding: 4,
-        alignItems: style.FAGITO_CENTER
+        alignItems: style.FAGITO_CENTER,
+        borderRadius: 2,
     },
     buttonContainer: {
         flex: 1

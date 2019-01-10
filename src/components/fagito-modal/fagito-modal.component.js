@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
 import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
+import { FagitoFooterComponent } from '../../components/fagito-components';
+import { updatedProductsOfUser } from '../../store/actions/actions';
+import { connect } from 'react-redux';
 
 class FagitoModalComponent extends Component {
     constructor(props) {
@@ -11,6 +14,9 @@ class FagitoModalComponent extends Component {
     }
     state = {
         modalVisible: true,
+        modalSelectedProduct: {},
+        variantIndex: null,
+        buttonInActive: true
     }
     toggleModal = () => {
         this.props.hideModal();
@@ -23,11 +29,24 @@ class FagitoModalComponent extends Component {
         }
     }
     handleVariant = (value, index) => {
-
+        this.setState((state) => {
+            return {
+                ...state,
+                variantIndex: index,
+                modalSelectedProduct: this.props.modalContent.variants[index],
+                buttonInActive: false
+            }
+        })
+    }
+    handleMeal = () => {
+        // this.props.updatedProductsOfUser(this.props.modalContent,
+        //     this.props.timing.timingSelected, this.props.selectedDate,
+        //     this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
     }
     render() {
         let modalContentSegment = null;
         let modalHeading = null;
+        let modalFooterSegment = null;
         this.state.modalVisible = this.props.showModal;
         let headerTextColor = this.props.modalContent.type === ORDERS ? STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
         if (this.props.modalContent.type === ORDERS) {
@@ -45,7 +64,7 @@ class FagitoModalComponent extends Component {
                         initial={null}
                         radioStyle={STYLES.radioButton}
                         onPress={(value, index) => this.handleVariant(value, index)}
-                        buttonOuterSize={16}
+                        buttonOuterSize={14}
                         buttonSize={6}
                         selectedButtonColor={style.FAGITO_BUTTON_COLOR}
                         buttonColor={style.RADIO_OPTION_COLOR}
@@ -53,6 +72,9 @@ class FagitoModalComponent extends Component {
                         labelStyle={STYLES.radioOptionLabel}
                         radio_props={this.props.modalContent.variants}>
                     </RadioForm>
+                )
+                modalFooterSegment = (
+                    <FagitoFooterComponent buttonInActive={this.state.buttonInActive} handleMeal={() => this.handleMeal()} selectedProduct={this.state.modalSelectedProduct} modalFooter={true}></FagitoFooterComponent>
                 )
             }
         }
@@ -71,9 +93,12 @@ class FagitoModalComponent extends Component {
                                 <Text style={[STYLES.modalText, STYLES.modalCloseText, headerTextColor]}>CLOSE</Text>
                             </TouchableHighlight>
                         </View>
-                        <View style={STYLES.modalContent}>
-                            {modalContentSegment}
-                        </View>
+                        <ScrollView>
+                            <View style={STYLES.modalContent}>
+                                {modalContentSegment}
+                            </View>
+                        </ScrollView>
+                        {modalFooterSegment}
                     </View>
                 </Modal>
             </View>
@@ -81,4 +106,18 @@ class FagitoModalComponent extends Component {
     }
 }
 
-export default FagitoModalComponent;
+const mapStateToProps = (state) => {
+    return {
+        timing: state.deliveryTimingAndDates.timing,
+        selectedDate: state.deliveryTimingAndDates.selectedDate,
+        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth
+    }
+}
+
+const mapDispatchToprops = (dispatch) => {
+    return {
+        updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToprops)(FagitoModalComponent);
