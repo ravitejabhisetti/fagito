@@ -16,6 +16,8 @@ import {
 import { updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, deleteSelectedProduct } from '../../store/actions/actions';
 import _ from 'lodash';
 
+export let scrollViewRef;
+
 class FagitoHomeScreen extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +33,7 @@ class FagitoHomeScreen extends Component {
     componentDidMount() {
         // this.props.showLocationDropdown(FILTERS_CONTENT.locationFilter, this.props.filters.locationFilterIndex);
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
+        scrollViewRef = this.scroller;
     }
     componentWillUnmount() {
         BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
@@ -73,8 +76,11 @@ class FagitoHomeScreen extends Component {
             }
         })
         this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected,
-            this.props.selectedDate, null, null, false, this.state.productIndex);
+            this.props.selectedDate, null, 'null', false, this.state.productIndex);
     }
+    scrollToTop = () => {
+        this.scroller.scrollTo({ x: 0, y: 0 });
+    };
     render() {
         let fullModal = null;
         let noLocationMessage = null;
@@ -86,7 +92,7 @@ class FagitoHomeScreen extends Component {
                 fullModalContent = this.state.modalContent;
             }
             fullModal = (
-                <FagitoModalComponent modalContent={fullModalContent} hideModal={() => this.handlefullModal(false)}
+                <FagitoModalComponent modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false)}
                     showModal={this.state.showFullModal}>
                 </FagitoModalComponent>
             );
@@ -123,7 +129,7 @@ class FagitoHomeScreen extends Component {
                 </Header>
                 <View style={STYLES.homeViewContent}>
                     <FagitoDatesWrapperComponent selectedProducts={this.props.selectedProducts}></FagitoDatesWrapperComponent>
-                    <ScrollView>
+                    <ScrollView ref={(scroller) => { this.scroller = scroller }}>
                         <View style={STYLES.homeSegment}>
                             <View style={STYLES.dietCuisineFiltersSegment}>
                                 <View style={[STYLES.filterSegment, STYLES.dietFilterSegment]}>
@@ -189,7 +195,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming)),
         showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected)),
-        updatedProductsOfUser: (product, timingSelected, dateSelected,month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
+        updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
         deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex))
     }
 }

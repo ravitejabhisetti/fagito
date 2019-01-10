@@ -6,6 +6,7 @@ import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
 import { addSelectedProduct, updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 import * as style from '../../common/fagito-style-constants';
+import { scrollViewRef } from '../../screens/fagito-home-screen/fagito-home-screen';
 
 class FagitoProduct extends Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class FagitoProduct extends Component {
         this.state = { showDefault: true, error: false };
     }
     handleProduct = (product, timingSelected) => {
-        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, null, true, null);
+        scrollViewRef.scrollTo({ x: 0, y: 0 });
+        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, 'null', true, null);
     }
     render() {
         let productVariants = null;

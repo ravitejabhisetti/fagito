@@ -11,14 +11,15 @@ class FagitoSelectedProduct extends Component {
         let chefName = null;
         let productName = null;
         let basePrice = null;
-        if (this.props.product.variantIndex === null) {
+        if (this.props.product.variantIndex === 'null') {
             chefName = this.props.product.base.kitchen.name;
             productName = this.props.product.base.name;
             basePrice = this.props.product.base.price;
         } else {
-            chefName = this.props.product.variants[this.props.product.variantIndex].kitchen.name;
-            productName = this.props.product.variants[this.props.product.variantIndex].name;
-            basePrice = this.props.product.variants[this.props.product.variantIndex].price;
+            let index = this.props.product.variantIndex;
+            chefName = this.props.product.variants[index].kitchen.name;
+            productName = this.props.product.variants[index].name;
+            basePrice = this.props.product.variants[index].price;
         }
         return (
             <TouchableHighlight underlayColor={this.props.product.timingSelected === 'lunch' ? style.LUNCH_PRODUCT : style.DINNER_PRODUCT}

@@ -40,6 +40,7 @@ class FagitoModalComponent extends Component {
     }
     handleMeal = () => {
         this.toggleModal();
+        this.props.scrollUp();
         this.props.updatedProductsOfUser(this.props.modalContent,
             this.props.timing.timingSelected, this.props.selectedDate,
             this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
