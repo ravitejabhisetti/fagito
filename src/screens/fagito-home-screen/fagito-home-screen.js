@@ -3,9 +3,9 @@ import { View, Text, BackHandler, Button, TouchableOpacity, ScrollView, Image, A
 import { connect } from 'react-redux';
 import { Header, Left, right } from 'native-base';
 import {
-    ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON,
+    ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON, VARIANTS,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS, ORDERS
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS, ORDERS, ADDONS
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -85,14 +85,17 @@ class FagitoHomeScreen extends Component {
         let fullModal = null;
         let noLocationMessage = null;
         let fullModalContent = null;
+        let modalType = null;
         if (this.state.showFullModal) {
             if (this.state.modalContent === ORDERS) {
                 fullModalContent = ORDERS_MODAL;
+                modalType = ORDERS;
             } else {
                 fullModalContent = this.state.modalContent;
+                modalType = VARIANTS;
             }
             fullModal = (
-                <FagitoModalComponent modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false)}
+                <FagitoModalComponent type={modalType} modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false)}
                     showModal={this.state.showFullModal}>
                 </FagitoModalComponent>
             );

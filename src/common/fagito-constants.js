@@ -152,3 +152,4 @@ export const MAKE_PAYMENT = 'MAKE PAYMENT';
 export const PAYMENT_LABEL_1 = 'Payment required for your next meal: Rs ';
 export const PAYMENT_LABEL_2 = ' + Rs 5 GST)';
 export const ADD_MEAL = 'ADD MEAL';
+export const VARIANTS = 'VARIANTS';
