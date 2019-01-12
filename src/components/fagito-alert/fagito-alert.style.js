@@ -77,6 +77,10 @@ const STYLES = StyleSheet.create({
     radioButton: {
         paddingBottom: 4,
         paddingTop: 4
+    },
+    errorMessageSection: {
+        paddingTop: 20,
+        paddingLeft: 20
     }
 })
 
