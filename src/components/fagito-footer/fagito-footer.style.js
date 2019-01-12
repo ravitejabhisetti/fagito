@@ -26,6 +26,9 @@ const STYLES = StyleSheet.create({
     paymentText: {
         flex:1,
         paddingRight: 3
+    },
+    addonMessage: {
+        fontWeight: '700'
     }
 })
 

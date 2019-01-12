@@ -4,7 +4,7 @@ import { STYLES } from './fagito-footer.style';
 import { connect } from 'react-redux';
 import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
-import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL } from '../../common/fagito-constants';
+import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2 } from '../../common/fagito-constants';
 import _ from 'lodash';
 
 class FagitoFooterComponent extends Component {
@@ -47,23 +47,34 @@ class FagitoFooterComponent extends Component {
         } else {
             let mealPriceText = null;
             let addMealButton = null;
-            if (!_.isEmpty(this.props.selectedProduct)) {
-                mealPriceText = (
-                    <Text style={STYLES.footerText}>Rs {this.props.selectedProduct.price} + 5% GST</Text>
-                )
-            }
-            if (this.props.buttonInActive) {
-                addMealButton = (
-                    <FagitoButton buttonInActive={this.props.buttonInActive} onButtonClick={() => { return; }}
+            if (!this.props.modalAddon) {
+                if (!_.isEmpty(this.props.selectedProduct)) {
+                    mealPriceText = (
+                        <Text style={STYLES.footerText}>Rs {this.props.selectedProduct.price} + 5% GST</Text>
+                    )
+                }
+                if (this.props.buttonInActive) {
+                    addMealButton = (
+                        <FagitoButton buttonInActive={this.props.buttonInActive} onButtonClick={() => { return; }}
+                            borderColor={style.PAYMENT_BUTTON_BORDER}
+                            backgroundColor={style.FAGITO_BUTTON_COLOR}
+                            buttonTitle={ADD_MEAL}></FagitoButton>
+                    )
+                } else {
+                    addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleMeal}
                         borderColor={style.PAYMENT_BUTTON_BORDER}
                         backgroundColor={style.FAGITO_BUTTON_COLOR}
                         buttonTitle={ADD_MEAL}></FagitoButton>
-                )
+                    )
+                }
             } else {
-                addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleMeal}
+                mealPriceText = (
+                    <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} 3 {ADDON_MESSAGE_2}</Text>
+                )
+                addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleAddon}
                     borderColor={style.PAYMENT_BUTTON_BORDER}
                     backgroundColor={style.FAGITO_BUTTON_COLOR}
-                    buttonTitle={ADD_MEAL}></FagitoButton>
+                    buttonTitle={SAVE_ADDONS}></FagitoButton>
                 )
             }
             footerContent = (

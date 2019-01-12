@@ -154,3 +154,6 @@ export const PAYMENT_LABEL_2 = ' + Rs 5 GST)';
 export const ADD_MEAL = 'ADD MEAL';
 export const VARIANTS = 'VARIANTS';
 export const ADDONS_MODAL = 'ADDONS';
+export const SAVE_ADDONS = 'SAVE ADDONS';
+export const ADDON_MESSAGE_1 = 'You can add upto';
+export const ADDON_MESSAGE_2 = 'more addons to your lunch';

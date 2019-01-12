@@ -16,7 +16,8 @@ class FagitoModalComponent extends Component {
         modalVisible: true,
         modalSelectedProduct: {},
         variantIndex: null,
-        buttonInActive: true
+        buttonInActive: true,
+        selectedProductAddons: []
     }
     toggleModal = () => {
         this.props.hideModal();
@@ -87,6 +88,9 @@ class FagitoModalComponent extends Component {
                 <View style={STYLES.modalContentSegment}>
                     <Text style={STYLES.modalMessageText}>Lunch Addons</Text>
                 </View>
+            )
+            modalFooterSegment = (
+                <FagitoFooterComponent modalAddon={true} selectedProductAddons={this.state.selectedProductAddons} modalFooter={true}></FagitoFooterComponent>
             )
         }
         return (
