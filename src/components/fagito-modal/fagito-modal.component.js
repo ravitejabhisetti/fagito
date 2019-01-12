@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
 import { FagitoFooterComponent } from '../../components/fagito-components';
@@ -50,7 +50,7 @@ class FagitoModalComponent extends Component {
         let modalHeading = null;
         let modalFooterSegment = null;
         this.state.modalVisible = this.props.showModal;
-        let headerTextColor = this.props.type === ORDERS ? STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
+        let headerTextColor = (this.props.type === ORDERS || this.props.type === ADDONS) ? STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
         if (this.props.type === ORDERS) {
             modalHeading = this.props.modalContent.modalHeader;
             modalContentSegment = (
@@ -81,6 +81,14 @@ class FagitoModalComponent extends Component {
                 )
             }
         }
+        if (this.props.type === ADDONS) {
+            modalHeading = 'lunch addons';
+            modalContentSegment = (
+                <View style={STYLES.modalContentSegment}>
+                    <Text style={STYLES.modalMessageText}>Lunch Addons</Text>
+                </View>
+            )
+        }
         return (
             <View>
                 <Modal animationType={"fade"} transparent={false}
@@ -88,7 +96,7 @@ class FagitoModalComponent extends Component {
                     onRequestClose={this.toggleModal}>
                     <View style={STYLES.modal}>
                         <View style={[STYLES.modalHeader,
-                        this.props.type === ORDERS ? STYLES.modalHeaderOrdersBackground : STYLES.modalContent]}>
+                        (this.props.type === ORDERS || this.props.type === ADDONS) ? STYLES.modalHeaderOrdersBackground : STYLES.modalContent]}>
                             <View>
                                 <Text style={[STYLES.modalText, STYLES.modalHeading, headerTextColor]}>{modalHeading}</Text>
                             </View>

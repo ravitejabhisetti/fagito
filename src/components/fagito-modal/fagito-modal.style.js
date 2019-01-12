@@ -3,7 +3,8 @@ import * as style from '../../common/fagito-style-constants';
 
 const STYLES = StyleSheet.create({
     modal: {
-        flex: 1
+        flex: 1,
+        zIndex: 999
     },
     modalHeader: {
         minHeight: 56,

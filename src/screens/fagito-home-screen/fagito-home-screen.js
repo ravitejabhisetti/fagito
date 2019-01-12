@@ -27,7 +27,8 @@ class FagitoHomeScreen extends Component {
         showBottomModal: false,
         selectedProduct: null,
         productIndex: null,
-        modalContent: null
+        modalContent: null,
+        modalType: null,
     }
 
     componentDidMount() {
@@ -48,16 +49,22 @@ class FagitoHomeScreen extends Component {
     shouldComponentUpdate(nextProps) {
         return true;
     }
-    handlefullModal = (showModal, modalContent) => {
-        console.log('modal product is---', modalContent);
+    handlefullModal = (showModal, modalContent, modalType) => {
+        let self = this;
         this.setState((state) => {
             return {
                 ...state,
                 showFullModal: showModal,
-                modalContent: modalContent
+                modalContent: modalContent,
+                modalType: modalType,
+                showBottomModal: false
             }
         })
+        if (modalType === ADDONS) {
+            setTimeout(function () { self.setState((state) => { return { ...state, showFullModal: true } }) }, 1500);
+        }
     }
+    
     handleSelectedProduct = (product, modalVisible, index) => {
         this.setState((state) => {
             return {
@@ -85,17 +92,15 @@ class FagitoHomeScreen extends Component {
         let fullModal = null;
         let noLocationMessage = null;
         let fullModalContent = null;
-        let modalType = null;
         if (this.state.showFullModal) {
-            if (this.state.modalContent === ORDERS) {
+            if (this.state.modalType === ORDERS) {
                 fullModalContent = ORDERS_MODAL;
-                modalType = ORDERS;
-            } else {
+            }
+            if (this.state.modalType === VARIANTS) {
                 fullModalContent = this.state.modalContent;
-                modalType = VARIANTS;
             }
             fullModal = (
-                <FagitoModalComponent type={modalType} modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false)}
+                <FagitoModalComponent type={this.state.modalType} modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false, null, null)}
                     showModal={this.state.showFullModal}>
                 </FagitoModalComponent>
             );
@@ -126,7 +131,7 @@ class FagitoHomeScreen extends Component {
                             <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.props.deliveryTiming.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
                         <View>
-                            <Icon onPress={() => this.handlefullModal(true, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
+                            <Icon onPress={() => this.handlefullModal(true, ORDERS, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
                         </View>
                     </View>
                 </Header>
@@ -173,13 +178,14 @@ class FagitoHomeScreen extends Component {
                                 removeProduct={this.removeSelectedProduct}
                                 selectedProduct={this.state.selectedProduct}
                                 selectedDay={this.props.selectedDay}
+                                showAddonsModal={() => this.handlefullModal(false, this.state.selectedProduct, ADDONS)}
                                 hideBottomModal={(modalVisible) => this.handleSelectedProduct(null, modalVisible, null)}
                                 showModal={this.state.showBottomModal}>
                             </FagitoBottomModal>
                             {noLocationMessage}
                             <View style={STYLES.chefsList}>
                                 <FagitoChefList
-                                    updateModalProduct={(product) => this.handlefullModal(true, product)}
+                                    updateModalProduct={(product) => this.handlefullModal(true, product, VARIANTS)}
                                     dietFilter={this.props.dietFilter}
                                     cuisineFilter={this.props.cuisineFilter}
                                     productsList={this.props.productsList}></FagitoChefList>

@@ -8,6 +8,7 @@ class FagitoBottomModal extends Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         let timing = this.props.selectedProduct && this.props.selectedProduct.timingSelected;
         return (
@@ -23,7 +24,7 @@ class FagitoBottomModal extends Component {
                     <View style={STYLES.modalContent}>
                         <Text style={STYLES.bottomModalHeader}>{BOTTOM_MODAL_HEADER_SECTION_ONE}{timing}{BOTTOM_MODAL_HEADER_SECTION_TWO}{this.props.selectedDay}?</Text>
                         <TouchableOpacity onPress={() => this.props.removeProduct()} style={STYLES.modalAction}><Text style={STYLES.modalText}>{REMOVE_SELECTION}</Text></TouchableOpacity>
-                        <TouchableOpacity style={STYLES.modalAction}><Text style={STYLES.modalText}>{ADDONS}</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.showAddonsModal()} style={STYLES.modalAction}><Text style={STYLES.modalText}>{ADDONS}</Text></TouchableOpacity>
                         <TouchableOpacity onPress={() => this.props.hideBottomModal(false)} style={STYLES.modalAction}><Text style={STYLES.modalText}>Cancel</Text></TouchableOpacity>
                     </View>
                 </Modal>
