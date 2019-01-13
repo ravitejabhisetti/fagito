@@ -6,3 +6,4 @@ export {
     getProductsOfDate, updateProductsList, addSelectedProduct, deleteSelectedProduct,
     updatedProductsOfUser, updateUserSelectedProducts
 } from './fagito-products-action';
+export { addAddon, deleteAddon, resetAddons } from './fagito-addon-action';

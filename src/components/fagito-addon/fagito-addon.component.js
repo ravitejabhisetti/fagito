@@ -4,6 +4,8 @@ import { STYLES } from './fagito-addon.style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import * as style from '../../common/fagito-style-constants';
 import { PLUS, MINUS } from '../../common/fagito-constants';
+import { connect } from 'react-redux';
+import { addAddon, deleteAddon } from '../../store/actions/actions';
 
 class FagitoAddon extends Component {
     constructor(props) {
@@ -14,13 +16,14 @@ class FagitoAddon extends Component {
     }
     handleAddon = (action) => {
         this.setState((state) => {
-            let updatedCount = 0;
-            if (action === PLUS) {
+            let updatedCount = state.addonCount;
+            if (action === PLUS && state.addonCount < 3 && this.props.addonsCount < 3) {
                 updatedCount = state.addonCount + 1;
-            } else {
-                if (state.addonCount) {
-                    updatedCount = state.addonCount - 1;
-                }
+                this.props.addAddon(this.props.addon);
+            }
+            if (action === MINUS && state.addonCount && this.props.addonsCount) {
+                updatedCount = state.addonCount - 1;
+                this.props.deleteAddon(this.props.addon);
             }
             return {
                 ...state,
@@ -62,4 +65,17 @@ class FagitoAddon extends Component {
     }
 }
 
-export default FagitoAddon;
+const mapStateToProps = (state) => {
+    return {
+        addonsCount: state.addons.addonsCount
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addAddon: (addon) => dispatch(addAddon(addon)),
+        deleteAddon: (addon) => dispatch(deleteAddon(addon))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoAddon);

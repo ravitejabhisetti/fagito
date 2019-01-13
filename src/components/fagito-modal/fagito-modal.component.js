@@ -5,7 +5,7 @@ import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, AD
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
 import { FagitoFooterComponent, FagitoAddonsList } from '../../components/fagito-components';
-import { updatedProductsOfUser } from '../../store/actions/actions';
+import { updatedProductsOfUser, resetAddons } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 
 class FagitoModalComponent extends Component {
@@ -16,9 +16,7 @@ class FagitoModalComponent extends Component {
         modalVisible: true,
         modalSelectedProduct: {},
         variantIndex: null,
-        buttonInActive: true,
-        selectedProductAddons: [],
-        addonsSelected: 0
+        buttonInActive: true
     }
     toggleModal = () => {
         this.props.hideModal();
@@ -29,6 +27,7 @@ class FagitoModalComponent extends Component {
                 variant.label = variant.name + ' - Rs. ' + variant.price;
             });
         }
+        this.props.resetAddons();
     }
     handleVariant = (value, index) => {
         this.setState((state) => {
@@ -47,16 +46,7 @@ class FagitoModalComponent extends Component {
             this.props.timing.timingSelected, this.props.selectedDate,
             this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
     }
-    handleAddon = (addonIndex, segmentIndex) => {
-        console.log('in addon index check---', addonIndex);
-        console.log('segment index is---', segmentIndex);
-        // this.setState((state) => {
-        //     return {
-        //         ...state,
-        //         addonsSelected: state.addonsSelected + 1
-        //     }
-        // })
-    }
+
     render() {
         let modalContentSegment = null;
         let modalHeading = null;
@@ -98,17 +88,12 @@ class FagitoModalComponent extends Component {
             modalContentSegment = Object.keys(ADDONS_LIST).map((addonEntity, index) => {
                 return (
                     <View key={index}>
-                        <FagitoAddonsList handleAddon={(addonIndex) => this.handleAddon(addonIndex, index)} addonsSelected={this.state.addonsSelected} addonSectionName={addonEntity} addonsList={ADDONS_LIST[addonEntity]}></FagitoAddonsList>
+                        <FagitoAddonsList addonsCount={this.props.addonsCount} addonSectionName={addonEntity} addonsList={ADDONS_LIST[addonEntity]}></FagitoAddonsList>
                     </View>
                 )
             })
-            // modalContentSegment = (
-            //     <View style={STYLES.modalContentSegment}>
-            //         <Text style={STYLES.modalMessageText}>Lunch Addons</Text>
-            //     </View>
-            // )
             modalFooterSegment = (
-                <FagitoFooterComponent modalAddon={true} selectedProduct={this.props.modalContent} selectedProductAddons={this.state.selectedProductAddons} modalFooter={true}></FagitoFooterComponent>
+                <FagitoFooterComponent modalAddon={true} selectedProduct={this.props.modalContent} addonsSelected={this.props.addonsSelected} modalFooter={true}></FagitoFooterComponent>
             )
         }
         return (
@@ -143,13 +128,16 @@ const mapStateToProps = (state) => {
     return {
         timing: state.deliveryTimingAndDates.timing,
         selectedDate: state.deliveryTimingAndDates.selectedDate,
-        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth
+        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth,
+        addonsCount: state.addons.addonsCount,
+        addonsSelected: state.addons.addonsSelected
     }
 }
 
 const mapDispatchToprops = (dispatch) => {
     return {
-        updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index))
+        updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
+        resetAddons: () => dispatch(resetAddons())
     }
 }
 

@@ -6,6 +6,7 @@ import FagitoAuthenticationReducer from './reducers/fagito-authentication-reduce
 import FagitoAlertReducer from './reducers/fagito-alert-reducer';
 import FagitoDeliveryTimingAndDatesReducer from './reducers/fagito-delivery-timing-dates-reducer';
 import ProductsReducer from './reducers/fagito-products-reducer';
+import AddonsReducer from './reducers/fagito-addon-reducer';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers(
@@ -16,7 +17,8 @@ const rootReducer = combineReducers(
         fagitoAlert: FagitoAlertReducer,
         form: formReducer,
         deliveryTimingAndDates: FagitoDeliveryTimingAndDatesReducer,
-        products: ProductsReducer
+        products: ProductsReducer,
+        addons: AddonsReducer
     }
 )
 

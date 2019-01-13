@@ -7,16 +7,13 @@ class FagitoAddonsList extends Component {
     constructor(props) {
         super(props);
     }
-    handleAddon = (addonIndex) => {
-        console.log('in handle addon entity---');
-    }
+   
     render() {
         const { ...props } = this.props;
         let addonsList = null;
         addonsList = props.addonsList.map((addon, addonIndex) => {
-            console.log('addon details---', addon);
             return (
-                <FagitoAddon key={addonIndex} addonsSelected={props.addonsSelected} addonIndex={addonIndex} addon={addon}></FagitoAddon>
+                <FagitoAddon key={addonIndex} addonIndex={addonIndex} addon={addon}></FagitoAddon>
             )
         })
         return (
