@@ -15,6 +15,7 @@ const STYLES = StyleSheet.create({
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         fontSize: 14,
         flexWrap: style.FAGITO_WRAP,
+        fontWeight: '400'
     },
     costsSegment: {
         flex: 1,
@@ -28,6 +29,8 @@ const STYLES = StyleSheet.create({
         paddingRight: 3
     },
     addonMessage: {
+        color: style.FAGITO_WHITE_COLOR,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         fontWeight: '700'
     }
 })

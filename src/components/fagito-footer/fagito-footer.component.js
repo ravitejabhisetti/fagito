@@ -69,7 +69,10 @@ class FagitoFooterComponent extends Component {
                 }
             } else {
                 mealPriceText = (
-                    <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} 3 {ADDON_MESSAGE_2}</Text>
+                    <View>
+                        <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} 3 {ADDON_MESSAGE_2}</Text>
+                        <Text style={STYLES.addonMessage}>lunch:<Text style={STYLES.footerText}>check the inner text</Text></Text>
+                    </View>
                 )
                 addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleAddon}
                     borderColor={style.PAYMENT_BUTTON_BORDER}
