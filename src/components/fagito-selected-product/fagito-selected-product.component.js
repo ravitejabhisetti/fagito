@@ -3,7 +3,7 @@ import { View, Text, TouchableHighlight, TouchableWithoutFeedback } from 'react-
 import { STYLES } from './fagito-selected-product.style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as style from '../../common/fagito-style-constants';
-import { INSUFFICIENT_BALANCE } from '../../common/fagito-constants';
+import { INSUFFICIENT_BALANCE, NULL } from '../../common/fagito-constants';
 
 class FagitoSelectedProduct extends Component {
     render() {
@@ -11,7 +11,7 @@ class FagitoSelectedProduct extends Component {
         let chefName = null;
         let productName = null;
         let basePrice = null;
-        if (this.props.product.variantIndex === 'null') {
+        if (this.props.product.variantIndex === NULL) {
             chefName = this.props.product.base.kitchen.name;
             productName = this.props.product.base.name;
             basePrice = this.props.product.base.price;

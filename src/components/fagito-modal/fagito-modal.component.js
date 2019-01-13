@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
-import { FagitoFooterComponent } from '../../components/fagito-components';
+import { FagitoFooterComponent, FagitoAddonsList } from '../../components/fagito-components';
 import { updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 
@@ -17,7 +17,8 @@ class FagitoModalComponent extends Component {
         modalSelectedProduct: {},
         variantIndex: null,
         buttonInActive: true,
-        selectedProductAddons: []
+        selectedProductAddons: [],
+        addonsSelected: 0
     }
     toggleModal = () => {
         this.props.hideModal();
@@ -45,6 +46,16 @@ class FagitoModalComponent extends Component {
         this.props.updatedProductsOfUser(this.props.modalContent,
             this.props.timing.timingSelected, this.props.selectedDate,
             this.props.monthOfSelectedDate, this.state.variantIndex, true, null);
+    }
+    handleAddon = (addonIndex, segmentIndex) => {
+        console.log('in addon index check---', addonIndex);
+        console.log('segment index is---', segmentIndex);
+        // this.setState((state) => {
+        //     return {
+        //         ...state,
+        //         addonsSelected: state.addonsSelected + 1
+        //     }
+        // })
     }
     render() {
         let modalContentSegment = null;
@@ -83,14 +94,21 @@ class FagitoModalComponent extends Component {
             }
         }
         if (this.props.type === ADDONS) {
-            modalHeading = 'lunch addons';
-            modalContentSegment = (
-                <View style={STYLES.modalContentSegment}>
-                    <Text style={STYLES.modalMessageText}>Lunch Addons</Text>
-                </View>
-            )
+            modalHeading = this.props.timing.timingSelected + ' addons';
+            modalContentSegment = Object.keys(ADDONS_LIST).map((addonEntity, index) => {
+                return (
+                    <View key={index}>
+                        <FagitoAddonsList handleAddon={(addonIndex) => this.handleAddon(addonIndex, index)} addonsSelected={this.state.addonsSelected} addonSectionName={addonEntity} addonsList={ADDONS_LIST[addonEntity]}></FagitoAddonsList>
+                    </View>
+                )
+            })
+            // modalContentSegment = (
+            //     <View style={STYLES.modalContentSegment}>
+            //         <Text style={STYLES.modalMessageText}>Lunch Addons</Text>
+            //     </View>
+            // )
             modalFooterSegment = (
-                <FagitoFooterComponent modalAddon={true} selectedProductAddons={this.state.selectedProductAddons} modalFooter={true}></FagitoFooterComponent>
+                <FagitoFooterComponent modalAddon={true} selectedProduct={this.props.modalContent} selectedProductAddons={this.state.selectedProductAddons} modalFooter={true}></FagitoFooterComponent>
             )
         }
         return (

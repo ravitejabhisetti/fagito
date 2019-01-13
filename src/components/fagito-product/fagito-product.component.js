@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
-import { ADD_BUTTON_TITLE, SOLD_OUT } from '../../common/fagito-constants';
+import { ADD_BUTTON_TITLE, SOLD_OUT, NULL } from '../../common/fagito-constants';
 import { addSelectedProduct, updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 import * as style from '../../common/fagito-style-constants';
@@ -15,7 +15,7 @@ class FagitoProduct extends Component {
     }
     handleProduct = (product, timingSelected) => {
         scrollViewRef.scrollTo({ x: 0, y: 0 });
-        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, 'null', true, null);
+        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, NULL, true, null);
     }
     render() {
         let productVariants = null;

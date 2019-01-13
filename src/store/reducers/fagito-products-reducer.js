@@ -46,7 +46,6 @@ const reducer = (state = initialState, action) => {
                 selectedProductsList: state.selectedProductsList
             }
         case FAGITO_UPDATE_USER_SELECTED_PRODUCTS:
-        console.log('selected products in reducer are---', action.productsSelected);
             return {
                 ...state,
                 selectedProductsList: action.productsSelected

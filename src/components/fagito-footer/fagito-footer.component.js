@@ -4,7 +4,7 @@ import { STYLES } from './fagito-footer.style';
 import { connect } from 'react-redux';
 import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
-import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2 } from '../../common/fagito-constants';
+import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL } from '../../common/fagito-constants';
 import _ from 'lodash';
 
 class FagitoFooterComponent extends Component {
@@ -68,10 +68,18 @@ class FagitoFooterComponent extends Component {
                     )
                 }
             } else {
+                let productName = null;
+                console.log('selected product is---', this.props.selectedProduct);
+                if (this.props.selectedProduct.variantIndex === NULL) {
+                    productName = this.props.selectedProduct.base.name;
+                } else {
+                    let variantIndex = this.props.selectedProduct.variantIndex;
+                    productName = this.props.selectedProduct.variants[variantIndex].name;
+                }
                 mealPriceText = (
                     <View>
                         <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} 3 {ADDON_MESSAGE_2}</Text>
-                        <Text style={STYLES.addonMessage}>lunch:<Text style={STYLES.footerText}>check the inner text</Text></Text>
+                        <Text style={STYLES.addonMessage}>{this.props.deliveryTiming.timingSelected}: <Text style={STYLES.footerText}>{productName}</Text></Text>
                     </View>
                 )
                 addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleAddon}
@@ -103,7 +111,8 @@ const mapStateToProps = (state) => {
     return {
         selectedDate: state.deliveryTimingAndDates.selectedDate,
         monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth,
-        selectedProducts: state.products.selectedProductsList
+        selectedProducts: state.products.selectedProductsList,
+        deliveryTiming: state.deliveryTimingAndDates.timing,
     }
 }
 

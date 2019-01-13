@@ -157,3 +157,11 @@ export const ADDONS_MODAL = 'ADDONS';
 export const SAVE_ADDONS = 'SAVE ADDONS';
 export const ADDON_MESSAGE_1 = 'You can add upto';
 export const ADDON_MESSAGE_2 = 'more addons to your lunch';
+export const NULL = 'null';
+export const ADDONS_LIST = {
+    Extras: [{ name: '1 Phulka', price: 6 }, { name: '2 Phulka', price: 12 }],
+    Dairy: [{ name: 'Curd', price: 9 }, { name: 'Buttermilk', price: 11 }],
+    'Mixed Fruit Bowls': [{ name: 'Regular Cut Fruits Mixed', price: 35 }, { name: 'Small Cut Fruits Mixed', price: 25 }]
+}
+export const PLUS = 'plus';
+export const MINUS = 'minus';

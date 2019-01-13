@@ -5,7 +5,7 @@ import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON, VARIANTS,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS, ORDERS, ADDONS
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, FAGITO_USER_DETAILS, ORDERS, ADDONS, NULL
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -64,7 +64,7 @@ class FagitoHomeScreen extends Component {
             setTimeout(function () { self.setState((state) => { return { ...state, showFullModal: true } }) }, 1500);
         }
     }
-    
+
     handleSelectedProduct = (product, modalVisible, index) => {
         this.setState((state) => {
             return {
@@ -83,7 +83,7 @@ class FagitoHomeScreen extends Component {
             }
         })
         this.props.updatedProductsOfUser(this.state.selectedProduct, this.props.deliveryTiming.timingSelected,
-            this.props.selectedDate, null, 'null', false, this.state.productIndex);
+            this.props.selectedDate, null, NULL, false, this.state.productIndex);
     }
     scrollToTop = () => {
         this.scroller.scrollTo({ x: 0, y: 0 });
@@ -96,7 +96,7 @@ class FagitoHomeScreen extends Component {
             if (this.state.modalType === ORDERS) {
                 fullModalContent = ORDERS_MODAL;
             }
-            if (this.state.modalType === VARIANTS) {
+            if (this.state.modalType === VARIANTS || this.state.modalType === ADDONS) {
                 fullModalContent = this.state.modalContent;
             }
             fullModal = (
