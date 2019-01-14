@@ -42,8 +42,10 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
                 updateProductTimingAndDate(product, timingSelected, dateSelected, month, variantIndex);
                 if (!parsedUserDetails.productsSelected) {
                     parsedUserDetails.productsSelected = [];
+                    product.id = Math.random().toString(11).replace('0.', '');
                     parsedUserDetails.productsSelected.push(product);
                 } else {
+                    product.id = Math.random().toString(11).replace('0.', '');
                     parsedUserDetails.productsSelected.push(product);
                 }
             } else {
