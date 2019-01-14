@@ -80,7 +80,8 @@ const STYLES = StyleSheet.create({
     },
     errorMessageSection: {
         paddingTop: 20,
-        paddingLeft: 20
+        paddingLeft: 20,
+        paddingRight: 20
     }
 })
 

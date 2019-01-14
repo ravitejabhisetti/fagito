@@ -85,7 +85,7 @@ class FagitoFooterComponent extends Component {
                 }
                 mealPriceText = (
                     <View>
-                        <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} 3 {ADDON_MESSAGE_2}</Text>
+                        <Text style={[STYLES.footerText, STYLES.addonMessage]}>{ADDON_MESSAGE_1} {3 - this.props.addonsCount} {ADDON_MESSAGE_2}</Text>
                         <Text style={STYLES.addonMessage}>{this.props.deliveryTiming.timingSelected}: <Text style={STYLES.footerText}>{productName}</Text></Text>
                         {addonDetails}
                     </View>
@@ -121,6 +121,7 @@ const mapStateToProps = (state) => {
         monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth,
         selectedProducts: state.products.selectedProductsList,
         deliveryTiming: state.deliveryTimingAndDates.timing,
+        addonsCount: state.addons.addonsCount,
         addonsSelected: state.addons.addonsSelected
     }
 }
