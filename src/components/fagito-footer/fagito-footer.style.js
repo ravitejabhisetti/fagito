@@ -22,7 +22,9 @@ const STYLES = StyleSheet.create({
         flexDirection: style.FAGITO_ROW,
         alignItems: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_SPACE_BETWEEN,
-        marginRight: 5
+        marginRight: 5,
+        paddingBottom: 5,
+        paddingTop: 5
     },
     paymentText: {
         flex:1,

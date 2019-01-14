@@ -1,4 +1,5 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS } from '../actions/fagito-action-types';
+import _ from 'lodash';
 
 const initialState = {
     addonsCount: 0,
@@ -14,16 +15,25 @@ const reducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                addonsCount: count
+                addonsCount: count,
+                addonsSelected: [...state.addonsSelected, action.addon]
             }
         case DELETE_ADDON:
             let updatedCount = state.addonsCount;
+            let updatedAddonsList = [];
             if (updatedCount) {
                 updatedCount = updatedCount - 1;
             }
+            let addonIndex = _.findLastIndex(state.addonsSelected, function (entity) { return entity.name === action.addon.name; });
+            state.addonsSelected.map((addonEntity, index) => {
+                if (index !== addonIndex) {
+                    updatedAddonsList.push(addonEntity);
+                }
+            })
             return {
                 ...state,
-                addonsCount: updatedCount
+                addonsCount: updatedCount,
+                addonsSelected: updatedAddonsList
             }
         case RESET_ADDONS:
             return {

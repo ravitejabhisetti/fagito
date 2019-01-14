@@ -93,7 +93,7 @@ class FagitoModalComponent extends Component {
                 )
             })
             modalFooterSegment = (
-                <FagitoFooterComponent modalAddon={true} selectedProduct={this.props.modalContent} addonsSelected={this.props.addonsSelected} modalFooter={true}></FagitoFooterComponent>
+                <FagitoFooterComponent addonsCount={this.props.addonsCount} modalAddon={true} selectedProduct={this.props.modalContent} modalFooter={true}></FagitoFooterComponent>
             )
         }
         return (
@@ -129,8 +129,7 @@ const mapStateToProps = (state) => {
         timing: state.deliveryTimingAndDates.timing,
         selectedDate: state.deliveryTimingAndDates.selectedDate,
         monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth,
-        addonsCount: state.addons.addonsCount,
-        addonsSelected: state.addons.addonsSelected
+        addonsCount: state.addons.addonsCount
     }
 }
 
