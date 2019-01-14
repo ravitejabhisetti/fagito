@@ -165,3 +165,4 @@ export const ADDONS_LIST = {
 }
 export const PLUS = 'plus';
 export const MINUS = 'minus';
+export const ADDON_NOTE = 'Max 3 addons! You cannot add more than 3 addons to your meal.';

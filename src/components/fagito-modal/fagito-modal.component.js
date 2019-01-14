@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST, ADDON_NOTE } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
 import { FagitoFooterComponent, FagitoAddonsList } from '../../components/fagito-components';
@@ -51,6 +51,7 @@ class FagitoModalComponent extends Component {
         let modalContentSegment = null;
         let modalHeading = null;
         let modalFooterSegment = null;
+        let modalNoteMessage = null;
         this.state.modalVisible = this.props.showModal;
         let headerTextColor = (this.props.type === ORDERS || this.props.type === ADDONS) ? STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
         if (this.props.type === ORDERS) {
@@ -95,6 +96,9 @@ class FagitoModalComponent extends Component {
             modalFooterSegment = (
                 <FagitoFooterComponent addonsCount={this.props.addonsCount} modalAddon={true} selectedProduct={this.props.modalContent} modalFooter={true}></FagitoFooterComponent>
             )
+            modalNoteMessage = (
+                <Text style={STYLES.addonNote}>{ADDON_NOTE}</Text>
+            )
         }
         return (
             <View>
@@ -113,6 +117,7 @@ class FagitoModalComponent extends Component {
                         </View>
                         <ScrollView>
                             <View style={STYLES.modalContent}>
+                                {modalNoteMessage}
                                 {modalContentSegment}
                             </View>
                         </ScrollView>

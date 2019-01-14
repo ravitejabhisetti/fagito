@@ -75,6 +75,17 @@ const STYLES = StyleSheet.create({
         marginLeft: 2,
         marginRight: 2
     },
+    addonNote: {
+        color: style.FAGITO_BLACK_COLOR,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        fontSize: 14,
+        paddingTop: 16,
+        paddingLeft: 16,
+        paddingRight: 16,
+        paddingBottom: 8,
+        flex: 1,
+        flexWrap: style.FAGITO_WRAP
+    }
 });
 
 export { STYLES };
