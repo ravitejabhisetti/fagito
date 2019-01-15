@@ -6,10 +6,16 @@ import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL } from '../../common/fagito-constants';
 import _ from 'lodash';
+import { updateAddonsOfProduct } from '../../store/actions/actions';
 
 class FagitoFooterComponent extends Component {
     constructor(props) {
         super(props);
+    }
+
+    handleAddon = () => {
+        console.log('in handle addon---');
+        this.props.updateAddonsOfProduct(this.props.selectedProduct, this.props.addonsSelected);
     }
     render() {
         let footerContent = null;
@@ -90,7 +96,7 @@ class FagitoFooterComponent extends Component {
                         {addonDetails}
                     </View>
                 )
-                addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.props.handleAddon}
+                addMealButton = (<FagitoButton buttonInActive={false} onButtonClick={this.handleAddon}
                     borderColor={style.PAYMENT_BUTTON_BORDER}
                     backgroundColor={style.FAGITO_BUTTON_COLOR}
                     buttonTitle={SAVE_ADDONS}></FagitoButton>
@@ -126,4 +132,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(FagitoFooterComponent);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateAddonsOfProduct: (product, addonsSelected) => dispatch(updateAddonsOfProduct(product, addonsSelected))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoFooterComponent);

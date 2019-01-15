@@ -40,12 +40,11 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
             let parsedUserDetails = JSON.parse(userDetails);
             if (update) {
                 updateProductTimingAndDate(product, timingSelected, dateSelected, month, variantIndex);
+                product.id = Math.random().toString(11).replace('0.', '');
                 if (!parsedUserDetails.productsSelected) {
                     parsedUserDetails.productsSelected = [];
-                    product.id = Math.random().toString(11).replace('0.', '');
                     parsedUserDetails.productsSelected.push(product);
                 } else {
-                    product.id = Math.random().toString(11).replace('0.', '');
                     parsedUserDetails.productsSelected.push(product);
                 }
             } else {
