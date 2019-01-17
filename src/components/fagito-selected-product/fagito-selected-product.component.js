@@ -25,6 +25,9 @@ class FagitoSelectedProduct extends Component {
         }
         if (this.props.product.addons && this.props.product.addons.length > 0) {
             addonsString = this.props.product.addons.map(addon => addon.name).join(', ');
+            this.props.product.addons.map((addon, index) => {
+                basePrice = basePrice + addon.price;
+            })
             addons = (
                 <Text style={STYLES.selectedProductChef}>Addons: <Text style={STYLES.selectedProductName}>{addonsString}</Text></Text>
             )

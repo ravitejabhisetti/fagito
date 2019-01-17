@@ -1,7 +1,7 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from './fagito-action-types';
 import { AsyncStorage } from 'react-native';
 import { getToken } from './actions';
-import { FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS } from '../../common/fagito-constants';
+import { FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS, METHOD_PUT } from '../../common/fagito-constants';
 import _ from 'lodash';
 
 export const addAddon = (addon) => {
@@ -33,12 +33,11 @@ export const updateAddonsOfProduct = (product, addonsSelected) => {
             dispatch(getToken()).then(apiToken => {
                 let url = FIREBASE_URL + 'users/' + parsedUserDetails.userId + '.json?auth=' + apiToken;
                 return fetch(url, {
-                    method: 'PUT',
+                    method: METHOD_PUT,
                     body: JSON.stringify(parsedUserDetails),
                     headers: FAGITO_API_CALL_HEADERS
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
-                    console.log('response to check final is---', response);
                     dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })

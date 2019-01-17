@@ -2,7 +2,7 @@ import { FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT, FAGITO_DELETE_SELECTE
 import { fagitoStartLoader, fagitoStopLoader, getToken, handleError } from './actions';
 import {
     FETCH_MESSAGE_1, FETCH_MESSAGE_2, FIREBASE_URL,
-    LUNCH_OPTION, AUTH_URL, FAGITO_TOKEN, DINNER_OPTION, METHOD_GET, FAGITO_USER_DETAILS, FAGITO_API_CALL_HEADERS
+    LUNCH_OPTION, AUTH_URL, FAGITO_TOKEN, DINNER_OPTION, METHOD_GET, FAGITO_USER_DETAILS, FAGITO_API_CALL_HEADERS, METHOD_PUT
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 
@@ -53,7 +53,7 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
             dispatch(getToken()).then(apiToken => {
                 let url = FIREBASE_URL + 'users/' + parsedUserDetails.userId + '.json?auth=' + apiToken;
                 return fetch(url, {
-                    method: 'PUT',
+                    method: METHOD_PUT,
                     body: JSON.stringify(parsedUserDetails),
                     headers: FAGITO_API_CALL_HEADERS
                 }).catch((error) => {

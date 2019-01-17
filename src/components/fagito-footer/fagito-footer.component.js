@@ -25,8 +25,14 @@ class FagitoFooterComponent extends Component {
                 let currentDate = new Date().getTime();
                 let currentMonth = new Date(currentDate).getMonth();
                 this.props.selectedProducts.map((product, index) => {
-                    if (this.props.selectedDate === product.selectedDate && product.monthOfSelectedDate >= currentMonth) {
+                    let dateCheck = (this.props.selectedDate === product.selectedDate) && (product.monthOfSelectedDate >= currentMonth);
+                    if (dateCheck) {
                         productsCost += product.base.price;
+                    }
+                    if (dateCheck && product.addons && product.addons.length > 0) {
+                        product.addons.map((addon, index) => {
+                            productsCost += addon.price;
+                        })
                     }
                 });
                 if (productsCost) {
@@ -128,7 +134,8 @@ const mapStateToProps = (state) => {
         selectedProducts: state.products.selectedProductsList,
         deliveryTiming: state.deliveryTimingAndDates.timing,
         addonsCount: state.addons.addonsCount,
-        addonsSelected: state.addons.addonsSelected
+        addonsSelected: state.addons.addonsSelected,
+        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons
     }
 }
 
