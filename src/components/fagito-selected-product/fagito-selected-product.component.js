@@ -11,6 +11,8 @@ class FagitoSelectedProduct extends Component {
         let chefName = null;
         let productName = null;
         let basePrice = null;
+        let addons = null;
+        let addonsString = '';
         if (this.props.product.variantIndex === NULL) {
             chefName = this.props.product.base.kitchen.name;
             productName = this.props.product.base.name;
@@ -20,6 +22,12 @@ class FagitoSelectedProduct extends Component {
             chefName = this.props.product.variants[index].kitchen.name;
             productName = this.props.product.variants[index].name;
             basePrice = this.props.product.variants[index].price;
+        }
+        if (this.props.product.addons && this.props.product.addons.length > 0) {
+            addonsString = this.props.product.addons.map(addon => addon.name).join(', ');
+            addons = (
+                <Text style={STYLES.selectedProductChef}>Addons: <Text style={STYLES.selectedProductName}>{addonsString}</Text></Text>
+            )
         }
         return (
             <TouchableHighlight underlayColor={this.props.product.timingSelected === 'lunch' ? style.LUNCH_PRODUCT : style.DINNER_PRODUCT}
@@ -36,6 +44,7 @@ class FagitoSelectedProduct extends Component {
                     </View>
                     <Text style={STYLES.selectedProductChef}>{chefName}</Text>
                     <Text style={STYLES.selectedProductName}>{productName}</Text>
+                    {addons}
                     <Text style={STYLES.selectedProductPrice}>Rs {basePrice} + Rs 5 GST</Text>
                     <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text>
                 </View>

@@ -39,8 +39,20 @@ export const updateAddonsOfProduct = (product, addonsSelected) => {
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
                     console.log('response to check final is---', response);
+                    dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
+                    AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })
             })
         })
     }
+}
+
+export const updateSelectedProductAddons = (product, addonsSelected, productIndex) => {
+    return {
+        type: UPDATE_ADDONS_OF_PRODUCT,
+        product: product,
+        addonsSelected: addonsSelected,
+        productIndex: productIndex
+    }
+
 }

@@ -14,7 +14,7 @@ class FagitoFooterComponent extends Component {
     }
 
     handleAddon = () => {
-        console.log('in handle addon---');
+        this.props.hideModal();
         this.props.updateAddonsOfProduct(this.props.selectedProduct, this.props.addonsSelected);
     }
     render() {

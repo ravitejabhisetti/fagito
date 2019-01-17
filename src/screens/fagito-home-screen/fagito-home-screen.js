@@ -13,7 +13,7 @@ import {
     FagitoLunchDinnerButtons, FagitoDatesWrapperComponent, FagitoChefList, FagitoBottomModal,
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent, FagitoSelectedProducts
 } from '../../components/fagito-components';
-import { updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, deleteSelectedProduct } from '../../store/actions/actions';
+import { updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, deleteSelectedProduct, updateIndexOfProductToAddAddons } from '../../store/actions/actions';
 import _ from 'lodash';
 
 export let scrollViewRef;
@@ -61,7 +61,8 @@ class FagitoHomeScreen extends Component {
             }
         })
         if (modalType === ADDONS) {
-            setTimeout(function () { self.setState((state) => { return { ...state, showFullModal: true } }) }, 1500);
+            this.props.updateIndexOfProductToAddAddons();
+            setTimeout(function () { self.setState((state) => { return { ...state, showFullModal: true } }) }, 2000);
         }
     }
 
@@ -172,6 +173,7 @@ class FagitoHomeScreen extends Component {
                                 handleSelectedProduct={(product, index) => this.handleSelectedProduct(product, true, index)}
                                 selectedProducts={this.props.selectedProducts}
                                 selectedDate={this.props.selectedDate}
+                                indexOfProductToUpdateAddons={this.props.indexOfProductToUpdateAddons}
                                 productsLength={this.props.productsLength}
                             ></FagitoSelectedProducts>
                             <FagitoBottomModal
@@ -205,7 +207,8 @@ const mapDispatchToProps = (dispatch) => {
         updateDeliveryTiming: (lunchTiming) => dispatch(updateDeliveryTiming(lunchTiming)),
         showLocationDropdown: (dropdownContent, optionSelected) => dispatch(fagitoShowAlert(dropdownContent, optionSelected)),
         updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
-        deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex))
+        deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex)),
+        updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons())
     }
 }
 
@@ -221,7 +224,8 @@ const mapStateToProps = (state) => {
         selectedProducts: state.products.selectedProductsList,
         productsLength: state.products.productsLength,
         selectedDate: state.deliveryTimingAndDates.selectedDate,
-        loader: state.fagitoLoader.showLoader
+        loader: state.fagitoLoader.showLoader,
+        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons
     }
 }
 

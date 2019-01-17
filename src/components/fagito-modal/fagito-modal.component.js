@@ -94,7 +94,7 @@ class FagitoModalComponent extends Component {
                 )
             })
             modalFooterSegment = (
-                <FagitoFooterComponent addonsCount={this.props.addonsCount} modalAddon={true} selectedProduct={this.props.modalContent} modalFooter={true}></FagitoFooterComponent>
+                <FagitoFooterComponent addonsCount={this.props.addonsCount} hideModal={this.toggleModal} modalAddon={true} selectedProduct={this.props.modalContent} modalFooter={true}></FagitoFooterComponent>
             )
             modalNoteMessage = (
                 <Text style={STYLES.addonNote}>{ADDON_NOTE}</Text>
