@@ -61,12 +61,12 @@ class FagitoHomeScreen extends Component {
             }
         })
         if (modalType === ADDONS) {
-            this.props.updateIndexOfProductToAddAddons();
             setTimeout(function () { self.setState((state) => { return { ...state, showFullModal: true } }) }, 2000);
         }
     }
 
     handleSelectedProduct = (product, modalVisible, index) => {
+        this.props.updateIndexOfProductToAddAddons();
         this.setState((state) => {
             return {
                 ...state,
