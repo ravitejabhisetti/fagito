@@ -29,6 +29,22 @@ class FagitoHomeScreen extends Component {
         productIndex: null,
         modalContent: null,
         modalType: null,
+        userLoggedIn: false
+    }
+
+    componentWillMount() {
+        AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+            let loggedIn = false;
+            if (userDetails) {
+                loggedIn = true;
+            }
+            this.setState((state) => {
+                return {
+                    ...state,
+                    userLoggedIn: loggedIn
+                }
+            })
+        })
     }
 
     componentDidMount() {
@@ -93,6 +109,7 @@ class FagitoHomeScreen extends Component {
         let fullModal = null;
         let noLocationMessage = null;
         let fullModalContent = null;
+        let ordersIcon = null;
         if (this.state.showFullModal) {
             if (this.state.modalType === ORDERS) {
                 fullModalContent = ORDERS_MODAL;
@@ -120,6 +137,19 @@ class FagitoHomeScreen extends Component {
                 </View>
             )
         }
+        if (this.state.userLoggedIn) {
+            ordersIcon = (
+                <View>
+                    <Icon onPress={() => this.handlefullModal(true, ORDERS, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
+                </View>
+            )
+        } else {
+            ordersIcon = (
+                <View>
+                    <Icon name='md-notifications' color='white' size={23}></Icon>
+                </View>
+            )
+        }
         return (
             <View style={STYLES.homeView}>
                 <Header style={STYLES.header}>
@@ -131,9 +161,7 @@ class FagitoHomeScreen extends Component {
                             <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(true)} lunchButtonSelected={this.props.deliveryTiming.lunchTiming} lunchButton={true} title={LUNCH_BUTTON}></FagitoLunchDinnerButtons>
                             <FagitoLunchDinnerButtons handleFood={() => this.handleFoodtimings(false)} lunchButtonSelected={this.props.deliveryTiming.dinnerTiming} lunchButton={false} title={DINNER_BUTTON}></FagitoLunchDinnerButtons>
                         </View>
-                        <View>
-                            <Icon onPress={() => this.handlefullModal(true, ORDERS, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
-                        </View>
+                        {ordersIcon}
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>

@@ -16,36 +16,50 @@ import { NavigationActions } from 'react-navigation';
 class CustomDrawerComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = { userDetails: null };
+        this.state = { userDetails: null, userLoggedIn: false };
     }
-    componentDidMount() {
+    componentWillMount() {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
-            this.setState((state) => {
-                return {
-                    ...state,
-                    userDetails: JSON.parse(userDetails)
-                }
-            })
+            if (userDetails) {
+                this.setState((state) => {
+                    return {
+                        ...state,
+                        userDetails: JSON.parse(userDetails),
+                        userLoggedIn: true
+                    }
+                })
+            }
         })
     }
     render() {
-        return (
-            <SafeAreaView style={STYLES.safeArea}>
+        let userNameSegment = null;
+        let logoutSection = null;
+        if (this.state.userLoggedIn) {
+            userNameSegment = (
                 <View style={STYLES.headerSegment}>
                     <View style={STYLES.headerTitle}>
                         <Icon name='md-person' color='white' size={25} />
                         <Text style={STYLES.headerText}>{this.state.userDetails && this.state.userDetails.name}</Text>
                     </View>
                 </View>
+            )
+            logoutSection = (
+                <TouchableOpacity onPress={() => {
+                    AsyncStorage.clear();
+                    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME }));
+                }
+                }>
+                    <Text style={STYLES.logoutText}>Logout</Text>
+                </TouchableOpacity>
+            )
+        }
+        console.log('props to check are---', this.props);
+        return (
+            <SafeAreaView style={STYLES.safeArea}>
+                {userNameSegment}
                 <ScrollView>
                     <DrawerItems {...this.props} />
-                    <TouchableOpacity onPress={() => {
-                        AsyncStorage.clear();
-                        navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME }));
-                    }
-                    }>
-                        <Text style={STYLES.logoutText}>Logout</Text>
-                    </TouchableOpacity>
+                    {logoutSection}
                 </ScrollView>
             </SafeAreaView>
         )
