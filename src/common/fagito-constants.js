@@ -1,7 +1,7 @@
 export const FAGITO = 'FAGITO';
 export const FAGITO_HOME = 'Fagito';
-export const FAGITO_SIGNUP_SCREEN = 'Signup';
-export const FAGITO_SIGNIN_SCREEN = 'Signin';
+export const FAGITO_SIGNUP_SCREEN = 'Sign up';
+export const FAGITO_SIGNIN_SCREEN = 'Sign in';
 export const FAGITO_RESET_PASSWORD_SCREEN = 'ResetPassword';
 export const FAGITO_LOGO_MESSAGE = 'Schedule delicious home-made meals from home chefs around you.';
 export const FAGITO_BROWSE = 'BROWSE HOME MADE DISHES';

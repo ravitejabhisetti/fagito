@@ -1,10 +1,12 @@
 import {
-    LOAD_USER_SIGNUP_FORM_ITEMS, LOAD_USER_SIGNIN_FORM_ITEMS
+    LOAD_USER_SIGNUP_FORM_ITEMS, LOAD_USER_SIGNIN_FORM_ITEMS, UPDATE_USER_LOGGED_IN_STATUS
 } from '../actions/fagito-action-types';
 
 const initialState = {
     signupForm: [],
-    signinForm: []
+    signinForm: [],
+    userLoggedInStatus: false,
+    backIconDisplay: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +20,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signinForm: action.items
+            }
+        case UPDATE_USER_LOGGED_IN_STATUS:
+            return {
+                ...state,
+                userLoggedInStatus: action.userLoggedInStatus,
+                backIconDisplay: action.backIconDisplay
             }
         default:
             return state;

@@ -60,7 +60,7 @@ export const userAuthentication = (userData, authMode) => {
                                 break;
                             }
                         }
-                        
+
                     })
                 }
             }
@@ -171,13 +171,14 @@ export const autoSignIn = () => {
                 dispatch(updateUserSelectedProducts(userDetails));
             })
             dispatch(formDatestoDeliver());
+            dispatch(updateUserLoggedInStatus(true, false));
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
         })
             .catch(err => { });
     }
 }
 
-const formDatestoDeliver = () => {
+export const formDatestoDeliver = () => {
     let currentDate = new Date().getTime();
     let currentDay = new Date(currentDate).getDay();
     let datesToDeliverList = [];
@@ -195,6 +196,7 @@ const formDatestoDeliver = () => {
     if (currentDay !== 6) {
         datesToDeliverList[0].day = TOMORROW;
     }
+    console.log('dates to deliver list---', datesToDeliverList);
     datesToDeliverList[0].dateActive = true;
     return {
         type: types.FAGITO_LOAD_DELIVERY_DATES,
@@ -202,11 +204,20 @@ const formDatestoDeliver = () => {
     }
 }
 
+export const updateUserLoggedInStatus = (status, backIconDisplay) => {
+    return {
+        type: types.UPDATE_USER_LOGGED_IN_STATUS,
+        userLoggedInStatus: status,
+        backIconDisplay: backIconDisplay
+    }
+}
+
 const navigateToHome = (response, user, dispatch) => {
     dispatch(fagitoStopLoader());
     dispatch(storeTokenAndUserDetails(response.idToken, response.expiresIn, response.refreshToken, user));
     dispatch(formDatestoDeliver());
-    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
+    dispatch(updateUserLoggedInStatus(true, true));
+    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
 }
 
 export const handleError = (error, dispatch) => {

@@ -4,9 +4,9 @@ import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import {
     FagitoHomeScreen, FagitoWalletScreen, FagitoMealPassScreen,
     FagitoFeedbackScreen, FagitoHistoryScreen, FagitoOffersScreen,
-    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeFoodScreen
+    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeFoodScreen, FagitoSignupScreen, FagitoSigninScreen
 } from '../fagito-screens';
-import { FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT, FAGITO_USER_DETAILS, FAGITO_HOME } from '../../common/fagito-constants';
+import { FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT, FAGITO_USER_DETAILS, FAGITO_HOME, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { STYLES } from './fagito-drawer-navigator.style';
@@ -34,6 +34,18 @@ class CustomDrawerComponent extends Component {
     render() {
         let userNameSegment = null;
         let logoutSection = null;
+        let itemsToBeDisplayed = [];
+        const props = this.props;
+        if (this.state.userLoggedIn) {
+            console.log('in if check---');
+            itemsToBeDisplayed = props.items.filter((item, index) => {
+                return item.key !== FAGITO_SIGNUP_SCREEN && item.key !== FAGITO_SIGNIN_SCREEN;
+            });
+        } else {
+            itemsToBeDisplayed = props.items.filter((item, index) => {
+                return item.key === FAGITO_SIGNUP_SCREEN || item.key === FAGITO_SIGNIN_SCREEN;
+            });
+        }
         if (this.state.userLoggedIn) {
             userNameSegment = (
                 <View style={STYLES.headerSegment}>
@@ -53,12 +65,11 @@ class CustomDrawerComponent extends Component {
                 </TouchableOpacity>
             )
         }
-        console.log('props to check are---', this.props);
         return (
             <SafeAreaView style={STYLES.safeArea}>
                 {userNameSegment}
                 <ScrollView>
-                    <DrawerItems {...this.props} />
+                    <DrawerItems {...props} items={itemsToBeDisplayed} />
                     {logoutSection}
                 </ScrollView>
             </SafeAreaView>
@@ -74,6 +85,8 @@ const DrawerNavigator = createDrawerNavigator({
     History: FagitoHistoryScreen,
     Offers: FagitoOffersScreen,
     'Free Food': FagitoFreeFoodScreen,
+    'Sign up': FagitoSignupScreen,
+    'Sign in': FagitoSigninScreen,
     Support: FagitoSupportScreen,
     Settings: FagitoSettingsScreen
 },

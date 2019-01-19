@@ -16,8 +16,8 @@ import { DrawerNavigator } from './src/screens/fagito-drawer-navigator/fagito-dr
 
 const RootStack = createStackNavigator({
     Fagito: FagitoSignupSigninBrowseButtonsScreen,
-    Signup: FagitoSignupScreen,
-    Signin: FagitoSigninScreen,
+    'Sign up': FagitoSignupScreen,
+    'Sign in': FagitoSigninScreen,
     ResetPassword: FagitoResetPasswordScreen,
     DrawerNavigator: {
         screen: DrawerNavigator,

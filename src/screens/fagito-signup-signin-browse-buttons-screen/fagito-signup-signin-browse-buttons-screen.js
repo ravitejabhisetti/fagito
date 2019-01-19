@@ -7,7 +7,7 @@ import {
     FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN, FAGITO_HOME_SCREEN
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
-import { autoSignIn } from '../../store/actions/actions';
+import { autoSignIn, updateUserLoggedInStatus, formDatestoDeliver } from '../../store/actions/actions';
 import * as style from '../../common/fagito-style-constants';
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
@@ -15,7 +15,13 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
     constructor(props) {
         super(props);
     }
-    buttonClickHandler = (screenName) => {
+    buttonClickHandler = (screenName, goToHomeScreen) => {
+        if (goToHomeScreen) {
+            this.props.formDatestoDeliver();
+            this.props.updateUserLoggedInStatus(false, true);
+        } else {
+            this.props.updateUserLoggedInStatus(false, false);
+        }
         this.props.navigation.navigate(screenName);
     }
     componentDidMount() {
@@ -30,7 +36,7 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
                 <View style={STYLES.buttonsContainer}>
                     <Text style={STYLES.fagitoLogoMessage}>{FAGITO_LOGO_MESSAGE}</Text>
                     <View style={STYLES.buttonsSection}>
-                        <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={() => this.buttonClickHandler(FAGITO_HOME_SCREEN)} buttonTitle={FAGITO_BROWSE} />
+                        <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={() => this.buttonClickHandler(FAGITO_HOME_SCREEN, true)} buttonTitle={FAGITO_BROWSE} />
                         <View style={STYLES.signupSigninBtnsSection}>
                             <View style={STYLES.button}>
                                 <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={() => this.buttonClickHandler(FAGITO_SIGNUP_SCREEN)} buttonTitle={FAGITO_SIGNUP} />
@@ -48,7 +54,9 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        auth: () => dispatch(autoSignIn())
+        auth: () => dispatch(autoSignIn()),
+        updateUserLoggedInStatus: (status, backIcon) => dispatch(updateUserLoggedInStatus(status, backIcon)),
+        formDatestoDeliver: () => dispatch(formDatestoDeliver())
     }
 }
 

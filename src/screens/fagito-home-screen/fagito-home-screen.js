@@ -28,23 +28,7 @@ class FagitoHomeScreen extends Component {
         selectedProduct: null,
         productIndex: null,
         modalContent: null,
-        modalType: null,
-        userLoggedIn: false
-    }
-
-    componentWillMount() {
-        AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
-            let loggedIn = false;
-            if (userDetails) {
-                loggedIn = true;
-            }
-            this.setState((state) => {
-                return {
-                    ...state,
-                    userLoggedIn: loggedIn
-                }
-            })
-        })
+        modalType: null
     }
 
     componentDidMount() {
@@ -137,7 +121,7 @@ class FagitoHomeScreen extends Component {
                 </View>
             )
         }
-        if (this.state.userLoggedIn) {
+        if (this.props.userLoggedIn) {
             ordersIcon = (
                 <View>
                     <Icon onPress={() => this.handlefullModal(true, ORDERS, ORDERS)} name='md-notifications' color='black' size={23}></Icon>
@@ -253,7 +237,8 @@ const mapStateToProps = (state) => {
         productsLength: state.products.productsLength,
         selectedDate: state.deliveryTimingAndDates.selectedDate,
         loader: state.fagitoLoader.showLoader,
-        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons
+        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
+        userLoggedIn: state.userDetails.userLoggedInStatus
     }
 }
 
