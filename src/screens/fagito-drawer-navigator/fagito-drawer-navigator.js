@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, ScrollView, Asyncstorage, Dimensions, View, Text, AsyncStorage, TouchableOpacity, Alert } from 'react-native';
+import { SafeAreaView, ScrollView, Dimensions, View, Text, AsyncStorage, TouchableOpacity, Alert } from 'react-native';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import {
     FagitoHomeScreen, FagitoWalletScreen, FagitoMealPassScreen,
@@ -31,22 +31,30 @@ class CustomDrawerComponent extends Component {
             }
         })
     }
+
+    componentDidUpdate() {
+        AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+            if (userDetails && !this.state.userDetails) {
+                this.setState((state) => {
+                    return {
+                        ...state,
+                        userDetails: JSON.parse(userDetails),
+                        userLoggedIn: true
+                    }
+                })
+            }
+        })
+    }
+
     render() {
         let userNameSegment = null;
         let logoutSection = null;
         let itemsToBeDisplayed = [];
         const props = this.props;
         if (this.state.userLoggedIn) {
-            console.log('in if check---');
-            itemsToBeDisplayed = props.items.filter((item, index) => {
+            itemsToBeDisplayed = this.props.items.filter((item, index) => {
                 return item.key !== FAGITO_SIGNUP_SCREEN && item.key !== FAGITO_SIGNIN_SCREEN;
             });
-        } else {
-            itemsToBeDisplayed = props.items.filter((item, index) => {
-                return item.key === FAGITO_SIGNUP_SCREEN || item.key === FAGITO_SIGNIN_SCREEN;
-            });
-        }
-        if (this.state.userLoggedIn) {
             userNameSegment = (
                 <View style={STYLES.headerSegment}>
                     <View style={STYLES.headerTitle}>
@@ -64,7 +72,12 @@ class CustomDrawerComponent extends Component {
                     <Text style={STYLES.logoutText}>Logout</Text>
                 </TouchableOpacity>
             )
+        } else {
+            itemsToBeDisplayed = this.props.items.filter((item, index) => {
+                return item.key === FAGITO_SIGNUP_SCREEN || item.key === FAGITO_SIGNIN_SCREEN;
+            });
         }
+
         return (
             <SafeAreaView style={STYLES.safeArea}>
                 {userNameSegment}
