@@ -20,6 +20,7 @@ import FagitoSelectedProduct from './fagito-selected-product/fagito-selected-pro
 import FagitoBottomModal from './fagito-bottom-modal/fagito-bottom-modal.component';
 import FagitoAddonsList from './fagito-addon-list/fagito-addons-list.component';
 import FagitoAddon from './fagito-addon/fagito-addon.component';
+import SettingsEntity from './fagito-settings-entity/fagito-settings-entity.component';
 
 export {
     FagitoButton,
@@ -43,5 +44,6 @@ export {
     FagitoSelectedProduct,
     FagitoBottomModal,
     FagitoAddonsList,
-    FagitoAddon
+    FagitoAddon,
+    SettingsEntity
 }
