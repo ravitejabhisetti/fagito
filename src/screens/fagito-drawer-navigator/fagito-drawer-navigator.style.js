@@ -25,8 +25,8 @@ const STYLES = StyleSheet.create({
     },
     logoutText: {
         fontSize: 13,
-        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
-        fontWeight: style.FAGITO_BOLD,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
+        fontWeight: '400',
         paddingLeft: 16,
         paddingTop: 12
     }

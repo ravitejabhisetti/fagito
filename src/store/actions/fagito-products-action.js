@@ -1,5 +1,5 @@
 import { FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT, FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS } from './fagito-action-types';
-import { fagitoStartLoader, fagitoStopLoader, getToken, handleError } from './actions';
+import { fagitoStartLoader, fagitoStopLoader, getToken, handleError, updateUserDetails } from './actions';
 import {
     FETCH_MESSAGE_1, FETCH_MESSAGE_2, FIREBASE_URL,
     LUNCH_OPTION, AUTH_URL, FAGITO_TOKEN, DINNER_OPTION, METHOD_GET, FAGITO_USER_DETAILS, FAGITO_API_CALL_HEADERS, METHOD_PUT
@@ -63,6 +63,7 @@ export const updatedProductsOfUser = (product, timingSelected, dateSelected, mon
                     } else {
                         dispatch(deleteSelectedProduct(index));
                     }
+                    dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })
             })

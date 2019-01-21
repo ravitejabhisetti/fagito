@@ -1,6 +1,6 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from './fagito-action-types';
 import { AsyncStorage } from 'react-native';
-import { getToken } from './actions';
+import { getToken, updateUserDetails } from './actions';
 import { FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS, METHOD_PUT } from '../../common/fagito-constants';
 import _ from 'lodash';
 
@@ -39,6 +39,7 @@ export const updateAddonsOfProduct = (product, addonsSelected) => {
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
                     dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
+                    dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })
             })

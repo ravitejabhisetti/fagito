@@ -79,7 +79,15 @@ export const storeTokenAndUserDetails = (token, expiresIn, refreshToken, userDet
         AsyncStorage.setItem(FAGITO_EXPIRY_TIME, expiryTime.toString());
         AsyncStorage.setItem(FAGITO_REFRESH_TOKEN, refreshToken);
         AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(userDetails));
+        dispatch(updateUserDetails(userDetails));
         dispatch(updateUserSelectedProducts(userDetails));
+    }
+}
+
+export const updateUserDetails = (userDetails) => {
+    return {
+        type: types.UPDATE_USER_DETAILS,
+        userDetails: userDetails
     }
 }
 
@@ -168,6 +176,7 @@ export const autoSignIn = () => {
         dispatch(getToken()).then(token => {
             AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
                 userDetails = JSON.parse(userDetails);
+                dispatch(updateUserDetails(userDetails));
                 dispatch(updateUserSelectedProducts(userDetails));
             })
             dispatch(formDatestoDeliver());
@@ -196,7 +205,6 @@ export const formDatestoDeliver = () => {
     if (currentDay !== 6) {
         datesToDeliverList[0].day = TOMORROW;
     }
-    console.log('dates to deliver list---', datesToDeliverList);
     datesToDeliverList[0].dateActive = true;
     return {
         type: types.FAGITO_LOAD_DELIVERY_DATES,
