@@ -8,7 +8,9 @@ export const FAGITO_COMMON_STYLE = {
     headerTintColor: style.FAGITO_WHITE_COLOR,
     headerTitleStyle: {
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
-        fontSize: 16
+        fontSize: 16,
+        paddingLeft: 20,
+        fontWeight: '400'
     }
 }
 

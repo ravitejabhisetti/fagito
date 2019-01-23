@@ -34,8 +34,6 @@ const FagitoFormComponent = (props) => {
                 secureTextEntry: item.fieldName === FAGITO_FIELD_NAME_PASSWORD ? true : false,
                 keyboardType: item.fieldName === FAGITO_FIELD_NAME_MOBILE_NUMBER ? FAGITO_NUMERIC_KEYBOARD : FAGITO_DEFAULT_KEYBOARD
             }}
-        // input={{ value: item.value }}
-        // onChangeText={(newText) => this.handleTextChange(newText, key)}
         />
     }));
     if (props.termsText) {

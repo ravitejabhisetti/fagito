@@ -4,9 +4,16 @@ import { STYLES } from './fagito-settings-entity.style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as style from '../../common/fagito-style-constants';
-import { ARROW_FORWARD_ICON, EMAIL_ENTITY, MOBILE_NUMBER_ENTITY, OFFICE_ADDRESS_ENTITY } from '../../common/fagito-constants';
+import { ARROW_FORWARD_ICON, EMAIL_ENTITY, MOBILE_NUMBER_ENTITY, OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE } from '../../common/fagito-constants';
+import { withNavigation } from 'react-navigation';
 
 class SettingsEntity extends Component {
+    handleSettingsEntity = (entityName, locationsSection, loggedInUserDetails) => {
+        console.log('entity name is---', entityName);
+        if (entityName !== EMAIL_ENTITY) {
+            this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, { sectionName: locationsSection ? ADDRESS : PROFILE, loggedInUserDetails: loggedInUserDetails });
+        }
+    }
     render() {
         let entityIcon = null;
         let forwardIcon = null;
@@ -24,9 +31,9 @@ class SettingsEntity extends Component {
                 <Ionicons name={ARROW_FORWARD_ICON} color={style.FAGITO_BLACK_COLOR} size={25}></Ionicons>
             )
         }
-        if (this.props.entityValue) {
+        if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[this.props.fieldName]) {
             entityDetails = (
-                <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.entityValue}</Text>
+                <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[this.props.fieldName]}</Text>
             )
         } else {
             entityDetails = (
@@ -34,7 +41,7 @@ class SettingsEntity extends Component {
             )
         }
         return (
-            <TouchableOpacity activeOpacity={1} style={STYLES.settingsEntity}>
+            <TouchableOpacity onPress={() => this.handleSettingsEntity(this.props.entityName, this.props.locationsSection, this.props.loggedInUserDetails)} activeOpacity={1} style={STYLES.settingsEntity}>
                 <View style={STYLES.settingsEntityIcon}>
                     {entityIcon}
                 </View>
@@ -52,4 +59,4 @@ class SettingsEntity extends Component {
     }
 }
 
-export default SettingsEntity;
+export default withNavigation(SettingsEntity);

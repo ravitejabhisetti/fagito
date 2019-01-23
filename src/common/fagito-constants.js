@@ -178,3 +178,6 @@ export const OFFICE_ICON = 'computer';
 export const EMAIL_ENTITY = 'Email';
 export const MOBILE_NUMBER_ENTITY = 'Mobile Number';
 export const OFFICE_ADDRESS_ENTITY = 'Office Address';
+export const UPDATE_USER_DETAILS_SCREEN = 'UpdateUserDetails';
+export const ADDRESS = 'Address';
+export const PROFILE = 'Profile';

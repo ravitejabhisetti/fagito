@@ -1,7 +1,7 @@
 /**
  * 
- *  react-native start --port=8096
-    react-native run-ios --port=8096 --simulator="iPhone 8 Plus"
+ *  react-native start --port=8020
+    react-native run-ios --port=8020 --simulator="iPhone 8 Plus"
 
 
      *****************************

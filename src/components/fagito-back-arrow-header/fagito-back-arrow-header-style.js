@@ -4,7 +4,7 @@ import * as style from '../../common/fagito-style-constants';
 const STYLES = StyleSheet.create({
     headerStyle: {
         height: 60,
-        padding: 15,
+        padding: 18,
         justifyContent: style.FAGITO_CENTER
     },
     headerAlign: {
@@ -13,7 +13,8 @@ const STYLES = StyleSheet.create({
         alignItems: style.FAGITO_CENTER
     },
     headerText: {
-        paddingLeft: 25
+        paddingLeft: 25,
+        paddingTop:2,
     },
     title: {
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,

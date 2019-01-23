@@ -63,8 +63,6 @@ class FagitoTextInput extends Component {
                     {label}
                 </Animated.Text>
                 <TextInput
-                    // {...props}
-                    // value={this.state.value}
                     {...input}
                     keyboardType={keyboardType}
                     secureTextEntry={secureTextEntry}

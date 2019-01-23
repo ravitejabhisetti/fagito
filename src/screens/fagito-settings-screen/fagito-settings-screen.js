@@ -22,16 +22,16 @@ class FagitoSettingsScreen extends Component {
                         <View style={STYLES.profileSection}>
                             <Text style={STYLES.profileText}>Profile</Text>
                         </View>
-                        <SettingsEntity entityName="Name" iconName={PERSON_OUTLINE_ICON} entityValue={this.props.loggedInUserDetails && this.props.loggedInUserDetails.name}></SettingsEntity>
-                        <SettingsEntity entityName="Email" iconName={AT_ICON} entityValue={this.props.loggedInUserDetails && this.props.loggedInUserDetails.email}></SettingsEntity>
-                        <SettingsEntity entityName="Mobile Number" iconName={PHONE_ICON} entityValue={this.props.loggedInUserDetails && this.props.loggedInUserDetails.mobileNumber}></SettingsEntity>
+                        <SettingsEntity entityName="Name" fieldName="name" iconName={PERSON_OUTLINE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity entityName="Email" fieldName="email" iconName={AT_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity entityName="Mobile Number" fieldName="mobileNumber" iconName={PHONE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
                     </View>
                     <View style={STYLES.locationsSegment}>
                         <View style={STYLES.profileSection}>
                             <Text style={STYLES.profileText}>Locations</Text>
                         </View>
-                        <SettingsEntity entityName="Home Address" iconName={HOME_ICON} entityValue={this.props.loggedInUserDetails && this.props.loggedInUserDetails.homeAddress}></SettingsEntity>
-                        <SettingsEntity entityName="Office Address" iconName={OFFICE_ICON} entityValue={this.props.loggedInUserDetails && this.props.loggedInUserDetails.officeAddress}></SettingsEntity>
+                        <SettingsEntity entityName="Home Address" fieldName="homeAddress" locationsSection iconName={HOME_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity entityName="Office Address" fieldName="officeAddress" locationsSection iconName={OFFICE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
                     </View>
                 </ScrollView>
             </View>
