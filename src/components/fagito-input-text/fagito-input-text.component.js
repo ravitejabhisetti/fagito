@@ -7,18 +7,21 @@ class FagitoTextInput extends Component {
     state = { isFocused: false, value: '' };
     constructor(props) {
         super(props);
-        // this.state.value = '';
     }
     componentWillMount() {
         if (this.props.value) {
             this.props.input.value = this.props.value;
         }
-        this.setState({
-            value: this.props.input.value
+        this.setState((state) => {
+            return {
+                ...state,
+                value: this.props.input.value
+            }
         })
-        this._textBoxIsFocused = new Animated.Value(this.state.value === '' ? 0 : 1);
-        this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.state.value === '' ? 0 : 1);
+        this._textBoxIsFocused = new Animated.Value(this.props.value === '' ? 0 : 1);
+        this._textBoxLabelColor = new Animated.Value(!this.state.isFocused || this.props.value === '' ? 0 : 1);
     }
+
     componentDidUpdate() {
         Animated.timing(this._textBoxIsFocused, {
             toValue: (this.state.isFocused || (this.state.value && this.state.value !== '')) ? 1 : 0,
