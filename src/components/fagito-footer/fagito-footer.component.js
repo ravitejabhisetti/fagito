@@ -6,7 +6,7 @@ import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL } from '../../common/fagito-constants';
 import _ from 'lodash';
-import { updateAddonsOfProduct } from '../../store/actions/actions';
+import { updateUser } from '../../store/actions/actions';
 
 class FagitoFooterComponent extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class FagitoFooterComponent extends Component {
 
     handleAddon = () => {
         this.props.hideModal();
-        this.props.updateAddonsOfProduct(this.props.selectedProduct, this.props.addonsSelected);
+        this.props.updateUser(this.props.selectedProduct, this.props.addonsSelected, 'addons');
     }
     render() {
         let footerContent = null;
@@ -141,7 +141,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateAddonsOfProduct: (product, addonsSelected) => dispatch(updateAddonsOfProduct(product, addonsSelected))
+        updateUser: (product, addonsSelected, updateType) => dispatch(updateUser(product, addonsSelected, updateType))
     }
 }
 

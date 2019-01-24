@@ -43,6 +43,9 @@ const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
     },
     borderOnError: {
         borderColor: style.FAGITO_BUTTON_COLOR
+    },
+    textGreyColor: {
+        color: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR
     }
 })
 

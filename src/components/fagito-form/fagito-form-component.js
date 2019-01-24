@@ -29,6 +29,8 @@ const FagitoFormComponent = (props) => {
             key={key}
             name={item.fieldName}
             label={item.label}
+            nonEditable={item.nonEditable}
+            newForm={props.newForm}
             props={{
                 value: item.value,
                 secureTextEntry: item.fieldName === FAGITO_FIELD_NAME_PASSWORD ? true : false,

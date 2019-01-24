@@ -7,7 +7,7 @@ import {
     ADDONS, MODIFY_ADDONS, REMOVE_ADDONS
 } from "../../common/fagito-constants";
 import { connect } from 'react-redux';
-import { updateAddonsOfProduct } from '../../store/actions/actions';
+import { updateUser } from '../../store/actions/actions';
 
 class FagitoBottomModal extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class FagitoBottomModal extends Component {
     }
     removeAddonsOfProduct = () => {
         this.props.hideBottomModal(false);
-        this.props.updateAddonsOfProduct(this.props.selectedProduct, []);
+        this.props.updateUser(this.props.selectedProduct, [], 'addons');
     }
     render() {
         let addAddons = null;
@@ -65,7 +65,7 @@ class FagitoBottomModal extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateAddonsOfProduct: (product, addonsSelected) => dispatch(updateAddonsOfProduct(product, addonsSelected))
+        updateUser: (product, addonsSelected, updateType) => dispatch(updateUser(product, addonsSelected, updateType))
     }
 }
 

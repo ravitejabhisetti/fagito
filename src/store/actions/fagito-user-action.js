@@ -24,12 +24,14 @@ export const resetAddons = () => {
     }
 }
 
-export const updateAddonsOfProduct = (product, addonsSelected) => {
+export const updateUser = (product, addonsSelected, updateType) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
-            let productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) { return selectedProduct.id === product.id; });
-            parsedUserDetails.productsSelected[productIndex]['addons'] = addonsSelected;
+            if (updateType === 'addons') {
+                let productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) { return selectedProduct.id === product.id; });
+                parsedUserDetails.productsSelected[productIndex]['addons'] = addonsSelected;
+            }
             dispatch(getToken()).then(apiToken => {
                 let url = FIREBASE_URL + 'users/' + parsedUserDetails.userId + '.json?auth=' + apiToken;
                 return fetch(url, {
@@ -38,7 +40,9 @@ export const updateAddonsOfProduct = (product, addonsSelected) => {
                     headers: FAGITO_API_CALL_HEADERS
                 }).catch((error) => {
                 }).then(res => res.json()).then(response => {
-                    dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
+                    if (updateType === 'addons') {
+                        dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
+                    }
                     dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })

@@ -181,3 +181,23 @@ export const OFFICE_ADDRESS_ENTITY = 'Office Address';
 export const UPDATE_USER_DETAILS_SCREEN = 'UpdateUserDetails';
 export const ADDRESS = 'Address';
 export const PROFILE = 'Profile';
+export const USER_PROFILE = 'userProfileForm';
+export const USER_LOCATIONS = 'userLocationsForm';
+export const UPDATE_PROFILE_FORM = [
+    {
+        label: 'Your Name',
+        value: '',
+        fieldName: 'name'
+    },
+    {
+        label: 'Email',
+        value: '',
+        fieldName: 'email',
+        nonEditable: false
+    },
+    {
+        label: 'Mobile',
+        value: '',
+        fieldName: 'mobileNumber'
+    }
+]

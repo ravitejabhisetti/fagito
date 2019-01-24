@@ -40,7 +40,6 @@ class FagitoSettingsScreen extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('state check settings---', state);
     return {
         loggedInUserDetails: state.userDetails.loggedInUserDetails
     }
