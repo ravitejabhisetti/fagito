@@ -1,5 +1,7 @@
-export { userAuthentication, autoSignIn, getToken, handleError,
-     updateUserLoggedInStatus, formDatestoDeliver, updateUserDetails } from './fagito-signin-signup-action';
+export {
+    userAuthentication, autoSignIn, getToken, handleError,
+    updateUserLoggedInStatus, formDatestoDeliver, updateUserDetails
+} from './fagito-signin-signup-action';
 export { fagitoStartLoader, fagitoStopLoader } from './fagito-loader-action';
 export { fagitoShowAlert, fagitoHideAlert } from './fagito-alert-action';
 export { handleSelectedDate, updateDeliveryTiming, updateFilter } from './fagito-delivery-timing-date-action';
@@ -8,3 +10,4 @@ export {
     updatedProductsOfUser, updateUserSelectedProducts, updateIndexOfProductToAddAddons
 } from './fagito-products-action';
 export { addAddon, deleteAddon, resetAddons, updateUser, updateSelectedProductAddons } from './fagito-user-action';
+export { updateUserLocationDetails, updateAddressDetails } from './fagito-user-profile-action';

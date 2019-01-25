@@ -80,6 +80,21 @@ export const DAYS_LABEL = {
 export const AREA_LABEL = 'Choose your area';
 export const DIET_FILTER_LABEL = 'Diet Filter';
 export const CUISINE_FILTER_LABEL = 'Cuisine Filter';
+export const ADDRESS_TYPE_LABEL = 'Address Type';
+export const ADDRESS_TYPE_OFFICE = 'Office';
+export const ADDRESS_TYPE_HOME = 'Home';
+export const HOME_FIELD = 'homeAddress';
+export const ADDRESS_DROPDOWN_CONTENT = {
+    addressType: {
+        userProfile: true,
+        filterName: 'addressType',
+        intial: 0,
+        header: 'Choose Address Type', headerDescription: '', options: [
+            { label: 'Office' },
+            { label: 'Home' }
+        ]
+    }
+}
 export const FILTERS_CONTENT = {
     dietFilter: {
         filterName: 'dietFilter',

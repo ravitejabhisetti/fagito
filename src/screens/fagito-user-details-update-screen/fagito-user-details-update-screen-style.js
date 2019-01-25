@@ -3,8 +3,13 @@ import * as style from '../../common/fagito-style-constants';
 
 const STYLES = StyleSheet.create({
     updateDetailsContainer: {
-        flex:1,
+        flex: 1,
         backgroundColor: style.FAGITO_WHITE_COLOR
+    },
+    addressSection: {
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 16
     }
 });
 
