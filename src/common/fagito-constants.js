@@ -193,7 +193,7 @@ export const UPDATE_PROFILE_FORM = [
         label: 'Email',
         value: '',
         fieldName: 'email',
-        nonEditable: false
+        nonEditable: true
     },
     {
         label: 'Mobile',
@@ -201,3 +201,6 @@ export const UPDATE_PROFILE_FORM = [
         fieldName: 'mobileNumber'
     }
 ]
+export const STRING = 'string';
+export const UPDATE_PROFILE_INFO = 'Updating your profile information...';
+export const SETTINGS_SCREEN = 'Settings';

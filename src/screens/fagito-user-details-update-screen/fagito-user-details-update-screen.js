@@ -3,13 +3,17 @@ import { View, Text } from 'react-native';
 import { STYLES } from './fagito-user-details-update-screen-style';
 import { PROFILE, UPDATE_PROFILE_FORM, USER_PROFILE } from '../../common/fagito-constants';
 import { FagitoFormComponent } from '../../components/fagito-components';
+import { validateFormEntities } from '../../utility/fagito-form-validations';
+import { connect } from 'react-redux';
+import { updateUser } from '../../store/actions/actions';
 
 class FagitoUpdateUserDetailsScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loggedInUserDetails: null,
-            sectionName: ''
+            sectionName: '',
+            userDetailsProfileForm: []
         }
     }
     static navigationOptions = ({ navigation, check, screenProps }) => {
@@ -18,30 +22,35 @@ class FagitoUpdateUserDetailsScreen extends Component {
         }
     }
     componentWillMount() {
+        let profileForm = UPDATE_PROFILE_FORM;
         let sectionName = this.props.navigation.getParam('sectionName');
         let loggedInUserDetails = this.props.navigation.getParam('loggedInUserDetails');
+        if (sectionName === PROFILE) {
+            profileForm[0].value = loggedInUserDetails.name;
+            profileForm[1].value = loggedInUserDetails.email;
+            profileForm[2].value = loggedInUserDetails.mobileNumber;
+        }
         this.setState((state) => {
             return {
                 ...state,
                 sectionName: sectionName,
-                loggedInUserDetails: loggedInUserDetails
+                loggedInUserDetails: loggedInUserDetails,
+                userDetailsProfileForm: profileForm
             }
         });
     }
-    handleButtonClick = (formItems) => {
-        console.log('form items are---', formItems);
+    handleButtonClick = (formEntities) => {
+        let isFormValid = validateFormEntities(formEntities, this.state.sectionName);
+        if (isFormValid) {
+            this.props.updateUser(null, [], PROFILE, formEntities);
+        }
     }
     render() {
         let userProfileForm = null;
         let userLocationsForm = null;
         if (this.state.sectionName === PROFILE) {
-            let profileForm = UPDATE_PROFILE_FORM;
-            profileForm[0].value = this.state.loggedInUserDetails.name;
-            profileForm[1].value = this.state.loggedInUserDetails.email;
-            profileForm[2].value = this.state.loggedInUserDetails.mobileNumber;
-            console.log('profile form to check is---', profileForm);
             userProfileForm = (
-                <FagitoFormComponent form={USER_PROFILE} formButtonClick={this.handleButtonClick} buttonTitle='UPDATE' formItems={profileForm}></FagitoFormComponent>
+                <FagitoFormComponent updateForm form={USER_PROFILE} formButtonClick={(values) => this.handleButtonClick(values)} buttonTitle='UPDATE' formItems={this.state.userDetailsProfileForm}></FagitoFormComponent>
             )
         }
         return (
@@ -53,4 +62,10 @@ class FagitoUpdateUserDetailsScreen extends Component {
     }
 }
 
-export default FagitoUpdateUserDetailsScreen;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUser: (product, addonsList, updateType, formEntities) => dispatch(updateUser(product, addonsList, updateType, formEntities))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FagitoUpdateUserDetailsScreen);

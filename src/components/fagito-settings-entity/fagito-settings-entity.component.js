@@ -9,7 +9,6 @@ import { withNavigation } from 'react-navigation';
 
 class SettingsEntity extends Component {
     handleSettingsEntity = (entityName, locationsSection, loggedInUserDetails) => {
-        console.log('entity name is---', entityName);
         if (entityName !== EMAIL_ENTITY) {
             this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, { sectionName: locationsSection ? ADDRESS : PROFILE, loggedInUserDetails: loggedInUserDetails });
         }
