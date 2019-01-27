@@ -17,7 +17,7 @@ export const FAGITO_COMMON_STYLE = {
 export const FAGITO_SIGNIN_SIGNUP_CONTAINERS = StyleSheet.create({
     signupSigninContainer: {
         backgroundColor: style.FAGITO_WHITE_COLOR,
-        padding: 4,
+        padding: 8,
         marginTop: 0
     }
 });

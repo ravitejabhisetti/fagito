@@ -21,6 +21,9 @@ import FagitoBottomModal from './fagito-bottom-modal/fagito-bottom-modal.compone
 import FagitoAddonsList from './fagito-addon-list/fagito-addons-list.component';
 import FagitoAddon from './fagito-addon/fagito-addon.component';
 import SettingsEntity from './fagito-settings-entity/fagito-settings-entity.component';
+import FagitoTransactionsComponent from './fagito-transactions/fagito-transactions.component';
+import FagitoPaymentsComponent from './fagito-payments/fagito-payments.component';
+import FagitoOrdersComponent from './fagito-orders/fagito-orders.component';
 
 export {
     FagitoButton,
@@ -45,5 +48,8 @@ export {
     FagitoBottomModal,
     FagitoAddonsList,
     FagitoAddon,
-    SettingsEntity
+    SettingsEntity,
+    FagitoTransactionsComponent,
+    FagitoPaymentsComponent,
+    FagitoOrdersComponent
 }
