@@ -10,6 +10,16 @@ const STYLES = StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         paddingTop: 16
+    },
+    locationEntity: {
+        paddingTop: 5,
+        paddingBottom: 12
+    },
+    mandatoryFieldsMessage: {
+        fontSize: 14,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        paddingTop: 6,
+        color: style.FAGITO_BUTTON_COLOR
     }
 });
 

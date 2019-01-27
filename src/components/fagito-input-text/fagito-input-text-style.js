@@ -31,7 +31,7 @@ const FAGITO_TEXT_INPUT_CONTAINER = StyleSheet.create({
         fontWeight: '400'
     },
     greyColor: {
-        borderColor: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR
+        borderColor: style.DROPDOWN_BORDER_BOTTOM_COLOR
     },
     redColor: {
         borderColor: style.FAGITO_BUTTON_COLOR

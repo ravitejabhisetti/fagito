@@ -7,7 +7,7 @@ import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import {
     ARROW_FORWARD_ICON, EMAIL_ENTITY, MOBILE_NUMBER_ENTITY,
-    OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE
+    OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE, ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD, OFFICE_FIELD
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
 import { updateUserLocationDetails } from '../../store/actions/actions';
@@ -16,7 +16,7 @@ class SettingsEntity extends Component {
     handleSettingsEntity = (entityName, locationsSection, loggedInUserDetails, fieldName) => {
         if (entityName !== EMAIL_ENTITY) {
             if (locationsSection) {
-                this.props.updateUserLocationDetails(fieldName);
+                this.props.updateUserLocationDetails(fieldName, loggedInUserDetails);
             }
             this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
                 sectionName: locationsSection ? ADDRESS : PROFILE,
@@ -41,14 +41,28 @@ class SettingsEntity extends Component {
                 <Ionicons name={ARROW_FORWARD_ICON} color={style.FAGITO_BLACK_COLOR} size={25}></Ionicons>
             )
         }
-        if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[this.props.fieldName]) {
-            entityDetails = (
-                <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[this.props.fieldName]}</Text>
-            )
+        let fieldName = this.props.fieldName;
+        let addressType = fieldName + ADDRESS_LINE_ONE;
+        if (fieldName === HOME_FIELD || fieldName === OFFICE_FIELD) {
+            if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[addressType]) {
+                entityDetails = (
+                    <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}</Text>
+                )
+            } else {
+                entityDetails = (
+                    <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                )
+            }
         } else {
-            entityDetails = (
-                <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
-            )
+            if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[fieldName]) {
+                entityDetails = (
+                    <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName]}</Text>
+                )
+            } else {
+                entityDetails = (
+                    <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                )
+            }
         }
         return (
             <TouchableOpacity
@@ -75,7 +89,7 @@ class SettingsEntity extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUserLocationDetails: (fieldName) => dispatch(updateUserLocationDetails(fieldName))
+        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
     }
 }
 

@@ -32,35 +32,47 @@ class FagitoDropdown extends Component {
     render() {
         const { ...props } = this.props;
         let selectedValue = null;
+        let dropdownErrorMessage = null;
         const labelStyle = {
             color: style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR,
             fontFamily: style.FAGITO_FONT_FAMILY_LATO,
             top: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_TOP_RANGE),
             fontSize: this.dropdownValueSelected.interpolate(style.DROPDOWN_LABEL_FONT_RANGE)
         }
+        if (this.props.displayErrorMessage) {
+            dropdownErrorMessage = (
+                <View style={STYLES.dropdownErrorMessageSection}>
+                    <Text style={STYLES.dropdownErrorMessage}>{this.props.errorMessage}</Text>
+                </View>
+            )
+        }
         if (props.selectedValue) {
             selectedValue = (
                 <Text style={STYLES.selectedValueText} numberOfLines={1}>{props.selectedValue}</Text>
             )
+            dropdownErrorMessage = null;
         }
         return (
-            <Ripple onPress={this.handleDropdown} rippleColor={style.FAGITO_BLACK_COLOR} rippleDuration={200} rippleOpacity={0.4}>
-                <View style={[STYLES.dropdownSegment, props.dropdownBorder ? STYLES.dropdownGreyBorder : null]}>
-                    <TouchableOpacity activeOpacity={1}>
-                        <View style={STYLES.dropdownLabelPadding}>
-                            <Animated.Text style={labelStyle}>{props.dropdownLabel}</Animated.Text>
-                        </View>
-                        <View style={STYLES.dropdownIcon}>
-                            <View style={STYLES.dropdownValue}>
-                                {selectedValue}
+            <View>
+                <Ripple onPress={this.handleDropdown} rippleColor={style.FAGITO_BLACK_COLOR} rippleDuration={200} rippleOpacity={0.4}>
+                    <View style={[STYLES.dropdownSegment, props.dropdownBorder ? STYLES.dropdownGreyBorder : null]}>
+                        <TouchableOpacity activeOpacity={1}>
+                            <View style={STYLES.dropdownLabelPadding}>
+                                <Animated.Text style={labelStyle}>{props.dropdownLabel}</Animated.Text>
                             </View>
-                            <View>
-                                <Icon name='md-arrow-dropdown' color={style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR} size={20}></Icon>
+                            <View style={STYLES.dropdownIcon}>
+                                <View style={STYLES.dropdownValue}>
+                                    {selectedValue}
+                                </View>
+                                <View>
+                                    <Icon name='md-arrow-dropdown' color={style.FAGITO_TEXT_INPUT_GREY_BORDER_COLOR} size={20}></Icon>
+                                </View>
                             </View>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </Ripple>
+                        </TouchableOpacity>
+                    </View>
+                </Ripple>
+                {dropdownErrorMessage}
+            </View>
         )
     }
 }

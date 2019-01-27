@@ -3,7 +3,7 @@ import * as style from '../../common/fagito-style-constants';
 
 const STYLES = StyleSheet.create({
     dropdownSegment: {
-       
+
     },
     dropdownLabelPadding: {
         paddingBottom: 10
@@ -17,12 +17,20 @@ const STYLES = StyleSheet.create({
         justifyContent: style.FAGITO_FLEX_END,
     },
     dropdownValue: {
-        left:0,
+        left: 0,
         position: style.FAGITO_POSITION_ABSOLUTE,
         justifyContent: style.FAGITO_FLEX_START
     },
     selectedValueText: {
         maxWidth: "100%"
+    },
+    dropdownErrorMessageSection: {
+        paddingTop: 5
+    },
+    dropdownErrorMessage: {
+        fontSize:14,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        color: style.FAGITO_ERROR_TEXT_COLOR
     }
 });
 

@@ -63,7 +63,7 @@ class FagitoAlert extends Component {
         } else {
             let radio_props = this.props.alertItems.options;
             let dropdownHeaderDescription = null;
-            if (this.props.alertItems.headerDescription !== '') {
+            if (this.props.alertItems.headerDescription !== '' && !this.props.alertItems.hideHeaderDescription) {
                 dropdownHeaderDescription = (
                     <Text style={this.props.alertItems.headerDescription}>{this.props.alertItems.headerDescription}</Text>
                 )

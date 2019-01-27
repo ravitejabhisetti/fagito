@@ -1,7 +1,10 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from './fagito-action-types';
 import { AsyncStorage } from 'react-native';
 import { getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader } from './actions';
-import { FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS, METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN } from '../../common/fagito-constants';
+import {
+    FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS,
+    METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS, HOME_FIELD, ADDRESS_TYPE_HOME
+} from '../../common/fagito-constants';
 import _ from 'lodash';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
@@ -26,7 +29,8 @@ export const resetAddons = () => {
     }
 }
 
-export const updateUser = (product, addonsSelected, updateType, formEntities = []) => {
+export const updateUser = (product, addonsSelected, updateType, formEntities,
+    addressType, city, area) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
@@ -37,6 +41,20 @@ export const updateUser = (product, addonsSelected, updateType, formEntities = [
             if (updateType === PROFILE) {
                 parsedUserDetails.name = formEntities[0].value;
                 parsedUserDetails.mobileNumber = formEntities[2].value;
+                dispatch(fagitoStartLoader(UPDATE_PROFILE_INFO));
+            }
+            if (updateType === ADDRESS) {
+                if (addressType === ADDRESS_TYPE_HOME) {
+                    parsedUserDetails['homeAddressLineOne'] = formEntities[0].value;
+                    parsedUserDetails['homeAddressLineTwo'] = formEntities[1].value;
+                    parsedUserDetails['homeAddressArea'] = area;
+                    parsedUserDetails['homeAddressCity'] = city;
+                } else {
+                    parsedUserDetails['officeAddressLineOne'] = formEntities[0].value;
+                    parsedUserDetails['officeAddressLineTwo'] = formEntities[1].value;
+                    parsedUserDetails['officeAddressArea'] = area;
+                    parsedUserDetails['officeAddressCity'] = city;
+                }
                 dispatch(fagitoStartLoader(UPDATE_PROFILE_INFO));
             }
             dispatch(getToken()).then(apiToken => {

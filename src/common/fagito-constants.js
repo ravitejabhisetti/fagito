@@ -81,9 +81,13 @@ export const AREA_LABEL = 'Choose your area';
 export const DIET_FILTER_LABEL = 'Diet Filter';
 export const CUISINE_FILTER_LABEL = 'Cuisine Filter';
 export const ADDRESS_TYPE_LABEL = 'Address Type';
+export const CITY_LABEL = 'City';
 export const ADDRESS_TYPE_OFFICE = 'Office';
 export const ADDRESS_TYPE_HOME = 'Home';
-export const HOME_FIELD = 'homeAddress';
+export const HOME_FIELD = 'home';
+export const OFFICE_FIELD = 'office';
+export const CITY_FIELD = 'city';
+export const ADDRESS_TYPE = 'addressType';
 export const ADDRESS_DROPDOWN_CONTENT = {
     addressType: {
         userProfile: true,
@@ -92,6 +96,16 @@ export const ADDRESS_DROPDOWN_CONTENT = {
         header: 'Choose Address Type', headerDescription: '', options: [
             { label: 'Office' },
             { label: 'Home' }
+        ]
+    }
+}
+export const CITY_DROPDOWN_CONTENT = {
+    city: {
+        userProfile: true,
+        filterName: 'city',
+        intial: 0,
+        header: 'City', headerDescription: '', options: [
+            { label: 'Hyderabad' }
         ]
     }
 }
@@ -145,6 +159,7 @@ export const FILTERS_CONTENT = {
         ]
     }
 };
+export const PROFILE_AREA_LABEL = '* Area';
 export const ORDERS_MODAL = { type: 'orders', modalHeader: "Today's orders", modalMessage: 'There are no orders for Today.' };
 export const CHOOSE_LOCATION_MESSAGE = 'Please choose an area so that we can show you homemade lunch options available in your location.';
 export const FOOTER_MESSAGE = 'Schedule meals to start using Tinmen';
@@ -216,6 +231,24 @@ export const UPDATE_PROFILE_FORM = [
         fieldName: 'mobileNumber'
     }
 ]
+export const UPDATE_LOCATIONS_FORM = [
+    {
+        label: '* Address Line 1',
+        value: '',
+        fieldName: 'homeAddressLineOne'
+    },
+    {
+        label: '* Address Line 2',
+        value: '',
+        fieldName: 'homeAddressLineTwo'
+    }
+]
 export const STRING = 'string';
 export const UPDATE_PROFILE_INFO = 'Updating your profile information...';
 export const SETTINGS_SCREEN = 'Settings';
+export const SELECT_AREA_ERROR_MESSAGE = 'Please select an area';
+export const ENTER_ADDRESS_ERROR = 'Please enter your address';
+export const ADDRESS_LINE_ONE = 'AddressLineOne';
+export const ADDRESS_LINE_TWO = 'AddressLineTwo';
+export const ADDRESS_AREA = 'AddressArea';
+export const ADDRESS_CITY = 'AddressCity';

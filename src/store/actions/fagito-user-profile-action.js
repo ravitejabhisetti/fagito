@@ -1,15 +1,31 @@
-import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS } from './fagito-action-types';
+import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA, UPDATE_ADDRESS_TYPE } from './fagito-action-types';
+import { HOME_FIELD, CITY_FIELD, LOCATION_FILTER, ADDRESS_TYPE } from '../../common/fagito-constants';
 
-export const updateUserLocationDetails = (fieldName) => {
+export const updateUserLocationDetails = (fieldName, loggedInUserDetails) => {
     return {
         type: UPDATE_USER_LOCATION_DETAILS,
-        fieldName: fieldName
+        fieldName: fieldName,
+        loggedInUserDetails: loggedInUserDetails
     }
 }
 
 export const updateAddressDetails = (fieldName, index) => {
+    let type = null;
+    console.log('field name is---', fieldName);
+    if (fieldName === HOME_FIELD) {
+        type = UPDATE_ADDRESS;
+    }
+    if (fieldName === CITY_FIELD) {
+        type = UPDATE_CITY;
+    }
+    if (fieldName === LOCATION_FILTER) {
+        type = UPDATE_AREA;
+    }
+    if (fieldName === ADDRESS_TYPE) {
+        type = UPDATE_ADDRESS_TYPE;
+    }
     return {
-        type: UPDATE_ADDRESS,
+        type: type,
         fieldName: fieldName,
         index: index
     }
