@@ -39,6 +39,7 @@ export const FAGITO_REFRESH_TOKEN_REQUEST_BODY = 'grant_type=refresh_token&refre
 export const FAGITO_INVALID_PASSWORD_USERNAME_ERROR_MESSAGE = 'Invalid username/password.';
 export const FAGITO_SOMETHING_WENT_WRONG_ERROR_MESSAGE = 'Something went wrong!!Try again.';
 export const FAGITO_USERS_URL = 'https://o-c22e9.firebaseio.com/users.json?auth=';
+export const FAGITO_TRANSACTIONS_URL = 'https://o-c22e9.firebaseio.com/transactions.json?auth=';
 export const AUTH_URL = '.json?auth=';
 export const METHOD_POST = 'POST';
 export const METHOD_GET = 'GET';
