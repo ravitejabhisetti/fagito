@@ -12,7 +12,7 @@ class FagitoHistoryScreen extends Component {
             <View style={STYLES.historySection}>
                 <BackIcon iconColor={style.FAGITO_WHITE_COLOR} navigateToHome={() => this.props.navigation.navigate(FAGITO_HOME_SCREEN)}
                     backgroundColor={style.FAGITO_BUTTON_COLOR} title={HISTORY_TITLE} />
-                    <TransactionsTabNavigator></TransactionsTabNavigator>
+                <TransactionsTabNavigator></TransactionsTabNavigator>
             </View>
         )
     }
@@ -21,7 +21,27 @@ class FagitoHistoryScreen extends Component {
 const TransactionsTabNavigator = createMaterialTopTabNavigator({
     ALL: FagitoTransactionsComponent,
     PAYMENTS: FagitoPaymentsComponent,
-    ORDERS: FagitoOrdersComponent
-})
+    ORDERS: FagitoOrdersComponent,
+},
+    {
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 12,
+                fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+                fontWeight: '400'
+            },
+            indicatorStyle: {
+                backgroundColor: style.FAGITO_BUTTON_COLOR
+            },
+            activeTintColor: style.FAGITO_BUTTON_COLOR,
+            inactiveTintColor: style.FAGITO_BUTTON_COLOR,
+            style: {
+                backgroundColor: style.TAB_TOP_BACKGROUND,
+                borderColor: style.TAB_TOP_BORDER_COLOR,
+                borderBottomWidth: 1
+            }
+        }
+    }
+)
 
 export default FagitoHistoryScreen;

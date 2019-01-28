@@ -44,3 +44,5 @@ export const DROPDOWN_LABEL_FONT_RANGE = {
     outputRange: [16, 12]
 }
 export const RADIO_OPTION_COLOR = '#787878';
+export const TAB_TOP_BACKGROUND = '#f8f8f8';
+export const TAB_TOP_BORDER_COLOR = '#b2b2b2';
