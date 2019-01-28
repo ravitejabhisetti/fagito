@@ -35,7 +35,7 @@ class FagitoHomeScreen extends Component {
     }
 
     componentDidMount() {
-        this.props.getOrders();
+        this.props.getTransactions();
         // this.props.showLocationDropdown(FILTERS_CONTENT.locationFilter, this.props.filters.locationFilterIndex);
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
         scrollViewRef = this.scroller;
@@ -225,7 +225,7 @@ const mapDispatchToProps = (dispatch) => {
         updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
         deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex)),
         updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons()),
-        getOrders: () => dispatch(getUserTransactions())
+        getTransactions: () => dispatch(getUserTransactions())
     }
 }
 

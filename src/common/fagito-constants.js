@@ -253,3 +253,4 @@ export const ADDRESS_LINE_ONE = 'AddressLineOne';
 export const ADDRESS_LINE_TWO = 'AddressLineTwo';
 export const ADDRESS_AREA = 'AddressArea';
 export const ADDRESS_CITY = 'AddressCity';
+export const FAGITO_USER_TRANSACTIONS = 'fagitoUserTransactions';

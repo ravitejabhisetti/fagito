@@ -22,7 +22,6 @@ class FagitoFormComponent extends Component {
     }
 
     componentWillMount() {
-        console.log('form items check is---', this.props.formItems);
         this.setState((state) => {
             return {
                 ...state,

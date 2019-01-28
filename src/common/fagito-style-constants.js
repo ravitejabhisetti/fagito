@@ -46,3 +46,6 @@ export const DROPDOWN_LABEL_FONT_RANGE = {
 export const RADIO_OPTION_COLOR = '#787878';
 export const TAB_TOP_BACKGROUND = '#f8f8f8';
 export const TAB_TOP_BORDER_COLOR = '#b2b2b2';
+export const GREEN_UP_ICON = 'upcircle';
+export const GREEN_UP_ICON_COLOR = '#32db64';
+export const DOWN_ICON = 'downcircle';

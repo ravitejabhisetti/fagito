@@ -22,7 +22,7 @@ const rootReducer = combineReducers(
         products: ProductsReducer,
         addons: AddonsReducer,
         updateUserProfileAndLocations: UserProfileReducer,
-        orders: TransactionsReducer
+        transactions: TransactionsReducer
     }
 )
 

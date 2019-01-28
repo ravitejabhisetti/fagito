@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage, ScrollView } from 'react-native';
 import { BackIcon, SettingsEntity } from '../../components/fagito-components';
-import { SETTINGS_TITLE, FAGITO_HOME_SCREEN, FAGITO_USER_DETAILS, AT_ICON, PHONE_ICON, HOME_ICON, OFFICE_ICON } from '../../common/fagito-constants';
+import {
+    SETTINGS_TITLE, FAGITO_HOME_SCREEN, FAGITO_USER_DETAILS,
+    AT_ICON, PHONE_ICON, HOME_ICON, OFFICE_ICON
+} from '../../common/fagito-constants';
 import { STYLES } from './fagito-settings-screen-style';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
