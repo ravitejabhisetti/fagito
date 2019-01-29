@@ -22,10 +22,6 @@ class FagitoSigninScreen extends Component {
         this.props.navigation.navigate(FAGITO_RESET_PASSWORD_SCREEN);
     }
 
-    componentWillMount() {
-        console.log('in will mount sign in---');
-    }
-
     render() {
         let backIconHeader = null;
         if (this.props.backIconDisplay) {

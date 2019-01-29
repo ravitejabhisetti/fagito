@@ -5,7 +5,8 @@ import {
     FAGITO_HOME_SCREEN, FAGITO_SIGNIN_AUTH_MODE, FAGITO_TOKEN, FAGITO_REFRESH_TOKEN, FAGITO_EXPIRY_TIME,
     FAGITO_REFRESH_TOKEN_REQUEST_BODY, FAGITO_ENCODED_HEADERS, FAGITO_USERS_URL, METHOD_POST, FAGITO_USER_DETAILS,
     FAGITO_DRAWER_NAVIGATOR, METHOD_GET, DAYS, TOMORROW, DAYS_LABEL,
-    FAGITO_SIGNUP_AUTH_MODE
+    FAGITO_SIGNUP_AUTH_MODE,
+    FAGITO_USER_TRANSACTIONS
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert, updateUserSelectedProducts } from './actions';
@@ -167,6 +168,7 @@ export const clearStorage = () => {
         AsyncStorage.removeItem(FAGITO_TOKEN);
         AsyncStorage.removeItem(FAGITO_REFRESH_TOKEN);
         AsyncStorage.removeItem(FAGITO_USER_DETAILS);
+        AsyncStorage.removeItem(FAGITO_USER_TRANSACTIONS);
         return AsyncStorage.removeItem(FAGITO_EXPIRY_TIME);
     }
 }

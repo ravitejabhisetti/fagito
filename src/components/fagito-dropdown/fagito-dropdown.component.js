@@ -48,7 +48,7 @@ class FagitoDropdown extends Component {
         }
         if (props.selectedValue) {
             selectedValue = (
-                <Text style={STYLES.selectedValueText} numberOfLines={1}>{props.selectedValue}</Text>
+                <Text style={[this.props.locationDropdown ? STYLES.locationSelectedValueText : STYLES.selectedValueText]} numberOfLines={1}>{props.selectedValue}</Text>
             )
             dropdownErrorMessage = null;
         }

@@ -1,6 +1,6 @@
 import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
-    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE
+    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER
 } from '../actions/fagito-action-types';
 import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION } from '../../common/fagito-constants';
 
@@ -21,7 +21,8 @@ const initialState = {
         locationFilter: null,
         dietFilterIndex: 0,
         cuisineFilterIndex: 0,
-        locationFilterIndex: null
+        locationFilterIndex: null,
+        locationFilterContent: FILTERS_CONTENT.locationFilter
     }
 }
 
@@ -68,6 +69,11 @@ const reducer = (state = initialState, action) => {
                     dinnerTiming: !action.timing
                 }
 
+            }
+        case UPDATE_LOCATION_FILTER:
+            return {
+                ...state,
+                filters: { ...state.filters, locationFilter: action.locationSelected, locationFilterIndex: action.locationIndex }
             }
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;

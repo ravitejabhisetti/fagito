@@ -5,7 +5,8 @@ import { Header, Left, right } from 'native-base';
 import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON, VARIANTS,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
-    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO, ORDERS, ADDONS, NULL
+    CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO,
+    ORDERS, ADDONS, NULL, FAGITO_USER_DETAILS, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,7 +16,7 @@ import {
 } from '../../components/fagito-components';
 import {
     updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser,
-    deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions
+    deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions, getProductsOfDate, updateLocationFilter
 } from '../../store/actions/actions';
 import _ from 'lodash';
 
@@ -35,10 +36,37 @@ class FagitoHomeScreen extends Component {
     }
 
     componentDidMount() {
+        let self = this;
         this.props.getTransactions();
-        // this.props.showLocationDropdown(FILTERS_CONTENT.locationFilter, this.props.filters.locationFilterIndex);
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
         scrollViewRef = this.scroller;
+        AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+            parsedUserDetails = JSON.parse(userDetails);
+            console.log('parsed user details are---', parsedUserDetails);
+            if (parsedUserDetails.homeAddressLineOne || parsedUserDetails.officeAddressLineOne) {
+                let dropdownContent = FILTERS_CONTENT.locationFilter;
+                dropdownContent.options = [];
+                if (parsedUserDetails.officeAddressLineOne) {
+                    let officeAddress = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
+                    dropdownContent.options[0] = { label: officeAddress };
+                    this.props.updateLocationFilter(officeAddress, 0);
+                } else {
+                    dropdownContent.options[0] = { label: ADD_OFFICE_ADDRESS };
+                }
+                if (parsedUserDetails.homeAddressLineOne) {
+                    let homeAddress = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
+                    dropdownContent.options[1] = { label: homeAddress };
+                    this.props.updateLocationFilter(homeAddress, 1);
+                } else {
+                    dropdownContent.options[1] = { label: ADD_HOME_ADDRESS };
+                }
+                if (_.isEmpty(this.props.productsList)) {
+                    this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
+                }
+            } else {
+                setTimeout(function () { self.props.showLocationDropdown(self.props.locationFilterContent, self.props.filters.locationFilterIndex); }, 1000);
+            }
+        })
     }
     componentWillUnmount() {
         BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
@@ -178,9 +206,10 @@ class FagitoHomeScreen extends Component {
                             </View>
                             <View style={STYLES.deliveryLocationFilter}>
                                 <FagitoDropdown
+                                    locationDropdown
                                     selectedValue={this.props.locationFilter}
                                     radioOptionIndex={this.props.filters.locationFilterIndex}
-                                    dropdownContent={FILTERS_CONTENT.locationFilter}
+                                    dropdownContent={this.props.locationFilterContent}
                                     dropdownLabel={AREA_LABEL}
                                     dropdownBorder={true}>
                                 </FagitoDropdown>
@@ -225,7 +254,9 @@ const mapDispatchToProps = (dispatch) => {
         updatedProductsOfUser: (product, timingSelected, dateSelected, month, variantIndex, update, index) => dispatch(updatedProductsOfUser(product, timingSelected, dateSelected, month, variantIndex, update, index)),
         deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex)),
         updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons()),
-        getTransactions: () => dispatch(getUserTransactions())
+        getTransactions: () => dispatch(getUserTransactions()),
+        getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
+        updateLocationFilter: (locationSelected, locationIndex) => dispatch(updateLocationFilter(locationSelected, locationIndex))
     }
 }
 
@@ -235,6 +266,7 @@ const mapStateToProps = (state) => {
         dietFilter: state.deliveryTimingAndDates.filters.dietFilter,
         cuisineFilter: state.deliveryTimingAndDates.filters.cuisineFilter,
         locationFilter: state.deliveryTimingAndDates.filters.locationFilter,
+        locationFilterContent: state.deliveryTimingAndDates.filters.locationFilterContent,
         filters: state.deliveryTimingAndDates.filters,
         selectedDay: state.deliveryTimingAndDates.selectedDay,
         productsList: state.products.productsList,
@@ -243,7 +275,8 @@ const mapStateToProps = (state) => {
         selectedDate: state.deliveryTimingAndDates.selectedDate,
         loader: state.fagitoLoader.showLoader,
         indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
-        userLoggedIn: state.userDetails.userLoggedInStatus
+        userLoggedIn: state.userDetails.userLoggedInStatus,
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex
     }
 }
 

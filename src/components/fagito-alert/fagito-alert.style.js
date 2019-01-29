@@ -72,11 +72,14 @@ const STYLES = StyleSheet.create({
     },
     radioOptionLabel: {
         fontSize: 12,
-        fontFamily: style.FAGITO_FONT_FAMILY_LATO
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        justifyContent: style.FAGITO_CENTER,
+        alignItems: style.FAGITO_CENTER
     },
     radioButton: {
-        paddingBottom: 4,
-        paddingTop: 4
+        alignItems: style.FAGITO_CENTER,
+        paddingTop: 2,
+        paddingBottom: 2
     },
     errorMessageSection: {
         paddingTop: 20,

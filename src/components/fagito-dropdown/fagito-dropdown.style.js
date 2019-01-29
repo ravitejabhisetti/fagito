@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import * as style from '../../common/fagito-style-constants';
+
+const windows = Dimensions.get('window');
 
 const STYLES = StyleSheet.create({
     dropdownSegment: {
@@ -24,11 +26,15 @@ const STYLES = StyleSheet.create({
     selectedValueText: {
         maxWidth: "100%"
     },
+    locationSelectedValueText: {
+        minWidth: "82%",
+        maxWidth: windows.width - 25
+    },
     dropdownErrorMessageSection: {
         paddingTop: 5
     },
     dropdownErrorMessage: {
-        fontSize:14,
+        fontSize: 14,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         color: style.FAGITO_ERROR_TEXT_COLOR
     }
