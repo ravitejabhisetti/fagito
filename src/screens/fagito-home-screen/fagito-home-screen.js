@@ -76,7 +76,7 @@ class FagitoHomeScreen extends Component {
     }
     handleFoodtimings = (lunchTiming) => {
         this.props.updateDeliveryTiming(lunchTiming);
-        this.props.showLocationDropdown(FILTERS_CONTENT.locationFilter, this.props.filters.locationFilterIndex);
+        this.props.showLocationDropdown(this.props.locationFilterContent, this.props.filters.locationFilterIndex);
     }
     shouldComponentUpdate(nextProps) {
         return true;

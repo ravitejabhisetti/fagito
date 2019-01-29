@@ -19,6 +19,16 @@ class FagitoAlert extends Component {
             this.props.hideAlert();
         }
     }
+    componentDidMount() {
+        if (this.props.alertItems.radioOptionIndex) {
+            this.setState((state) => {
+                return {
+                    ...state,
+                    index: this.props.alertItems.radioOptionIndex
+                }
+            })
+        }
+    }
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
             if (!this.props.alertItems.userProfile) {
@@ -34,6 +44,7 @@ class FagitoAlert extends Component {
     }
 
     handleRadioButtonSelection = (value, indexSelected) => {
+        console.log('value selected is---', value);
         this.setState((state) => {
             return {
                 ...state,
