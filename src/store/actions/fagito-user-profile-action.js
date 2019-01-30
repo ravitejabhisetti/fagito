@@ -11,7 +11,6 @@ export const updateUserLocationDetails = (fieldName, loggedInUserDetails) => {
 
 export const updateAddressDetails = (fieldName, index) => {
     let type = null;
-    console.log('field name is---', fieldName);
     if (fieldName === HOME_FIELD) {
         type = UPDATE_ADDRESS;
     }

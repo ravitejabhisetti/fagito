@@ -12,6 +12,7 @@ import FagitoSettingsScreen from './fagito-settings-screen/fagito-settings-scree
 import FagitoSupportScreen from './fagito-support-screen/fagito-support-screen';
 import FagitoFreeFoodScreen from './fagito-free-food-screen/fagito-free-food-screen';
 import FagitoUpdateUserDetailsScreen from './fagito-user-details-update-screen/fagito-user-details-update-screen';
+import CustomDrawerComponent from './fagito-drawer-navigator/custom-drawer-component';
 
 export {
     FagitoSignupSigninBrowseButtonsScreen,
@@ -27,5 +28,6 @@ export {
     FagitoSettingsScreen,
     FagitoSupportScreen,
     FagitoFreeFoodScreen,
-    FagitoUpdateUserDetailsScreen
+    FagitoUpdateUserDetailsScreen,
+    CustomDrawerComponent
 };

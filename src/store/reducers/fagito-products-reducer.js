@@ -1,6 +1,6 @@
 import {
     FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT,
-    FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_ADDONS_OF_PRODUCT, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS
+    FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_ADDONS_OF_PRODUCT, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS, RESET_PRODUCTS_STATE
 } from '../actions/fagito-action-types';
 
 const initialState = {
@@ -62,6 +62,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 indexOfProductToUpdateAddons: null
             }
+        case RESET_PRODUCTS_STATE:
+            return initialState;
         default:
             return state;
     }

@@ -71,7 +71,6 @@ class FagitoUpdateUserDetailsScreen extends Component {
                     }
                 })
             }
-            console.log('address type is---', this.props.addressType);
             if (!this.state.displayDropdownErrorMessage && isFormValid) {
                 this.props.updateUser(null, [], ADDRESS, formEntities, this.props.addressType, this.props.city, this.props.area);
             }

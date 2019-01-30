@@ -1,4 +1,7 @@
-import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA, UPDATE_ADDRESS_TYPE } from '../actions/fagito-action-types';
+import {
+    UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA,
+    UPDATE_ADDRESS_TYPE, RESET_USER_PROFILE_STATE
+} from '../actions/fagito-action-types';
 import { ADDRESS_TYPE_HOME, ADDRESS_TYPE_OFFICE, HOME_FIELD, FILTERS_CONTENT } from '../../common/fagito-constants';
 import _ from 'lodash';
 
@@ -42,6 +45,8 @@ const reducer = (state = initialState, action) => {
                 areaIndex: action.index,
                 area: FILTERS_CONTENT.locationFilter.options[action.index].label
             }
+        case RESET_USER_PROFILE_STATE:
+            return initialState;
         default:
             return state;
     }

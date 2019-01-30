@@ -1,4 +1,4 @@
-import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS } from '../actions/fagito-action-types';
+import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, RESET_ADDONS_STATE } from '../actions/fagito-action-types';
 import _ from 'lodash';
 
 const initialState = {
@@ -41,6 +41,8 @@ const reducer = (state = initialState, action) => {
                 addonsCount: 0,
                 addonsSelected: []
             }
+        case RESET_ADDONS_STATE:
+            return initialState;
         default:
             return state;
     }

@@ -10,7 +10,7 @@ import { FAGITO_COMMON_STYLE } from './src/common/fagito-common-style';
 import { FagitoLoader, FagitoAlert } from './src/components/fagito-components';
 // import configureStore from './src/store/configureStore';
 import { connect } from 'react-redux';
-import { DrawerNavigator } from './src/screens/fagito-drawer-navigator/fagito-drawer-navigator';
+import { DrawerNavigator } from './src/screens/fagito-drawer-navigator/create-drawer-navigator';
 
 // const store = configureStore();
 

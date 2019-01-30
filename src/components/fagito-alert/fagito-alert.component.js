@@ -7,7 +7,7 @@ import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import { fagitoHideAlert, updateFilter, getProductsOfDate, updateAddressDetails } from '../../store/actions/actions';
 import RadioForm from 'react-native-simple-radio-button';
-import { LOCATION_FILTER } from '../../common/fagito-constants';
+import { LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS, UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD } from '../../common/fagito-constants';
 
 class FagitoAlert extends Component {
     state = {
@@ -33,8 +33,15 @@ class FagitoAlert extends Component {
         if (updateEntity) {
             if (!this.props.alertItems.userProfile) {
                 this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
-                if (this.props.alertItems.filterName === LOCATION_FILTER) {
+                let selectedRadioOptionLabel = this.props.alertItems.options[this.state.index].label;
+                if (this.props.alertItems.filterName === LOCATION_FILTER &&
+                    selectedRadioOptionLabel !== ADD_OFFICE_ADDRESS && selectedRadioOptionLabel !== ADD_HOME_ADDRESS) {
                     this.props.getProductsOfDate(this.props.timing, this.props.filters, this.props.selectedDateIndex);
+                } else {
+                    this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
+                        sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
+                        fieldName: selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD
+                    })
                 }
             } else {
                 this.props.updateAddressDetails(this.props.alertItems.filterName, this.state.index);
@@ -44,7 +51,6 @@ class FagitoAlert extends Component {
     }
 
     handleRadioButtonSelection = (value, indexSelected) => {
-        console.log('value selected is---', value);
         this.setState((state) => {
             return {
                 ...state,
@@ -142,7 +148,8 @@ const mapStateToProps = (state) => {
     return {
         timing: state.deliveryTimingAndDates.timing,
         filters: state.deliveryTimingAndDates.filters,
-        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
+        loggedInUserDetails: state.userDetails.loggedInUserDetails
     }
 }
 

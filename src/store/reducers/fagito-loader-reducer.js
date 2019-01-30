@@ -1,4 +1,4 @@
-import { FAGITO_START_LOADER, FAGITO_STOP_LOADER } from '../actions/fagito-action-types';
+import { FAGITO_START_LOADER, FAGITO_STOP_LOADER, RESET_LOADER_STATE } from '../actions/fagito-action-types';
 
 const initialState = {
     showLoader: false,
@@ -19,6 +19,8 @@ const reducer = (state = initialState, action) => {
                 showLoader: false,
                 loaderText: ''
             }
+        case RESET_LOADER_STATE:
+            return initialState;
         default:
             return state;
     }

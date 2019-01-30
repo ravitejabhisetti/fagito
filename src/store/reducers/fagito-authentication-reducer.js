@@ -1,4 +1,4 @@
-import { FAGITO_SET_TOKEN, FAGITO_CLEAR_TOKEN } from '../actions/fagito-action-types';
+import { FAGITO_SET_TOKEN, FAGITO_CLEAR_TOKEN, RESET_AUTHENTICATION_STATE } from '../actions/fagito-action-types';
 
 const initialState = {
     token: null,
@@ -19,6 +19,8 @@ const reducer = (state = initialState, action) => {
                 token: null,
                 expiryTime: null
             }
+        case RESET_AUTHENTICATION_STATE:
+            return initialState;
         default:
             return state;
     }

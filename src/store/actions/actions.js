@@ -12,3 +12,4 @@ export {
 export { addAddon, deleteAddon, resetAddons, updateUser, updateSelectedProductAddons } from './fagito-user-action';
 export { updateUserLocationDetails, updateAddressDetails } from './fagito-user-profile-action';
 export { getUserTransactions, updateTransactions } from './fagito-transactions-action';
+export { resetAppState } from './fagito-reset-app-state-action';

@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { SafeAreaView, ScrollView, Dimensions, View, Text, AsyncStorage, TouchableOpacity, Alert } from 'react-native';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import {
-    FagitoHomeScreen, FagitoWalletScreen, FagitoMealPassScreen,
-    FagitoFeedbackScreen, FagitoHistoryScreen, FagitoOffersScreen,
-    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeFoodScreen, FagitoSignupScreen, FagitoSigninScreen
-} from '../fagito-screens';
-import { FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT, FAGITO_USER_DETAILS, FAGITO_HOME, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN } from '../../common/fagito-constants';
-import * as style from '../../common/fagito-style-constants';
+    FAGITO_USER_DETAILS,
+    FAGITO_HOME, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN
+} from '../../common/fagito-constants';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { STYLES } from './fagito-drawer-navigator.style';
+import { STYLES } from './custom-drawer-component-style';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
+import { connect } from 'react-redux';
+import { resetAppState } from '../../store/actions/actions';
 
 class CustomDrawerComponent extends Component {
     constructor(props) {
@@ -66,6 +65,7 @@ class CustomDrawerComponent extends Component {
             logoutSection = (
                 <TouchableOpacity onPress={() => {
                     AsyncStorage.clear();
+                    this.props.resetAppState();
                     navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME }));
                 }
                 }>
@@ -90,33 +90,11 @@ class CustomDrawerComponent extends Component {
     }
 }
 
-const DrawerNavigator = createDrawerNavigator({
-    Home: FagitoHomeScreen,
-    Wallet: FagitoWalletScreen,
-    Mealpass: FagitoMealPassScreen,
-    Feedback: FagitoFeedbackScreen,
-    History: FagitoHistoryScreen,
-    Offers: FagitoOffersScreen,
-    'Free Food': FagitoFreeFoodScreen,
-    'Sign up': FagitoSignupScreen,
-    'Sign in': FagitoSigninScreen,
-    Support: FagitoSupportScreen,
-    Settings: FagitoSettingsScreen
-},
-    {
-        contentComponent: CustomDrawerComponent,
-        drawerPosition: DRAWER_POSITION_LEFT,
-        initialRouteName: FAGITO_HOME_SCREEN,
-        contentOptions: {
-            activeTintColor: style.FAGITO_BUTTON_COLOR,
-            activeBackgroundColor: style.FAGITO_WHITE_COLOR,
-            labelStyle: {
-                fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
-                fontSize: 13,
-                fontWeight: '400'
-            }
-        }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        resetAppState: () => dispatch(resetAppState())
     }
-);
+}
 
-export { DrawerNavigator };
+export default connect(null, mapDispatchToProps)(CustomDrawerComponent);
+

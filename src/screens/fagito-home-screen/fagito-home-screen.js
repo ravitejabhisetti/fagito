@@ -42,9 +42,8 @@ class FagitoHomeScreen extends Component {
         scrollViewRef = this.scroller;
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             parsedUserDetails = JSON.parse(userDetails);
-            console.log('parsed user details are---', parsedUserDetails);
             if (parsedUserDetails.homeAddressLineOne || parsedUserDetails.officeAddressLineOne) {
-                let dropdownContent = FILTERS_CONTENT.locationFilter;
+                let dropdownContent = _.cloneDeep(FILTERS_CONTENT.locationFilter);
                 dropdownContent.options = [];
                 if (parsedUserDetails.officeAddressLineOne) {
                     let officeAddress = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;

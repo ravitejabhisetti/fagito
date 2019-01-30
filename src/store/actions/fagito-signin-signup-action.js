@@ -9,7 +9,8 @@ import {
     FAGITO_USER_TRANSACTIONS
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
-import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert, fagitoHideAlert, updateUserSelectedProducts } from './actions';
+import { fagitoStartLoader, fagitoStopLoader, fagitoShowAlert,
+     fagitoHideAlert, updateUserSelectedProducts, updateLocationFilter } from './actions';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
 
