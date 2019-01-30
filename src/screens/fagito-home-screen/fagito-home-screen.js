@@ -15,7 +15,7 @@ import {
     FagitoDateComponent, FagitoDropdown, FagitoModalComponent, FagitoFooterComponent, FagitoSelectedProducts
 } from '../../components/fagito-components';
 import {
-    updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser,
+    updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, updateLocationFilterContent,
     deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions, getProductsOfDate, updateLocationFilter
 } from '../../store/actions/actions';
 import _ from 'lodash';
@@ -62,6 +62,7 @@ class FagitoHomeScreen extends Component {
                 if (_.isEmpty(this.props.productsList)) {
                     this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
                 }
+                this.props.updateLocationFilterContent(dropdownContent);
             } else {
                 setTimeout(function () { self.props.showLocationDropdown(self.props.locationFilterContent, self.props.filters.locationFilterIndex); }, 1000);
             }
@@ -255,7 +256,8 @@ const mapDispatchToProps = (dispatch) => {
         updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons()),
         getTransactions: () => dispatch(getUserTransactions()),
         getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
-        updateLocationFilter: (locationSelected, locationIndex) => dispatch(updateLocationFilter(locationSelected, locationIndex))
+        updateLocationFilter: (locationSelected, locationIndex) => dispatch(updateLocationFilter(locationSelected, locationIndex)),
+        updateLocationFilterContent: (locationFilterContent) => dispatch(updateLocationFilterContent(locationFilterContent))
     }
 }
 

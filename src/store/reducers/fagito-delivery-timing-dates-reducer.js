@@ -1,6 +1,6 @@
 import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
-    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER, RESET_DELIVERY_TIMING_DATE_STATE
+    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER, RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT
 } from '../actions/fagito-action-types';
 import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION } from '../../common/fagito-constants';
 
@@ -75,7 +75,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filters: { ...state.filters, locationFilter: action.locationSelected, locationFilterIndex: action.locationIndex }
             }
-        case RESET_DELIVERY_TIMING_DATE_STATE: 
+        case UPDATE_LOCATION_DROPDOWN_CONTENT:
+            return {
+                ...state,
+                filters: { ...state.filters, locationFilterContent: action.locationFilterContent }
+            }
+        case RESET_DELIVERY_TIMING_DATE_STATE:
             return initialState;
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;
