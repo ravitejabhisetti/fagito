@@ -6,7 +6,7 @@ import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON, VARIANTS,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
     CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO,
-    ORDERS, ADDONS, NULL, FAGITO_USER_DETAILS, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS
+    ORDERS, ADDONS, NULL, FAGITO_USER_DETAILS, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS, OFFICE_FIELD, HOME_FIELD
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -48,15 +48,17 @@ class FagitoHomeScreen extends Component {
                 dropdownContent.options = [];
                 if (parsedUserDetails.officeAddressLineOne) {
                     let officeAddress = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
-                    dropdownContent.options[0] = { label: officeAddress, addressArea: parsedUserDetails.officeAddressArea };
+                    dropdownContent.options[0] = { label: officeAddress, addressArea: parsedUserDetails.officeAddressArea, addressType: OFFICE_FIELD };
                     this.props.updateLocationFilter(officeAddress, 0, parsedUserDetails.officeAddressArea);
                 } else {
                     dropdownContent.options[0] = { label: ADD_OFFICE_ADDRESS };
                 }
                 if (parsedUserDetails.homeAddressLineOne) {
                     let homeAddress = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
-                    dropdownContent.options[1] = { label: homeAddress, addressArea: parsedUserDetails.homeAddressArea };
-                    this.props.updateLocationFilter(homeAddress, 1, parsedUserDetails.homeAddressArea);
+                    dropdownContent.options[1] = { label: homeAddress, addressArea: parsedUserDetails.homeAddressArea, addressType: HOME_FIELD };
+                    if (!this.props.officeAddressSelected) {
+                        this.props.updateLocationFilter(homeAddress, 1, parsedUserDetails.homeAddressArea);
+                    }
                 } else {
                     dropdownContent.options[1] = { label: ADD_HOME_ADDRESS };
                 }
@@ -278,7 +280,8 @@ const mapStateToProps = (state) => {
         loader: state.fagitoLoader.showLoader,
         indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
         userLoggedIn: state.userDetails.userLoggedInStatus,
-        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
+        officeAddressSelected: state.deliveryTimingAndDates.officeAddressSelected
     }
 }
 

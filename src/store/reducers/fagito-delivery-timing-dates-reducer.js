@@ -3,7 +3,7 @@ import {
     FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER,
     RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT
 } from '../actions/fagito-action-types';
-import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION, LOCATION_FILTER } from '../../common/fagito-constants';
+import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION, LOCATION_FILTER, OFFICE_FIELD } from '../../common/fagito-constants';
 
 const initialState = {
     deliveryDatesList: [],
@@ -11,6 +11,7 @@ const initialState = {
     selectedDate: null,
     selectedDay: null,
     selectedMonth: null,
+    officeAddressSelected: false,
     timing: {
         timingSelected: LUNCH_OPTION,
         lunchTiming: true,
@@ -75,12 +76,20 @@ const reducer = (state = initialState, action) => {
         case UPDATE_LOCATION_FILTER:
             return {
                 ...state,
-                filters: { ...state.filters, locationFilter: action.locationSelected, locationFilterIndex: action.locationIndex, addressArea: action.addressArea }
+                filters: {
+                    ...state.filters,
+                    locationFilter: action.locationSelected,
+                    locationFilterIndex: action.locationIndex,
+                    addressArea: action.addressArea
+                }
             }
         case UPDATE_LOCATION_DROPDOWN_CONTENT:
             return {
                 ...state,
-                filters: { ...state.filters, locationFilterContent: action.locationFilterContent }
+                filters: {
+                    ...state.filters,
+                    locationFilterContent: action.locationFilterContent
+                }
             }
         case RESET_DELIVERY_TIMING_DATE_STATE:
             return initialState;
@@ -93,6 +102,11 @@ const reducer = (state = initialState, action) => {
             } else {
                 state.filters[filterName] = state.filters.locationFilterContent.options[action.index].label;
                 state.filters.addressArea = state.filters.locationFilterContent.options[action.index].addressArea;
+                if (state.filters.locationFilterContent.options[action.index].addressType) {
+                    state.officeAddressSelected = state.filters.locationFilterContent.options[action.index].addressType === OFFICE_FIELD ? true : false;
+                } else {
+                    state.officeAddressSelected = false;
+                }
             }
             state.filters[index] = action.index;
             return state;
