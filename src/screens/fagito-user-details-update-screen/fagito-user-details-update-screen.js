@@ -72,7 +72,14 @@ class FagitoUpdateUserDetailsScreen extends Component {
                 })
             }
             if (!this.state.displayDropdownErrorMessage && isFormValid) {
-                this.props.updateUser(null, [], ADDRESS, formEntities, this.props.addressType, this.props.city, this.props.area);
+                let addAddress = this.props.navigation.getParam('addAddress');
+                let fetchProductsInfo = {
+                    deliveryTiming: this.props.deliveryTiming,
+                    filters: this.props.filters, dateIndex: this.props.selectedDateIndex,
+                    locationFilterContent: this.props.locationFilterContent
+                };
+                this.props.updateUser(null, [], ADDRESS, formEntities, this.props.addressType,
+                    this.props.city, this.props.area, addAddress, fetchProductsInfo);
             }
         }
     }
@@ -90,7 +97,7 @@ class FagitoUpdateUserDetailsScreen extends Component {
             areaContent['userProfile'] = true;
             userLocationsForm = (
                 <View style={STYLES.addressSection}>
-                    <View style={STYLES.locationEntity}>
+                    <View style={[STYLES.locationEntity, STYLES.locationDropdownSection]}>
                         <FagitoDropdown
                             selectedValue={this.props.addressType}
                             radioOptionIndex={this.props.addressTypeIndex}
@@ -99,7 +106,7 @@ class FagitoUpdateUserDetailsScreen extends Component {
                             dropdownBorder={true}>
                         </FagitoDropdown>
                     </View>
-                    <View style={STYLES.locationEntity}>
+                    <View style={[STYLES.locationEntity, STYLES.locationDropdownSection]}>
                         <FagitoDropdown
                             selectedValue={this.props.city}
                             radioOptionIndex={this.props.cityIndex}
@@ -108,7 +115,7 @@ class FagitoUpdateUserDetailsScreen extends Component {
                             dropdownBorder={true}>
                         </FagitoDropdown>
                     </View>
-                    <View style={STYLES.locationEntity}>
+                    <View style={[STYLES.locationEntity, STYLES.locationDropdownSection]}>
                         <FagitoDropdown
                             displayErrorMessage={this.state.displayDropdownErrorMessage}
                             errorMessage={SELECT_AREA_ERROR_MESSAGE}
@@ -142,13 +149,19 @@ const mapStateToProps = (state) => {
         city: state.updateUserProfileAndLocations.city,
         cityIndex: state.updateUserProfileAndLocations.cityIndex,
         area: state.updateUserProfileAndLocations.area,
-        areaIndex: state.updateUserProfileAndLocations.areaIndex
+        areaIndex: state.updateUserProfileAndLocations.areaIndex,
+        deliveryTiming: state.deliveryTimingAndDates.timing,
+        filters: state.deliveryTimingAndDates.filters,
+        selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
+        locationFilterContent: state.deliveryTimingAndDates.filters.locationFilterContent,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUser: (product, addonsList, updateType, formEntities, addressType, city, area) => dispatch(updateUser(product, addonsList, updateType, formEntities, addressType, city, area))
+        updateUser: (product, addonsList, updateType, formEntities,
+            addressType, city, area, addAddress, fetchProductsInfo) => dispatch(updateUser(product, addonsList, updateType,
+                formEntities, addressType, city, area, addAddress, fetchProductsInfo))
     }
 }
 

@@ -19,8 +19,8 @@ export const FAGITO_SIGNIN_SIGNUP_CONTAINERS = StyleSheet.create({
         backgroundColor: style.FAGITO_WHITE_COLOR,
         paddingTop: 8,
         paddingBottom: 8,
-        paddingLeft: 2,
-        paddingRight: 2,
+        paddingLeft: 16,
+        paddingRight: 16,
         marginTop: 0
     }
 });

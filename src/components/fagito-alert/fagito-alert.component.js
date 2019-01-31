@@ -5,9 +5,17 @@ import { OVERLAY_STYLE } from '../../common/fagito-common-style';
 import validate from '../../utility/fagito-error-messages';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
-import { fagitoHideAlert, updateFilter, getProductsOfDate, updateAddressDetails } from '../../store/actions/actions';
+import {
+    fagitoHideAlert, updateFilter, getProductsOfDate,
+    updateAddressDetails, updateUserLocationDetails
+} from '../../store/actions/actions';
 import RadioForm from 'react-native-simple-radio-button';
-import { LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS, UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD } from '../../common/fagito-constants';
+import {
+    LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS,
+    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME
+} from '../../common/fagito-constants';
+import { navigatorRef } from '../../../App';
+import { NavigationActions } from 'react-navigation';
 
 class FagitoAlert extends Component {
     state = {
@@ -32,16 +40,22 @@ class FagitoAlert extends Component {
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
             if (!this.props.alertItems.userProfile) {
-                this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
                 let selectedRadioOptionLabel = this.props.alertItems.options[this.state.index].label;
-                if (this.props.alertItems.filterName === LOCATION_FILTER &&
-                    selectedRadioOptionLabel !== ADD_OFFICE_ADDRESS && selectedRadioOptionLabel !== ADD_HOME_ADDRESS) {
+                let addressLabelCheck = selectedRadioOptionLabel !== ADD_OFFICE_ADDRESS && selectedRadioOptionLabel !== ADD_HOME_ADDRESS;
+                if (addressLabelCheck) {
+                    this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
+                }
+                if (this.props.alertItems.filterName === LOCATION_FILTER && addressLabelCheck) {
                     this.props.getProductsOfDate(this.props.timing, this.props.filters, this.props.selectedDateIndex);
                 } else {
-                    this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
-                        sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
-                        fieldName: selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD
-                    })
+                    let fieldName = selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD;
+                    this.props.updateUserLocationDetails(fieldName, this.props.loggedInUserDetails);
+                    navigatorRef.dispatch(NavigationActions.navigate({
+                        routeName: UPDATE_USER_DETAILS_SCREEN, params: {
+                            sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
+                            fieldName: fieldName, addAddress: true
+                        }
+                    }))
                 }
             } else {
                 this.props.updateAddressDetails(this.props.alertItems.filterName, this.state.index);
@@ -158,7 +172,8 @@ const mapDispatchToProps = (dispatch) => {
         hideAlert: () => dispatch(fagitoHideAlert()),
         updateFilter: (filterName, index) => dispatch(updateFilter(filterName, index)),
         updateAddressDetails: (filterName, index) => dispatch(updateAddressDetails(filterName, index)),
-        getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex))
+        getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
+        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
     }
 }
 

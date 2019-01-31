@@ -140,23 +140,23 @@ export const FILTERS_CONTENT = {
     locationFilter: {
         initial: 0, filterName: 'locationFilter',
         header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: [
-            { label: 'Madhapur' },
-            { label: 'Hitech City' },
-            { label: 'Jubilee Hills' },
-            { label: 'Kondapur' },
-            { label: 'Kothaguda' },
-            { label: 'Gachibowli' },
-            { label: 'Financial District' },
-            { label: 'Nanakramguda' },
-            { label: 'Raidurgam' },
-            { label: 'Manikonda' },
-            { label: 'KPHB' },
-            { label: 'Banjara Hills' },
-            { label: 'Srinagar Colony' },
-            { label: 'Begumpet' },
-            { label: 'Punjagutta' },
-            { label: 'JNTU' },
-            { label: 'Rest of Hyderabad - Coming Soon' },
+            { label: 'Madhapur', label: 'Madhapur' },
+            { label: 'Hitech City', label: 'Hitech City' },
+            { label: 'Jubilee Hills', label: 'Jubilee Hills' },
+            { label: 'Kondapur', label: 'Kondapur' },
+            { label: 'Kothaguda', label: 'Kothaguda' },
+            { label: 'Gachibowli', label: 'Gachibowli' },
+            { label: 'Financial District', label: 'Financial District' },
+            { label: 'Nanakramguda', label: 'Nanakramguda' },
+            { label: 'Raidurgam', label: 'Raidurgam' },
+            { label: 'Manikonda', label: 'Manikonda' },
+            { label: 'KPHB', label: 'KPHB' },
+            { label: 'Banjara Hills', label: 'Banjara Hills' },
+            { label: 'Srinagar Colony', label: 'Srinagar Colony' },
+            { label: 'Begumpet', label: 'Begumpet' },
+            { label: 'Punjagutta', label: 'Punjagutta' },
+            { label: 'JNTU', label: 'JNTU' },
+            { label: 'Rest of Hyderabad - Coming Soon', label: 'Rest of Hyderabad - Coming Soon' },
         ]
     }
 };
@@ -254,5 +254,5 @@ export const ADDRESS_LINE_TWO = 'AddressLineTwo';
 export const ADDRESS_AREA = 'AddressArea';
 export const ADDRESS_CITY = 'AddressCity';
 export const FAGITO_USER_TRANSACTIONS = 'fagitoUserTransactions';
-export const ADD_OFFICE_ADDRESS = 'Add Office Address';
-export const ADD_HOME_ADDRESS = 'Add Home Address';
+export const ADD_OFFICE_ADDRESS = 'OFFICE: Add Address';
+export const ADD_HOME_ADDRESS = 'HOME: Add Address';

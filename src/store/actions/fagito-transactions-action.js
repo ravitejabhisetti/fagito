@@ -14,13 +14,11 @@ export const getUserTransactions = () => {
                         method: METHOD_GET
                     }).catch((error) => {
                     }).then(res => res.json()).then(transactionsResponse => {
-                        console.log('transaction response is---', transactionsResponse);
                         AsyncStorage.setItem(FAGITO_USER_TRANSACTIONS, JSON.stringify(transactionsResponse));
                         dispatch(updateTransactions(transactionsResponse));
                     })
                 })
             } else {
-                console.log('parsed user transactions---', parsedUserTransactions);
                 dispatch(updateTransactions(parsedUserTransactions));
             }
         })

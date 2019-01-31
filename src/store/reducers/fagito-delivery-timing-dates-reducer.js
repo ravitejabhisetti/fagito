@@ -1,8 +1,9 @@
 import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
-    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER, RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT
+    FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER,
+    RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT
 } from '../actions/fagito-action-types';
-import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION } from '../../common/fagito-constants';
+import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION, LOCATION_FILTER } from '../../common/fagito-constants';
 
 const initialState = {
     deliveryDatesList: [],
@@ -22,7 +23,8 @@ const initialState = {
         dietFilterIndex: 0,
         cuisineFilterIndex: 0,
         locationFilterIndex: null,
-        locationFilterContent: FILTERS_CONTENT.locationFilter
+        locationFilterContent: FILTERS_CONTENT.locationFilter,
+        addressArea: ''
     }
 }
 
@@ -73,7 +75,7 @@ const reducer = (state = initialState, action) => {
         case UPDATE_LOCATION_FILTER:
             return {
                 ...state,
-                filters: { ...state.filters, locationFilter: action.locationSelected, locationFilterIndex: action.locationIndex }
+                filters: { ...state.filters, locationFilter: action.locationSelected, locationFilterIndex: action.locationIndex, addressArea: action.addressArea }
             }
         case UPDATE_LOCATION_DROPDOWN_CONTENT:
             return {
@@ -82,10 +84,16 @@ const reducer = (state = initialState, action) => {
             }
         case RESET_DELIVERY_TIMING_DATE_STATE:
             return initialState;
+
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;
             let index = action.filterName + 'Index';
-            state.filters[filterName] = FILTERS_CONTENT[filterName].options[action.index].label;
+            if (filterName !== LOCATION_FILTER) {
+                state.filters[filterName] = FILTERS_CONTENT[filterName].options[action.index].label;
+            } else {
+                state.filters[filterName] = state.filters.locationFilterContent.options[action.index].label;
+                state.filters.addressArea = state.filters.locationFilterContent.options[action.index].addressArea;
+            }
             state.filters[index] = action.index;
             return state;
         default:

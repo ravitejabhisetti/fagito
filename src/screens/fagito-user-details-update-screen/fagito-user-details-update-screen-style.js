@@ -15,6 +15,10 @@ const STYLES = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 12
     },
+    locationDropdownSection: {
+        paddingLeft: 16,
+        paddingRight: 16
+    },
     mandatoryFieldsMessage: {
         fontSize: 14,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,

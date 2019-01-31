@@ -27,16 +27,16 @@ export const updateFilter = (filterName, index) => {
     }
 }
 
-export const updateLocationFilter = (locationSelected, locationIndex) => {
+export const updateLocationFilter = (locationSelected, locationIndex, addressArea) => {
     return {
         type: UPDATE_LOCATION_FILTER,
         locationSelected: locationSelected,
-        locationIndex: locationIndex
+        locationIndex: locationIndex,
+        addressArea: addressArea
     }
 }
 
 export const updateLocationFilterContent = (locationFilterContent) => {
-    console.log('in location content check---');
     return {
         type: UPDATE_LOCATION_DROPDOWN_CONTENT,
         locationFilterContent: locationFilterContent

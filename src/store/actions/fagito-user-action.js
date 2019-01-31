@@ -1,9 +1,11 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from './fagito-action-types';
 import { AsyncStorage } from 'react-native';
-import { getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader } from './actions';
+import { getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader,
+     updateLocationFilter, getProductsOfDate, updateLocationFilterContent } from './actions';
 import {
     FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS,
-    METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS, HOME_FIELD, ADDRESS_TYPE_HOME
+    METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS,
+    HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { navigatorRef } from '../../../App';
@@ -30,7 +32,7 @@ export const resetAddons = () => {
 }
 
 export const updateUser = (product, addonsSelected, updateType, formEntities,
-    addressType, city, area) => {
+    addressType, city, area, addAddress, fetchProductsInfo) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
@@ -70,7 +72,28 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                     if (updateType === 'addons') {
                         dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
                     } else {
-                        navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
+                        if (!addAddress) {
+                            navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
+                        } else {
+                            navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+                            let address = '';
+                            let addressIndex = null;
+                            let addressArea = '';
+                            if (addressType === ADDRESS_TYPE_OFFICE) {
+                                addressIndex = 0;
+                                address = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
+                                fetchProductsInfo.locationFilterContent.options[0].label = address;
+                                addressArea = parsedUserDetails.officeAddressArea;
+                            } else {
+                                addressIndex = 1;
+                                address = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
+                                fetchProductsInfo.locationFilterContent.options[1].label = address;
+                                addressArea = parsedUserDetails.homeAddressArea;
+                            }
+                            dispatch(updateLocationFilter(address, addressIndex, addressArea));
+                            dispatch(updateLocationFilterContent(fetchProductsInfo.locationFilterContent));
+                            dispatch(getProductsOfDate(fetchProductsInfo.deliveryTiming, fetchProductsInfo.filters, fetchProductsInfo.dateIndex));
+                        }
                     }
                     dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));

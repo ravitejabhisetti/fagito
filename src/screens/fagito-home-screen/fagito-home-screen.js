@@ -36,6 +36,7 @@ class FagitoHomeScreen extends Component {
     }
 
     componentDidMount() {
+        console.log('in component diod mount---');
         let self = this;
         this.props.getTransactions();
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
@@ -47,15 +48,15 @@ class FagitoHomeScreen extends Component {
                 dropdownContent.options = [];
                 if (parsedUserDetails.officeAddressLineOne) {
                     let officeAddress = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
-                    dropdownContent.options[0] = { label: officeAddress };
-                    this.props.updateLocationFilter(officeAddress, 0);
+                    dropdownContent.options[0] = { label: officeAddress, addressArea: parsedUserDetails.officeAddressArea };
+                    this.props.updateLocationFilter(officeAddress, 0, parsedUserDetails.officeAddressArea);
                 } else {
                     dropdownContent.options[0] = { label: ADD_OFFICE_ADDRESS };
                 }
                 if (parsedUserDetails.homeAddressLineOne) {
                     let homeAddress = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
-                    dropdownContent.options[1] = { label: homeAddress };
-                    this.props.updateLocationFilter(homeAddress, 1);
+                    dropdownContent.options[1] = { label: homeAddress, addressArea: parsedUserDetails.homeAddressArea };
+                    this.props.updateLocationFilter(homeAddress, 1, parsedUserDetails.homeAddressArea);
                 } else {
                     dropdownContent.options[1] = { label: ADD_HOME_ADDRESS };
                 }
@@ -256,7 +257,7 @@ const mapDispatchToProps = (dispatch) => {
         updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons()),
         getTransactions: () => dispatch(getUserTransactions()),
         getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
-        updateLocationFilter: (locationSelected, locationIndex) => dispatch(updateLocationFilter(locationSelected, locationIndex)),
+        updateLocationFilter: (locationSelected, locationIndex, addressArea) => dispatch(updateLocationFilter(locationSelected, locationIndex, addressArea)),
         updateLocationFilterContent: (locationFilterContent) => dispatch(updateLocationFilterContent(locationFilterContent))
     }
 }
