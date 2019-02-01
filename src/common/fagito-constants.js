@@ -264,3 +264,5 @@ export const NET_BANKING_ENTITY = 'Pay via Card / Net Banking';
 export const SODEXO_ENTITY = 'Pay via Sodexo';
 export const PAYTM_ENTITY = 'Pay via Paytm';
 export const TRANSACTION_ENTITY = 'View Wallet Transaction History';
+export const HISTORY_SCREEN = 'History';
+export const WALLET_SCREEN = 'Wallet';

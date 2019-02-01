@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 import {
     ARROW_FORWARD_ICON, EMAIL_ENTITY, MOBILE_NUMBER_ENTITY,
     OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE,
-    ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD, OFFICE_FIELD, WALLET_ENTITY, NET_BANKING_ENTITY, SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY
+    ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD,
+    OFFICE_FIELD, WALLET_ENTITY, NET_BANKING_ENTITY, SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY, HISTORY_SCREEN
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
 import { updateUserLocationDetails } from '../../store/actions/actions';
@@ -25,6 +26,17 @@ class SettingsEntity extends Component {
                 sectionName: locationsSection ? ADDRESS : PROFILE,
                 loggedInUserDetails: loggedInUserDetails, fieldName: fieldName
             });
+        }
+    }
+    handleWallet = (entityName) => {
+        if (entityName !== EMAIL_ENTITY && entityName !== WALLET_ENTITY) {
+            if (entityName === TRANSACTION_ENTITY) {
+                this.props.navigation.navigate(HISTORY_SCREEN, {
+                    walletScreen: true
+                });
+            } else {
+                console.log('in payment check---');
+            }
         }
     }
     render() {
@@ -162,7 +174,8 @@ class SettingsEntity extends Component {
         }
         return (
             <TouchableOpacity
-                onPress={() => this.handleSettingsEntity(this.props.entityName, this.props.locationsSection, this.props.loggedInUserDetails, this.props.fieldName)}
+                onPress={!this.props.wallet ? () => this.handleSettingsEntity(this.props.entityName, this.props.locationsSection, this.props.loggedInUserDetails, this.props.fieldName) :
+                    () => this.handleWallet(this.props.entityName)}
                 activeOpacity={1} style={STYLES.settingsEntity}>
                 <View style={STYLES.settingsEntityIcon}>
                     {entityIcon}

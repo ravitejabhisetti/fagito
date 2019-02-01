@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { BackIcon, SettingsEntity } from '../../components/fagito-components';
 import {
     WALLET_TITLE, FAGITO_HOME_SCREEN, EMAIL_ICON, WALLET_ICON, NET_BANKING_ENTITY,
-    SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY, TRANSACTION_ICON
+    SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY, TRANSACTION_ICON, WALLET_ENTITY, EMAIL_ENTITY
 } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import { STYLES } from './fagito-wallet-screen-style';
@@ -20,8 +20,8 @@ class FagitoWalletScreen extends Component {
                         <View style={STYLES.walletInfoSection}>
                             <Text style={STYLES.walletInfoText}>Wallet Info</Text>
                         </View>
-                        <SettingsEntity wallet entityName="Email" fieldName="email" iconName={EMAIL_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity wallet entityName="Wallet Balance" fieldName="wallet" iconName={WALLET_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity wallet entityName={EMAIL_ENTITY} fieldName="email" iconName={EMAIL_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity wallet entityName={WALLET_ENTITY} fieldName="wallet" iconName={WALLET_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
                     </View>
                     <View style={STYLES.walletSegment}>
                         <View style={STYLES.walletInfoSection}>
