@@ -4,12 +4,13 @@ import { STYLES } from './fagito-settings-entity.style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import {
     ARROW_FORWARD_ICON, EMAIL_ENTITY, MOBILE_NUMBER_ENTITY,
     OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE,
-    ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD, OFFICE_FIELD
+    ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD, OFFICE_FIELD, WALLET_ENTITY, NET_BANKING_ENTITY, SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
 import { updateUserLocationDetails } from '../../store/actions/actions';
@@ -32,43 +33,85 @@ class SettingsEntity extends Component {
         let entityDetails = null;
         let entityName = null;
         if (!this.props.transaction) {
-            entityName = (
-                <Text style={STYLES.entity}>{this.props.entityName}</Text>
-            )
-            if (this.props.entityName === EMAIL_ENTITY) {
-                entityIcon = (
-                    <Ionicons name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={28}></Ionicons>
+            if (!this.props.wallet) {
+                entityName = (
+                    <Text style={STYLES.entity}>{this.props.entityName}</Text>
                 )
-                forwardIcon = null;
-            } else {
-                entityIcon = (
-                    <Icon name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={28}></Icon>
-                )
-                forwardIcon = (
-                    <Ionicons name={ARROW_FORWARD_ICON} color={style.FAGITO_BLACK_COLOR} size={25}></Ionicons>
-                )
-            }
-            let fieldName = this.props.fieldName;
-            let addressType = fieldName + ADDRESS_LINE_ONE;
-            if (fieldName === HOME_FIELD || fieldName === OFFICE_FIELD) {
-                if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[addressType]) {
-                    entityDetails = (
-                        <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}</Text>
+                if (this.props.entityName === EMAIL_ENTITY) {
+                    entityIcon = (
+                        <Ionicons name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={28}></Ionicons>
                     )
+                    forwardIcon = null;
                 } else {
-                    entityDetails = (
-                        <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                    entityIcon = (
+                        <Icon name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={28}></Icon>
+                    )
+                    forwardIcon = (
+                        <Ionicons name={ARROW_FORWARD_ICON} color={style.FAGITO_BLACK_COLOR} size={25}></Ionicons>
                     )
                 }
+                let fieldName = this.props.fieldName;
+                let addressType = fieldName + ADDRESS_LINE_ONE;
+                if (fieldName === HOME_FIELD || fieldName === OFFICE_FIELD) {
+                    if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[addressType]) {
+                        entityDetails = (
+                            <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}</Text>
+                        )
+                    } else {
+                        if (this.props.displayNotAddedYet) {
+                            entityDetails = (
+                                <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                            )
+                        }
+                    }
+                } else {
+                    if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[fieldName]) {
+                        entityDetails = (
+                            <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName]}</Text>
+                        )
+                    } else {
+                        if (this.props.displayNotAddedYet) {
+                            entityDetails = (
+                                <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                            )
+                        }
+                    }
+                }
             } else {
-                if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[fieldName]) {
+                let fieldName = this.props.fieldName;
+                let entity = this.props.entityName;
+                entityName = (
+                    <Text style={STYLES.entity}>{entity}</Text>
+                )
+                if (entity === EMAIL_ENTITY) {
+                    entityIcon = (
+                        <EntypoIcon name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={25}></EntypoIcon>
+                    )
+                    forwardIcon = null;
                     entityDetails = (
                         <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName]}</Text>
                     )
                 } else {
-                    entityDetails = (
-                        <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
+                    entityIcon = (
+                        <AntIcon name={this.props.iconName} color={style.FAGITO_BLACK_COLOR} size={25}></AntIcon>
                     )
+                    if (entity === WALLET_ENTITY) {
+                        forwardIcon = null;
+                        let walletBalance = 0;
+                        if (this.props.loggedInUserDetails[fieldName]) {
+                            walletBalance = this.props.loggedInUserDetails[fieldName];
+                        }
+                        entityDetails = (
+                            <Text style={[STYLES.entity, STYLES.entityDetails]}>Rs {walletBalance}</Text>
+                        )
+                    } else {
+                        if (entity !== TRANSACTION_ENTITY) {
+                            forwardIcon = (
+                                <Ionicons name={ARROW_FORWARD_ICON} color={style.FAGITO_BLACK_COLOR} size={25}></Ionicons>
+                            )
+                        }
+                        entityDetails = null;
+                    }
                 }
             }
         } else {
@@ -125,8 +168,8 @@ class SettingsEntity extends Component {
                     {entityIcon}
                 </View>
                 <View style={[STYLES.settingsEntityDetails,
-                (this.props.entityName !== MOBILE_NUMBER_ENTITY &&
-                    this.props.entityName !== OFFICE_ADDRESS_ENTITY) ? STYLES.settingsEntityBottomBorder : null]}>
+                (this.props.entityName !== MOBILE_NUMBER_ENTITY && this.props.entityName !== PAYTM_ENTITY && this.props.entityName !== TRANSACTION_ENTITY &&
+                    this.props.entityName !== OFFICE_ADDRESS_ENTITY && this.props.entityName !== WALLET_ENTITY) ? STYLES.settingsEntityBottomBorder : null]}>
                     <View>
                         {entityName}
                         {entityDetails}

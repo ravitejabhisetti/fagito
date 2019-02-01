@@ -49,3 +49,4 @@ export const TAB_TOP_BORDER_COLOR = '#b2b2b2';
 export const GREEN_UP_ICON = 'upcircle';
 export const GREEN_UP_ICON_COLOR = '#32db64';
 export const DOWN_ICON = 'downcircle';
+export const WALLET_TEXT_COLOR = '#757575';

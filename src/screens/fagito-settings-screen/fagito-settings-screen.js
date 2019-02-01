@@ -33,8 +33,8 @@ class FagitoSettingsScreen extends Component {
                         <View style={STYLES.profileSection}>
                             <Text style={STYLES.profileText}>Locations</Text>
                         </View>
-                        <SettingsEntity entityName="Home Address" fieldName="home" locationsSection iconName={HOME_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity entityName="Office Address" fieldName="office" locationsSection iconName={OFFICE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity displayNotAddedYet entityName="Home Address" fieldName="home" locationsSection iconName={HOME_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity displayNotAddedYet entityName="Office Address" fieldName="office" locationsSection iconName={OFFICE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
                     </View>
                 </ScrollView>
             </View>

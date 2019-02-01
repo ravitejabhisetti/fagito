@@ -36,7 +36,6 @@ class FagitoHomeScreen extends Component {
     }
 
     componentDidMount() {
-        console.log('in component diod mount---');
         let self = this;
         this.props.getTransactions();
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
@@ -63,7 +62,7 @@ class FagitoHomeScreen extends Component {
                     dropdownContent.options[1] = { label: ADD_HOME_ADDRESS };
                 }
                 if (_.isEmpty(this.props.productsList)) {
-                    this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
+                    // this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
                 }
                 this.props.updateLocationFilterContent(dropdownContent);
             } else {
