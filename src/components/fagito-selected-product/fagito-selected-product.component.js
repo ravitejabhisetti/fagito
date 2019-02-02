@@ -7,7 +7,8 @@ import { INSUFFICIENT_BALANCE, NULL } from '../../common/fagito-constants';
 
 class FagitoSelectedProduct extends Component {
     render() {
-        let productColor = this.props.product.timingSelected === 'lunch' ? STYLES.lunchProductSelectedBackground : STYLES.dinnerProductSelectedBackground;
+        let productColor = this.props.product.timingSelected === 'lunch' ?
+            STYLES.lunchProductSelectedBackground : STYLES.dinnerProductSelectedBackground;
         let chefName = null;
         let productName = null;
         let basePrice = null;

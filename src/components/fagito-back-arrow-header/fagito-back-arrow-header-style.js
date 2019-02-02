@@ -14,11 +14,14 @@ const STYLES = StyleSheet.create({
     },
     headerText: {
         paddingLeft: 25,
-        paddingTop:2,
+        paddingTop: 2,
     },
     title: {
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         fontSize: 16
+    },
+    iosIconStyle: {
+        marginTop: 4
     }
 });
 

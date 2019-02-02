@@ -35,7 +35,14 @@ class FagitoSigninScreen extends Component {
         return (
             <View style={CONTAINER_STYLE.container}>
                 {backIconHeader}
-                <FagitoFormComponent form={FAGITO_SIGNIN_FORM_NAME} formButtonClick={this.handleButtonClick} handleReset={this.handleResetPassword} newForm resetPassword buttonTitle={FAGITO_SIGNIN} formItems={FAGITO_SIGNIN_FORM} />
+                <FagitoFormComponent
+                    form={FAGITO_SIGNIN_FORM_NAME}
+                    formButtonClick={this.handleButtonClick}
+                    handleReset={this.handleResetPassword}
+                    newForm
+                    resetPassword
+                    buttonTitle={FAGITO_SIGNIN}
+                    formItems={FAGITO_SIGNIN_FORM} />
             </View>
         )
     }

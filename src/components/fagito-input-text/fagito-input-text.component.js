@@ -15,7 +15,7 @@ class FagitoTextInput extends Component {
         this.setState((state) => {
             return {
                 ...state,
-                value: this.props.input.value
+                value: this.props.input.value,
             }
         })
         this._textBoxIsFocused = new Animated.Value(this.props.value === '' ? 0 : 1);
@@ -47,8 +47,6 @@ class FagitoTextInput extends Component {
         })
         this.props.input.onChange(newText);
     }
-    componentDidMount() {
-    }
     render() {
         const renderErrorText = null;
         const { input, label, meta: { touched, error }, secureTextEntry, nonEditable, keyboardType, ...props } = this.props;
@@ -59,6 +57,9 @@ class FagitoTextInput extends Component {
             top: this._textBoxIsFocused.interpolate(style.FAGITO_TEXT_INPUT_TOP_RANGE),
             color: this._textBoxLabelColor.interpolate(style.FAGITO_TEXT_INPUT_COLOR_RANGE),
             fontSize: this._textBoxIsFocused.interpolate(style.FAGITO_TEXT_INPUT_FONT_RANGE)
+        }
+        if(this.props.formUpdated) {
+            this.state.value = this.props.value;
         }
         return (
             <View style={style.FAGITO_TEXT_INPUT_CONTAINER.textInputContainer}>

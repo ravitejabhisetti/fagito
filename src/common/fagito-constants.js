@@ -266,3 +266,24 @@ export const PAYTM_ENTITY = 'Pay via Paytm';
 export const TRANSACTION_ENTITY = 'View Wallet Transaction History';
 export const HISTORY_SCREEN = 'History';
 export const WALLET_SCREEN = 'Wallet';
+export const WALLET_PAYMENT_SCREEN = 'WalletPaymentScreen';
+export const NET_BANKING_TITLE = 'Card / Netbanking';
+export const SODEXO_TITLE = 'Sodexo';
+export const PAYTM_TITLE = 'PayTM';
+export const AMOUNTS_LIST = [
+    { amount: '200' },
+    { amount: '500' },
+    { amount: '1000' },
+    { amount: '1500' },
+    { amount: '2000' },
+    { amount: '4000' }
+]
+export const AMOUNT_FORM = [
+    {
+        label: 'Enter Amount',
+        value: '',
+        fieldName: 'amount'
+    }
+]
+export const NET_BANKING_FORM = 'netBankingForm';
+export const AMOUNT_FIELD = 'amount';

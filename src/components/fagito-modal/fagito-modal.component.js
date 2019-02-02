@@ -53,7 +53,8 @@ class FagitoModalComponent extends Component {
         let modalFooterSegment = null;
         let modalNoteMessage = null;
         this.state.modalVisible = this.props.showModal;
-        let headerTextColor = (this.props.type === ORDERS || this.props.type === ADDONS) ? STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
+        let headerTextColor = (this.props.type === ORDERS || this.props.type === ADDONS) ?
+            STYLES.modalTextHeaderWhiteColor : STYLES.modalTextHeaderGreyColor;
         if (this.props.type === ORDERS) {
             modalHeading = this.props.modalContent.modalHeader;
             modalContentSegment = (
@@ -80,7 +81,12 @@ class FagitoModalComponent extends Component {
                     </RadioForm>
                 )
                 modalFooterSegment = (
-                    <FagitoFooterComponent buttonInActive={this.state.buttonInActive} handleMeal={() => this.handleMeal()} selectedProduct={this.state.modalSelectedProduct} modalFooter={true}></FagitoFooterComponent>
+                    <FagitoFooterComponent
+                        buttonInActive={this.state.buttonInActive}
+                        handleMeal={() => this.handleMeal()}
+                        selectedProduct={this.state.modalSelectedProduct}
+                        modalFooter={true}>
+                    </FagitoFooterComponent>
                 )
             }
         }
@@ -89,12 +95,20 @@ class FagitoModalComponent extends Component {
             modalContentSegment = Object.keys(ADDONS_LIST).map((addonEntity, index) => {
                 return (
                     <View key={index}>
-                        <FagitoAddonsList addonsCount={this.props.addonsCount} addonSectionName={addonEntity} addonsList={ADDONS_LIST[addonEntity]}></FagitoAddonsList>
+                        <FagitoAddonsList
+                            addonsCount={this.props.addonsCount}
+                            addonSectionName={addonEntity}
+                            addonsList={ADDONS_LIST[addonEntity]}></FagitoAddonsList>
                     </View>
                 )
             })
             modalFooterSegment = (
-                <FagitoFooterComponent addonsCount={this.props.addonsCount} hideModal={this.toggleModal} modalAddon={true} selectedProduct={this.props.modalContent} modalFooter={true}></FagitoFooterComponent>
+                <FagitoFooterComponent
+                    addonsCount={this.props.addonsCount}
+                    hideModal={this.toggleModal}
+                    modalAddon={true}
+                    selectedProduct={this.props.modalContent}
+                    modalFooter={true}></FagitoFooterComponent>
             )
             modalNoteMessage = (
                 <Text style={STYLES.addonNote}>{ADDON_NOTE}</Text>

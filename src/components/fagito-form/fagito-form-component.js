@@ -7,7 +7,8 @@ import { STYLES } from './fagito-form-style';
 import {
     FAGITO_DEFAULT_KEYBOARD, FAGITO_NUMERIC_KEYBOARD, FAGITO_FIELD_NAME_PASSWORD,
     FAGITO_FIELD_NAME_MOBILE_NUMBER,
-    STRING
+    STRING,
+    AMOUNT_FIELD
 } from '../../common/fagito-constants';
 import validate from '../../utility/fagito-form-validations';
 import * as style from '../../common/fagito-style-constants';
@@ -41,6 +42,9 @@ class FagitoFormComponent extends Component {
     }
 
     updateCheck = (value, key, fieldName) => {
+        if (this.props.amountForm) {
+            this.props.updateAmountForm();
+        }
         if (typeof (value) === STRING) {
             this.state.formEntities[key].value = value;
         }
@@ -49,6 +53,7 @@ class FagitoFormComponent extends Component {
     render() {
         let termsText = null;
         let resetPasswordText = null;
+        let submitButton = null;
         let { handleSubmit, ...props } = this.props;
         let scrollViewItems = (props.formItems.map((item, key) => {
             if (props.newForm) {
@@ -60,12 +65,14 @@ class FagitoFormComponent extends Component {
                 name={item.fieldName}
                 label={item.label}
                 nonEditable={item.nonEditable}
+                formUpdated={props.amountForm && props.buttonClicked}
                 newForm={props.newForm}
                 onChange={(value) => this.updateCheck(value, key, item.fieldName)}
                 props={{
                     value: item.value,
                     secureTextEntry: item.fieldName === FAGITO_FIELD_NAME_PASSWORD ? true : false,
-                    keyboardType: item.fieldName === FAGITO_FIELD_NAME_MOBILE_NUMBER ? FAGITO_NUMERIC_KEYBOARD : FAGITO_DEFAULT_KEYBOARD
+                    keyboardType: (item.fieldName === FAGITO_FIELD_NAME_MOBILE_NUMBER || item.fieldName === AMOUNT_FIELD) ?
+                        FAGITO_NUMERIC_KEYBOARD : FAGITO_DEFAULT_KEYBOARD
                 }}
             />
         }));
@@ -81,13 +88,21 @@ class FagitoFormComponent extends Component {
                 </View>
             )
         }
+        if (!props.hideSubmitButton) {
+            submitButton = (
+                <View style={STYLES.formButton}>
+                    <FagitoButton
+                        borderColor={style.FAGITO_BUTTON_COLOR}
+                        backgroundColor={style.FAGITO_WHITE_COLOR}
+                        onButtonClick={!props.updateForm ? handleSubmit((values) => this.handleFormButtonClick(values)) : () => this.handleUpdateForm()} buttonTitle={props.buttonTitle} />
+                </View>
+            )
+        }
         return (
             <ScrollView keyboardShouldPersistTaps='handled' style={FAGITO_SIGNIN_SIGNUP_CONTAINERS.signupSigninContainer}>
                 {scrollViewItems}
                 {termsText}
-                <View style={STYLES.formButton}>
-                    <FagitoButton borderColor={style.FAGITO_BUTTON_COLOR} backgroundColor={style.FAGITO_WHITE_COLOR} onButtonClick={!props.updateForm ? handleSubmit((values) => this.handleFormButtonClick(values)) : () => this.handleUpdateForm()} buttonTitle={props.buttonTitle} />
-                </View>
+                {submitButton}
                 {resetPasswordText}
             </ScrollView>
         )

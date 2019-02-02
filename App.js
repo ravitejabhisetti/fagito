@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import {
     FagitoSignupSigninBrowseButtonsScreen, FagitoSignupScreen, FagitoSigninScreen,
-    FagitoResetPasswordScreen, FagitoHomeScreen, FagitoUpdateUserDetailsScreen
+    FagitoResetPasswordScreen, FagitoHomeScreen, FagitoUpdateUserDetailsScreen, FagitoWalletPaymentScreen
 } from './src/screens/fagito-screens';
 import { FAGITO_HOME } from './src/common/fagito-constants';
 import { FAGITO_COMMON_STYLE } from './src/common/fagito-common-style';
@@ -19,7 +19,8 @@ const RootStack = createStackNavigator({
     'Sign up': FagitoSignupScreen,
     'Sign in': FagitoSigninScreen,
     ResetPassword: FagitoResetPasswordScreen,
-    UpdateUserDetails: FagitoUpdateUserDetailsScreen,
+    UpdateUserDetails: FagitoUpdateUserDetailsScreen,   
+    WalletPaymentScreen: FagitoWalletPaymentScreen,
     DrawerNavigator: {
         screen: DrawerNavigator,
         navigationOptions: {

@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { BackIcon, SettingsEntity } from '../../components/fagito-components';
 import {
     WALLET_TITLE, FAGITO_HOME_SCREEN, EMAIL_ICON, WALLET_ICON, NET_BANKING_ENTITY,
-    SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY, TRANSACTION_ICON, WALLET_ENTITY, EMAIL_ENTITY
+    SODEXO_ENTITY, PAYTM_ENTITY, TRANSACTION_ENTITY, TRANSACTION_ICON, WALLET_ENTITY, EMAIL_ENTITY, NET_BANKING_TITLE, SODEXO_TITLE, PAYTM_TITLE
 } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import { STYLES } from './fagito-wallet-screen-style';
@@ -27,9 +27,9 @@ class FagitoWalletScreen extends Component {
                         <View style={STYLES.walletInfoSection}>
                             <Text style={STYLES.walletInfoText}>Add money to wallet</Text>
                         </View>
-                        <SettingsEntity wallet entityName={NET_BANKING_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
-                        <SettingsEntity wallet entityName={SODEXO_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
-                        <SettingsEntity wallet entityName={PAYTM_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
+                        <SettingsEntity title={NET_BANKING_TITLE} wallet entityName={NET_BANKING_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
+                        <SettingsEntity title={SODEXO_TITLE} wallet entityName={SODEXO_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
+                        <SettingsEntity title={PAYTM_TITLE} wallet entityName={PAYTM_ENTITY} iconName={WALLET_ICON}></SettingsEntity>
                     </View>
                     <View>
                         <View style={STYLES.walletInfoSection}>
