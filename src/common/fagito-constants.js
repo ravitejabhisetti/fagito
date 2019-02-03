@@ -289,9 +289,5 @@ export const NET_BANKING_FORM = 'netBankingForm';
 export const AMOUNT_FIELD = 'amount';
 export const UPDATE_WALLET = 'Updating wallet...';
 export const WALLET_FIELD = 'walletAmount';
-// export const WALLET_ALERT = {
-//     alertHeader: 'Wallet Recharge Successful',
-//     alertMessage: ' have been added to your Fagito wallet. Your wallet balance is now '
-// }
 export const WALLET_ALERT_HEADER = 'Wallet Recharge Successful';
 export const WALLET_ALERT_MESSAGE = ' have been added to your Fagito wallet. Your wallet balance is now ';
