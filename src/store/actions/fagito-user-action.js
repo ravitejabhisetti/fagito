@@ -1,11 +1,13 @@
 import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from './fagito-action-types';
 import { AsyncStorage } from 'react-native';
-import { getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader,
-     updateLocationFilter, getProductsOfDate, updateLocationFilterContent } from './actions';
+import {
+    getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader,
+    updateLocationFilter, getProductsOfDate, updateLocationFilterContent
+} from './actions';
 import {
     FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS,
     METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS,
-    HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE
+    HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE, UPDATE_WALLET
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { navigatorRef } from '../../../App';
@@ -37,7 +39,9 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
             if (updateType === 'addons') {
-                let productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) { return selectedProduct.id === product.id; });
+                let productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) {
+                    return selectedProduct.id === product.id;
+                });
                 parsedUserDetails.productsSelected[productIndex]['addons'] = addonsSelected;
             }
             if (updateType === PROFILE) {
@@ -92,9 +96,39 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                             }
                             dispatch(updateLocationFilter(address, addressIndex, addressArea));
                             dispatch(updateLocationFilterContent(fetchProductsInfo.locationFilterContent));
-                            dispatch(getProductsOfDate(fetchProductsInfo.deliveryTiming, fetchProductsInfo.filters, fetchProductsInfo.dateIndex));
+                            dispatch(getProductsOfDate(fetchProductsInfo.deliveryTiming, fetchProductsInfo.filters,
+                                fetchProductsInfo.dateIndex));
                         }
                     }
+                    dispatch(updateUserDetails(response));
+                    AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
+                })
+            })
+        })
+    }
+}
+
+export const updateUserWallet = (walletAmount) => {
+    return dispatch => {
+        AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+            let parsedUserDetails = JSON.parse(userDetails);
+            if (parsedUserDetails.walletAmount) {
+                let amount = Number(parsedUserDetails.walletAmount) + Number(walletAmount);
+                parsedUserDetails.walletAmount = String(amount);
+            } else {
+                parsedUserDetails['walletAmount'] = walletAmount;
+            }
+            dispatch(fagitoStartLoader(UPDATE_WALLET));
+            dispatch(getToken()).then(apiToken => {
+                let url = FIREBASE_URL + 'users/' + parsedUserDetails.userId + '.json?auth=' + apiToken;
+                return fetch(url, {
+                    method: METHOD_PUT,
+                    body: JSON.stringify(parsedUserDetails),
+                    headers: FAGITO_API_CALL_HEADERS
+                }).catch((error) => {
+                    dispatch(fagitoStopLoader());
+                }).then(res => res.json()).then(response => {
+                    dispatch(fagitoStopLoader());
                     dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
                 })
@@ -110,5 +144,4 @@ export const updateSelectedProductAddons = (product, addonsSelected, productInde
         addonsSelected: addonsSelected,
         productIndex: productIndex
     }
-
 }

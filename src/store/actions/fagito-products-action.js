@@ -13,12 +13,6 @@ export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
     return dispatch => {
         let url = '';
         dispatch(updateProductsList([]));
-        // let location = '';
-        // if (filters.addressArea !== '') {
-        //     location = filters.addressArea;
-        // } else {
-        //     location = filters.locationFilter;
-        // }
         dispatch(fagitoStartLoader(FETCH_MESSAGE_1 + timing.timingSelected + FETCH_MESSAGE_2 + filters.addressArea));
         dispatch(getToken()).then(apiToken => {
             if (timing.lunchTiming) {

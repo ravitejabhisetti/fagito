@@ -7,7 +7,7 @@ const FagitoButton = (props) => {
     const buttonTitle = props.buttonTitle;
     return (
         <View>
-            <TouchableOpacity onPress={props.onButtonClick} activeOpacity={style.FAGITO_BUTTON_OPACITY}>
+            <TouchableOpacity onPress={props.onButtonClick} activeOpacity={!props.buttonInActive ? style.FAGITO_BUTTON_OPACITY : 1}>
                 <View style={[STYLES.button,
                 { borderColor: props.borderColor, backgroundColor: props.backgroundColor }, { opacity: !props.buttonInActive ? 1 : style.FAGITO_BUTTON_OPACITY }]}>
                     <Text style={[{ color: props.borderColor }, STYLES.buttonText]}>{buttonTitle}</Text>

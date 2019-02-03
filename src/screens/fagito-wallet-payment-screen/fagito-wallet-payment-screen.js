@@ -4,6 +4,8 @@ import { STYLES } from './fagito-wallet-payment-screen-style';
 import { NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM, NET_BANKING_FORM, MAKE_PAYMENT } from '../../common/fagito-constants';
 import { FagitoButton, FagitoFormComponent } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
+import { connect } from 'react-redux';
+import { updateUserWallet } from '../../store/actions/actions';
 
 class FagitoWalletPaymentScreen extends Component {
     constructor(props) {
@@ -13,7 +15,8 @@ class FagitoWalletPaymentScreen extends Component {
             netBankingForm: AMOUNT_FORM,
             formUpdated: false,
             amountButtonClicked: true,
-            buttonInActive: true
+            buttonInActive: true,
+            currentWalletAmount: 0
         }
     }
 
@@ -24,10 +27,12 @@ class FagitoWalletPaymentScreen extends Component {
     }
     componentWillMount() {
         let entityName = this.props.navigation.getParam('entityName');
+        let currentWalletAmount = this.props.navigation.getParam('currentWalletAmount');
         this.setState((state) => {
             return {
                 ...state,
-                entityName: entityName
+                entityName: entityName,
+                currentWalletAmount: currentWalletAmount
             }
         })
     }
@@ -69,11 +74,17 @@ class FagitoWalletPaymentScreen extends Component {
             })
         }
     }
+    addAmountToUser = () => {
+        if (!this.state.buttonInActive) {
+            this.props.updateUserWallet(this.state.netBankingForm[0].value);
+        }
+    }
     render() {
         let amountForm = null;
         let moneyButtonsSection = null;
         let moneyButtonsList = null;
         let amountSubmitButton = null;
+        let currentWalletAmount = null;
         if (this.state.entityName === NET_BANKING_ENTITY) {
             moneyButtonsList = AMOUNTS_LIST.map((amountEntity, index) => {
                 let buttonTitle = 'Rs ' + amountEntity.amount;
@@ -109,6 +120,7 @@ class FagitoWalletPaymentScreen extends Component {
             amountSubmitButton = (
                 <View style={STYLES.amountSubmitButton}>
                     <FagitoButton
+                        onButtonClick={() => this.addAmountToUser()}
                         buttonInActive={this.state.buttonInActive}
                         borderColor={style.FAGITO_WHITE_COLOR}
                         backgroundColor={style.FAGITO_BUTTON_COLOR}
@@ -116,10 +128,18 @@ class FagitoWalletPaymentScreen extends Component {
                     </FagitoButton>
                 </View>
             )
+            if (this.state.currentWalletAmount > 0) {
+                currentWalletAmount = (
+                    <View style={STYLES.currentWalletAmount}>
+                        <Text style={STYLES.amountText}>Current Wallet Balance: Rs {this.state.currentWalletAmount}</Text>
+                    </View>
+                )
+            }
         }
         return (
             <View style={STYLES.paymentSection}>
                 {amountForm}
+                {currentWalletAmount}
                 {moneyButtonsSection}
                 {amountSubmitButton}
             </View>
@@ -127,4 +147,10 @@ class FagitoWalletPaymentScreen extends Component {
     }
 }
 
-export default FagitoWalletPaymentScreen;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateUserWallet: (walletAmount) => dispatch(updateUserWallet(walletAmount))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(FagitoWalletPaymentScreen);

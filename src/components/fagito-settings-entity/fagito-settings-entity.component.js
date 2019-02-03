@@ -12,7 +12,7 @@ import {
     OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE,
     ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD,
     OFFICE_FIELD, WALLET_ENTITY, NET_BANKING_ENTITY, SODEXO_ENTITY, PAYTM_ENTITY,
-    TRANSACTION_ENTITY, HISTORY_SCREEN, WALLET_PAYMENT_SCREEN
+    TRANSACTION_ENTITY, HISTORY_SCREEN, WALLET_PAYMENT_SCREEN, WALLET_FIELD
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
 import { updateUserLocationDetails } from '../../store/actions/actions';
@@ -36,8 +36,9 @@ class SettingsEntity extends Component {
                     walletScreen: true
                 });
             } else {
+                let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
                 this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
-                    title: title, entityName: entityName
+                    title: title, entityName: entityName, currentWalletAmount: walletAmount
                 });
             }
         }

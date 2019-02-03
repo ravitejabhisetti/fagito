@@ -21,6 +21,17 @@ const STYLES = StyleSheet.create({
     },
     amountSubmitButton: {
         paddingTop: 20
+    },
+    currentWalletAmount: {
+        margin: 16,
+        paddingBottom: 8,
+        borderBottomColor: style.DROPDOWN_BORDER_BOTTOM_COLOR,
+        borderBottomWidth: 1
+    },
+    amountText: {
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        fontSize: 14,
+        color: style.FAGITO_ERROR_TEXT_COLOR
     }
 });
 

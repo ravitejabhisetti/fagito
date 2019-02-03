@@ -287,3 +287,5 @@ export const AMOUNT_FORM = [
 ]
 export const NET_BANKING_FORM = 'netBankingForm';
 export const AMOUNT_FIELD = 'amount';
+export const UPDATE_WALLET = 'Updating wallet...';
+export const WALLET_FIELD = 'walletAmount';
