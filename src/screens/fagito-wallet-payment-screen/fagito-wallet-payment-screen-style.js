@@ -7,7 +7,6 @@ const STYLES = StyleSheet.create({
         backgroundColor: style.FAGITO_WHITE_COLOR
     },
     moneyButtonsSection: {
-        flex: 1,
         flexWrap: style.FAGITO_WRAP,
         flexDirection: style.FAGITO_ROW,
         justifyContent: style.FAGITO_SPACE_BETWEEN
@@ -19,6 +18,9 @@ const STYLES = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 5,
         paddingRight: 5
+    },
+    amountSubmitButton: {
+        paddingTop: 20
     }
 });
 

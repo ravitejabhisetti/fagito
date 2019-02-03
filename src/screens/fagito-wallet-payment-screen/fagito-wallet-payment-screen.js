@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-wallet-payment-screen-style';
-import { NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM, NET_BANKING_FORM } from '../../common/fagito-constants';
+import { NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM, NET_BANKING_FORM, MAKE_PAYMENT } from '../../common/fagito-constants';
 import { FagitoButton, FagitoFormComponent } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 
@@ -12,7 +12,8 @@ class FagitoWalletPaymentScreen extends Component {
             entityName: '',
             netBankingForm: AMOUNT_FORM,
             formUpdated: false,
-            amountButtonClicked: true
+            amountButtonClicked: true,
+            buttonInActive: true
         }
     }
 
@@ -37,11 +38,28 @@ class FagitoWalletPaymentScreen extends Component {
                 ...state,
                 netBankingForm: state.netBankingForm,
                 formUpdated: !state.formUpdated,
-                amountButtonClicked: true
+                amountButtonClicked: true,
+                buttonInActive: false
             }
         })
     }
-    updateAmountForm = () => {
+    updateAmountForm = (value) => {
+        if (value === '') {
+            this.setState((state) => {
+                return {
+                    ...state,
+                    buttonInActive: true
+                }
+            })
+        }
+        if (this.state.buttonInActive && value !== '') {
+            this.setState((state) => {
+                return {
+                    ...state,
+                    buttonInActive: false
+                }
+            })
+        }
         if (this.state.amountButtonClicked) {
             this.setState((state) => {
                 return {
@@ -83,9 +101,19 @@ class FagitoWalletPaymentScreen extends Component {
                         form={NET_BANKING_FORM}
                         amountForm
                         buttonClicked={this.state.amountButtonClicked}
-                        updateAmountForm={() => this.updateAmountForm()}
+                        updateAmountForm={(value) => this.updateAmountForm(value)}
                         formItems={this.state.netBankingForm}>
                     </FagitoFormComponent>
+                </View>
+            )
+            amountSubmitButton = (
+                <View style={STYLES.amountSubmitButton}>
+                    <FagitoButton
+                        buttonInActive={this.state.buttonInActive}
+                        borderColor={style.FAGITO_WHITE_COLOR}
+                        backgroundColor={style.FAGITO_BUTTON_COLOR}
+                        buttonTitle={MAKE_PAYMENT}>
+                    </FagitoButton>
                 </View>
             )
         }

@@ -42,8 +42,8 @@ class FagitoFormComponent extends Component {
     }
 
     updateCheck = (value, key, fieldName) => {
-        if (this.props.amountForm) {
-            this.props.updateAmountForm();
+        if (this.props.amountForm && typeof (value) === STRING) {
+            this.props.updateAmountForm(value);
         }
         if (typeof (value) === STRING) {
             this.state.formEntities[key].value = value;
