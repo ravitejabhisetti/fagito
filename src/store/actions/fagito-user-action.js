@@ -2,12 +2,12 @@ import { ADD_ADDON, DELETE_ADDON, RESET_ADDONS, UPDATE_ADDONS_OF_PRODUCT } from 
 import { AsyncStorage } from 'react-native';
 import {
     getToken, updateUserDetails, fagitoStartLoader, fagitoStopLoader,
-    updateLocationFilter, getProductsOfDate, updateLocationFilterContent
+    updateLocationFilter, getProductsOfDate, updateLocationFilterContent, fagitoShowAlert
 } from './actions';
 import {
     FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS,
     METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS,
-    HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE, UPDATE_WALLET
+    HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE, UPDATE_WALLET, WALLET_ALERT_HEADER, WALLET_ALERT_MESSAGE
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { navigatorRef } from '../../../App';
@@ -131,6 +131,8 @@ export const updateUserWallet = (walletAmount) => {
                     dispatch(fagitoStopLoader());
                     dispatch(updateUserDetails(response));
                     AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(response));
+                    navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+                    dispatch(fagitoShowAlert({ alertHeader: WALLET_ALERT_HEADER, alertMessage: 'Rs ' + walletAmount + WALLET_ALERT_MESSAGE + 'Rs ' + response.walletAmount }));
                 })
             })
         })

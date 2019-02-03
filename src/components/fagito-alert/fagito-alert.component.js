@@ -75,12 +75,15 @@ class FagitoAlert extends Component {
     render() {
         let error = null;
         let dropdownContent = null;
-        if (this.props.alertItems.error) {
+        if (this.props.alertItems.error || this.props.alertItems.alertHeader) {
+            let header = this.props.alertItems.error ? 'Error' : this.props.alertItems.alertHeader;
+            let headerMessage = (this.props.alertItems.error && this.props.alertItems.error.message) ?
+                validate(this.props.alertItems.error.message) : this.props.alertItems.alertMessage;
             error = (
                 <View>
                     <View style={STYLES.errorMessageSection}>
-                        <Text style={[STYLES.alertErrorText, STYLES.alertErrorHeader]}>Error</Text>
-                        <Text style={[STYLES.alertErrorText, STYLES.alertErrorMessage]}>{validate(this.props.alertItems.error.message)}</Text>
+                        <Text style={[STYLES.alertErrorText, STYLES.alertErrorHeader]}>{header}</Text>
+                        <Text style={[STYLES.alertErrorText, STYLES.alertErrorMessage]}>{headerMessage}</Text>
                     </View>
                     <View style={STYLES.alertButtonsContainer}>
                         <View style={STYLES.alertSubmitButton}>
@@ -92,8 +95,8 @@ class FagitoAlert extends Component {
                 </View>
             )
         } else {
-            let radio_props = this.props.alertItems.options;
             let dropdownHeaderDescription = null;
+            let radio_props = this.props.alertItems.options;
             if (this.props.alertItems.headerDescription !== '' && !this.props.alertItems.hideHeaderDescription) {
                 dropdownHeaderDescription = (
                     <Text style={this.props.alertItems.headerDescription}>{this.props.alertItems.headerDescription}</Text>
