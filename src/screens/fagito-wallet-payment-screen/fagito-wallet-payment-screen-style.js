@@ -20,7 +20,9 @@ const STYLES = StyleSheet.create({
         paddingRight: 5
     },
     amountSubmitButton: {
-        paddingTop: 20
+        paddingTop: 20,
+        paddingLeft: 14,
+        paddingRight: 14
     },
     currentWalletAmount: {
         margin: 16,
@@ -32,6 +34,19 @@ const STYLES = StyleSheet.create({
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         fontSize: 14,
         color: style.FAGITO_ERROR_TEXT_COLOR
+    },
+    sodexoPickupsSection: {
+        marginTop: 20,
+        paddingLeft: 16,
+        borderTopColor: style.DROPDOWN_BORDER_BOTTOM_COLOR,
+        borderTopWidth: 1
+    },
+    pickupHeader: {
+        paddingTop: 10,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        fontSize: 14,
+        color: style.WALLET_TEXT_COLOR,
+        paddingBottom: 25
     }
 });
 

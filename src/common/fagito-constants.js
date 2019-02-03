@@ -285,9 +285,21 @@ export const AMOUNT_FORM = [
         fieldName: 'amount'
     }
 ]
+export const SODEXO_FORM_ENTITIES = [
+    {
+        label: 'Enter Amount ( minimum 1000 )',
+        value: '',
+        fieldName: 'amount'
+    }
+]
 export const NET_BANKING_FORM = 'netBankingForm';
+export const SODEXO_FORM = 'sodexoForm';
 export const AMOUNT_FIELD = 'amount';
 export const UPDATE_WALLET = 'Updating wallet...';
 export const WALLET_FIELD = 'walletAmount';
 export const WALLET_ALERT_HEADER = 'Wallet Recharge Successful';
 export const WALLET_ALERT_MESSAGE = ' have been added to your Fagito wallet. Your wallet balance is now ';
+export const SODEXO_MINIMUM_AMOUNT_ALERT = {
+    alertHeader: 'Minimum 1000',
+    alertMessage: 'The minimum amount for Sodexo pickup is Rs 1000'
+}

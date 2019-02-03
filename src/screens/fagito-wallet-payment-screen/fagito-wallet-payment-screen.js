@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-wallet-payment-screen-style';
-import { NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM, NET_BANKING_FORM, MAKE_PAYMENT, PAYTM_ENTITY } from '../../common/fagito-constants';
+import {
+    NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM,
+    NET_BANKING_FORM, MAKE_PAYMENT, PAYTM_ENTITY, SODEXO_FORM, SODEXO_ENTITY, SODEXO_FORM_ENTITIES, SODEXO_MINIMUM_AMOUNT_ALERT
+} from '../../common/fagito-constants';
 import { FagitoButton, FagitoFormComponent } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
-import { updateUserWallet } from '../../store/actions/actions';
+import { updateUserWallet, fagitoShowAlert } from '../../store/actions/actions';
 
 class FagitoWalletPaymentScreen extends Component {
     constructor(props) {
@@ -13,6 +16,7 @@ class FagitoWalletPaymentScreen extends Component {
         this.state = {
             entityName: '',
             netBankingForm: AMOUNT_FORM,
+            sodexoForm: SODEXO_FORM_ENTITIES,
             formUpdated: false,
             amountButtonClicked: true,
             buttonInActive: true,
@@ -75,8 +79,18 @@ class FagitoWalletPaymentScreen extends Component {
         }
     }
     addAmountToUser = () => {
-        if (!this.state.buttonInActive) {
-            this.props.updateUserWallet(this.state.netBankingForm[0].value);
+        if (this.state.entityName !== SODEXO_ENTITY) {
+            if (!this.state.buttonInActive) {
+                this.props.updateUserWallet(this.state.netBankingForm[0].value);
+            }
+        } else {
+            if (this.state.sodexoForm[0].value >= 1000) {
+                if (!this.state.buttonInActive) {
+                    this.props.updateUserWallet(this.state.sodexoForm[0].value);
+                }
+            } else {
+                this.props.showSodexoMinimumAmountAlert(SODEXO_MINIMUM_AMOUNT_ALERT);
+            }
         }
     }
     render() {
@@ -85,6 +99,7 @@ class FagitoWalletPaymentScreen extends Component {
         let moneyButtonsList = null;
         let amountSubmitButton = null;
         let currentWalletAmount = null;
+        let sodexoPickups = null;
         if (this.state.entityName === NET_BANKING_ENTITY || this.state.entityName === PAYTM_ENTITY) {
             if (this.state.entityName === NET_BANKING_ENTITY) {
                 moneyButtonsList = AMOUNTS_LIST.map((amountEntity, index) => {
@@ -138,12 +153,45 @@ class FagitoWalletPaymentScreen extends Component {
                 )
             }
         }
+        if (this.state.entityName === SODEXO_ENTITY) {
+            amountForm = (
+                <View>
+                    <FagitoFormComponent
+                        hideSubmitButton
+                        formUpdated={this.state.formUpdated}
+                        form={SODEXO_FORM}
+                        amountForm
+                        buttonClicked={this.state.amountButtonClicked}
+                        updateAmountForm={(value) => this.updateAmountForm(value)}
+                        formItems={this.state.sodexoForm}>
+                    </FagitoFormComponent>
+                </View>
+            )
+            amountSubmitButton = (
+                <View style={STYLES.amountSubmitButton}>
+                    <FagitoButton
+                        onButtonClick={() => this.addAmountToUser()}
+                        buttonInActive={this.state.buttonInActive}
+                        borderColor={style.FAGITO_WHITE_COLOR}
+                        backgroundColor={this.state.buttonInActive ? style.SODEXO_INACTIVE_BUTTON : style.SODEXO_ACTIVE_BUTTON}
+                        buttonTitle={MAKE_PAYMENT}>
+                    </FagitoButton>
+                </View>
+            )
+            sodexoPickups = (
+                <View style={STYLES.sodexoPickupsSection}>
+                    <Text style={STYLES.pickupHeader}>Pending Sodexo pickups</Text>
+                    <Text>No Pending requests</Text>
+                </View>
+            )
+        }
         return (
             <View style={STYLES.paymentSection}>
                 {amountForm}
                 {currentWalletAmount}
                 {moneyButtonsSection}
                 {amountSubmitButton}
+                {sodexoPickups}
             </View>
         )
     }
@@ -151,7 +199,8 @@ class FagitoWalletPaymentScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUserWallet: (walletAmount) => dispatch(updateUserWallet(walletAmount))
+        updateUserWallet: (walletAmount) => dispatch(updateUserWallet(walletAmount)),
+        showSodexoMinimumAmountAlert: (alert) => dispatch(fagitoShowAlert(alert))
     }
 }
 

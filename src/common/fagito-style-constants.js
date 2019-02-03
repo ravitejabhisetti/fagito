@@ -50,3 +50,5 @@ export const GREEN_UP_ICON = 'upcircle';
 export const GREEN_UP_ICON_COLOR = '#32db64';
 export const DOWN_ICON = 'downcircle';
 export const WALLET_TEXT_COLOR = '#757575';
+export const SODEXO_ACTIVE_BUTTON = '#222';
+export const SODEXO_INACTIVE_BUTTON = '#585858';
