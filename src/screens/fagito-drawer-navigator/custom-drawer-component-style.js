@@ -6,7 +6,7 @@ const STYLES = StyleSheet.create({
         flex: 1
     },
     headerSegment: {
-        height: 60,
+        minHeight: 75,
         backgroundColor: style.FAGITO_BLACK_COLOR,
         justifyContent: style.FAGITO_CENTER,
         padding: 15
@@ -20,8 +20,9 @@ const STYLES = StyleSheet.create({
         color: style.FAGITO_WHITE_COLOR,
         fontSize: 18,
         paddingLeft: 10,
-        paddingBottom: 2,
-        paddingTop: 6
+        paddingBottom: 22,
+        paddingTop: 6,
+        marginBottom: 8
     },
     logoutText: {
         fontSize: 13,
@@ -29,6 +30,11 @@ const STYLES = StyleSheet.create({
         fontWeight: '400',
         paddingLeft: 16,
         paddingTop: 12
+    },
+    balanceText: {
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        fontSize: 12,
+        color: style.FAGITO_WHITE_COLOR
     }
 });
 

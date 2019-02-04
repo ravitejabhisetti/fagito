@@ -4,7 +4,7 @@ import { STYLES } from './fagito-footer.style';
 import { connect } from 'react-redux';
 import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
-import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL } from '../../common/fagito-constants';
+import { MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { updateUser } from '../../store/actions/actions';
 
@@ -20,6 +20,7 @@ class FagitoFooterComponent extends Component {
     render() {
         let footerContent = null;
         let productsCost = 0;
+        let currentWalletBalance = null;
         if (!this.props.modalFooter) {
             if (this.props.selectedProducts.length) {
                 let currentDate = new Date().getTime();
@@ -36,9 +37,16 @@ class FagitoFooterComponent extends Component {
                     }
                 });
                 if (productsCost) {
+                    if (this.props.loggedInUserDetails.walletAmount && this.props.loggedInUserDetails.walletAmount > 0) {
+                        currentWalletBalance = (
+                            <Text style={STYLES.footerText}>{CURRENT_WALLET_BALANCE_TEXT}{this.props.loggedInUserDetails.walletAmount}</Text>
+                        )
+                    }
                     footerContent = (
                         <View style={STYLES.costsSegment}>
+
                             <View style={STYLES.paymentText}>
+                                {currentWalletBalance}
                                 <Text style={STYLES.footerText}>{PAYMENT_LABEL_1}{productsCost + 5} (Rs {productsCost}{PAYMENT_LABEL_2}</Text>
                             </View>
                             <View style={STYLES.paymentButton}>
@@ -135,7 +143,8 @@ const mapStateToProps = (state) => {
         deliveryTiming: state.deliveryTimingAndDates.timing,
         addonsCount: state.addons.addonsCount,
         addonsSelected: state.addons.addonsSelected,
-        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons
+        indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
+        loggedInUserDetails: state.userDetails.loggedInUserDetails
     }
 }
 

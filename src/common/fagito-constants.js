@@ -303,3 +303,5 @@ export const SODEXO_MINIMUM_AMOUNT_ALERT = {
     alertHeader: 'Minimum 1000',
     alertMessage: 'The minimum amount for Sodexo pickup is Rs 1000'
 }
+export const CURRENT_WALLET_BALANCE_TEXT = 'Current Wallet balance: Rs ';
+export const DRAWER_WALLET_BALNCE_TEXT = 'Wallet Balance: Rs ';
