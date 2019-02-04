@@ -305,3 +305,5 @@ export const SODEXO_MINIMUM_AMOUNT_ALERT = {
 }
 export const CURRENT_WALLET_BALANCE_TEXT = 'Current Wallet balance: Rs ';
 export const DRAWER_WALLET_BALNCE_TEXT = 'Wallet Balance: Rs ';
+export const FEEDBACK_MODAL = 'Feedback';
+export const FEEDBACK_MODAL_TEXT = 'You do not have any recent orders to give feedback about.';

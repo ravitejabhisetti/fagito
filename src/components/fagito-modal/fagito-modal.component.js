@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST, ADDON_NOTE } from '../../common/fagito-constants';
+import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST, ADDON_NOTE, FEEDBACK_MODAL, FEEDBACK_MODAL_TEXT } from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
 import { FagitoFooterComponent, FagitoAddonsList } from '../../components/fagito-components';
@@ -114,6 +114,14 @@ class FagitoModalComponent extends Component {
                 <Text style={STYLES.addonNote}>{ADDON_NOTE}</Text>
             )
         }
+        if (this.props.type === FEEDBACK_MODAL) {
+            modalHeading = FEEDBACK_MODAL;
+            modalContentSegment = (
+                <View style={STYLES.feedbackText}>
+                    <Text style={STYLES.feedbackText}>{FEEDBACK_MODAL_TEXT}</Text>
+                </View>
+            )
+        }
         return (
             <View>
                 <Modal animationType={"fade"} transparent={false}
@@ -121,12 +129,12 @@ class FagitoModalComponent extends Component {
                     onRequestClose={this.toggleModal}>
                     <View style={STYLES.modal}>
                         <View style={[STYLES.modalHeader,
-                        (this.props.type === ORDERS || this.props.type === ADDONS) ? STYLES.modalHeaderOrdersBackground : STYLES.modalContent]}>
+                        (this.props.type === ORDERS || this.props.type === ADDONS || this.props.type === FEEDBACK_MODAL) ? STYLES.modalHeaderOrdersBackground : STYLES.modalContent]}>
                             <View>
-                                <Text style={[STYLES.modalText, STYLES.modalHeading, headerTextColor]}>{modalHeading}</Text>
+                                <Text style={[STYLES.modalText, STYLES.modalHeading, headerTextColor, this.props.type === FEEDBACK_MODAL ? STYLES.headerTextWhiteColor : null]}>{modalHeading}</Text>
                             </View>
                             <TouchableHighlight onPress={this.toggleModal} style={STYLES.modalCloseButton}>
-                                <Text style={[STYLES.modalText, STYLES.modalCloseText, headerTextColor]}>CLOSE</Text>
+                                <Text style={[STYLES.modalText, STYLES.modalCloseText, headerTextColor, this.props.type === FEEDBACK_MODAL ? STYLES.headerTextWhiteColor : null]}>CLOSE</Text>
                             </TouchableHighlight>
                         </View>
                         <ScrollView>

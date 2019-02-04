@@ -85,6 +85,18 @@ const STYLES = StyleSheet.create({
         paddingBottom: 8,
         flex: 1,
         flexWrap: style.FAGITO_WRAP
+    },
+    headerTextWhiteColor: {
+        color: style.FAGITO_WHITE_COLOR
+    },
+    feedbackText: {
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        fontSize: 14
+    },
+    feedbackText: {
+        flex: 1,
+        marginTop: 12,
+        paddingLeft: 12
     }
 });
 

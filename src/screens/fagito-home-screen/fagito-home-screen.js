@@ -136,7 +136,11 @@ class FagitoHomeScreen extends Component {
                 fullModalContent = this.state.modalContent;
             }
             fullModal = (
-                <FagitoModalComponent type={this.state.modalType} modalContent={fullModalContent} scrollUp={() => this.scrollToTop()} hideModal={() => this.handlefullModal(false, null, null)}
+                <FagitoModalComponent
+                    type={this.state.modalType}
+                    modalContent={fullModalContent}
+                    scrollUp={() => this.scrollToTop()}
+                    hideModal={() => this.handlefullModal(false, null, null)}
                     showModal={this.state.showFullModal}>
                 </FagitoModalComponent>
             );
