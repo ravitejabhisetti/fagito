@@ -62,7 +62,7 @@ class FagitoHomeScreen extends Component {
                     dropdownContent.options[1] = { label: ADD_HOME_ADDRESS };
                 }
                 if (_.isEmpty(this.props.productsList)) {
-                    // this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
+                    this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
                 }
                 this.props.updateLocationFilterContent(dropdownContent);
             } else {

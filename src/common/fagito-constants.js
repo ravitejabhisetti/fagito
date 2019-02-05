@@ -140,23 +140,23 @@ export const FILTERS_CONTENT = {
     locationFilter: {
         initial: 0, filterName: 'locationFilter',
         header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: [
-            { label: 'Madhapur', label: 'Madhapur' },
-            { label: 'Hitech City', label: 'Hitech City' },
-            { label: 'Jubilee Hills', label: 'Jubilee Hills' },
-            { label: 'Kondapur', label: 'Kondapur' },
-            { label: 'Kothaguda', label: 'Kothaguda' },
-            { label: 'Gachibowli', label: 'Gachibowli' },
-            { label: 'Financial District', label: 'Financial District' },
-            { label: 'Nanakramguda', label: 'Nanakramguda' },
-            { label: 'Raidurgam', label: 'Raidurgam' },
-            { label: 'Manikonda', label: 'Manikonda' },
-            { label: 'KPHB', label: 'KPHB' },
-            { label: 'Banjara Hills', label: 'Banjara Hills' },
-            { label: 'Srinagar Colony', label: 'Srinagar Colony' },
-            { label: 'Begumpet', label: 'Begumpet' },
-            { label: 'Punjagutta', label: 'Punjagutta' },
-            { label: 'JNTU', label: 'JNTU' },
-            { label: 'Rest of Hyderabad - Coming Soon', label: 'Rest of Hyderabad - Coming Soon' },
+            { label: 'Madhapur', addressArea: 'Madhapur' },
+            { label: 'Hitech City', addressArea: 'Hitech City' },
+            { label: 'Jubilee Hills', addressArea: 'Jubilee Hills' },
+            { label: 'Kondapur', addressArea: 'Kondapur' },
+            { label: 'Kothaguda', addressArea: 'Kothaguda' },
+            { label: 'Gachibowli', addressArea: 'Gachibowli' },
+            { label: 'Financial District', addressArea: 'Financial District' },
+            { label: 'Nanakramguda', addressArea: 'Nanakramguda' },
+            { label: 'Raidurgam', addressArea: 'Raidurgam' },
+            { label: 'Manikonda', addressArea: 'Manikonda' },
+            { label: 'KPHB', addressArea: 'KPHB' },
+            { label: 'Banjara Hills', addressArea: 'Banjara Hills' },
+            { label: 'Srinagar Colony', addressArea: 'Srinagar Colony' },
+            { label: 'Begumpet', addressArea: 'Begumpet' },
+            { label: 'Punjagutta', addressArea: 'Punjagutta' },
+            { label: 'JNTU', addressArea: 'JNTU' },
+            { label: 'Rest of Hyderabad - Coming Soon', addressArea: 'Rest of Hyderabad - Coming Soon' },
         ]
     }
 };
@@ -321,3 +321,6 @@ export const OFFER_ALERT = {
         message: 'Invalid voucher'
     }
 }
+export const SUPPORT_MOBILE_ENTITY = 'Mobile';
+export const SUPPORT_MOBILE_FIELD = 'supportMobile';
+export const SUPPORT_EMAIL_FIELD = 'supportEmail';

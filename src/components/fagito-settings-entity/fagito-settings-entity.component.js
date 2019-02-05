@@ -12,7 +12,8 @@ import {
     OFFICE_ADDRESS_ENTITY, UPDATE_USER_DETAILS_SCREEN, ADDRESS, PROFILE,
     ADDRESS_LINE_ONE, ADDRESS_LINE_TWO, ADDRESS_CITY, ADDRESS_AREA, HOME_FIELD,
     OFFICE_FIELD, WALLET_ENTITY, NET_BANKING_ENTITY, SODEXO_ENTITY, PAYTM_ENTITY,
-    TRANSACTION_ENTITY, HISTORY_SCREEN, WALLET_PAYMENT_SCREEN, WALLET_FIELD
+    TRANSACTION_ENTITY, HISTORY_SCREEN, WALLET_PAYMENT_SCREEN, WALLET_FIELD,
+    SUPPORT_MOBILE_ENTITY, SUPPORT_MOBILE_FIELD, SUPPORT_EMAIL_FIELD
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
 import { updateUserLocationDetails } from '../../store/actions/actions';
@@ -71,7 +72,9 @@ class SettingsEntity extends Component {
                 if (fieldName === HOME_FIELD || fieldName === OFFICE_FIELD) {
                     if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[addressType]) {
                         entityDetails = (
-                            <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}</Text>
+                            <Text style={[STYLES.entity, STYLES.entityDetails]}>
+                                {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}
+                            </Text>
                         )
                     } else {
                         if (this.props.displayNotAddedYet) {
@@ -90,6 +93,18 @@ class SettingsEntity extends Component {
                             entityDetails = (
                                 <Text style={[STYLES.entity, STYLES.entityDetails]}>Not Added Yet</Text>
                             )
+                        } else {
+                            if (fieldName === SUPPORT_EMAIL_FIELD) {
+                                entityDetails = (
+                                    <Text style={[STYLES.entity, STYLES.entityDetails]}>support@fagito.com</Text>
+                                )
+                            }
+                            if (fieldName === SUPPORT_MOBILE_FIELD) {
+                                entityDetails = (
+                                    <Text style={[STYLES.entity, STYLES.entityDetails]}>+91-1234567890</Text>
+                                )
+                                forwardIcon = null;
+                            }
                         }
                     }
                 }
@@ -186,7 +201,8 @@ class SettingsEntity extends Component {
                 </View>
                 <View style={[STYLES.settingsEntityDetails,
                 (this.props.entityName !== MOBILE_NUMBER_ENTITY && this.props.entityName !== PAYTM_ENTITY && this.props.entityName !== TRANSACTION_ENTITY &&
-                    this.props.entityName !== OFFICE_ADDRESS_ENTITY && this.props.entityName !== WALLET_ENTITY) ? STYLES.settingsEntityBottomBorder : null]}>
+                    this.props.entityName !== OFFICE_ADDRESS_ENTITY && this.props.entityName !== WALLET_ENTITY && this.props.entityName !== SUPPORT_MOBILE_ENTITY)
+                    ? STYLES.settingsEntityBottomBorder : null]}>
                     <View>
                         {entityName}
                         {entityDetails}
