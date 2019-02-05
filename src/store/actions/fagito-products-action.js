@@ -1,6 +1,6 @@
 import {
     FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT,
-    FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS
+    FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS, RESET_SELECTED_PRODUCTS_OF_USER
 } from './fagito-action-types';
 import { fagitoStartLoader, fagitoStopLoader, getToken, handleError, updateUserDetails } from './actions';
 import {
@@ -116,5 +116,16 @@ export const updateProductsList = (productsList) => {
 export const updateIndexOfProductToAddAddons = () => {
     return {
         type: UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS
+    }
+}
+
+export const resetSelectedProducts = () => {
+    AsyncStorage.getItem(FAGITO_USER_DETAILS).then((userDetails) => {
+        let parsedUserDetails = JSON.parse(userDetails);
+        parsedUserDetails.productsSelected = [];
+        AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(parsedUserDetails));
+    });
+    return {
+        type: RESET_SELECTED_PRODUCTS_OF_USER
     }
 }

@@ -28,7 +28,7 @@ const STYLES = StyleSheet.create({
     },
     paymentText: {
         flex:1,
-        paddingRight: 3
+        paddingRight: 8
     },
     addonMessage: {
         color: style.FAGITO_WHITE_COLOR,

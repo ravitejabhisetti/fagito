@@ -72,8 +72,7 @@ class SettingsEntity extends Component {
                 if (fieldName === HOME_FIELD || fieldName === OFFICE_FIELD) {
                     if (this.props.loggedInUserDetails && this.props.loggedInUserDetails[addressType]) {
                         entityDetails = (
-                            <Text style={[STYLES.entity, STYLES.entityDetails]}>
-                                {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}
+                            <Text style={[STYLES.entity, STYLES.entityDetails]}>{this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_ONE]} {this.props.loggedInUserDetails[fieldName + ADDRESS_LINE_TWO]} {this.props.loggedInUserDetails[fieldName + ADDRESS_AREA]} {this.props.loggedInUserDetails[fieldName + ADDRESS_CITY]}
                             </Text>
                         )
                     } else {

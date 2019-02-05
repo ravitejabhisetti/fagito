@@ -10,7 +10,7 @@ export {
 } from './fagito-delivery-timing-date-action';
 export {
     getProductsOfDate, updateProductsList, addSelectedProduct, deleteSelectedProduct,
-    updatedProductsOfUser, updateUserSelectedProducts, updateIndexOfProductToAddAddons
+    updatedProductsOfUser, updateUserSelectedProducts, updateIndexOfProductToAddAddons, resetSelectedProducts
 } from './fagito-products-action';
 export { addAddon, deleteAddon, resetAddons, updateUser, updateSelectedProductAddons, updateUserWallet } from './fagito-user-action';
 export { updateUserLocationDetails, updateAddressDetails } from './fagito-user-profile-action';
