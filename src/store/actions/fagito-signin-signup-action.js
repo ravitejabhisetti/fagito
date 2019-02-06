@@ -185,8 +185,7 @@ export const autoSignIn = () => {
             dispatch(formDatestoDeliver());
             dispatch(updateUserLoggedInStatus(true, false));
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
-        })
-            .catch(err => { });
+        }).catch(err => { });
     }
 }
 

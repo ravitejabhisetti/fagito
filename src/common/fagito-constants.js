@@ -155,8 +155,7 @@ export const FILTERS_CONTENT = {
             { label: 'Srinagar Colony', addressArea: 'Srinagar Colony' },
             { label: 'Begumpet', addressArea: 'Begumpet' },
             { label: 'Punjagutta', addressArea: 'Punjagutta' },
-            { label: 'JNTU', addressArea: 'JNTU' },
-            { label: 'Rest of Hyderabad - Coming Soon', addressArea: 'Rest of Hyderabad - Coming Soon' },
+            { label: 'JNTU', addressArea: 'JNTU' }
         ]
     }
 };
@@ -324,3 +323,6 @@ export const OFFER_ALERT = {
 export const SUPPORT_MOBILE_ENTITY = 'Mobile';
 export const SUPPORT_MOBILE_FIELD = 'supportMobile';
 export const SUPPORT_EMAIL_FIELD = 'supportEmail';
+export const FETCH_PRODUCTS_URL = 'https://awesome-places-1538464312664.firebaseio.com/products.json';
+export const FETCH_PRODUCTS = 'fetchProducts';
+

@@ -5,7 +5,8 @@ import {
 import { fagitoStartLoader, fagitoStopLoader, getToken, handleError, updateUserDetails } from './actions';
 import {
     FETCH_MESSAGE_1, FETCH_MESSAGE_2, FIREBASE_URL,
-    LUNCH_OPTION, AUTH_URL, FAGITO_TOKEN, DINNER_OPTION, METHOD_GET, FAGITO_USER_DETAILS, FAGITO_API_CALL_HEADERS, METHOD_PUT
+    LUNCH_OPTION, AUTH_URL, FAGITO_TOKEN, DINNER_OPTION, METHOD_GET, FAGITO_USER_DETAILS, FAGITO_API_CALL_HEADERS,
+    METHOD_PUT, FETCH_PRODUCTS, FETCH_PRODUCTS_URL
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 
@@ -14,26 +15,33 @@ export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
         let url = '';
         dispatch(updateProductsList([]));
         dispatch(fagitoStartLoader(FETCH_MESSAGE_1 + timing.timingSelected + FETCH_MESSAGE_2 + filters.addressArea));
-        dispatch(getToken()).then(apiToken => {
-            if (timing.lunchTiming) {
-                url = FIREBASE_URL + LUNCH_OPTION + selectedDateIndex + AUTH_URL + apiToken;
-            } else {
-                let dinnerIndex = selectedDateIndex < 3 ? selectedDateIndex : 1;
-                url = FIREBASE_URL + DINNER_OPTION + dinnerIndex + AUTH_URL + apiToken;
-            }
-            return fetch(url, {
-                method: METHOD_GET
-            })
-        }).catch(err => {
-            handleError(err, dispatch);
-        }).then(res => res.json()).then(productsResponse => {
-            dispatch(fagitoStopLoader());
-            let productsList = [];
-            if (productsResponse.result.length > 1) {
-                productsList = productsResponse.result;
-            }
-            dispatch(updateProductsList(productsList));
-        });
+        AsyncStorage.getItem(FAGITO_USER_DETAILS).then((userDetails) => {
+            let parsedUserDetails = JSON.parse(userDetails);
+            dispatch(parsedUserDetails ? getToken() : fetchProducts()).then(apiToken => {
+                if (apiToken !== FETCH_PRODUCTS) {
+                    if (timing.lunchTiming) {
+                        url = FIREBASE_URL + LUNCH_OPTION + selectedDateIndex + AUTH_URL + apiToken;
+                    } else {
+                        let dinnerIndex = selectedDateIndex < 3 ? selectedDateIndex : 1;
+                        url = FIREBASE_URL + DINNER_OPTION + dinnerIndex + AUTH_URL + apiToken;
+                    }
+                } else {
+                    url = FETCH_PRODUCTS_URL;
+                }
+                return fetch(url, {
+                    method: METHOD_GET
+                })
+            }).catch(err => {
+                handleError(err, dispatch);
+            }).then(res => res.json()).then(productsResponse => {
+                dispatch(fagitoStopLoader());
+                let productsList = [];
+                if (productsResponse.result.length > 1) {
+                    productsList = productsResponse.result;
+                }
+                dispatch(updateProductsList(productsList));
+            });
+        })
     }
 }
 
@@ -122,10 +130,23 @@ export const updateIndexOfProductToAddAddons = () => {
 export const resetSelectedProducts = () => {
     AsyncStorage.getItem(FAGITO_USER_DETAILS).then((userDetails) => {
         let parsedUserDetails = JSON.parse(userDetails);
-        parsedUserDetails.productsSelected = [];
-        AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(parsedUserDetails));
-    });
+        if (parsedUserDetails) {
+            parsedUserDetails.productsSelected = [];
+            AsyncStorage.setItem(FAGITO_USER_DETAILS, JSON.stringify(parsedUserDetails));
+        }
+    }).catch((error) => { });
     return {
         type: RESET_SELECTED_PRODUCTS_OF_USER
+    }
+}
+
+const fetchProducts = () => {
+    return (dispatch) => {
+        const promise = new Promise((resolve, reject) => {
+            resolve(FETCH_PRODUCTS);
+        })
+        return promise.then((token) => {
+            return token;
+        })
     }
 }

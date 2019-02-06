@@ -6,7 +6,7 @@ import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import {
     MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS,
-    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT
+    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { updateUser } from '../../store/actions/actions';
@@ -22,6 +22,11 @@ class FagitoFooterComponent extends Component {
     }
     handlePayment = () => {
         console.log('in handle payment---');
+        if (this.props.userLoggedIn) {
+
+        } else {
+            this.props.navigation.navigate(FAGITO_SIGNIN_SCREEN);
+        }
     }
     render() {
         let footerContent = null;
@@ -163,7 +168,8 @@ const mapStateToProps = (state) => {
         addonsCount: state.addons.addonsCount,
         addonsSelected: state.addons.addonsSelected,
         indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
-        loggedInUserDetails: state.userDetails.loggedInUserDetails
+        loggedInUserDetails: state.userDetails.loggedInUserDetails,
+        userLoggedIn: state.userDetails.userLoggedInStatus,
     }
 }
 

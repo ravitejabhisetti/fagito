@@ -6,7 +6,8 @@ import {
     ANDROID_HARDWARE_BACK_PRESS, LUNCH_BUTTON, DINNER_BUTTON, VARIANTS,
     AREA_LABEL, DIET_FILTER_LABEL, CUISINE_FILTER_LABEL, FILTERS_CONTENT, ORDERS_MODAL,
     CHOOSE_LOCATION_MESSAGE, FOOTER_MESSAGE, NO_PRODUCTS_MESSAGE_ONE, NO_PRODUCTS_MESSAGE_TWO,
-    ORDERS, ADDONS, NULL, FAGITO_USER_DETAILS, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS, OFFICE_FIELD, HOME_FIELD
+    ORDERS, ADDONS, NULL, FAGITO_USER_DETAILS, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS,
+    OFFICE_FIELD, HOME_FIELD
 } from '../../common/fagito-constants';
 import { STYLES } from './fagito-home-screen-style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -37,12 +38,14 @@ class FagitoHomeScreen extends Component {
 
     componentDidMount() {
         let self = this;
-        this.props.getTransactions();
         BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
         scrollViewRef = this.scroller;
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             parsedUserDetails = JSON.parse(userDetails);
-            if (parsedUserDetails.homeAddressLineOne || parsedUserDetails.officeAddressLineOne) {
+            if (parsedUserDetails) {
+                this.props.getTransactions();
+            }
+            if (parsedUserDetails && (parsedUserDetails.homeAddressLineOne || parsedUserDetails.officeAddressLineOne)) {
                 let dropdownContent = _.cloneDeep(FILTERS_CONTENT.locationFilter);
                 dropdownContent.options = [];
                 if (parsedUserDetails.officeAddressLineOne) {
@@ -69,7 +72,7 @@ class FagitoHomeScreen extends Component {
                 this.props.resetSelectedProducts();
                 setTimeout(function () { self.props.showLocationDropdown(self.props.locationFilterContent, self.props.filters.locationFilterIndex); }, 1000);
             }
-        })
+        }).catch((error) => {})
     }
     componentWillUnmount() {
         BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);

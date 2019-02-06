@@ -46,6 +46,7 @@ class FagitoAlert extends Component {
                     this.props.updateFilter(this.props.alertItems.filterName, this.state.index);
                 }
                 if (this.props.alertItems.filterName === LOCATION_FILTER && addressLabelCheck) {
+                    console.log('in alert if check00');
                     this.props.getProductsOfDate(this.props.timing, this.props.filters, this.props.selectedDateIndex);
                 } else {
                     let fieldName = selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD;
