@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { STYLES } from './fagito-user-details-update-screen-style';
-import { PROFILE, UPDATE_PROFILE_FORM, USER_PROFILE, ADDRESS, ADDRESS_TYPE_LABEL, ADDRESS_DROPDOWN_CONTENT, ADDRESS_TYPE_HOME, ADDRESS_TYPE_OFFICE, CITY_LABEL, CITY_DROPDOWN_CONTENT, FILTERS_CONTENT, PROFILE_AREA_LABEL, USER_LOCATIONS, UPDATE_LOCATIONS_FORM, SELECT_AREA_ERROR_MESSAGE, HOME_FIELD } from '../../common/fagito-constants';
+import {
+    PROFILE, UPDATE_PROFILE_FORM, USER_PROFILE, ADDRESS, ADDRESS_TYPE_LABEL,
+    ADDRESS_DROPDOWN_CONTENT, ADDRESS_TYPE_HOME, ADDRESS_TYPE_OFFICE, CITY_LABEL,
+    CITY_DROPDOWN_CONTENT, FILTERS_CONTENT, PROFILE_AREA_LABEL, USER_LOCATIONS, WALLET_FIELD,
+    UPDATE_LOCATIONS_FORM, SELECT_AREA_ERROR_MESSAGE, HOME_FIELD
+} from '../../common/fagito-constants';
 import { FagitoFormComponent, FagitoDropdown } from '../../components/fagito-components';
 import { validateFormEntities } from '../../utility/fagito-form-validations';
 import { connect } from 'react-redux';
@@ -73,10 +78,12 @@ class FagitoUpdateUserDetailsScreen extends Component {
             }
             if (!this.state.displayDropdownErrorMessage && isFormValid) {
                 let addAddress = this.props.navigation.getParam('addAddress');
+                let showPaymentScreen = this.props.navigation.getParam('showPayment');
+                let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
                 let fetchProductsInfo = {
-                    deliveryTiming: this.props.deliveryTiming,
+                    deliveryTiming: this.props.deliveryTiming, walletAmount: walletAmount,
                     filters: this.props.filters, dateIndex: this.props.selectedDateIndex,
-                    locationFilterContent: this.props.locationFilterContent
+                    locationFilterContent: this.props.locationFilterContent, showPaymentScreen: showPaymentScreen
                 };
                 this.props.updateUser(null, [], ADDRESS, formEntities, this.props.addressType,
                     this.props.city, this.props.area, addAddress, fetchProductsInfo);
@@ -154,6 +161,7 @@ const mapStateToProps = (state) => {
         filters: state.deliveryTimingAndDates.filters,
         selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
         locationFilterContent: state.deliveryTimingAndDates.filters.locationFilterContent,
+        loggedInUserDetails: state.userDetails.loggedInUserDetails
     }
 }
 

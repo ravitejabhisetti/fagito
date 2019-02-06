@@ -325,4 +325,6 @@ export const SUPPORT_MOBILE_FIELD = 'supportMobile';
 export const SUPPORT_EMAIL_FIELD = 'supportEmail';
 export const FETCH_PRODUCTS_URL = 'https://awesome-places-1538464312664.firebaseio.com/products.json';
 export const FETCH_PRODUCTS = 'fetchProducts';
+export const ADD_ADDRESS_ARRAY = [
+    { label: ADD_OFFICE_ADDRESS }, { label: ADD_HOME_ADDRESS }]
 

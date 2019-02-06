@@ -8,7 +8,8 @@ import {
     FAGITO_USER_DETAILS, FIREBASE_URL, FAGITO_API_CALL_HEADERS,
     METHOD_PUT, PROFILE, UPDATE_PROFILE_INFO, SETTINGS_SCREEN, ADDRESS,
     HOME_FIELD, ADDRESS_TYPE_HOME, FAGITO_HOME_SCREEN, ADDRESS_TYPE_OFFICE,
-    UPDATE_WALLET, WALLET_ALERT_HEADER, WALLET_ALERT_MESSAGE
+    UPDATE_WALLET, WALLET_ALERT_HEADER, WALLET_ALERT_MESSAGE, WALLET_PAYMENT_SCREEN,
+    NET_BANKING_ENTITY, NET_BANKING_TITLE, FILTERS_CONTENT, ADD_ADDRESS_ARRAY
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { navigatorRef } from '../../../App';
@@ -77,10 +78,22 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                     if (updateType === 'addons') {
                         dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
                     } else {
-                        if (!addAddress) {
+                        if (!addAddress && !fetchProductsInfo.showPaymentScreen) {
                             navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
                         } else {
-                            navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+                            if (!fetchProductsInfo.showPaymentScreen) {
+                                navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_HOME_SCREEN }));
+                            } else {
+                                fetchProductsInfo.locationFilterContent = _.cloneDeep(FILTERS_CONTENT.locationFilter);
+                                fetchProductsInfo.locationFilterContent.areas = false;
+                                fetchProductsInfo.locationFilterContent.options = _.cloneDeep(ADD_ADDRESS_ARRAY);
+                                navigatorRef.dispatch(NavigationActions.navigate({
+                                    routeName: WALLET_PAYMENT_SCREEN, params: {
+                                        entityName: NET_BANKING_ENTITY, title: NET_BANKING_TITLE,
+                                        currentWalletAmount: fetchProductsInfo.walletAmount
+                                    }
+                                }))
+                            }
                             let address = '';
                             let addressIndex = null;
                             let addressArea = '';
@@ -95,10 +108,13 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                                 fetchProductsInfo.locationFilterContent.options[1].label = address;
                                 addressArea = parsedUserDetails.homeAddressArea;
                             }
+                            console.log('location filter content is---', fetchProductsInfo.locationFilterContent);
                             dispatch(updateLocationFilter(address, addressIndex, addressArea));
                             dispatch(updateLocationFilterContent(fetchProductsInfo.locationFilterContent));
-                            dispatch(getProductsOfDate(fetchProductsInfo.deliveryTiming, fetchProductsInfo.filters,
-                                fetchProductsInfo.dateIndex));
+                            if (!fetchProductsInfo.showPaymentScreen) {
+                                dispatch(getProductsOfDate(fetchProductsInfo.deliveryTiming, fetchProductsInfo.filters,
+                                    fetchProductsInfo.dateIndex));
+                            }
                         }
                     }
                     dispatch(updateUserDetails(response));

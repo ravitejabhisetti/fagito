@@ -50,6 +50,7 @@ class FagitoHomeScreen extends Component {
                 let dropdownContent = _.cloneDeep(FILTERS_CONTENT.locationFilter);
                 dropdownContent.options = [];
                 if (parsedUserDetails.officeAddressLineOne) {
+                    dropdownContent.areas = false;
                     let officeAddress = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
                     dropdownContent.options[0] = { label: officeAddress, addressArea: parsedUserDetails.officeAddressArea, addressType: OFFICE_FIELD };
                     this.props.updateLocationFilter(officeAddress, 0, parsedUserDetails.officeAddressArea);
@@ -57,6 +58,7 @@ class FagitoHomeScreen extends Component {
                     dropdownContent.options[0] = { label: ADD_OFFICE_ADDRESS };
                 }
                 if (parsedUserDetails.homeAddressLineOne) {
+                    dropdownContent.areas = false;
                     let homeAddress = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
                     dropdownContent.options[1] = { label: homeAddress, addressArea: parsedUserDetails.homeAddressArea, addressType: HOME_FIELD };
                     if (!this.props.officeAddressSelected) {

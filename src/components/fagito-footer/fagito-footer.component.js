@@ -6,7 +6,8 @@ import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import {
     MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS,
-    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN, UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD
+    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN,
+     UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD, WALLET_SCREEN
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { updateUser, updateUserLocationDetails } from '../../store/actions/actions';
@@ -26,8 +27,11 @@ class FagitoFooterComponent extends Component {
             if (this.props.locationFilterContent.areas) {
                 this.props.updateUserLocationDetails(HOME_FIELD, this.props.loggedInUserDetails);
                 this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
-                    sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails, fieldName: HOME_FIELD
+                    sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
+                    fieldName: HOME_FIELD, showPayment: true
                 });
+            } else {
+                this.props.navigation.navigate(WALLET_SCREEN);
             }
         } else {
             this.props.navigation.navigate(FAGITO_SIGNIN_SCREEN);
