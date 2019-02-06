@@ -2,7 +2,8 @@ import {
     FAGITO_UPDATE_SELECTED_DELIVERY_DATE, FAGITO_UPDATE_DELIVERY_TIMING,
     FAGITO_UPDATE_FILTER_VALUE,
     UPDATE_LOCATION_FILTER,
-    UPDATE_LOCATION_DROPDOWN_CONTENT
+    UPDATE_LOCATION_DROPDOWN_CONTENT,
+    UPDATE_LUNCH_DINNER_LOCATION
 } from './fagito-action-types';
 
 export const handleSelectedDate = (selectedDate) => {
@@ -40,5 +41,13 @@ export const updateLocationFilterContent = (locationFilterContent) => {
     return {
         type: UPDATE_LOCATION_DROPDOWN_CONTENT,
         locationFilterContent: locationFilterContent
+    }
+}
+
+export const updateLunchDinnerLocation = (location, lunchTiming) => {
+    return {
+        type: UPDATE_LUNCH_DINNER_LOCATION,
+        location: location,
+        lunchTiming: lunchTiming
     }
 }

@@ -2,6 +2,7 @@ import {
     FAGITO_GET_PRODUCTS, FAGITO_ADD_SELECTED_PRODUCT,
     FAGITO_DELETE_SELECTED_PRODUCT, FAGITO_UPDATE_USER_SELECTED_PRODUCTS, UPDATE_ADDONS_OF_PRODUCT, UPDATE_INDEX_OF_PRODUCT_TO_UPDATE_ADDONS, RESET_PRODUCTS_STATE, RESET_SELECTED_PRODUCTS_OF_USER
 } from '../actions/fagito-action-types';
+import _ from 'lodash';
 
 const initialState = {
     productsList: {},
@@ -9,6 +10,8 @@ const initialState = {
     productsLength: 0,
     indexOfProductToUpdateAddons: null
 }
+
+const clonedInitialState = _.cloneDeep(initialState);
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -68,7 +71,7 @@ const reducer = (state = initialState, action) => {
                 selectedProductsList: []
             }
         case RESET_PRODUCTS_STATE:
-            return initialState;
+            return clonedInitialState;
         default:
             return state;
     }

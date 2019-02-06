@@ -17,7 +17,8 @@ import {
 } from '../../components/fagito-components';
 import {
     updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, updateLocationFilterContent, resetSelectedProducts,
-    deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions, getProductsOfDate, updateLocationFilter
+    deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions,
+    getProductsOfDate, updateLocationFilter, updateLunchDinnerLocation
 } from '../../store/actions/actions';
 import _ from 'lodash';
 
@@ -72,7 +73,7 @@ class FagitoHomeScreen extends Component {
                 this.props.resetSelectedProducts();
                 setTimeout(function () { self.props.showLocationDropdown(self.props.locationFilterContent, self.props.filters.locationFilterIndex); }, 1000);
             }
-        }).catch((error) => {})
+        }).catch((error) => { })
     }
     componentWillUnmount() {
         BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
@@ -81,8 +82,18 @@ class FagitoHomeScreen extends Component {
         BackHandler.exitApp();
     }
     handleFoodtimings = (lunchTiming) => {
+        let location = lunchTiming ? this.props.filters.lunchLocation : this.props.filters.dinnerLocation;
         this.props.updateDeliveryTiming(lunchTiming);
-        this.props.showLocationDropdown(this.props.locationFilterContent, this.props.filters.locationFilterIndex);
+        if (!this.props.locationFilterContent.areas) {
+            this.props.showLocationDropdown(this.props.locationFilterContent, this.props.filters.locationFilterIndex);
+        } else {
+            if (location !== '') {
+                this.props.updateLunchDinnerLocation(location, lunchTiming);
+                this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
+            } else {
+                this.props.showLocationDropdown(this.props.locationFilterContent, this.props.filters.locationFilterIndex);
+            }
+        }
     }
     shouldComponentUpdate(nextProps) {
         return true;
@@ -268,7 +279,8 @@ const mapDispatchToProps = (dispatch) => {
         getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
         updateLocationFilter: (locationSelected, locationIndex, addressArea) => dispatch(updateLocationFilter(locationSelected, locationIndex, addressArea)),
         updateLocationFilterContent: (locationFilterContent) => dispatch(updateLocationFilterContent(locationFilterContent)),
-        resetSelectedProducts: () => dispatch(resetSelectedProducts())
+        resetSelectedProducts: () => dispatch(resetSelectedProducts()),
+        updateLunchDinnerLocation: (location, lunchTiming) => dispatch(updateLunchDinnerLocation(location, lunchTiming))
     }
 }
 

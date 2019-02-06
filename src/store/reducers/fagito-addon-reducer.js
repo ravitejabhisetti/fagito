@@ -36,13 +36,12 @@ const reducer = (state = initialState, action) => {
                 addonsSelected: updatedAddonsList
             }
         case RESET_ADDONS:
+        case RESET_ADDONS_STATE:
             return {
                 ...state,
                 addonsCount: 0,
                 addonsSelected: []
             }
-        case RESET_ADDONS_STATE:
-            return initialState;
         default:
             return state;
     }

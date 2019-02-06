@@ -14,6 +14,8 @@ const initialState = {
     areaIndex: null
 }
 
+const clonedInitialState = _.cloneDeep(initialState);
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_USER_LOCATION_DETAILS:
@@ -46,7 +48,7 @@ const reducer = (state = initialState, action) => {
                 area: FILTERS_CONTENT.locationFilter.options[action.index].label
             }
         case RESET_USER_PROFILE_STATE:
-            return initialState;
+            return clonedInitialState;
         default:
             return state;
     }

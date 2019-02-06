@@ -10,7 +10,8 @@ const FagitoLunchDinnerButtons = (props) => {
             props.lunchButtonSelected ? STYLES.segmentButtonRedBackgroundColor : STYLES.segmentButtonWhiteBackgroundColor
         ]}>
             <TouchableOpacity onPress={props.handleFood} activeOpacity={1}>
-                <Text style={props.lunchButtonSelected ? STYLES.segmentButtonTextWhiteColor : STYLES.segmentButtonTextRedColor}>{props.title}</Text>
+                <Text
+                    style={props.lunchButtonSelected ? STYLES.segmentButtonTextWhiteColor : STYLES.segmentButtonTextRedColor}>{props.title}</Text>
             </TouchableOpacity>
         </View>
     )

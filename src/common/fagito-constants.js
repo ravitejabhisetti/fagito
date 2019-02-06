@@ -138,7 +138,7 @@ export const FILTERS_CONTENT = {
         ]
     },
     locationFilter: {
-        initial: 0, filterName: 'locationFilter',
+        initial: 0, filterName: 'locationFilter', areas: true,
         header: 'Choose Area for lunch', headerDescription: 'where do you want your lunch to be delivered?', options: [
             { label: 'Madhapur', addressArea: 'Madhapur' },
             { label: 'Hitech City', addressArea: 'Hitech City' },

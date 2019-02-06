@@ -6,7 +6,7 @@ export { fagitoStartLoader, fagitoStopLoader } from './fagito-loader-action';
 export { fagitoShowAlert, fagitoHideAlert } from './fagito-alert-action';
 export {
     handleSelectedDate, updateDeliveryTiming, updateFilter, updateLocationFilter,
-    updateLocationFilterContent
+    updateLocationFilterContent, updateLunchDinnerLocation
 } from './fagito-delivery-timing-date-action';
 export {
     getProductsOfDate, updateProductsList, addSelectedProduct, deleteSelectedProduct,

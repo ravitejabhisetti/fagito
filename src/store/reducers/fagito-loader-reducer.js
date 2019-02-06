@@ -14,13 +14,12 @@ const reducer = (state = initialState, action) => {
                 loaderText: action.loaderText
             }
         case FAGITO_STOP_LOADER:
+        case RESET_LOADER_STATE:
             return {
                 ...state,
                 showLoader: false,
                 loaderText: ''
             }
-        case RESET_LOADER_STATE:
-            return initialState;
         default:
             return state;
     }

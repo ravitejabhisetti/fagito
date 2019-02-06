@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { STYLES } from './fagito-product.style';
 import { FagitoButton } from '../fagito-components';
-import { ADD_BUTTON_TITLE, SOLD_OUT, NULL } from '../../common/fagito-constants';
+import { ADD_BUTTON_TITLE, SOLD_OUT, NULL, FAGITO_SIGNUP_SCREEN } from '../../common/fagito-constants';
 import { addSelectedProduct, updatedProductsOfUser } from '../../store/actions/actions';
 import { connect } from 'react-redux';
 import * as style from '../../common/fagito-style-constants';
 import { scrollViewRef } from '../../screens/fagito-home-screen/fagito-home-screen';
+import { withNavigation } from 'react-navigation';
 
 class FagitoProduct extends Component {
     constructor(props) {
@@ -14,8 +15,13 @@ class FagitoProduct extends Component {
         this.state = { showDefault: true, error: false };
     }
     handleProduct = (product, timingSelected) => {
-        scrollViewRef.scrollTo({ x: 0, y: 0 });
-        this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate, this.props.monthOfSelectedDate, NULL, true, null);
+        if (this.props.userLoggedIn) {
+            scrollViewRef.scrollTo({ x: 0, y: 0 });
+            this.props.updatedProductsOfUser(product, timingSelected, this.props.selectedDate,
+                this.props.monthOfSelectedDate, NULL, true, null);
+        } else {
+            this.props.navigation.navigate(FAGITO_SIGNUP_SCREEN);
+        }
     }
     render() {
         let productVariants = null;
@@ -70,8 +76,9 @@ const mapStateToProps = (state) => {
     return {
         timing: state.deliveryTimingAndDates.timing,
         selectedDate: state.deliveryTimingAndDates.selectedDate,
-        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth
+        monthOfSelectedDate: state.deliveryTimingAndDates.selectedMonth,
+        userLoggedIn: state.userDetails.userLoggedInStatus
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FagitoProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FagitoProduct));

@@ -14,13 +14,12 @@ const reducer = (state = initialState, action) => {
                 alertItems: action.alertItems
             }
         case FAGITO_HIDE_ALERT:
+        case RESET_ALERT_STATE:
             return {
                 ...state,
                 showAlert: false,
                 alertItems: null
             }
-        case RESET_ALERT_STATE:
-            return initialState;
         default:
             return state;
     }

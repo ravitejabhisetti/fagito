@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FAGITO_SET_TOKEN:
             return {
                 ...state,
@@ -14,13 +14,12 @@ const reducer = (state = initialState, action) => {
                 expiryTime: action.expiryTime
             }
         case FAGITO_CLEAR_TOKEN:
+        case RESET_AUTHENTICATION_STATE:
             return {
                 ...state,
                 token: null,
                 expiryTime: null
             }
-        case RESET_AUTHENTICATION_STATE:
-            return initialState;
         default:
             return state;
     }

@@ -1,9 +1,10 @@
 import {
     FAGITO_LOAD_DELIVERY_DATES, FAGITO_UPDATE_SELECTED_DELIVERY_DATE,
     FAGITO_UPDATE_DELIVERY_TIMING, FAGITO_UPDATE_FILTER_VALUE, UPDATE_LOCATION_FILTER,
-    RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT
+    RESET_DELIVERY_TIMING_DATE_STATE, UPDATE_LOCATION_DROPDOWN_CONTENT, UPDATE_LUNCH_DINNER_LOCATION
 } from '../actions/fagito-action-types';
 import { FILTERS_CONTENT, LUNCH_OPTION, DINNER_OPTION, LOCATION_FILTER, OFFICE_FIELD } from '../../common/fagito-constants';
+import _ from 'lodash';
 
 const initialState = {
     deliveryDatesList: [],
@@ -24,10 +25,16 @@ const initialState = {
         dietFilterIndex: 0,
         cuisineFilterIndex: 0,
         locationFilterIndex: null,
+        dinnerLocation: '',
+        lunchLocation: '',
+        lunchLocationIndex: null,
+        dinnerLocationIndex: null,
         locationFilterContent: FILTERS_CONTENT.locationFilter,
         addressArea: ''
     }
 }
+
+const clonedInitialState = _.cloneDeep(initialState);
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -73,6 +80,15 @@ const reducer = (state = initialState, action) => {
                 }
 
             }
+        case UPDATE_LUNCH_DINNER_LOCATION:
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    locationFilter: action.location,
+                    locationFilterIndex: action.lunchTiming ? state.filters.lunchLocationIndex : state.filters.dinnerLocationIndex
+                }
+            }
         case UPDATE_LOCATION_FILTER:
             return {
                 ...state,
@@ -92,7 +108,7 @@ const reducer = (state = initialState, action) => {
                 }
             }
         case RESET_DELIVERY_TIMING_DATE_STATE:
-            return initialState;
+            return clonedInitialState;
 
         case FAGITO_UPDATE_FILTER_VALUE:
             let filterName = action.filterName;
@@ -102,6 +118,13 @@ const reducer = (state = initialState, action) => {
             } else {
                 state.filters[filterName] = state.filters.locationFilterContent.options[action.index].label;
                 state.filters.addressArea = state.filters.locationFilterContent.options[action.index].addressArea;
+                if (state.timing.timingSelected === LUNCH_OPTION) {
+                    state.filters.lunchLocation = state.filters.locationFilterContent.options[action.index].label;
+                    state.filters.lunchLocationIndex = action.index;
+                } else {
+                    state.filters.dinnerLocation = state.filters.locationFilterContent.options[action.index].label;
+                    state.filters.dinnerLocationIndex = action.index;
+                }
                 if (state.filters.locationFilterContent.options[action.index].addressType) {
                     state.officeAddressSelected = state.filters.locationFilterContent.options[action.index].addressType === OFFICE_FIELD ? true : false;
                 } else {

@@ -12,7 +12,10 @@ const reducer = (state = initialState, action) => {
                 transactions: action.transactions
             }
         case RESET_TRANSACTIONS_STATE:
-            return initialState;
+            return {
+                ...state,
+                transactions: null
+            };
         default:
             return state;
     }

@@ -2,6 +2,7 @@ import {
     LOAD_USER_SIGNUP_FORM_ITEMS, LOAD_USER_SIGNIN_FORM_ITEMS, UPDATE_USER_LOGGED_IN_STATUS,
     UPDATE_USER_DETAILS, RESET_SIGNIN_SIGNUP_STATE
 } from '../actions/fagito-action-types';
+import _ from 'lodash';
 
 const initialState = {
     signupForm: [],
@@ -10,6 +11,8 @@ const initialState = {
     backIconDisplay: false,
     loggedInUserDetails: null
 }
+
+const clonedInitialState = _.cloneDeep(initialState);
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -35,7 +38,7 @@ const reducer = (state = initialState, action) => {
                 loggedInUserDetails: action.userDetails
             }
         case RESET_SIGNIN_SIGNUP_STATE:
-            return initialState;
+            return clonedInitialState;
         default:
             return state;
     }
