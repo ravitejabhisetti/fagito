@@ -89,7 +89,7 @@ class FagitoHomeScreen extends Component {
         } else {
             if (location !== '') {
                 this.props.updateLunchDinnerLocation(location, lunchTiming);
-                this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex);
+                this.props.getProductsOfDate(this.props.deliveryTiming, this.props.filters, this.props.selectedDateIndex, location);
             } else {
                 this.props.showLocationDropdown(this.props.locationFilterContent, this.props.filters.locationFilterIndex);
             }
@@ -276,7 +276,7 @@ const mapDispatchToProps = (dispatch) => {
         deleteSelectedProduct: (productIndex) => dispatch(deleteSelectedProduct(productIndex)),
         updateIndexOfProductToAddAddons: () => dispatch(updateIndexOfProductToAddAddons()),
         getTransactions: () => dispatch(getUserTransactions()),
-        getProductsOfDate: (timing, filters, selectedDateIndex) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex)),
+        getProductsOfDate: (timing, filters, selectedDateIndex, location) => dispatch(getProductsOfDate(timing, filters, selectedDateIndex, location)),
         updateLocationFilter: (locationSelected, locationIndex, addressArea) => dispatch(updateLocationFilter(locationSelected, locationIndex, addressArea)),
         updateLocationFilterContent: (locationFilterContent) => dispatch(updateLocationFilterContent(locationFilterContent)),
         resetSelectedProducts: () => dispatch(resetSelectedProducts()),

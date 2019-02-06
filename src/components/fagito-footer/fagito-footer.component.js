@@ -6,10 +6,11 @@ import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import {
     MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS,
-    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN
+    ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN, UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD
 } from '../../common/fagito-constants';
 import _ from 'lodash';
-import { updateUser } from '../../store/actions/actions';
+import { updateUser, updateUserLocationDetails } from '../../store/actions/actions';
+import { withNavigation } from 'react-navigation';
 
 class FagitoFooterComponent extends Component {
     constructor(props) {
@@ -21,9 +22,13 @@ class FagitoFooterComponent extends Component {
         this.props.updateUser(this.props.selectedProduct, this.props.addonsSelected, 'addons');
     }
     handlePayment = () => {
-        console.log('in handle payment---');
         if (this.props.userLoggedIn) {
-
+            if (this.props.locationFilterContent.areas) {
+                this.props.updateUserLocationDetails(HOME_FIELD, this.props.loggedInUserDetails);
+                this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
+                    sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails, fieldName: HOME_FIELD
+                });
+            }
         } else {
             this.props.navigation.navigate(FAGITO_SIGNIN_SCREEN);
         }
@@ -170,13 +175,15 @@ const mapStateToProps = (state) => {
         indexOfProductToUpdateAddons: state.products.indexOfProductToUpdateAddons,
         loggedInUserDetails: state.userDetails.loggedInUserDetails,
         userLoggedIn: state.userDetails.userLoggedInStatus,
+        locationFilterContent: state.deliveryTimingAndDates.filters.locationFilterContent,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUser: (product, addonsSelected, updateType) => dispatch(updateUser(product, addonsSelected, updateType))
+        updateUser: (product, addonsSelected, updateType) => dispatch(updateUser(product, addonsSelected, updateType)),
+        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FagitoFooterComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(FagitoFooterComponent));

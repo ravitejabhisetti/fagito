@@ -10,11 +10,12 @@ import {
 } from '../../common/fagito-constants';
 import { AsyncStorage } from 'react-native';
 
-export const getProductsOfDate = (timing, filters, selectedDateIndex) => {
+export const getProductsOfDate = (timing, filters, selectedDateIndex, location) => {
     return dispatch => {
         let url = '';
+        let locationSelected = !location ? filters.addressArea : location;
         dispatch(updateProductsList([]));
-        dispatch(fagitoStartLoader(FETCH_MESSAGE_1 + timing.timingSelected + FETCH_MESSAGE_2 + filters.addressArea));
+        dispatch(fagitoStartLoader(FETCH_MESSAGE_1 + timing.timingSelected + FETCH_MESSAGE_2 + locationSelected));
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then((userDetails) => {
             let parsedUserDetails = JSON.parse(userDetails);
             dispatch(parsedUserDetails ? getToken() : fetchProducts()).then(apiToken => {
