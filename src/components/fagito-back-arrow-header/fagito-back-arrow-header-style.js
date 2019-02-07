@@ -22,6 +22,13 @@ const STYLES = StyleSheet.create({
     },
     iosIconStyle: {
         marginTop: 4
+    },
+    borderShadow: {
+        shadowOffset: { width: 1, height: 1 },
+        shadowColor: 'black',
+        shadowOpacity: 0.4,
+        elevation: 3,
+        zIndex: 999,
     }
 });
 

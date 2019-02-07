@@ -10,7 +10,7 @@ import FagitoMealPassScreen from './fagito-meal-pass-screen/fagito-meal-pass-scr
 import FagitoOffersScreen from './fagito-offers-screen/fagito-offers-screen';
 import FagitoSettingsScreen from './fagito-settings-screen/fagito-settings-screen';
 import FagitoSupportScreen from './fagito-support-screen/fagito-support-screen';
-import FagitoFreeFoodScreen from './fagito-free-food-screen/fagito-free-food-screen';
+import FagitoFreeMealScreen from './fagito-free-meal-screen/fagito-free-meal-screen';
 import FagitoUpdateUserDetailsScreen from './fagito-user-details-update-screen/fagito-user-details-update-screen';
 import CustomDrawerComponent from './fagito-drawer-navigator/custom-drawer-component';
 import FagitoWalletPaymentScreen from './fagito-wallet-payment-screen/fagito-wallet-payment-screen';
@@ -28,7 +28,7 @@ export {
     FagitoOffersScreen,
     FagitoSettingsScreen,
     FagitoSupportScreen,
-    FagitoFreeFoodScreen,
+    FagitoFreeMealScreen,
     FagitoUpdateUserDetailsScreen,
     CustomDrawerComponent,
     FagitoWalletPaymentScreen

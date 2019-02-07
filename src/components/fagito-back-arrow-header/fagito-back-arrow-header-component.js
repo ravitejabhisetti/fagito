@@ -22,7 +22,10 @@ class BackIcon extends Component {
             )
         }
         return (
-            <View style={[STYLES.headerStyle, { backgroundColor: this.props.backgroundColor }]}>
+            <View style={[STYLES.headerStyle, this.props.borderColor ? STYLES.borderShadow : null, {
+                backgroundColor: this.props.backgroundColor,
+                borderBottomWidth: this.props.borderWidth, borderColor: this.props.borderColor
+            }]}>
                 <View style={STYLES.headerAlign}>
                     {icon}
                     <View style={STYLES.headerText}>

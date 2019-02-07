@@ -3,7 +3,7 @@ import { createDrawerNavigator, DrawerItems } from 'react-navigation';
 import {
     FagitoHomeScreen, FagitoWalletScreen, FagitoMealPassScreen,
     FagitoFeedbackScreen, FagitoHistoryScreen, FagitoOffersScreen, CustomDrawerComponent,
-    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeFoodScreen, FagitoSignupScreen, FagitoSigninScreen
+    FagitoSupportScreen, FagitoSettingsScreen, FagitoFreeMealScreen, FagitoSignupScreen, FagitoSigninScreen
 } from '../fagito-screens';
 import {
     FAGITO_HOME_SCREEN, DRAWER_POSITION_LEFT
@@ -17,7 +17,7 @@ const DrawerNavigator = createDrawerNavigator({
     Feedback: FagitoFeedbackScreen,
     History: FagitoHistoryScreen,
     Offers: FagitoOffersScreen,
-    'Free Food': FagitoFreeFoodScreen,
+    'Free Meal': FagitoFreeMealScreen,
     'Sign up': FagitoSignupScreen,
     'Sign in': FagitoSigninScreen,
     Support: FagitoSupportScreen,

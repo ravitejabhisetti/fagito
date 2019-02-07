@@ -328,4 +328,6 @@ export const FETCH_PRODUCTS = 'fetchProducts';
 export const ADD_ADDRESS_ARRAY = [
     { label: ADD_OFFICE_ADDRESS }, { label: ADD_HOME_ADDRESS }]
 export const DOT_ICON = 'dot-single';
+export const FREE_MEAL_TITLE = 'Refer and Earn';
+export const MEAL_PASS_MESSAGE = 'Refer FAGITO to your friend and get 50 rupees credited in your fagito wallet on his/her first meal order.';
 
