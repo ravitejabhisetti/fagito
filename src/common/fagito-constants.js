@@ -334,4 +334,5 @@ export const FREE_MEAL_MESSAGE_2 = 'credited in your fagito wallet on his/her fi
 export const FREE_MEAL_AMOUNT = '50 rupees ';
 export const REFERRAL_CODE_MESSAGE = 'Your referral code is';
 export const REFERRAL_CODE = 'RAVZBWB';
+export const NO_MEALPASS_MESSAGE = 'There are no currently available Mealpass for your account';
 
