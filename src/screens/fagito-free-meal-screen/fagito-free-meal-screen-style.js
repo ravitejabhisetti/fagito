@@ -12,6 +12,34 @@ const STYLES = StyleSheet.create({
         height: window.height - 60,
         justifyContent: style.FAGITO_CENTER,
         alignItems: style.FAGITO_CENTER
+    },
+    freeMealMessage: {
+        paddingTop: 12,
+        fontSize: 17,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        justifyContent: style.FAGITO_CENTER,
+        textAlign: style.FAGITO_CENTER,
+        fontWeight: '400'
+    },
+    freeMealAmount: {
+        fontWeight: '500'
+    },
+    referralSection: {
+        backgroundColor: style.MEAL_PASS_REFERRAL_GREEN_COLOR,
+        minHeight: 60,
+        position: style.FAGITO_POSITION_ABSOLUTE,
+        bottom: 0,
+        width: "100%",
+        flex: 1,
+        paddingTop: 10
+    },
+    referralText: {
+        color: style.FAGITO_WHITE_COLOR,
+        fontSize: 14,
+        fontFamily: style.FAGITO_FONT_FAMILY_LATO,
+        textAlign: style.FAGITO_CENTER,
+        justifyContent: style.FAGITO_CENTER,
+        alignItems: style.FAGITO_CENTER,
     }
 });
 

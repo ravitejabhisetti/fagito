@@ -329,5 +329,9 @@ export const ADD_ADDRESS_ARRAY = [
     { label: ADD_OFFICE_ADDRESS }, { label: ADD_HOME_ADDRESS }]
 export const DOT_ICON = 'dot-single';
 export const FREE_MEAL_TITLE = 'Refer and Earn';
-export const MEAL_PASS_MESSAGE = 'Refer FAGITO to your friend and get 50 rupees credited in your fagito wallet on his/her first meal order.';
+export const FREE_MEAL_MESSAGE_1 = 'Refer FAGITO to your friend and get ';
+export const FREE_MEAL_MESSAGE_2 = 'credited in your fagito wallet on his/her first meal order.';
+export const FREE_MEAL_AMOUNT = '50 rupees ';
+export const REFERRAL_CODE_MESSAGE = 'Your referral code is';
+export const REFERRAL_CODE = 'RAVZBWB';
 

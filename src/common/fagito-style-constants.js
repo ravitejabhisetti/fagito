@@ -53,3 +53,4 @@ export const WALLET_TEXT_COLOR = '#757575';
 export const SODEXO_ACTIVE_BUTTON = '#222';
 export const SODEXO_INACTIVE_BUTTON = '#585858';
 export const DOT_COLOR = '#E3B353';
+export const MEAL_PASS_REFERRAL_GREEN_COLOR = '#099B43';
