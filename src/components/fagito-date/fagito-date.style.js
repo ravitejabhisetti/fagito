@@ -11,7 +11,8 @@ const STYLES = StyleSheet.create({
         fontFamily: style.FAGITO_FONT_FAMILY_LATO
     },
     dateSegment: {
-        height: 40,
+        minHeight: 40,
+        maxHeight: 46,
         minWidth: 50,
     },
     dateSegmentGreenBorder: {

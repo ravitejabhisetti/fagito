@@ -327,4 +327,5 @@ export const FETCH_PRODUCTS_URL = 'https://awesome-places-1538464312664.firebase
 export const FETCH_PRODUCTS = 'fetchProducts';
 export const ADD_ADDRESS_ARRAY = [
     { label: ADD_OFFICE_ADDRESS }, { label: ADD_HOME_ADDRESS }]
+export const DOT_ICON = 'dot-single';
 

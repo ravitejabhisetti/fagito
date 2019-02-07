@@ -204,7 +204,10 @@ class FagitoHomeScreen extends Component {
                     </View>
                 </Header>
                 <View style={STYLES.homeViewContent}>
-                    <FagitoDatesWrapperComponent selectedProducts={this.props.selectedProducts}></FagitoDatesWrapperComponent>
+                    <FagitoDatesWrapperComponent
+                        productsLength={this.props.productsLength}
+                        selectedProducts={this.props.selectedProducts}>
+                    </FagitoDatesWrapperComponent>
                     <ScrollView ref={(scroller) => { this.scroller = scroller }}>
                         <View style={STYLES.homeSegment}>
                             <View style={STYLES.dietCuisineFiltersSegment}>

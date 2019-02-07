@@ -52,3 +52,4 @@ export const DOWN_ICON = 'downcircle';
 export const WALLET_TEXT_COLOR = '#757575';
 export const SODEXO_ACTIVE_BUTTON = '#222';
 export const SODEXO_INACTIVE_BUTTON = '#585858';
+export const DOT_COLOR = '#E3B353';
