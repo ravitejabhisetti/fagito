@@ -9,7 +9,9 @@ const STYLES = StyleSheet.create({
     moneyButtonsSection: {
         flexWrap: style.FAGITO_WRAP,
         flexDirection: style.FAGITO_ROW,
-        justifyContent: style.FAGITO_SPACE_BETWEEN
+        justifyContent: style.FAGITO_SPACE_BETWEEN,
+        paddingLeft: 10,
+        paddingRight: 10
     },
     moneyButton: {
         flexBasis: "33%",

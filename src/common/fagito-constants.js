@@ -335,4 +335,6 @@ export const FREE_MEAL_AMOUNT = '50 rupees ';
 export const REFERRAL_CODE_MESSAGE = 'Your referral code is';
 export const REFERRAL_CODE = 'RAVZBWB';
 export const NO_MEALPASS_MESSAGE = 'There are no currently available Mealpass for your account';
+export const NEXT_MEAL_COST_TYPE = 'nextMealCost';
+export const PAYMENT_NEEDED_TYPE = 'paymentNeeded';
 

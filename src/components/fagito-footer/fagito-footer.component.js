@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import { FagitoButton } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import {
-    MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS,
+    MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, WALLET_FIELD,
     ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN,
-     UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD, WALLET_SCREEN
+    UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD, WALLET_SCREEN, WALLET_PAYMENT_SCREEN,
+    NET_BANKING_ENTITY, NET_BANKING_TITLE
 } from '../../common/fagito-constants';
 import _ from 'lodash';
 import { updateUser, updateUserLocationDetails } from '../../store/actions/actions';
@@ -31,7 +32,11 @@ class FagitoFooterComponent extends Component {
                     fieldName: HOME_FIELD, showPayment: true
                 });
             } else {
-                this.props.navigation.navigate(WALLET_SCREEN);
+                let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
+                this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
+                    entityName: NET_BANKING_ENTITY, title: NET_BANKING_TITLE, currentWalletAmount: walletAmount,
+                    selectedProducts: this.props.selectedProducts, mealPayment: true
+                });
             }
         } else {
             this.props.navigation.navigate(FAGITO_SIGNIN_SCREEN);
@@ -66,7 +71,6 @@ class FagitoFooterComponent extends Component {
                     }
                     footerContent = (
                         <View style={STYLES.costsSegment}>
-
                             <View style={STYLES.paymentText}>
                                 {currentWalletBalance}
                                 <Text style={STYLES.footerText}>{PAYMENT_LABEL_1}{productsCost + 5} (Rs {productsCost}{PAYMENT_LABEL_2}

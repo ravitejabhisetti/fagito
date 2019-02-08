@@ -3,9 +3,10 @@ import { View, Text } from 'react-native';
 import { STYLES } from './fagito-wallet-payment-screen-style';
 import {
     NET_BANKING_ENTITY, AMOUNTS_LIST, AMOUNT_FORM,
-    NET_BANKING_FORM, MAKE_PAYMENT, PAYTM_ENTITY, SODEXO_FORM, SODEXO_ENTITY, SODEXO_FORM_ENTITIES, SODEXO_MINIMUM_AMOUNT_ALERT
+    NET_BANKING_FORM, MAKE_PAYMENT, PAYTM_ENTITY, SODEXO_FORM, SODEXO_ENTITY, SODEXO_FORM_ENTITIES,
+    SODEXO_MINIMUM_AMOUNT_ALERT, NEXT_MEAL_COST_TYPE, PAYMENT_NEEDED_TYPE
 } from '../../common/fagito-constants';
-import { FagitoButton, FagitoFormComponent } from '../../components/fagito-components';
+import { FagitoButton, FagitoFormComponent, FagitoAmount } from '../../components/fagito-components';
 import * as style from '../../common/fagito-style-constants';
 import { connect } from 'react-redux';
 import { updateUserWallet, fagitoShowAlert } from '../../store/actions/actions';
@@ -20,7 +21,10 @@ class FagitoWalletPaymentScreen extends Component {
             formUpdated: false,
             amountButtonClicked: true,
             buttonInActive: true,
-            currentWalletAmount: 0
+            currentWalletAmount: 0,
+            mealPayment: false,
+            selectedProducts: [],
+            productsCost: 0
         }
     }
 
@@ -32,11 +36,32 @@ class FagitoWalletPaymentScreen extends Component {
     componentWillMount() {
         let entityName = this.props.navigation.getParam('entityName');
         let currentWalletAmount = this.props.navigation.getParam('currentWalletAmount');
+        let mealPayment = this.props.navigation.getParam('mealPayment');
+        let selectedProductsList = this.props.navigation.getParam('selectedProducts');
+        let productsCost = 0;
+        if (selectedProductsList && selectedProductsList.length > 0) {
+            let currentDate = new Date().getTime();
+            let currentMonth = new Date(currentDate).getMonth();
+            selectedProductsList.map((product, index) => {
+                let dateCheck = (this.props.selectedDate === product.selectedDate) && (product.monthOfSelectedDate >= currentMonth);
+                if (dateCheck) {
+                    productsCost += product.base.price;
+                }
+                if (dateCheck && product.addons && product.addons.length > 0) {
+                    product.addons.map((addon, index) => {
+                        productsCost += addon.price;
+                    })
+                }
+            });
+        }
         this.setState((state) => {
             return {
                 ...state,
                 entityName: entityName,
-                currentWalletAmount: currentWalletAmount
+                currentWalletAmount: currentWalletAmount,
+                mealPayment: mealPayment ? true : false,
+                selectedProducts: selectedProductsList ? selectedProductsList : [],
+                productsCost: productsCost
             }
         })
     }
@@ -100,6 +125,8 @@ class FagitoWalletPaymentScreen extends Component {
         let amountSubmitButton = null;
         let currentWalletAmount = null;
         let sodexoPickups = null;
+        let nextPaymentCost = null;
+        let nextPaymentNeeded = null;
         if (this.state.entityName === NET_BANKING_ENTITY || this.state.entityName === PAYTM_ENTITY) {
             if (this.state.entityName === NET_BANKING_ENTITY) {
                 moneyButtonsList = AMOUNTS_LIST.map((amountEntity, index) => {
@@ -119,6 +146,19 @@ class FagitoWalletPaymentScreen extends Component {
                     <View style={STYLES.moneyButtonsSection}>
                         {moneyButtonsList}
                     </View>
+                )
+                if (this.state.productsCost) {
+                    nextPaymentCost = (
+                        <FagitoAmount type={NEXT_MEAL_COST_TYPE} amount={this.state.productsCost}></FagitoAmount>
+                    )
+                }
+                nextPaymentNeeded = (
+                    <FagitoAmount
+                        handleAmount={(amount) => this.handleAmount(String(amount))}
+                        type={PAYMENT_NEEDED_TYPE}
+                        amount={this.state.productsCost}
+                        currentWalletAmount={this.state.currentWalletAmount}>
+                    </FagitoAmount>
                 )
             }
             amountForm = (
@@ -189,11 +229,19 @@ class FagitoWalletPaymentScreen extends Component {
             <View style={STYLES.paymentSection}>
                 {amountForm}
                 {currentWalletAmount}
+                {nextPaymentCost}
+                {nextPaymentNeeded}
                 {moneyButtonsSection}
                 {amountSubmitButton}
                 {sodexoPickups}
             </View>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        selectedDate: state.deliveryTimingAndDates.selectedDate,
     }
 }
 
@@ -204,4 +252,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(FagitoWalletPaymentScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoWalletPaymentScreen);

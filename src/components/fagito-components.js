@@ -24,6 +24,7 @@ import SettingsEntity from './fagito-settings-entity/fagito-settings-entity.comp
 import FagitoTransactionsComponent from './fagito-transactions/fagito-transactions.component';
 import FagitoPaymentsComponent from './fagito-payments/fagito-payments.component';
 import FagitoOrdersComponent from './fagito-orders/fagito-orders.component';
+import FagitoAmount from './fagito-amount/fagito-amount-component';
 
 export {
     FagitoButton,
@@ -51,5 +52,6 @@ export {
     SettingsEntity,
     FagitoTransactionsComponent,
     FagitoPaymentsComponent,
-    FagitoOrdersComponent
+    FagitoOrdersComponent,
+    FagitoAmount
 }

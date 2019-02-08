@@ -108,7 +108,6 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                                 fetchProductsInfo.locationFilterContent.options[1].label = address;
                                 addressArea = parsedUserDetails.homeAddressArea;
                             }
-                            console.log('location filter content is---', fetchProductsInfo.locationFilterContent);
                             dispatch(updateLocationFilter(address, addressIndex, addressArea));
                             dispatch(updateLocationFilterContent(fetchProductsInfo.locationFilterContent));
                             if (!fetchProductsInfo.showPaymentScreen) {
