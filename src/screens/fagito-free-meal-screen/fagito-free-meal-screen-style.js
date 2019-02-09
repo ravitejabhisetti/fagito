@@ -40,6 +40,12 @@ const STYLES = StyleSheet.create({
         textAlign: style.FAGITO_CENTER,
         justifyContent: style.FAGITO_CENTER,
         alignItems: style.FAGITO_CENTER,
+    },
+    shareButtonSection: {
+        justifyContent: style.FAGITO_CENTER,
+        alignItems: style.FAGITO_CENTER,
+        paddingTop: 8,
+        paddingBottom: 30
     }
 });
 
