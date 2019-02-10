@@ -16,8 +16,8 @@ class FagitoSupportScreen extends Component {
                     <View style={STYLES.contactSection}>
                         <Text style={STYLES.contactText}>Contact us</Text>
                     </View>
-                    <SettingsEntity entityName="Email" fieldName="supportEmail" iconName={AT_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                    <SettingsEntity entityName="Mobile" fieldName="supportMobile" iconName={PHONE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                    <SettingsEntity support entityName="Email" fieldName="supportEmail" iconName={AT_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                    <SettingsEntity support entityName="Mobile" fieldName="supportMobile" iconName={PHONE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
                 </View>
             </View>
         )

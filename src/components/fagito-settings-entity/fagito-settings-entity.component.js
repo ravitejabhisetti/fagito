@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import { STYLES } from './fagito-settings-entity.style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -20,14 +20,20 @@ import { updateUserLocationDetails } from '../../store/actions/actions';
 
 class SettingsEntity extends Component {
     handleSettingsEntity = (entityName, locationsSection, loggedInUserDetails, fieldName) => {
-        if (entityName !== EMAIL_ENTITY) {
-            if (locationsSection) {
-                this.props.updateUserLocationDetails(fieldName, loggedInUserDetails);
+        if (!this.props.support) {
+            if (entityName !== EMAIL_ENTITY) {
+                if (locationsSection) {
+                    this.props.updateUserLocationDetails(fieldName, loggedInUserDetails);
+                }
+                this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
+                    sectionName: locationsSection ? ADDRESS : PROFILE,
+                    loggedInUserDetails: loggedInUserDetails, fieldName: fieldName
+                });
             }
-            this.props.navigation.navigate(UPDATE_USER_DETAILS_SCREEN, {
-                sectionName: locationsSection ? ADDRESS : PROFILE,
-                loggedInUserDetails: loggedInUserDetails, fieldName: fieldName
-            });
+        } else {
+            if (entityName === EMAIL_ENTITY) {
+                Linking.openURL('mailto:support@fagito.com?subject=example&body=example');
+            }
         }
     }
     handleWallet = (entityName, title) => {
