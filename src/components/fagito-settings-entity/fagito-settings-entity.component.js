@@ -45,7 +45,7 @@ class SettingsEntity extends Component {
             } else {
                 let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
                 this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
-                    title: title, entityName: entityName, currentWalletAmount: walletAmount
+                    title: title, entityName: entityName, currentWalletAmount: walletAmount, selectedProducts: this.props.selectedProducts
                 });
             }
         }
@@ -221,10 +221,16 @@ class SettingsEntity extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        selectedProducts: state.products.selectedProductsList
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
     }
 }
 
-export default connect(null, mapDispatchToProps)(withNavigation(SettingsEntity));
+export default connect(mapStateToProps, mapDispatchToProps)(withNavigation(SettingsEntity));

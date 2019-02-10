@@ -270,12 +270,12 @@ export const NET_BANKING_TITLE = 'Card / Netbanking';
 export const SODEXO_TITLE = 'Sodexo';
 export const PAYTM_TITLE = 'PayTM';
 export const AMOUNTS_LIST = [
-    { amount: '200' },
-    { amount: '500' },
-    { amount: '1000' },
-    { amount: '1500' },
-    { amount: '2000' },
-    { amount: '4000' }
+    { amount: '10' },
+    { amount: '20' },
+    { amount: '30' },
+    { amount: '40' },
+    { amount: '50' },
+    { amount: '60' }
 ]
 export const AMOUNT_FORM = [
     {

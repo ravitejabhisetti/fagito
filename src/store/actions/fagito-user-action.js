@@ -39,9 +39,10 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
     addressType, city, area, addAddress, fetchProductsInfo) => {
     return dispatch => {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
+            let productIndex = null;
             let parsedUserDetails = JSON.parse(userDetails);
             if (updateType === 'addons') {
-                let productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) {
+                productIndex = _.findIndex(parsedUserDetails.productsSelected, function (selectedProduct) {
                     return selectedProduct.id === product.id;
                 });
                 parsedUserDetails.productsSelected[productIndex]['addons'] = addonsSelected;
@@ -78,7 +79,7 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                     if (updateType === 'addons') {
                         dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
                     } else {
-                        if (!addAddress && !fetchProductsInfo.showPaymentScreen) {
+                        if (!addAddress && !fetchProductsInfo) {
                             navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
                         } else {
                             if (!fetchProductsInfo.showPaymentScreen) {

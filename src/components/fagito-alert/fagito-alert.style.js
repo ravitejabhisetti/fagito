@@ -74,7 +74,8 @@ const STYLES = StyleSheet.create({
         fontSize: 12,
         fontFamily: style.FAGITO_FONT_FAMILY_LATO,
         justifyContent: style.FAGITO_CENTER,
-        alignItems: style.FAGITO_CENTER
+        alignItems: style.FAGITO_CENTER,
+        paddingRight: 4,
     },
     radioButton: {
         alignItems: style.FAGITO_CENTER,

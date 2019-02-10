@@ -20,9 +20,9 @@ const STYLES = StyleSheet.create({
         color: style.FAGITO_WHITE_COLOR,
         fontSize: 18,
         paddingLeft: 10,
-        paddingBottom: 22,
-        paddingTop: 6,
-        marginBottom: 8
+        paddingTop: 2,
+        marginBottom: 15,
+        minHeight: 30
     },
     logoutText: {
         fontSize: 13,

@@ -189,7 +189,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUser: (product, addonsSelected, updateType) => dispatch(updateUser(product, addonsSelected, updateType)),
+        updateUser: (product, addonsSelected, updateType, formEntities,
+            addressType, city, area, addAddress, fetchProductsInfo) => dispatch(updateUser(product, addonsSelected, updateType, formEntities,
+                addressType, city, area, addAddress, fetchProductsInfo)),
         updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
     }
 }
