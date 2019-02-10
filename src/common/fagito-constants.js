@@ -89,6 +89,8 @@ export const HOME_FIELD = 'home';
 export const OFFICE_FIELD = 'office';
 export const CITY_FIELD = 'city';
 export const ADDRESS_TYPE = 'addressType';
+export const DIET_FILTER_NAME = 'dietFilter';
+export const CUISINE_FILTER_NAME = 'cuisineFilter';
 export const ADDRESS_DROPDOWN_CONTENT = {
     addressType: {
         userProfile: true,

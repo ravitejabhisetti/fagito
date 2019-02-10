@@ -12,7 +12,7 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import {
     LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS,
-    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME
+    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME, DIET_FILTER_NAME, CUISINE_FILTER_NAME
 } from '../../common/fagito-constants';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
@@ -49,13 +49,15 @@ class FagitoAlert extends Component {
                     this.props.getProductsOfDate(this.props.timing, this.props.filters, this.props.selectedDateIndex);
                 } else {
                     let fieldName = selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD;
-                    this.props.updateUserLocationDetails(fieldName, this.props.loggedInUserDetails);
-                    navigatorRef.dispatch(NavigationActions.navigate({
-                        routeName: UPDATE_USER_DETAILS_SCREEN, params: {
-                            sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
-                            fieldName: fieldName, addAddress: true
-                        }
-                    }))
+                    let filterName = this.props.alertItems.filterName;
+                    if (filterName !== DIET_FILTER_NAME && filterName !== CUISINE_FILTER_NAME) {
+                        navigatorRef.dispatch(NavigationActions.navigate({
+                            routeName: UPDATE_USER_DETAILS_SCREEN, params: {
+                                sectionName: ADDRESS, loggedInUserDetails: this.props.loggedInUserDetails,
+                                fieldName: fieldName, addAddress: true
+                            }
+                        }))
+                    }
                 }
             } else {
                 this.props.updateAddressDetails(this.props.alertItems.filterName, this.state.index);
