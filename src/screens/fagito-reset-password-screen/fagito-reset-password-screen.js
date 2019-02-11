@@ -10,20 +10,20 @@ import { FAGITO_RESET_PASSWORD_FORM } from '../../common/fagito-signup-signin-co
 class FagitoResetPasswordScreen extends Component {
     static navigationOptions = { title: FAGITO_RESET_PASSWORD };
     handleButtonClick = (formItems) => {
-        console.log('form reset items in reset are---', formItems);
     }
 
     render() {
         return (
             <View style={CONTAINER_STYLE.container}>
-                <FagitoFormComponent form={FAGITO_RESET_PASSWORD_FORM_NAME} formButtonClick={this.handleButtonClick} newForm buttonTitle={FAGITO_RESET_PASSWORD_BUTTON} formItems={FAGITO_RESET_PASSWORD_FORM} />
+                <FagitoFormComponent
+                    form={FAGITO_RESET_PASSWORD_FORM_NAME}
+                    formButtonClick={this.handleButtonClick}
+                    newForm
+                    buttonTitle={FAGITO_RESET_PASSWORD_BUTTON}
+                    formItems={FAGITO_RESET_PASSWORD_FORM} />
             </View>
         )
     }
 }
-
-// FagitoResetPasswordScreen = reduxForm({
-//     form: 'resetPasswordForm'
-// })(FagitoResetPasswordScreen);
 
 export default connect(null, null)(FagitoResetPasswordScreen);

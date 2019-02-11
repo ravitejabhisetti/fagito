@@ -27,7 +27,6 @@ const reducer = (state = initialState, action) => {
                     isVegProduct(updatedProductsList[chefName], product.base.isVeg, product);
                 }
             })
-            console.log('updated products list--', updatedProductsList);
             return {
                 ...state,
                 productsList: updatedProductsList

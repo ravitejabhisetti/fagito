@@ -25,16 +25,45 @@ class FagitoSettingsScreen extends Component {
                         <View style={STYLES.profileSection}>
                             <Text style={STYLES.profileText}>Profile</Text>
                         </View>
-                        <SettingsEntity entityName="Name" fieldName="name" iconName={PERSON_OUTLINE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity entityName="Email" fieldName="email" iconName={AT_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity entityName="Mobile Number" fieldName="mobileNumber" iconName={PHONE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity
+                            entityName="Name"
+                            fieldName="name"
+                            iconName={PERSON_OUTLINE_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            entityName="Email"
+                            fieldName="email"
+                            iconName={AT_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            entityName="Mobile Number"
+                            fieldName="mobileNumber"
+                            iconName={PHONE_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
                     </View>
                     <View style={STYLES.locationsSegment}>
                         <View style={STYLES.profileSection}>
                             <Text style={STYLES.profileText}>Locations</Text>
                         </View>
-                        <SettingsEntity displayNotAddedYet entityName="Home Address" fieldName="home" locationsSection iconName={HOME_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity displayNotAddedYet entityName="Office Address" fieldName="office" locationsSection iconName={OFFICE_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity
+                            displayNotAddedYet
+                            entityName="Home Address"
+                            fieldName="home"
+                            locationsSection
+                            iconName={HOME_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            displayNotAddedYet
+                            entityName="Office Address"
+                            fieldName="office"
+                            locationsSection
+                            iconName={OFFICE_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
                     </View>
                 </ScrollView>
             </View>

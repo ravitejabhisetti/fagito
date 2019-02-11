@@ -20,22 +20,56 @@ class FagitoWalletScreen extends Component {
                         <View style={STYLES.walletInfoSection}>
                             <Text style={STYLES.walletInfoText}>Wallet Info</Text>
                         </View>
-                        <SettingsEntity wallet entityName={EMAIL_ENTITY} fieldName="email" iconName={EMAIL_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
-                        <SettingsEntity wallet entityName={WALLET_ENTITY} fieldName="walletAmount" iconName={WALLET_ICON} loggedInUserDetails={this.props.loggedInUserDetails}></SettingsEntity>
+                        <SettingsEntity
+                            wallet
+                            entityName={EMAIL_ENTITY}
+                            fieldName="email"
+                            iconName={EMAIL_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            wallet
+                            entityName={WALLET_ENTITY}
+                            fieldName="walletAmount"
+                            iconName={WALLET_ICON}
+                            loggedInUserDetails={this.props.loggedInUserDetails}>
+                        </SettingsEntity>
                     </View>
                     <View style={STYLES.walletSegment}>
                         <View style={STYLES.walletInfoSection}>
                             <Text style={STYLES.walletInfoText}>Add money to wallet</Text>
                         </View>
-                        <SettingsEntity title={NET_BANKING_TITLE} wallet entityName={NET_BANKING_ENTITY} loggedInUserDetails={this.props.loggedInUserDetails} iconName={WALLET_ICON}></SettingsEntity>
-                        <SettingsEntity title={SODEXO_TITLE} wallet entityName={SODEXO_ENTITY} loggedInUserDetails={this.props.loggedInUserDetails} iconName={WALLET_ICON}></SettingsEntity>
-                        <SettingsEntity title={PAYTM_TITLE} wallet entityName={PAYTM_ENTITY} loggedInUserDetails={this.props.loggedInUserDetails} iconName={WALLET_ICON}></SettingsEntity>
+                        <SettingsEntity
+                            title={NET_BANKING_TITLE}
+                            wallet
+                            entityName={NET_BANKING_ENTITY}
+                            loggedInUserDetails={this.props.loggedInUserDetails}
+                            iconName={WALLET_ICON}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            title={SODEXO_TITLE}
+                            wallet
+                            entityName={SODEXO_ENTITY}
+                            loggedInUserDetails={this.props.loggedInUserDetails}
+                            iconName={WALLET_ICON}>
+                        </SettingsEntity>
+                        <SettingsEntity
+                            title={PAYTM_TITLE}
+                            wallet
+                            entityName={PAYTM_ENTITY}
+                            loggedInUserDetails={this.props.loggedInUserDetails}
+                            iconName={WALLET_ICON}>
+                        </SettingsEntity>
                     </View>
                     <View>
                         <View style={STYLES.walletInfoSection}>
                             <Text style={STYLES.walletInfoText}>History</Text>
                         </View>
-                        <SettingsEntity wallet entityName={TRANSACTION_ENTITY} iconName={TRANSACTION_ICON}></SettingsEntity>
+                        <SettingsEntity
+                            wallet
+                            entityName={TRANSACTION_ENTITY}
+                            iconName={TRANSACTION_ICON}>
+                        </SettingsEntity>
                     </View>
                 </ScrollView>
             </View>
