@@ -31,7 +31,7 @@ const DrawerNavigator = createDrawerNavigator({
             activeTintColor: style.FAGITO_BUTTON_COLOR,
             activeBackgroundColor: style.FAGITO_WHITE_COLOR,
             labelStyle: {
-                fontFamily: style.FAGITO_FONT_FAMILY_LATO_LIGHT,
+                fontFamily: style.FAGITO_FONT_FAMILY_LATO,
                 fontSize: 13,
                 fontWeight: '400'
             }

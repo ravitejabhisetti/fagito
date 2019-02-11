@@ -35,7 +35,7 @@ class SettingsEntity extends Component {
                 Linking.openURL('mailto:support@fagito.com?subject=example&body=example');
             }
             if (entityName === SUPPORT_MOBILE_ENTITY) {
-                Linking.openURL('tel:+919848022338');
+                Linking.openURL('tel:+911234567890');
             }
         }
     }
