@@ -81,7 +81,7 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                     } else {
                         // if (!addAddress && !fetchProductsInfo) {
                         // if (!addAddress) { /** main condition */
-                        if (!addAddress && !fetchProductsInfo.showPaymentScreen) {
+                        if ((updateType === PROFILE) || (!addAddress && !fetchProductsInfo.showPaymentScreen)) {
                             navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
                         } else {
                             if (!fetchProductsInfo.showPaymentScreen) {

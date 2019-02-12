@@ -5,14 +5,27 @@ import { HISTORY_TITLE, FAGITO_HOME_SCREEN, WALLET_SCREEN } from '../../common/f
 import * as style from '../../common/fagito-style-constants';
 import { STYLES } from './fagito-history-screen-style';
 import { createBottomTabNavigator, createMaterialTopTabNavigator, createAppContainer } from 'react-navigation';
+import { connect } from 'react-redux';
+import { updateWalletScreenNavigation } from '../../store/actions/actions';
 
 class FagitoHistoryScreen extends Component {
+    constructor(props) {
+        super(props);
+    }
+    handleNavigation = () => {
+        if (this.props.walletScreen) {
+            this.props.navigation.navigate(WALLET_SCREEN);
+        } else {
+            this.props.navigation.navigate(FAGITO_HOME_SCREEN);
+        }
+    }
+    componentWillUnmount() {
+        this.props.updateWalletScreenNavigation(false);
+    }
     render() {
-        let walletScreen = this.props.navigation.getParam('walletScreen');
         return (
             <View style={STYLES.historySection}>
-                <BackIcon iconColor={style.FAGITO_WHITE_COLOR} navigateToHome={!walletScreen ? () => this.props.navigation.navigate(FAGITO_HOME_SCREEN) :
-                    () => this.props.navigation.navigate(WALLET_SCREEN)}
+                <BackIcon iconColor={style.FAGITO_WHITE_COLOR} navigateToHome={() => this.handleNavigation()}
                     backgroundColor={style.FAGITO_BUTTON_COLOR} title={HISTORY_TITLE} />
                 <TransactionsTabNavigator></TransactionsTabNavigator>
             </View>
@@ -46,4 +59,16 @@ const TransactionsTabNavigator = createMaterialTopTabNavigator({
     }
 )
 
-export default FagitoHistoryScreen;
+const mapStateToProps = (state) => {
+    return {
+        walletScreen: state.updateUserProfileAndLocations.walletScreen
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateWalletScreenNavigation: (walletScreen) => dispatch(updateWalletScreenNavigation(walletScreen))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FagitoHistoryScreen);

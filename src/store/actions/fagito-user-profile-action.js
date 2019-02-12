@@ -1,4 +1,4 @@
-import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA, UPDATE_ADDRESS_TYPE } from './fagito-action-types';
+import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA, UPDATE_ADDRESS_TYPE, WALLET_SCREEN_NAVIGATION } from './fagito-action-types';
 import { HOME_FIELD, CITY_FIELD, LOCATION_FILTER, ADDRESS_TYPE, OFFICE_FIELD } from '../../common/fagito-constants';
 
 export const updateUserLocationDetails = (fieldName, loggedInUserDetails) => {
@@ -27,5 +27,12 @@ export const updateAddressDetails = (fieldName, index) => {
         type: type,
         fieldName: fieldName,
         index: index
+    }
+}
+
+export const updateWalletScreenNavigation = (walletScreen) => {
+    return {
+        type: WALLET_SCREEN_NAVIGATION,
+        walletScreen: walletScreen
     }
 }

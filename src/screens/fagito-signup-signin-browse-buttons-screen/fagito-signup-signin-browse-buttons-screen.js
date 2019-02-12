@@ -4,7 +4,7 @@ import { Text, StyleSheet, View, Dimensions } from 'react-native';
 import { STYLES } from './fagito-signup-signin-browse-buttons-screen-style';
 import {
     FAGITO, FAGITO_LOGO_MESSAGE, FAGITO_BROWSE, FAGITO_SIGNIN,
-    FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN, FAGITO_HOME_SCREEN
+    FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN, FAGITO_HOME_SCREEN, FAGITO_LOGIN_AUTHENTICATING_USER
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
 import { autoSignIn, updateUserLoggedInStatus, formDatestoDeliver, fagitoStartLoader } from '../../store/actions/actions';
@@ -25,7 +25,7 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
         this.props.navigation.navigate(screenName);
     }
     componentWillMount() {
-        this.props.showLoader('Authenticating user.....');
+        this.props.showLoader(FAGITO_LOGIN_AUTHENTICATING_USER);
     }
     componentDidMount() {
         this.props.auth();

@@ -35,8 +35,9 @@ class CustomDrawerComponent extends Component {
     componentDidUpdate() {
         AsyncStorage.getItem(FAGITO_USER_DETAILS).then(userDetails => {
             let parsedUserDetails = JSON.parse(userDetails);
-            if (parsedUserDetails && (parsedUserDetails.name !== this.state.userDetails.name ||
-                parsedUserDetails.walletAmount !== this.state.userDetails.walletAmount)) {
+            if ((parsedUserDetails && (this.state.userDetails && (parsedUserDetails.name !== this.state.userDetails.name ||
+                parsedUserDetails.walletAmount !== this.state.userDetails.walletAmount)))
+                || (parsedUserDetails && !this.state.userDetails)) {
                 this.setState((state) => {
                     return {
                         ...state,

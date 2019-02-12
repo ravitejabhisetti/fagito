@@ -13,6 +13,6 @@ export {
     updatedProductsOfUser, updateUserSelectedProducts, updateIndexOfProductToAddAddons, resetSelectedProducts
 } from './fagito-products-action';
 export { addAddon, deleteAddon, resetAddons, updateUser, updateSelectedProductAddons, updateUserWallet } from './fagito-user-action';
-export { updateUserLocationDetails, updateAddressDetails } from './fagito-user-profile-action';
+export { updateUserLocationDetails, updateAddressDetails, updateWalletScreenNavigation } from './fagito-user-profile-action';
 export { getUserTransactions, updateTransactions } from './fagito-transactions-action';
 export { resetAppState } from './fagito-reset-app-state-action';

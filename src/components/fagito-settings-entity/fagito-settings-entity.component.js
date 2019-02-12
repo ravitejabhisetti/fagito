@@ -16,7 +16,7 @@ import {
     SUPPORT_MOBILE_ENTITY, SUPPORT_MOBILE_FIELD, SUPPORT_EMAIL_FIELD
 } from '../../common/fagito-constants';
 import { withNavigation } from 'react-navigation';
-import { updateUserLocationDetails } from '../../store/actions/actions';
+import { updateUserLocationDetails, updateWalletScreenNavigation } from '../../store/actions/actions';
 
 class SettingsEntity extends Component {
     handleSettingsEntity = (entityName, locationsSection, loggedInUserDetails, fieldName) => {
@@ -42,9 +42,8 @@ class SettingsEntity extends Component {
     handleWallet = (entityName, title) => {
         if (entityName !== EMAIL_ENTITY && entityName !== WALLET_ENTITY) {
             if (entityName === TRANSACTION_ENTITY) {
-                this.props.navigation.navigate(HISTORY_SCREEN, {
-                    walletScreen: true
-                });
+                this.props.updateWalletScreenNavigation(true);
+                this.props.navigation.navigate(HISTORY_SCREEN);
             } else {
                 let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
                 this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
@@ -232,7 +231,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
+        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails)),
+        updateWalletScreenNavigation: (walletScreen) => dispatch(updateWalletScreenNavigation(walletScreen))
     }
 }
 

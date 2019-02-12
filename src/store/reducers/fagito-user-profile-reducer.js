@@ -1,6 +1,6 @@
 import {
     UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA,
-    UPDATE_ADDRESS_TYPE, RESET_USER_PROFILE_STATE
+    UPDATE_ADDRESS_TYPE, RESET_USER_PROFILE_STATE, WALLET_SCREEN_NAVIGATION
 } from '../actions/fagito-action-types';
 import { ADDRESS_TYPE_HOME, ADDRESS_TYPE_OFFICE, HOME_FIELD, FILTERS_CONTENT } from '../../common/fagito-constants';
 import _ from 'lodash';
@@ -11,7 +11,8 @@ const initialState = {
     city: 'Hyderabad',
     cityIndex: 0,
     area: null,
-    areaIndex: null
+    areaIndex: null,
+    walletScreen: false
 }
 
 const clonedInitialState = _.cloneDeep(initialState);
@@ -29,6 +30,11 @@ const reducer = (state = initialState, action) => {
                 addressTypeIndex: action.fieldName === HOME_FIELD ? 1 : 0,
                 area: addressArea,
                 areaIndex: selectedAreaIndex
+            }
+        case WALLET_SCREEN_NAVIGATION:
+            return {
+                ...state,
+                walletScreen: action.walletScreen
             }
         case UPDATE_ADDRESS:
         case UPDATE_ADDRESS_TYPE:
