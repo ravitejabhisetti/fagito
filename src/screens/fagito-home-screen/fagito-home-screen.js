@@ -18,7 +18,7 @@ import {
 import {
     updateDeliveryTiming, fagitoShowAlert, updatedProductsOfUser, updateLocationFilterContent, resetSelectedProducts,
     deleteSelectedProduct, updateIndexOfProductToAddAddons, getUserTransactions,
-    getProductsOfDate, updateLocationFilter, updateLunchDinnerLocation
+    getProductsOfDate, updateLocationFilter, updateLunchDinnerLocation, fagitoStopLoader
 } from '../../store/actions/actions';
 import _ from 'lodash';
 
@@ -35,6 +35,10 @@ class FagitoHomeScreen extends Component {
         productIndex: null,
         modalContent: null,
         modalType: null
+    }
+
+    componentWillMount() {
+        this.props.stopLoader();
     }
 
     componentDidMount() {
@@ -285,7 +289,8 @@ const mapDispatchToProps = (dispatch) => {
         updateLocationFilter: (locationSelected, locationIndex, addressArea) => dispatch(updateLocationFilter(locationSelected, locationIndex, addressArea)),
         updateLocationFilterContent: (locationFilterContent) => dispatch(updateLocationFilterContent(locationFilterContent)),
         resetSelectedProducts: () => dispatch(resetSelectedProducts()),
-        updateLunchDinnerLocation: (location, lunchTiming) => dispatch(updateLunchDinnerLocation(location, lunchTiming))
+        updateLunchDinnerLocation: (location, lunchTiming) => dispatch(updateLunchDinnerLocation(location, lunchTiming)),
+        stopLoader: () => dispatch(fagitoStopLoader())
     }
 }
 

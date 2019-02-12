@@ -7,7 +7,7 @@ import {
     FAGITO_SIGNUP, FAGITO_SIGNUP_SCREEN, FAGITO_SIGNIN_SCREEN, FAGITO_HOME_SCREEN
 } from '../../common/fagito-constants';
 import { FagitoButton } from '../../components/fagito-components';
-import { autoSignIn, updateUserLoggedInStatus, formDatestoDeliver } from '../../store/actions/actions';
+import { autoSignIn, updateUserLoggedInStatus, formDatestoDeliver, fagitoStartLoader } from '../../store/actions/actions';
 import * as style from '../../common/fagito-style-constants';
 
 class FagitoSignupSigninBrowseButtonsScreen extends Component {
@@ -23,6 +23,9 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
             this.props.updateUserLoggedInStatus(false, false);
         }
         this.props.navigation.navigate(screenName);
+    }
+    componentWillMount() {
+        this.props.showLoader('Authenticating user.....');
     }
     componentDidMount() {
         this.props.auth();
@@ -66,6 +69,7 @@ class FagitoSignupSigninBrowseButtonsScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        showLoader: (loaderText) => dispatch(fagitoStartLoader(loaderText)),
         auth: () => dispatch(autoSignIn()),
         updateUserLoggedInStatus: (status, backIcon) => dispatch(updateUserLoggedInStatus(status, backIcon)),
         formDatestoDeliver: () => dispatch(formDatestoDeliver())

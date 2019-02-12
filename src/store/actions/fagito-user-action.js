@@ -79,7 +79,9 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                     if (updateType === 'addons') {
                         dispatch(updateSelectedProductAddons(product, addonsSelected, productIndex));
                     } else {
-                        if (!addAddress && !fetchProductsInfo) {
+                        // if (!addAddress && !fetchProductsInfo) {
+                        // if (!addAddress) { /** main condition */
+                        if (!addAddress && !fetchProductsInfo.showPaymentScreen) {
                             navigatorRef.dispatch(NavigationActions.navigate({ routeName: SETTINGS_SCREEN }));
                         } else {
                             if (!fetchProductsInfo.showPaymentScreen) {
@@ -91,7 +93,8 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                                 navigatorRef.dispatch(NavigationActions.navigate({
                                     routeName: WALLET_PAYMENT_SCREEN, params: {
                                         entityName: NET_BANKING_ENTITY, title: NET_BANKING_TITLE,
-                                        currentWalletAmount: fetchProductsInfo.walletAmount
+                                        currentWalletAmount: fetchProductsInfo.walletAmount,
+                                        selectedProducts: fetchProductsInfo.selectedProducts, mealPayment: true
                                     }
                                 }))
                             }
@@ -102,11 +105,13 @@ export const updateUser = (product, addonsSelected, updateType, formEntities,
                                 addressIndex = 0;
                                 address = 'OFFICE: ' + parsedUserDetails.officeAddressLineOne + ',' + parsedUserDetails.officeAddressLineTwo;
                                 fetchProductsInfo.locationFilterContent.options[0].label = address;
+                                fetchProductsInfo.filters.addressArea = parsedUserDetails.officeAddressArea;
                                 addressArea = parsedUserDetails.officeAddressArea;
                             } else {
                                 addressIndex = 1;
                                 address = 'HOME: ' + parsedUserDetails.homeAddressLineOne + ',' + parsedUserDetails.homeAddressLineTwo;
                                 fetchProductsInfo.locationFilterContent.options[1].label = address;
+                                fetchProductsInfo.filters.addressArea = parsedUserDetails.homeAddressArea;
                                 addressArea = parsedUserDetails.homeAddressArea;
                             }
                             dispatch(updateLocationFilter(address, addressIndex, addressArea));

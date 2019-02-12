@@ -12,7 +12,7 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import {
     LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS,
-    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME, DIET_FILTER_NAME, CUISINE_FILTER_NAME
+    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME, DIET_FILTER_NAME, CUISINE_FILTER_NAME, ADDRESS_TYPE
 } from '../../common/fagito-constants';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
@@ -50,6 +50,9 @@ class FagitoAlert extends Component {
                 } else {
                     let fieldName = selectedRadioOptionLabel === ADD_OFFICE_ADDRESS ? OFFICE_FIELD : HOME_FIELD;
                     let filterName = this.props.alertItems.filterName;
+                    if (fieldName === OFFICE_FIELD || fieldName === HOME_FIELD) {
+                        this.props.updateAddressDetails(ADDRESS_TYPE, fieldName === HOME_FIELD ? 1 : 0);
+                    }
                     if (filterName !== DIET_FILTER_NAME && filterName !== CUISINE_FILTER_NAME) {
                         navigatorRef.dispatch(NavigationActions.navigate({
                             routeName: UPDATE_USER_DETAILS_SCREEN, params: {

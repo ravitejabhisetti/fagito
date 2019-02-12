@@ -21,10 +21,11 @@ export const userAuthentication = (userData, authMode) => {
         if (authMode === FAGITO_SIGNIN_AUTH_MODE) {
             url = FAGITO_FIREBASE_SIGNIN_URL + FAGITO_FIREBASE_API_KEY;
         }
+        userData.email = userData.email.toLowerCase();
         fetch(url, {
             method: METHOD_POST,
             body: JSON.stringify({
-                email: userData.email.toLowerCase(),
+                email: userData.email,
                 password: userData.password,
                 returnSecureToken: true
             }),
@@ -156,6 +157,7 @@ export const getToken = () => {
                 });
         }).then(token => {
             if (!token) {
+                dispatch(fagitoStopLoader());
                 throw new Error();
             } else {
                 return token;
@@ -185,7 +187,9 @@ export const autoSignIn = () => {
             dispatch(formDatestoDeliver());
             dispatch(updateUserLoggedInStatus(true, false));
             navigatorRef.dispatch(NavigationActions.navigate({ routeName: FAGITO_DRAWER_NAVIGATOR }));
-        }).catch(err => { });
+        }).catch(err => {
+            dispatch(fagitoStopLoader());
+         });
     }
 }
 

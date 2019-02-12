@@ -1,3 +1,7 @@
+import _ from 'lodash';
+/**
+ * 
+ */
 export const FAGITO = 'FAGITO';
 export const FAGITO_HOME = 'Fagito';
 export const FAGITO_SIGNUP_SCREEN = 'Sign up';
@@ -161,6 +165,7 @@ export const FILTERS_CONTENT = {
         ]
     }
 };
+export const PROFILE_AREAS = _.cloneDeep(FILTERS_CONTENT.locationFilter);
 export const PROFILE_AREA_LABEL = '* Area';
 export const ORDERS_MODAL = { type: 'orders', modalHeader: "Today's orders", modalMessage: 'There are no orders for Today.' };
 export const CHOOSE_LOCATION_MESSAGE = 'Please choose an area so that we can show you homemade lunch options available in your location.';

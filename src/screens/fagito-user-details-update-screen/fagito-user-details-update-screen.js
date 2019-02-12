@@ -5,7 +5,7 @@ import {
     PROFILE, UPDATE_PROFILE_FORM, USER_PROFILE, ADDRESS, ADDRESS_TYPE_LABEL,
     ADDRESS_DROPDOWN_CONTENT, ADDRESS_TYPE_HOME, ADDRESS_TYPE_OFFICE, CITY_LABEL,
     CITY_DROPDOWN_CONTENT, FILTERS_CONTENT, PROFILE_AREA_LABEL, USER_LOCATIONS, WALLET_FIELD,
-    UPDATE_LOCATIONS_FORM, SELECT_AREA_ERROR_MESSAGE, HOME_FIELD
+    UPDATE_LOCATIONS_FORM, SELECT_AREA_ERROR_MESSAGE, HOME_FIELD, PROFILE_AREAS
 } from '../../common/fagito-constants';
 import { FagitoFormComponent, FagitoDropdown } from '../../components/fagito-components';
 import { validateFormEntities } from '../../utility/fagito-form-validations';
@@ -82,7 +82,7 @@ class FagitoUpdateUserDetailsScreen extends Component {
                 let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
                 let fetchProductsInfo = {
                     deliveryTiming: this.props.deliveryTiming, walletAmount: walletAmount,
-                    filters: this.props.filters, dateIndex: this.props.selectedDateIndex,
+                    filters: this.props.filters, dateIndex: this.props.selectedDateIndex, selectedProducts: this.props.selectedProducts,
                     locationFilterContent: this.props.locationFilterContent, showPaymentScreen: showPaymentScreen
                 };
                 this.props.updateUser(null, [], ADDRESS, formEntities, this.props.addressType,
@@ -95,11 +95,17 @@ class FagitoUpdateUserDetailsScreen extends Component {
         let userLocationsForm = null;
         if (this.state.sectionName === PROFILE) {
             userProfileForm = (
-                <FagitoFormComponent updateForm form={USER_PROFILE} formButtonClick={(values) => this.handleButtonClick(values)} buttonTitle='UPDATE' formItems={this.state.userDetailsProfileForm}></FagitoFormComponent>
+                <FagitoFormComponent
+                    updateForm
+                    form={USER_PROFILE}
+                    formButtonClick={(values) => this.handleButtonClick(values)}
+                    buttonTitle='UPDATE'
+                    formItems={this.state.userDetailsProfileForm}>
+                </FagitoFormComponent>
             )
         }
         if (this.state.sectionName === ADDRESS) {
-            let areaContent = FILTERS_CONTENT.locationFilter;
+            let areaContent = PROFILE_AREAS;
             areaContent['hideHeaderDescription'] = true;
             areaContent['userProfile'] = true;
             userLocationsForm = (
@@ -134,7 +140,13 @@ class FagitoUpdateUserDetailsScreen extends Component {
                         </FagitoDropdown>
                     </View>
                     <View style={STYLES.locationEntity}>
-                        <FagitoFormComponent updateForm form={USER_LOCATIONS} formButtonClick={(values) => this.handleButtonClick(values)} buttonTitle='UPDATE' formItems={this.state.userLocationsProfileForm}></FagitoFormComponent>
+                        <FagitoFormComponent
+                            updateForm
+                            form={USER_LOCATIONS}
+                            formButtonClick={(values) => this.handleButtonClick(values)}
+                            buttonTitle='UPDATE'
+                            formItems={this.state.userLocationsProfileForm}>
+                        </FagitoFormComponent>
                     </View>
                     <Text style={STYLES.mandatoryFieldsMessage}>* marked fields are mandatory</Text>
                 </View>
@@ -161,7 +173,8 @@ const mapStateToProps = (state) => {
         filters: state.deliveryTimingAndDates.filters,
         selectedDateIndex: state.deliveryTimingAndDates.selectedDateIndex,
         locationFilterContent: state.deliveryTimingAndDates.filters.locationFilterContent,
-        loggedInUserDetails: state.userDetails.loggedInUserDetails
+        loggedInUserDetails: state.userDetails.loggedInUserDetails,
+        selectedProducts: state.products.selectedProductsList
     }
 }
 

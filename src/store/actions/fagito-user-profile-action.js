@@ -1,5 +1,5 @@
 import { UPDATE_USER_LOCATION_DETAILS, UPDATE_ADDRESS, UPDATE_CITY, UPDATE_AREA, UPDATE_ADDRESS_TYPE } from './fagito-action-types';
-import { HOME_FIELD, CITY_FIELD, LOCATION_FILTER, ADDRESS_TYPE } from '../../common/fagito-constants';
+import { HOME_FIELD, CITY_FIELD, LOCATION_FILTER, ADDRESS_TYPE, OFFICE_FIELD } from '../../common/fagito-constants';
 
 export const updateUserLocationDetails = (fieldName, loggedInUserDetails) => {
     return {
