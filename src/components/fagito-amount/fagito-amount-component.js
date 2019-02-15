@@ -31,7 +31,10 @@ class FagitoAmount extends Component {
         }
         if (props.type === PAYMENT_NEEDED_TYPE) {
             let amount = props.amount - props.currentWalletAmount;
-            let buttonTitle = 'RS ' + amount;
+            let buttonTitle = 'RS 0';
+            if (amount > 0) {
+                buttonTitle = 'RS ' + amount;
+            }
             amountSection = (
                 <View style={STYLES.amountSection}>
                     <View>

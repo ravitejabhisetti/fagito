@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Modal, BackHandler, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { STYLES } from './fagito-modal.style';
-import { ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST, ADDON_NOTE, FEEDBACK_MODAL, FEEDBACK_MODAL_TEXT } from '../../common/fagito-constants';
+import {
+    ANDROID_HARDWARE_BACK_PRESS, ORDERS, SIMILAR_MEAL, VARIANTS, ADDONS, ADDONS_LIST,
+    ADDON_NOTE, FEEDBACK_MODAL, FEEDBACK_MODAL_TEXT
+} from '../../common/fagito-constants';
 import * as style from '../../common/fagito-style-constants';
 import RadioForm from 'react-native-simple-radio-button';
 import { FagitoFooterComponent, FagitoAddonsList } from '../../components/fagito-components';

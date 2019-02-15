@@ -277,12 +277,12 @@ export const NET_BANKING_TITLE = 'Card / Netbanking';
 export const SODEXO_TITLE = 'Sodexo';
 export const PAYTM_TITLE = 'PayTM';
 export const AMOUNTS_LIST = [
-    { amount: '10' },
-    { amount: '20' },
-    { amount: '30' },
-    { amount: '40' },
-    { amount: '50' },
-    { amount: '60' }
+    { amount: '100' },
+    { amount: '200' },
+    { amount: '300' },
+    { amount: '400' },
+    { amount: '500' },
+    { amount: '600' }
 ]
 export const AMOUNT_FORM = [
     {
@@ -308,6 +308,10 @@ export const WALLET_ALERT_MESSAGE = ' have been added to your Fagito wallet. You
 export const SODEXO_MINIMUM_AMOUNT_ALERT = {
     alertHeader: 'Minimum 1000',
     alertMessage: 'The minimum amount for Sodexo pickup is Rs 1000'
+}
+export const PAYMENT_DONE_ALERT = {
+    alertHeader: 'Success!!',
+    alertMessage: 'Order will be delivered to the given address'
 }
 export const CURRENT_WALLET_BALANCE_TEXT = 'Current Wallet balance: Rs ';
 export const DRAWER_WALLET_BALNCE_TEXT = 'Wallet Balance: Rs ';

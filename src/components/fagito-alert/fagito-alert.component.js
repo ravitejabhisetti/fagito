@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableOpacity, View, Alert, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import {
+    Modal, Text, TouchableOpacity, BackHandler,
+    View, Alert, TouchableWithoutFeedback, ScrollView
+} from 'react-native';
 import { STYLES } from './fagito-alert.style';
 import { OVERLAY_STYLE } from '../../common/fagito-common-style';
 import validate from '../../utility/fagito-error-messages';
@@ -12,7 +15,8 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import {
     LOCATION_FILTER, ADD_OFFICE_ADDRESS, ADD_HOME_ADDRESS,
-    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME, DIET_FILTER_NAME, CUISINE_FILTER_NAME, ADDRESS_TYPE
+    UPDATE_USER_DETAILS_SCREEN, ADDRESS, OFFICE_FIELD, HOME_FIELD, FAGITO_HOME,
+    DIET_FILTER_NAME, CUISINE_FILTER_NAME, ADDRESS_TYPE, ANDROID_HARDWARE_BACK_PRESS
 } from '../../common/fagito-constants';
 import { navigatorRef } from '../../../App';
 import { NavigationActions } from 'react-navigation';
@@ -28,6 +32,7 @@ class FagitoAlert extends Component {
         }
     }
     componentDidMount() {
+        BackHandler.addEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
         if (this.props.alertItems.radioOptionIndex) {
             this.setState((state) => {
                 return {
@@ -36,6 +41,13 @@ class FagitoAlert extends Component {
                 }
             })
         }
+    }
+    componentWillUnmount() {
+        BackHandler.removeEventListener(ANDROID_HARDWARE_BACK_PRESS, this.handleBackPress);
+    }
+    handleBackPress = () => {
+        this.props.hideAlert();
+        BackHandler.exitApp();
     }
     handleSubmit = (updateEntity) => {
         if (updateEntity) {
@@ -150,7 +162,7 @@ class FagitoAlert extends Component {
                     animationType="none"
                     transparent={true}
                     visible={this.state.showAlert}
-                    onRequestClose={this.handleAlert}
+                    onRequestClose={this.handleBackPress}
                 >
                     <TouchableWithoutFeedback onPress={(event) => this.handleAlert(event, true)}>
                         <View style={STYLES.alertContainer}>

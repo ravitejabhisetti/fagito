@@ -8,10 +8,10 @@ import {
     MAKE_PAYMENT, PAYMENT_LABEL_1, PAYMENT_LABEL_2, ADD_MEAL, SAVE_ADDONS, WALLET_FIELD,
     ADDON_MESSAGE_1, ADDON_MESSAGE_2, NULL, CURRENT_WALLET_BALANCE_TEXT, FAGITO_SIGNIN_SCREEN,
     UPDATE_USER_DETAILS_SCREEN, ADDRESS, HOME_FIELD, WALLET_SCREEN, WALLET_PAYMENT_SCREEN,
-    NET_BANKING_ENTITY, NET_BANKING_TITLE
+    NET_BANKING_ENTITY, NET_BANKING_TITLE, PAYMENT_DONE_ALERT
 } from '../../common/fagito-constants';
 import _ from 'lodash';
-import { updateUser, updateUserLocationDetails } from '../../store/actions/actions';
+import { updateUser, updateUserLocationDetails, fagitoShowAlert } from '../../store/actions/actions';
 import { withNavigation } from 'react-navigation';
 
 class FagitoFooterComponent extends Component {
@@ -23,7 +23,7 @@ class FagitoFooterComponent extends Component {
         this.props.hideModal();
         this.props.updateUser(this.props.selectedProduct, this.props.addonsSelected, 'addons');
     }
-    handlePayment = () => {
+    handlePayment = (productsCost) => {
         if (this.props.userLoggedIn) {
             if (this.props.locationFilterContent.areas) {
                 this.props.updateUserLocationDetails(HOME_FIELD, this.props.loggedInUserDetails);
@@ -33,10 +33,14 @@ class FagitoFooterComponent extends Component {
                 });
             } else {
                 let walletAmount = this.props.loggedInUserDetails[WALLET_FIELD] ? this.props.loggedInUserDetails[WALLET_FIELD] : 0;
-                this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
-                    entityName: NET_BANKING_ENTITY, title: NET_BANKING_TITLE, currentWalletAmount: walletAmount,
-                    selectedProducts: this.props.selectedProducts, mealPayment: true
-                });
+                if (walletAmount <= productsCost) {
+                    this.props.navigation.navigate(WALLET_PAYMENT_SCREEN, {
+                        entityName: NET_BANKING_ENTITY, title: NET_BANKING_TITLE, currentWalletAmount: walletAmount,
+                        selectedProducts: this.props.selectedProducts, mealPayment: true
+                    });
+                } else {
+                    this.props.showPaymentAlert(PAYMENT_DONE_ALERT);
+                }
             }
         } else {
             this.props.navigation.navigate(FAGITO_SIGNIN_SCREEN);
@@ -78,7 +82,7 @@ class FagitoFooterComponent extends Component {
                             </View>
                             <View style={STYLES.paymentButton}>
                                 <FagitoButton
-                                    onButtonClick={() => this.handlePayment()}
+                                    onButtonClick={() => this.handlePayment(productsCost + 5)}
                                     borderColor={style.PAYMENT_BUTTON_BORDER}
                                     backgroundColor={style.FAGITO_BUTTON_COLOR}
                                     buttonTitle={MAKE_PAYMENT}>
@@ -192,7 +196,8 @@ const mapDispatchToProps = (dispatch) => {
         updateUser: (product, addonsSelected, updateType, formEntities,
             addressType, city, area, addAddress, fetchProductsInfo) => dispatch(updateUser(product, addonsSelected, updateType, formEntities,
                 addressType, city, area, addAddress, fetchProductsInfo)),
-        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails))
+        updateUserLocationDetails: (fieldName, loggedInUserDetails) => dispatch(updateUserLocationDetails(fieldName, loggedInUserDetails)),
+        showPaymentAlert: (alert) => dispatch(fagitoShowAlert(alert))
     }
 }
 

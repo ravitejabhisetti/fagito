@@ -50,7 +50,7 @@ class FagitoSelectedProduct extends Component {
                     <Text style={STYLES.selectedProductName}>{productName}</Text>
                     {addons}
                     <Text style={STYLES.selectedProductPrice}>Rs {basePrice} + Rs 5 GST</Text>
-                    <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text>
+                    {/* <Text style={STYLES.insufficientBalance}>{INSUFFICIENT_BALANCE}</Text> */}
                 </View>
             </TouchableHighlight>
         )
